@@ -1,0 +1,1392 @@
+\chapter{线性方程组}
+在初中我们已经学习了二元一次，三元一次及一些四元一次方程组的概念与解法。一次方程也叫做线性方程，一次方程组也叫做线性方程组，它是代数学中最基本、应用最广泛的内容之一。本章将进一步研究线性方程组的消元法解的
+程序，引进行列式及其性质，并应用行列式理论对线性方程的求解作一般性的讨论，从而对线性方程组的理论有较系统、完整的了解。
+
+\section{高斯消元法}
+我们已经知道，解线性方程组的基本思想是消元，而且已经掌握了代入消元法和加减消元法。但这两种消元法在应用中所采取的具体步骤和顺序，往往因人而异、因题而异，尤其是在解未知数较多的线性方程组时，计算程序很麻烦，消元的顺序又不只一个途径。这就启示我们，对于任一个线性方程组，如果能有比较统一的消元程序，在解的过程中就可以充分运用现代的电子计算机，提高解题效率，也便于人们在应用中掌握。因而就有高斯消元法。
+
+\subsection{高斯消元法}
+高斯消元法实质上也是加减消元法，
+只是具有明确清晰的计算程序、统一的规格，便于掌握，便于使用电子计算机。
+
+我们先从熟悉的例子分析起。
+
+\begin{example}
+    解方程组
+\begin{numcases}{}
+    3x+5y=11\\ 4x-3y=5
+\end{numcases}
+\end{example}
+
+\begin{solution}
+$(2.1)\x \frac{1}{3}$得
+\begin{numcases}{}
+    x+\frac{5}{3}y=\frac{11}{3} \\
+    4x-3y=5 \tag{2.2}
+\end{numcases}
+$(2.2)-(2.3)\x 4$得
+\begin{numcases}{}
+    x+\frac{5}{3}y=\frac{11}{3}  \tag{2.3} \\
+    -\frac{29}{3}y=-\frac{29}{3}  
+\end{numcases}
+$(2.4)\x \left(-\frac{3}{29}\right)$得
+\begin{numcases}{}
+    x+\frac{5}{3}y=\frac{11}{3}  \tag{2.3} \\
+    y=1
+\end{numcases}
+(2.5)代入(2.3)得：
+$\begin{cases}
+    x=2\\y=1
+\end{cases}$
+所以原方程组的解集为$\{(x,y)\}=\{(2,1)\}$。
+\end{solution}
+
+
+\begin{example}
+    解方程组
+\begin{numcases}{}
+3x+y-5z=18\\
+x-3y+2z=3\\
+5x-11y-8z=-13    
+\end{numcases}
+\end{example}
+
+\begin{solution}
+先将(2.6)、(2.7)互换，得
+\begin{numcases}{}
+x-3y+2z=3 \tag{2.7}\\
+3x+y-5z=18\tag{2.6}\\
+5x-11y-8z=-13  \tag{2.8}  
+\end{numcases}
+$(2.6)-(2.7)\x 3$且$(2.8)-(2.7)\x 5$，得
+\begin{numcases}{}
+    x-3y+2z=3 \tag{2.7}\\
+    16y-11z=10 \\
+    4y-18z=-28   
+    \end{numcases}
+$(2.10)\x\frac{1}{4}$后，再与(2.9)互换，得
+\begin{numcases}{}
+    x-3y+2z=3 \tag{2.7}\\
+    y-\frac{9}{2} z=-7 \\
+    16y-11z=10  \tag{2.9}  
+    \end{numcases}
+$(2.9)-(2.11)\x16$后，再乘以$\frac{1}{61}$，得
+\begin{numcases}{}
+    x-3y+2z=3 \tag{2.7}\\
+    y-\frac{9}{2} z=-7 \tag{2.11}\\
+    z=2
+    \end{numcases}
+(2.12)代入(2.11)，再代入(2.7)，整理可得：
+\[\begin{cases}
+    x=5\\y=2\\z=2
+\end{cases}\]
+所以原方程组的解集为$\{(x,y,z)\}=\{(5, 2, 2)\}$。
+\end{solution}
+
+通过以上两例可以知道，解线性方程组的消元法是可按一定顺序进行的。
+
+第一步：将$x$的系数较小的方程换到第一个，并将$x$的系数
+化为1, 消去后几个方程中的$x$; 再把第二个方程中$y$的系数化为1, 消去它后边几个方程中的$y$;……直到最后一个方程中最后一个未知数的系数化为1.
+
+第二步：将最后一个未知数的值，分别回过头代入前边各方程中去，逐步可以得出方程组的解。
+
+以三元线性方程组为例，上面两步消元求解的过程就是：
+\[\begin{cases}
+    a_1x+b_1y+c_1z=d_1\\
+    a_2x+b_2y+c_2z=d_2\\
+    a_3x+b_3y+c_3z=d_3\\
+\end{cases}\mathop{\Longrightarrow}^{\text{第一步}} \begin{cases}
+    x+b'_1y+c'_1z=d'_1\\
+  \qquad \quad  y+c'_2z=d'_2\\
+  \qquad \qquad \quad  z=d'_3
+\end{cases}\mathop{\Longrightarrow}^{\text{第二步}}  \begin{cases}
+    x=d_1''\\ y=d_2''\\ z=d_3'
+\end{cases}\]
+
+在这一过程中，就是反复将方程组施行了三种基本变换：
+\begin{enumerate}
+    \item 互换两个方程的位置；
+    \item 用一个非零常数乘以一个方程两边；
+    \item 用一个非零常数乘以一个方程后，加到另一个方程上。
+\end{enumerate}
+
+必须指出，变换方程组是为了消元求解，因此，变换前后的方程组应该有相同的解集（这时我们就说这两个方程组是同解的）。那么，上述三种基本变换是否能保证方程组的同解性呢？我们肯定：经过上述三种基本变换，方程组的解集保持不变（同解的）。
+
+对于变换1、2, 结论显然是正确的；以下以三元一次
+方程组为例来证明对于变换3, 结论是正确的，我们证明方程组
+\begin{equation}
+    \begin{cases}
+      a_1x+b_1y+c_1z=d_1\\    a_2x+b_2y+c_2z=d_2\\    a_3x+b_3y+c_3z=d_3
+    \end{cases}
+\end{equation}
+与
+\begin{equation}
+    \begin{cases}
+        a_1x+b_1y+c_1z=d_1\\   (a_2+ka_1)x+(b_2+kb_1)y+(c_2+kc_1)z=d_2+kd_1\\
+        a_3x+b_3y+c_3z=d_3
+    \end{cases} 
+\end{equation}
+是同解的。
+
+\begin{proof}
+    设$(\alpha,\beta,\gamma)$是(2.13)的任一个解，则应有：
+\[    \begin{cases}
+    a_1\alpha+b_1\beta+c_1\gamma=d_1\\   
+     a_2\alpha+b_2\beta+c_2\gamma=d_2\\    
+    a_3\alpha+b_3\beta+c_3\gamma=d_3
+  \end{cases}\]
+把第一个等式的$k$倍加到第二等式上，得
+\[    \begin{cases}
+    a_1\alpha+b_1\beta+c_1\gamma=d_1\\  
+     (a_2+ka_1)\alpha+(b_2+kb_1)\beta+(c_2+kc_1)\gamma=d_2+kd_1\\
+    a_3\alpha+b_3\beta+c_3\gamma=d_3
+\end{cases} \]
+这说明$(\alpha,\beta,\gamma)$也是(2.14)的一个解。用类似的方法可以证明，方程组(2.14)的任一个解也是方程组(2.13)的解，因此(2.13)与(2.14)是同解的。
+\end{proof}
+
+注意，我们讨论的只是一般情形的消元过程，还有一些特殊的情形，我们将在以后系统讨论分析。这些特殊的情形在解题中都有可能出现，需要我们灵活处理。
+
+\begin{example}
+    解方程组
+    \[\begin{cases}
+     \qquad \;\; 3y+2z=5\\-x+2y-3z=2\\\;\; x+4y+7z=0 
+    \end{cases}\]
+\end{example}
+
+
+\begin{solution}
+运用例2.1、例2.2相同的高斯消元法，逐步将原方程组施以三种基本变换，可得
+\[\begin{split}
+\text{原方程组}& \Rightarrow \begin{cases}
+  \quad   x+4y+7z=0\\-x+2y-3z=2\\\qquad \;\;3y+2z=5
+\end{cases} \Rightarrow \begin{cases}
+    x+4y+7z=0\\\qquad  6y+4z=2\\\qquad  3y+2z=5
+\end{cases}\\
+&\Rightarrow \begin{cases}
+    x+4y+7z=0\\\qquad \;\; y+\frac{2}{3}z=\frac{1}{3}\\\qquad \;3y+2z=5 
+\end{cases}\Rightarrow \begin{cases}
+    x+4y+7z=0\\\qquad \;\;y+\frac{2}{3}z=\frac{1}{3}\\\qquad \;\;\qquad  0z=4
+\end{cases}
+\end{split}\]
+
+到此就会发现，方程$0\cdot z=4$无解，亦无法回代其余方程，因此，原方程组无解，或说原方程组的解集为空集$\emptyset$。
+\end{solution}
+    
+\begin{example}
+    解方程组
+    \[\begin{cases}
+     \qquad \;\; 3y+2z=1\\-x+2y-3z=2\\\;\; x+4y+7z=0 
+    \end{cases}\]
+\end{example}
+
+\begin{solution}
+    \[\begin{split}
+    \text{原方程组}& \Rightarrow \begin{cases}
+      \quad   x+4y+7z=0\\-x+2y-3z=2\\\qquad \;\;3y+2z=1
+    \end{cases} \Rightarrow \begin{cases}
+        x+4y+7z=0\\\qquad  6y+4z=1\\\qquad  3y+2z=1
+    \end{cases}\\
+    &\Rightarrow \begin{cases}
+        x+4y+7z=0\\\qquad \;\; y+\frac{2}{3}z=\frac{1}{3}\\\qquad \;3y+2z=1 
+    \end{cases}\Rightarrow \begin{cases}
+        x+4y+7z=0\\\qquad \;\;y+\frac{2}{3}z=\frac{1}{3}\\\qquad \qquad  0\cdot z=0
+    \end{cases}
+    \end{split}\]
+    
+    至此可知，方程$0\cdot z=0$有无限多个解（$z$可取任意实数），设$z=t$, 回代各方程中，可以得出
+    \[\begin{cases}
+        x=-\frac{4}{3}-\frac{13}{3}t\\
+        y=\frac{1}{3}-\frac{2}{3}t\\
+        z=t
+    \end{cases}\]
+   所以原方程组有无限多个解，其解集为
+    \[\{ (x,y, z) \} = \left\{ \left(-\frac{4}{3}-\frac{13}{3}t,\; \frac{1}{3}-\frac{2}{3}t,\; t\right) \right\}, \quad t\text{为任意数}\]
+ \end{solution}
+    
+\begin{ex}
+    用高斯消元法解下列线性方程组
+\begin{multicols}{2}
+    \begin{enumerate}
+    \item $\begin{cases}
+      \quad 5x-2y=8\\-7x+10y=4 
+    \end{cases}$
+    \item $\begin{cases}
+        2x-3y+4z=8\\ 5x-y-8z=-21\\3x+5y-7z=-8
+    \end{cases}$
+    \item $\begin{cases}
+      \qquad   y+2z=4\\x-3y\qquad =-8\\4x\quad\;\;\; -5z=7
+    \end{cases}$
+    \item $\begin{cases}
+        7x-y+2z=1\\\qquad 5y-3z=0\\14x-2y+4z=1
+    \end{cases}$
+    \item $\begin{cases}
+        3x-7y\qquad =2\\\qquad\quad  y-z=1\\12x-28y\quad =8
+    \end{cases}$
+\end{enumerate}    
+\end{multicols}
+\end{ex}
+    
+\subsection{一般二元一次方程组解的公式讨论}
+
+利用高斯消元
+法，我们对一般的二元一次方程组
+\begin{numcases}{(\rm I)}
+    a_1x+b_1y=c_1\\
+    a_2x+b_2y=c_2
+\end{numcases}
+求解，并讨论它的各种情形。
+
+在方程组(I)中，我们假定$a_1$与$b_1$, $a_2$与$b_2$, $a_1$与$a_2$，$b_1$与$b_2$分别不同时为零，因为，如若不然，不论上述哪一种
+情形发生，方程组的解将是容易讨论的，同学们不妨试着自行讨论一下。
+
+在这个假定下，利用高斯消元法（假定$a_1\ne 0$）,可得
+\begin{numcases}{}
+x+\frac{b_1}{a_1}y=\frac{c_1}{a_1}\\
+\frac{a_1b_2-a_2b_1}{a_1}y=\frac{a_1c_2-a_2c_1}{a_1}    
+\end{numcases}
+再将(2.18)变形后，可得
+\begin{numcases}{}
+    x+\frac{b_1}{a_1}y=\frac{c_1}{a_1} \tag{2.17}\\
+    (a_1b_2-a_2b_1)y=a_1c_2-a_2c_1    
+    \end{numcases}
+由方程出发，可分别讨论如下：
+\begin{enumerate}
+    \item 当$a_1b_2-a_2b_1\ne 0$时，由(2.19)并代入(2.17)可以
+得出方程组(I)唯一的一个解
+\[\begin{cases}
+    x=\frac{c_1b_2-c_2b_1}{a_1b_2-a_2b_1}   \\
+    y=\frac{a_1c_2-a_2c_1 }{a_1b_2-a_2b_1}
+\end{cases}\]
+这就是原方程组的解的公式。
+
+\item 当$a_1b_2-a_2b_1=0$时，由(2.19)又可以分为两种情形
+讨论：
+\begin{enumerate}
+    \item 若$a_1c_2-a_2c_1\ne 0$，方程(2.19)变为一个矛盾方
+程，共解集是空集，因而原方程组也就无解，其解集仍是空集。
+\item 若$a_1c_2-a_2c_1=0$, 则方程(2.19)变为：$0y=0$, $y$可取任意实数$t$, 代入(2.17)得：
+\[x=\frac{c_1}{a_1}-\frac{b_1}{a_1}t\]
+这时方程组(I)有无限多解，解集为
+\[\{(x,y)\}=\left\{\left(\frac{c_1-b_1t}{a_1}\right),\quad \text{$t$ 为任意实数}\right\}\]
+\end{enumerate}
+\end{enumerate}
+
+\begin{blk}{定理}
+方程组$\begin{cases}
+    a_1x+b_1y=c_1\\
+    a_2x+b_2y=c_2
+\end{cases}$
+其中$a_1$与$b_1$, $a_2$与$b_2$, $b_1$与$b_2$分别不同时为零。
+\begin{enumerate}
+    \item 当$a_1b_2-a_2b_1\ne 0$，它有唯一解；
+    \[x=\frac{c_1b_2-c_2b_1}{a_1b_2-a_2b_1} ,\qquad 
+    y=\frac{a_1c_2-a_2c_1 }{a_1b_2-a_2b_1}\]
+    \item 当$a_1b_2-a_2b_1= 0$，且$a_1c_2-a_2c_1\ne 0$（或$c_1b_2-c_1b_1\ne 0$），它无解；
+    \item 当$a_1b_2-a_2b_1= 0$，且$a_1c_2-a_2c_1= 0$，$c_1b_2-c_1b_1=0$，它有无限多个解。
+\end{enumerate}
+\end{blk}
+
+\begin{example}
+讨论方程组
+\[\begin{cases}
+    (a-b) x+ (a+b) y=2 (a^2-b^2)\\
+    (a+b) x+ (a-b)y=2 (a^2+b^2)
+\end{cases}\]
+的解的情况。    
+\end{example}
+
+\begin{solution}
+设$$a_1=a-b,\quad b_1 =a+b,\quad c_1=2 (a^2-b^2)$$
+$$a_2=a+b,\quad b_2 =a-b,\quad c_2=2 (a^2+b^2)$$
+则$$a_1b_2-a_2b_1=-4ab,\; a_1c_2-a_2c_1=-4ab(a-b),\; b_2c_1-b_1c_2=-4ab(a+b)$$所以
+\begin{enumerate}
+\item 若$a\ne 0$且$b\ne 0$, 则方程组有唯一解：
+\[x=a+b,\qquad y=a-b\]
+\item 若$a=0$或$b=0$, 则方程组有无限多个解。
+\begin{enumerate}
+    \item 在$a=0$, $b\ne 0$时，方程组的解集为：
+\[\{(x,y)\}=\{(2b+t,t)|\text{$t$为任意数}\}\]
+\item 在$a=0$, $b=0$时，方程组解集为
+\[\{(x,y)\}=\{(2a-t,t)|\text{$t$为任意数}\}\]
+\end{enumerate}
+
+\item 若$a=b=0$, 则原方程组成为：
+\[\begin{cases}
+    0x+0y=0 \\ 0x+0y=0 
+\end{cases}\]
+显然两个方程组都是恒等式，$x,y$都可取任何数，因此方程组的解集是：
+\[\{(x,y)\} =\{ (s,t)|\text{$s,t$为任意数}\}\]
+\end{enumerate}
+注意：本题不存在无解的情况。
+\end{solution}
+
+\begin{example}
+有一个三位数，已知其十位数字等于其个位数字与百位数字之和，其个位数字与十位数字之和为$a$, 如果把三个数字的顺序倒过来，则所得新的三位数比原三位数大99. 求原三位数，并问参数$a$可取哪些值？
+\end{example}
+
+
+\begin{solution}
+设原三位数的个位字为$x$, 百位数字为$y$, 由题目可知十位数字就是$a-x$. （其中$x,y$都是$1, 2,\ldots,9$这几个数字之一；$a-x$是$0, 1,\ldots,9$这十个数字之一）。显然，$3\le a\le 18$. 依题意有：
+\[\begin{cases}
+    x+y=a-x\\
+    100x+10(a-x)+y=100y+10(a-x)+x+99
+\end{cases}\]
+将上述方程组变换为：
+\[\begin{cases}
+    2x+y=a\\x-y=1
+\end{cases}\]
+由消元法可得出：$\begin{cases}
+    x=\frac{1}{3}(a+1)\\ y=x-1
+\end{cases}$
+由上面这两个等式，不难断定：$a+1$须是3的倍数。所以，$a$只可能取$5, 8, 11, 14, 17$之中的一个值，直接计算可得：
+\begin{itemize}
+    \item $a=5$时，则$x=2$, $y=1$, $a-x=8$,
+    可得出所求三位数为232;
+\item $a=8$时，则$x=3$, $y=2$, $a-x=5$,
+可得出所求三位数为253;
+\item $a=11$时，则$x=4$, $y=8$, $a-x=7$,
+可得出所求三位数为374;
+\item $a=14$时，则$x=5$, $y=4$, $a-x=9$,
+可得出所求三位数为495,
+\item $a=17$时，虽可求出$x=6$, $y=5$, 但$a-x=11$已不符
+合题意，因此，这种情形不可能出现。
+ \end{itemize}   
+
+所以，参数$a$分别取值5, 8, 11,与14,相应的三位数为：132, 253, 374, 495.
+\end{solution}    
+
+\begin{ex}
+    试判别和讨论下列线性方程组的解的情形。
+    \begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{cases}
+        3x-5y=20\\6x-10y=15
+    \end{cases}$
+    \item $\begin{cases}
+        3x-y=8\\2x+ay=7
+    \end{cases}$
+    \item $\begin{cases}
+mx+y=m+1\\x+my=2m        
+    \end{cases}$
+\end{enumerate}        
+    \end{multicols}
+\end{ex}
+
+\section*{习题2.1}
+\addcontentsline{toc}{subsection}{习题2.1}
+
+\begin{enumerate}
+    \item 用高斯消元法解下列方程组：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{cases}
+        2x+8y-5z=3\\x-2y+z=0\\x+y+3z=7
+    \end{cases}$
+    \item $\begin{cases}
+        x+y+2z=4\\2x-y+3z=4\\x+y+2z=3
+    \end{cases}$
+    \item $\begin{cases}
+         x+2y-8z=5\\8x-2y+z=4\\-3x-6y+9z=15
+    \end{cases}$
+    \item $\begin{cases}
+         x+2y-3z=5\\ -2x-4y+6z=-10\\ \frac{1}{2}x+y-\frac{3}{2}z=\frac{5}{2}
+    \end{cases}$
+    \item $\begin{cases}
+        x_1+8x_2+5x_3+7x_4=12\\ 8x_1+5x_2+7x_3+x_4 =0\\
+    5x_1+7x_2+x_3+3x_4=4\\ 7x_1+x_2+3x_3+5x_4=16
+    \end{cases}$
+    
+\end{enumerate}    
+\end{multicols}
+
+    \item 讨论下列各方程组的解的情况：
+\begin{multicols}{2}
+\begin{enumerate}    
+    \item $\begin{cases}
+      x+y=12\\ x+ay=4  
+    \end{cases}$
+    \item $\begin{cases}
+        6x-5y=25\\4x+ay=b
+    \end{cases}$
+    \item $\begin{cases}
+        x=by\\px=qy
+    \end{cases}$
+    \item $\begin{cases}
+        ax+by=a^2+2a+b^2\\
+        bx+ay=a^2+2b+b^2
+    \end{cases}$
+\end{enumerate}    
+\end{multicols}
+    \item 一个两位数的两数字之和为 $a$, 若颠倒这两个数字的顺序，所得新的两位数比原数小36, 问$a$可能取那些值？原来的两位数是什么？
+    \item 试判断$m$取何值时，下列方程组有唯一解：
+\begin{enumerate}
+    \item $\begin{cases}
+        (m-1)x-(m+1)y=m+1\\ m^2x-(m+1)y=m-1
+    \end{cases}$
+    \item $\begin{cases}
+x-(m^2-5)y=-1\\ (m+1)x -(m+1)^2y=1       
+    \end{cases}$
+\end{enumerate}
+
+\item  高斯消元法对方程组的三种基本变换中，若把变换改为“用任一个常数乘一个方程。”删去“非零”二字行吗？为
+什么？举例说明。
+\end{enumerate}
+
+\section{二阶行列式与二元线性方程组}
+本节我们将从二元线性方程组的解的公式入手，引进二阶行列式的概念，从而学习二元线性方程组的行列式解法，并应用行列式讨论它的解的各种情形。
+
+\subsection{二阶行列式}
+
+一般的二元线性方程组
+\begin{numcases}{(\text{I})}
+    a_1x+b_1y=c_1\\
+    a_2x+b_2y=c_2
+\end{numcases}
+当$a_1b_2-a_2b_1\ne 0$时，有唯一解，即
+\begin{equation}
+\begin{cases}
+    x=\frac{c_1b_2-c_2b_1}{a_1b_2-a_2b_1}\\
+    y=\frac{a_1c_2-a_2c_1}{a_1b_2-a_2b_1}
+\end{cases}    
+\end{equation}
+
+分析公式(2.22)可以看出，两个分母都是$a_1b_2-a_2b_1$, 其中只含有未知数的系数。如果把方程组(I)中未知数的系数分离出来，按照它们原有的位置排列成一个正方形，即
+\begin{center}\Large
+    \begin{tikzpicture}
+\node (A1) at (-1,1){$a_1$};
+\node (A2) at (-1,-1){$a_2$};
+\node (B1) at (1,1){$b_1$};
+\node (B2) at (1,-1){$b_2$};
+\draw [very thick](A1)--(B2);
+\draw[dashed, very thick] (A2)--(B1);
+    \end{tikzpicture}
+\end{center}
+那么可以看到$a_1b_2-a_2b_1$是这样两项的和：一项是正方形中实线所示的对角线（称为主对角线）上两个数的积，取正号；另一项是正方形中虚线所示的对角线（称为副对角线）上两个数的积，取负号。
+
+为了便于记忆，我们将排正方形的四个数的两侧各加一
+条竖直线，表示成
+\[\begin{vmatrix}
+    a_1&b_1\\a_2&b_2
+\end{vmatrix}\]
+并规定这个符号就是$a_1b_2-a_2b_1$即：
+\begin{equation}
+    \begin{vmatrix}
+        a_1&b_1\\a_2&b_2
+    \end{vmatrix}=a_1b_2-a_2b_1
+\end{equation}
+
+这时，(2.23)式的左边，就叫做二阶行列式；而(2.23)式的右边就是二阶行列式的展开式。
+
+二阶列行式中，四个数称为它的元素；四个元素排成两
+横排（称为行）两竖排（称为列），因而二阶行列共有二行二列。
+
+所以，二阶行列式是一个值，它可按照(2.23)用对角线法则展开并计算出来。
+
+\begin{example}
+    展开并计算下列行列式：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{vmatrix}
+        2&3\\-5&-8
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        0&-7\\-3&10
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        m+1&m+2\\m&m+1
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        \sin x& \cos x\\ \cos x&\sin x
+    \end{vmatrix}$
+\end{enumerate}
+\end{multicols}
+\end{example}
+
+\begin{solution}
+由对角线法则可得，  
+\begin{enumerate}
+    \item $\begin{vmatrix}
+        2&3\\-5&-8
+    \end{vmatrix}=2\x(-8)-3\x (-5)=-1$
+    \item $\begin{vmatrix}
+        0&-7\\-3&10
+    \end{vmatrix}=-21$
+    \item $\begin{vmatrix}
+        m+1&m+2\\m&m+1
+    \end{vmatrix}=(m+1)^2-m(m+2)=1$
+    \item $\begin{vmatrix}
+        \sin x& \cos x\\ \cos x&\sin x
+    \end{vmatrix}=\sin^2x-\cos^2x=-\cos2x$
+\end{enumerate}
+\end{solution}
+  
+\begin{ex}
+\begin{enumerate}
+    \item 展开并计算下列行列式的值：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{vmatrix}
+    8&4\\3&9
+\end{vmatrix}$
+    \item $\begin{vmatrix}
+    a&a^2\\b&b^2
+\end{vmatrix}$
+\item $\begin{vmatrix}
+    -3&21\\-1&7
+\end{vmatrix}$
+\item $\begin{vmatrix}
+    6a-b&2b\\3a&b
+\end{vmatrix}$
+\item $\begin{vmatrix}
+    \log_a x&\log_a x\\m&n
+\end{vmatrix}$
+\item $\begin{vmatrix}
+    \sin x&\tan x\\ \cos x&\cot x
+\end{vmatrix}$
+\item $\begin{vmatrix}
+     1-\sqrt{2}&2-\sqrt{3}\\2+\sqrt{3}&1+\sqrt{2}
+\end{vmatrix}$
+\item $\begin{vmatrix}
+     x-1&x^3\\1&x^2+x+1
+\end{vmatrix}$
+\end{enumerate}
+\end{multicols}
+
+    \item 试试看，你能把下列各式分别用几个二阶行列式表示出来吗？
+    \[am-bn,\qquad am+bn,\qquad a_1b_2-a_2b_1\]
+    \item 求证：
+    $\begin{vmatrix}
+        a_1+ka_2 &b_1+kb_2 \\ a_2&b_2
+    \end{vmatrix}=\begin{vmatrix}
+        a_1  &b_1  \\ a_2&b_2
+    \end{vmatrix}$
+\end{enumerate}
+\end{ex}
+
+\subsection{二元线性方程组解的行列式表示及讨论}
+
+在二元线性方程组的解的公式中，仔细观察可以发现，两分母，分子都可以很有规律地用行列式表示出来，即
+\[\begin{split}
+    a_1b_2-a_2b_1&=\begin{vmatrix}
+        a_1&b_1\\a_2&b_2
+    \end{vmatrix}\\
+    c_1b_2-c_2b_1&=\begin{vmatrix}
+        c_1&b_1\\c_2&b_2
+    \end{vmatrix}\\
+    a_1c_2-a_2c_1&=\begin{vmatrix}
+        a_1&c_1\\a_2&c_2
+    \end{vmatrix} 
+\end{split}\]
+这样，二元线性方程组解的公式就可以表示为：
+
+当$\begin{vmatrix}
+    a_1&b_1\\a_2&b_2
+\end{vmatrix}\ne 0$时，
+\[x=\frac{\begin{vmatrix}
+    c_1&b_1\\c_2&b_2
+\end{vmatrix}}{\begin{vmatrix}
+    a_1&b_1\\a_2&b_2
+\end{vmatrix}},\qquad y=\frac{\begin{vmatrix}
+    a_1&c_1\\a_2&c_2
+\end{vmatrix}}{\begin{vmatrix}
+    a_1&b_1\\a_2&b_2
+\end{vmatrix}}\]
+为简便起见，通常把上述三个二阶行列式分别记为
+\[D=\begin{vmatrix}
+    a_1&b_1\\a_2&b_2
+\end{vmatrix},\qquad D_x=\begin{vmatrix}
+    c_1&b_1\\c_2&b_2
+\end{vmatrix},\qquad D_y=\begin{vmatrix}
+    a_1&c_1\\a_2&c_2
+\end{vmatrix}\]
+其中$D$ 的元素由方程组的未知数系数按顺序组成，就叫做这个方程组的系数行列式；$D_x$的元素由$D$将第一列元素（$x$的系数）分别换成相应的常数项组成；$D_y$的元素由$D$将第二列元素（$y$的系数）分别换成相应的常数项组成。
+
+这样二元线性方程组(I)的解的公式，就可简化为：当$D\ne 0$时，
+\[\begin{cases}
+    x=\frac{D_x}{D}\\y=\frac{D_y}{D}
+\end{cases}\]
+即：二元线性方程组(I)的解集为
+\[\{(x,y)\}=\left\{\left(\frac{D_x}{D},\; \frac{D_y}{D}\right)\right\}\]
+
+\begin{example}
+    用行列式法解方程组
+    $\begin{cases}
+11x-2y+5=0\\
+8x+7y+24=0        
+    \end{cases}$
+\end{example}
+
+\begin{solution}
+    先将所给方程组写为一般形式
+\[\begin{cases}
+    11x-2y=-5\\
+    8x+7y=-24
+\end{cases}\]
+再计算行列式$D$, $D_x$, $D_y$:
+\[D=\begin{vmatrix}
+    11&-2\\3&7
+\end{vmatrix}=83\ne 0,\quad  D_x=\begin{vmatrix}
+    -5&-2\\-24&7
+\end{vmatrix}=-83,\quad  D_y=\begin{vmatrix}
+    11&-5\\3&-24
+\end{vmatrix}=-249\]
+根据解的公式，得
+\[x=\frac{D_x}{D}=-1,\qquad y=\frac{D_y}{D}=-3\]
+所以，原方程组的解集为$\{(x,y)\}=\{(-1,-3)\}$。
+\end{solution}
+
+在使用行列式方法解二元线性方程组时，如果出现$D=0$时，解的公式不适用，这时可以仿照前文中对方程组解的讨论，得到以下结论：
+\begin{itemize}
+    \item 当$D=0$, 且$D_x\ne 0$(或$D_y\ne 0$)时，方程组的解集是空集$\emptyset$；
+    \item 当$D=0$, 且$D_x=D_y＝0$时，方程组有无限多个解，它的解集可引进一个参数表示。
+\end{itemize}
+
+注意，我们这里所指的二元线性方程组，限定其中的
+$a_1$与$a_2$，$a_1$与$b_1$，$a_2$与$b_2$，$b_1$与$b_2$不同时为0。
+
+\begin{example}
+    用行列式法解下列方程组，并讨论：
+    \[\begin{cases}
+        mx+y-m-1=0\\
+        x+my-2m=0   
+    \end{cases}\]
+   \end{example}
+   
+   
+   
+   \begin{solution}
+先将原方程化为一般形式：
+\[\begin{cases}
+    mx+y=m+1\\
+    x+my=2m   
+\end{cases}\]
+再计算各行列式：
+\[\begin{split}
+D&=\begin{vmatrix}
+    m&1\\1&m
+\end{vmatrix}=m^2-1=(m+1)(m-1)\\
+D_x&=\begin{vmatrix}
+    m+1&1\\2m&m
+\end{vmatrix}=m(m+1)-2m=m(m-1)\\
+D_y&=\begin{vmatrix}
+    m&m+1\\1&2m
+\end{vmatrix}=2m^2-(m+1)=(2m+1)(m-1)
+\end{split}\]
+所以
+\begin{itemize}
+    \item 当$m\ne -1$, $m\ne 1$时，$D\ne 0$方程组有唯一解，它的解集为
+\[\{ (x,y) \} = \left\{ \left(\frac{m}{m+1},\frac{2m+1}{m+1}\right) \right\}\]
+\item 当$m=-1$时，$D=0$, $D_x\ne 0$, 方程组无解，它的解集为$\emptyset$。
+\item 当$m=1$时，$D=D_x=D_y=0$方程组有无限多个解，这时由于原方程组变为
+$\begin{cases}
+    x+y=2\\x+y=2
+\end{cases}$
+实际上就是$x+y=2$, 若令$x=t$, 则$y=2-t$, 因此，方程组的解集可表示为：
+\[\{(x,y)\}=\{(t,2-t)|\text{$t$为任意数}\}\]
+\end{itemize}
+
+注意，在上述参数表示法中，可以有不同的表示法，如若令$y=a$, 则$x=2-a$, 解集就应表示为$\{(x,y)\}=\{(2-a,a)|\text{$a$为任意数}\}$。
+\end{solution}
+
+\begin{ex}
+\begin{enumerate}
+    \item 用行列式法解下列方程组
+\begin{enumerate}
+    \item $\begin{cases}
+        x-8y=10\\6x-7y-11=0
+    \end{cases}$
+    \item $\begin{cases}
+        14b-6y=-1\\ 3x+7y-6=0   
+    \end{cases}$
+    \item $\begin{cases}
+        mx+ny=1\\nx+my=-1,\quad  (m\ne n) 
+    \end{cases}$
+    \item $\begin{cases}
+        x\cos A-y\sin A=\cos B\\ x\sin A+y\cos A=\sin B
+    \end{cases}$
+\end{enumerate}
+
+    \item 解下列方程组，并讨论
+\begin{enumerate}
+    \item $\begin{cases}
+        x+ (m-1)y=1\\(m-1) x+y=2
+    \end{cases}$
+    \item $\begin{cases}
+        mx+y=1\\ 4x+my-m=0
+    \end{cases}$
+    \item $\begin{cases}
+        kx+ (2a-1) y=a^2+2a-1\\ x+ay=2a
+    \end{cases}$
+\end{enumerate}
+\end{enumerate}   
+\end{ex}
+
+\section*{习题2.2}
+\addcontentsline{toc}{subsection}{习题2.2}
+\begin{enumerate}
+    \item 计算下列行列式的值
+\[\begin{vmatrix}
+    \sqrt{6}&\sqrt{4}\\\sqrt{2}&\sqrt{3}
+\end{vmatrix},\qquad \begin{vmatrix}
+    \log_a b&4\\ 3& \log_b a
+\end{vmatrix},\qquad\begin{vmatrix}
+    e^{x+y}&e^x-1\\e^x+1&e^{x-y}
+\end{vmatrix},\qquad\begin{vmatrix}
+    1&1\\-\tan^2\alpha&1
+\end{vmatrix}\]
+
+\item 求证：
+\begin{enumerate}
+    \begin{multicols}{2}
+    \item $\begin{vmatrix}
+        a_1&b_1\\a_2&b_2
+    \end{vmatrix}=\begin{vmatrix}
+        a_1&a_2\\b_1&b_2
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        b_1 & b_2 \\a_1 &a_2
+    \end{vmatrix}=-\begin{vmatrix}
+        a_1&b_1\\a_2&b_2
+    \end{vmatrix}$   
+    \item $\begin{vmatrix}
+        ka_1&kb_1\\b_1&a_2
+    \end{vmatrix}=k\begin{vmatrix}
+        a_1&b_1\\a_2&b_2
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        ka_1&\ell a_1\\ka_2& \ell a_2
+    \end{vmatrix}=0$
+\end{multicols}
+    \item $\begin{vmatrix}
+        a_1+a' &b_1+b'\\a_2&b_2
+    \end{vmatrix}=\begin{vmatrix}
+        a_1&b_1 \\a_2&b_2
+    \end{vmatrix}+\begin{vmatrix}
+        a'&b'\\ a_2&b_2
+    \end{vmatrix}$
+\end{enumerate} 
+
+\item 用行列式解下列方程组：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{cases}
+        13x-7y-10=0\\19x+15y-2=0
+    \end{cases}$
+    \item $\begin{cases}
+        \frac{7}{m}+\frac{9}{n}=3\\
+        \frac{17}{m}+\frac{7}{n}=5
+    \end{cases}$
+\end{enumerate}
+\end{multicols}
+\item 解下列关于$x,y$的方程组，并讨论。
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{cases}
+        mx+y=2m+1\\x-my=2-m
+    \end{cases}$
+    \item $\begin{cases}
+        mx+y=-1\\8mx-my=2m+3
+    \end{cases}$
+    \item $\begin{cases}
+        (a-1)x-(a^2-1)y=1\\
+        (a^2-1)x+(a-1)y=2
+    \end{cases}$
+    \item $\begin{cases}
+        kx+y=k+1\\
+        x+ky=2k
+    \end{cases}$
+\end{enumerate}    
+\end{multicols}
+
+\item 当$k$为何值时，方程组$\begin{cases}
+    4x+3y=1\\kx+(k-2)y=3
+\end{cases}$的解中，$x$与$y$的值取异号？
+\end{enumerate}
+
+\section{三阶行列式与三元线性方程组}
+\subsection{三阶行列式}
+
+仿照二阶行列式，我们可以把九个数排成三行三列的正方形，并在两侧各加一竖直线。如
+\begin{equation}
+    \begin{vmatrix}
+  a_1&b_1&c_1\\a_2&b_2&c_2\\a_3&b_3&c_3\\      
+    \end{vmatrix}
+\end{equation}
+并规定它表示一个数
+\begin{equation}
+    a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2
+\end{equation}
+
+这时我们就把(2.24)叫做一个三阶行列式，(2.25)式就叫做这个三阶行列式的展开式（或这三阶行列式的值。）
+
+三阶行列式共有九个元素，它的值也可以按上右图所示
+的对角线法则计算出来：
+
+实线所连三元素的乘积都取正号，共三项；虚线所连三元素乘积，都取负号，共三项。
+
+\begin{example}
+    用对角线法则计算下列三阶行列式：
+\begin{multicols}{3}
+\begin{enumerate}
+    \item $\begin{vmatrix}
+        1&3&5\\2&4&8\\3&0&-1
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        2&-3&1\\4&-1&7\\-1&5&2
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        x&y&z\\z&x&y\\y&z&x
+    \end{vmatrix}$
+\end{enumerate} 
+\end{multicols}
+\end{example}
+
+\begin{solution}
+
+
+    
+
+
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{proof}
+    
+\end{proof}
+
+\begin{proof}
+    
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{ex}
+    用克莱姆法则解下列方程组：
+\[\begin{cases}
+    2x_1-x_2+3x_3+2x_4=6\\
+    3x_1-3x_2+3x_3+2x_4=5\\
+    3x_1-x_2-x_3+2x_4=3\\
+    3x_1-x_2+3x_3-x_4=4
+\end{cases}  \]
+\end{ex}
+
+\section*{习题2.4}
+\addcontentsline{toc}{subsection}{习题2.4}
+\begin{enumerate}
+    \item 已知行列式
+\[\begin{vmatrix}
+    2 &-1&3&6\\
+    0&1&-6&5\\
+    4&0&3&1\\
+    2&0&1&5
+\end{vmatrix}\]
+    \begin{enumerate}
+        \item 把它按第三行展开；
+        \item 把它按第二列展开，并算出结果。
+    \end{enumerate}
+\item 利用行列式性质，计算：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{vmatrix}
+   1&2&3&4\\2&3&4&1\\3&4&1&2\\4&1&2&3     
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        2&1&0&2\\-1&0&6&8\\2&0&2&3\\-2&-2&0&1
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        a&1&0&0\\0&b&1&0\\0&0&c&1\\0&0&0&d
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        1&a_1&0&0\\-1&1-a_1&a_2&0\\
+        0&-1&1-a_2&a_3\\0&0&-1&1-a_3
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        a&a+1&a+2&a+3\\
+        a+1&a+2&a+3&a+4\\
+        b&b+1&b+2&b+3\\
+        b+1&b+2&b+3&b+4
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        1&a&b&d+c\\a&b&c&a+d\\1&c&d&a+b\\1&d&a&b+c
+    \end{vmatrix}$
+\end{enumerate}
+\end{multicols}
+
+\item 求证：
+\[\begin{vmatrix}
+\cos\theta & 1&0&0\\
+1&2\cos\theta&1&0\\
+0&1&2\cos\theta&1\\
+0&0&1&2\cos\theta    
+\end{vmatrix}=\cos4\theta\]
+
+\item 解下列线性方程组
+\begin{multicols}{2}
+    \begin{enumerate}
+    \item $\begin{cases}
+ x_1+2x_2+3x_3-2x_4=6\\
+ 2x_1-x_2-2x_3-3x_4=8\\
+ 3x_1+2x_2-x_3+2x_4=4\\
+ 2x_1-3x_2+2x_3+x_4=-8       
+    \end{cases}$
+    \item $\begin{cases}
+2x_1+x_2-x_3+x_4=1\\
+3x_1-2x_2+2x_3-4x_4=2\\
+5x_1+x_2-x_3+2x_4=-1\\
+2x_1-x_2+x_3-3x_4=4        
+    \end{cases}$
+    \item $\begin{cases}
+ x_1-2x_2+3x_3-x_4=4\\
+ x_2-2x_3+x_4=-3\\
+ x_1+3x_2+x_4=1\\
+ -7x_2+3x_3+x_4=-3       
+    \end{cases}$
+    \item $\begin{cases}
+x_1+2x_2=2\\
+x_2+2x_3=5\\
+x_3+2x_4=8\\
+x_4+2x_5=11\\
+2x_1+x_5=4    
+    \end{cases}$
+\end{enumerate}
+\end{multicols}
+
+\end{enumerate}
+
+\section{特殊的线性方程组}
+除以上学习的一般线性方程组外，在实际应用中常常还会遇到一些特殊的线性方程组，进一步学习这些特殊情形，无论在理论上和应用上都有重要的作用。本节研究三种类型的特殊线性方程组，即
+
+方程的个数多于未知数个数的线性方程组；方程的个数少于未知数个数的线性方程组；方程组中，各个方程的常数项都是零的线性方程组——齐次线性方程组。
+
+\subsection{方程个数多于未知数个数的线性方程组}
+
+这种方程组，我们早已在初中学习过了，要求这种方程组的解，其关键是：从中任选取和未知数个数一样多的方程组成部分方程组，求出部分方程组的解以后，再代入其余方程中检验，从而确定原方程组的解集。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{ex}
+\begin{enumerate}
+    \item 想想看，能不能把列12中的必要条件改为充分条件？为什么？
+    \item 判定下列齐次线性方程组是否有非零解？如果有，求出它们各自的解集来。
+    \begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{cases}
+        x+y+z=0\\2x-y+3z=0\\x-2y+z=0
+    \end{cases}$
+    \item $\begin{cases}
+        5x-6y-4z=0\\x+2y+4z=0\\3x+2y+6z=0
+    \end{cases}$
+\end{enumerate}        
+    \end{multicols}
+\end{enumerate}    
+\end{ex}
+
+\section*{习题2.5}
+\addcontentsline{toc}{subsection}{习题2.5}
+\begin{enumerate}
+    \item 解下列方程组：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{cases}
+2x+4y-3=7\\
+x-y+2z=-1\\
+3x-7y+3z=10\\
+-4x+3y-5z=-4        
+    \end{cases}$
+    \item $\begin{cases}
+-x+3y-2z=-8\\
+7x+y-2=4\\ 5x-5y+3z=16\\ -x-2y+z=0        
+    \end{cases}$
+    \item $\begin{cases}
+ x_1+2x_2+3x_3-x_4=1\\
+3x_1+2x_2+x_3-x_4=1\\
+2x_1+3x_2+x_3+x_4=1\\
+2x_1 +2x_2+2x_3-x_4=1\\
+5x_1+5x_2+2x_3 =2     
+    \end{cases}$
+    \item $\begin{cases}
+        x+y+z=6\\
+        2x-y+z=3\\
+        3x+2x-2z=1\\
+        5x-y-2=0\\
+        x-2y+3z=6        
+    \end{cases}$
+\end{enumerate}
+\end{multicols}
+
+
+\item 解下列方程组：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{cases}
+        2x+y-z=8\\x-3y-2z=1  
+    \end{cases}$
+    \item $\begin{cases}
+        2x+3y+z=10\\x-4y+2z=8
+    \end{cases}$
+    \item $\begin{cases}
+x_1+x_2+x_3+x_4=10\\
+2x_1+3x_2-x_3=5\\
+2x_2+x_3-2x_4 =-1       
+    \end{cases}$
+    \item $\begin{cases}
+        x_1+2x_2-x_3-3x_4=5\\
+        2x_1+3x_2+3x_3+x_4=2\\
+        x_1+x_2+x_3-7x_4=6
+    \end{cases}$
+\end{enumerate}
+\end{multicols}
+
+\item 解下列方程组：
+\begin{multicols}{2}
+\begin{enumerate}
+\item $\begin{cases}
+ 2x+3y+z=0\\x+2y-3z=0       
+\end{cases}$
+\item $\begin{cases}
+      4x-5y-z=0\\3x+7y-6z=0  
+\end{cases}$
+\end{enumerate}
+\end{multicols}
+
+\item 判断下列齐次线性方程组有没有非零解？
+\begin{multicols}{2}
+    \begin{enumerate}
+    \item $\begin{cases}
+     2x_1-x_2+3x_3=0\\
+     4x_1-2x_2+5x_3=0\\
+     2x_1-x_2+4x_3=0     
+    \end{cases}$
+    \item $\begin{cases}
+     3x_1+2x_2+6x_3=0\\
+     x_1+2x_2+4x_3=0\\
+     5x_1-6x_2-4x_3=0
+    \end{cases}$
+    \end{enumerate}
+    \end{multicols}
+
+\item 求出下列齐次线性方程组的非零解：
+\begin{multicols}{2}
+    \begin{enumerate}
+\item $\begin{cases}
+    5x=8y\\ 10x-16y=0
+\end{cases}$
+\item $\begin{cases}
+    2x_1+5x_2+3x_3=0\\3x_1-x_2-4x_3=0\\-x_1+6x_2+7x_3=0
+\end{cases}$
+\item $\begin{cases}
+    x_1-3x_2+x_3=0\\ 2x_1+x_2+2x_3=0\\ -5x_1+2x_2-5x_3=0
+\end{cases}$
+\item $\begin{cases}
+    2x_1+x_2+x_3+7x_4=0\\ 3x_1-4x_2-x_3-8x_4=0\\
+    x_1+x_2-x_3=0\\ x_1-x_2-x_4=0
+\end{cases}$
+    \end{enumerate}
+\end{multicols}
+
+\item 参数$a$为何时值时，下列齐次线性方程组有非零解？
+\begin{multicols}{2}
+    \begin{enumerate}
+\item $\begin{cases}
+   x_1+x_2+ax_3=0\\
+-3x_1+5x_2+x_3=0\\
+x_2+2x_3=0 
+\end{cases}$
+\item $\begin{cases}
+  -5x_1-9x_2+7x_3=0\\
+ax_1-4x_2+3x_3=0\\
+-8x_1-5x_2+4x_3=0  
+\end{cases}$
+\item $\begin{cases}
+    ax+3y+z=0\\ x+4y-3z=0\\ ax+y+3z=0
+\end{cases}$
+\item $\begin{cases}
+    4x-2y+az=0 \\ax-y+z=0\\ 6x-3y+ (a+1) z=0   
+\end{cases}$
+    \end{enumerate}
+\end{multicols}
+
+\item 解下列方程组，并求出$x:y:z$
+\begin{multicols}{2}
+    \begin{enumerate}
+\item $\begin{cases}
+    x+2y+2=0\\x-y-2z=0\\-2x-y+z=0
+\end{cases}$
+\item $\begin{cases}
+    x-5y=0\\
+4y+z=0\\
+4x+5z=0
+\end{cases}$
+    \end{enumerate}
+\end{multicols}
+\item 已知方程组
+\[\begin{cases}
+ ax_1+bx_2+cx_3=0 \\ cx_1+bx_2+ax_3=0 \\ bx_1 +ax_2+cx_3=0   
+\end{cases}\]
+有非零解，求证：$a=b$, 或$a=c$, 或$a+b+c=0$
+
+\item 求证：齐次线性方程组
+\[\begin{cases}
+  x_1+px_2+qx_3+ (r+s) x_4=0\\
+  x_1+qx_2+rx_3+ (s+p) x_4=0\\
+  x_1+rx_2+sx_3+ (p+q) x_4=0\\
+  x_1+sx_2+px_3+ (q+r) x_4=0 
+\end{cases}\]
+必有非零解。
+\end{enumerate}
+
+\section*{本章内容要点}
+一、本章主要内容是线性方程组的高斯消元法，行列式（重点是二，三阶行列式）及其重要性质。
+二、三元线性方程组的解的讨论；用克莱姆法则求线性方程组的唯一解；齐次线性方程组有非零解的充要条件等。同时，还学习了四元线性方程组以及方程个数与未知数个数不等的线性方程组。
+
+二、高斯消元法实质上就是加减消元法，只是运用三种基本变换进行有一定程序的消元，便于计算，便于运用电子计算机。
+
+三、行列式是解线性方程组的一种新的工具。二、三阶行列式的定义是：
+\[\begin{split}
+\begin{vmatrix}
+    a_1&b_1\\a_2&b_2
+\end{vmatrix}&=a_1b_2-a_2b_1\\
+\begin{vmatrix}
+    a_1&b_1&c_1\\a_2&b_2&c_2\\a_3&b_3&c_3
+\end{vmatrix}&=a_1b_2c_3+a_2b_3c_1+a_3b_1c_2
+-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2
+\end{split}\]
+
+这就是二、三阶行列式展开的对角线法则，对高阶行列式不适用。
+
+四、行列式中的元素可采用双足码表示，两个足码分别表示这个元素所在的行数与列数，如三阶行列式可表为
+\[\Delta =\begin{vmatrix}
+    a_{11}&a_{12}&a_{13}\\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}
+\end{vmatrix}\]
+也可以简化表示为
+\[\Delta =|a_{i,j}|\qquad i=1,2,3;\; j=1,2,3.\]
+余子式与代数余子式是两个重要的概念，尤其是代数余子式，在进行行列式的恒等变形和计算中有广泛的应用。
+
+某个元素$a_{ij}$的代数余子式是一个低一阶的行列式，用$A_{i,j}$表示，如，在三阶行列式中，元素$a_{23}$的代数余子式为
+\[A_{23}=(-1)^{2+3}\begin{vmatrix}
+    a_{11}&a_{12}\\a_{31}&a_{32}
+\end{vmatrix}\]
+
+三阶行列式可以用二阶行列式定义：
+\[\begin{split}
+\Delta&=(-1)^{1+1}a_{11}\begin{vmatrix}
+    a_{22}&a_{23}\\a_{32}&a_{33}
+\end{vmatrix}+(-1)^{1+2}a_{12}\begin{vmatrix}
+    a_{21}&a_{23}\\a_{31}&a_{33}
+\end{vmatrix}+(-1)^{1+3}a_{13}\begin{vmatrix}
+    a_{21}&a_{22}\\a_{31}&a_{32}
+\end{vmatrix}\\
+&=a_{11}A_{11}+a_{12}A_{12}+a_{13}A_{13}
+\end{split}\]
+
+四阶行列式就是借助于三阶行列式定义的；一般地，$n$阶行列式可以借助于$n$个$n-1$阶行列式定义。这种定义，我们称为行列式的归纳定义。
+
+行列式的性质定理1—11也是简化计算、进行变形的主要依据，在本章中都是以三阶行列式为例来证明的，但它们对任意阶行列式都适用。
+
+五、二元线性方程组
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{复习题二}
+\begin{enumerate}
+    \item 用高斯消元法解下列方程组
+
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}
