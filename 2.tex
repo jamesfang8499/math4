@@ -842,11 +842,241 @@ $\begin{cases}
 \end{example}
 
 \begin{solution}
+由对角线法则可得：
+\[\begin{split}
+    \begin{vmatrix}
+        1&3&5\\2&4&8\\3&0&-1
+    \end{vmatrix}&=1\cdot 4\cdot (-1)+2\cdot 0\cdot 5+3\cdot 3\cdot8-3\cdot4\cdot5-2\cdot 3\cdot (-1)-1\cdot 0\cdot 8\\
+    &=-4+0+77-60+6-0=14
+\end{split}\]
+\[\begin{split}
+    \begin{vmatrix}
+        2&-3&1\\4&-1&7\\-1&5&2
+    \end{vmatrix}&=2\cdot(-1)\cdot2+4\cdot5\cdot1+(-1)\cdot(-3)\cdot7-(-1)\cdot(-1)\cdot1-4\cdot(-3)\cdot2-2\cdot5\cdot7\\
+    &=-4+20+21-1+24-70=-10
+\end{split}\]
+\[\begin{vmatrix}
+    x&y&z\\z&x&y\\y&z&x
+\end{vmatrix}=x^3+y^3+z^3-3xyz\]
+\end{solution}
+
+\begin{ex}
+\begin{enumerate}
+\item 计算下列三阶行列式    
+\[\begin{vmatrix}
+    3&1&2\\1&0&0\\-1&0&0
+\end{vmatrix},\quad \begin{vmatrix}
+    1&a&a^2\\1&b&b^2\\1&c&c^2
+\end{vmatrix},\quad \begin{vmatrix}
+    0&a&b\\a&0&c\\b&c&0
+\end{vmatrix},\quad \begin{vmatrix}
+    1&a&b\\-a&1&c\\-b&-c&1
+\end{vmatrix},\quad \begin{vmatrix}
+    a&d&e\\0&b&d\\0&0&c
+\end{vmatrix}\]
+
+\item 先计算行列式的值，再比较结果找出各组中两行列式之间的关系：
+\begin{enumerate}
+    \item $\begin{vmatrix}
+        1&4&7\\2&5&8\\3&6&9
+    \end{vmatrix},\qquad \begin{vmatrix}
+        1&2&3\\4&5&6\\7&8&9
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        a&1&2\\1&a&1\\2&1&a
+    \end{vmatrix},\qquad \begin{vmatrix}
+        ak&k&2k\\1&a&1\\2&1&a
+    \end{vmatrix}$
+\end{enumerate}
+\end{enumerate}    
+\end{ex}
+
+\subsection{三阶行列式的性质}
+
+为了简化行列式的计算，更好地掌握这一工具，我们进一步学习行列式的性质。
+
+\begin{blk}{定理1 }
+    如果把一个行列式的每一行（列），同时改为同号数的列（行），那么，所得的行列式与原行列式的值相等。
+\[\Delta=\begin{vmatrix}
+    a_1&b_1&c_1\\a_2&b_2&c_2\\a_3&b_3&c_3
+\end{vmatrix}=\begin{vmatrix}
+    a_1&a_2&a_3\\b_1&b_2&b_3\\c_1&c_2&c_3
+\end{vmatrix}=\Delta'\]
+\end{blk}
+
+ \begin{proof}
+由对角线法则知    
+\[\begin{split}
+    \Delta &=a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2\\
+    \Delta'&=a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2\\
+\end{split}\]
+所以$\Delta=\Delta'$
+ \end{proof}
 
 
+ 由定理1可知：对于行列式的行成立的性质对于列也一定成立；反过来，对于列成立的性质对于行也一定成立，所以今后关于行列式的性质，只需对行证明就行了。
+
+\begin{blk}{定理2}
+    如果把一个行列式的任意两行（列）对调，那么，所得的行列式与原行列式的绝对值相等，符号相反。
+    \[\Delta=\begin{vmatrix}
+        a_1&b_1&c_1\\a_2&b_2&c_2\\a_3&b_3&c_3
+    \end{vmatrix}=-\begin{vmatrix}
+        a_2&b_2&c_2\\a_1&b_1&c_1\\a_3&b_3&c_3
+    \end{vmatrix}=-\Delta'\]
+\end{blk} 
+
+\begin{proof}
+    只要以对调第一、二行为例证明结论，其它行（列）对调的证明是类似的。
+    仍由三阶行列式的对角线法则可得
+    \[\begin{split}
+        \Delta&=a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2\\
+        &=-(a_2b_1c_3+a_1b_3c_2+a_3b_2c_1-a_3b_1c_2-a_1b_2c_3-a_2b_3c_1)\\
+        &=-\Delta'
+    \end{split}\]
+    所以$\Delta=-\Delta'$
+\end{proof}
+
+\begin{blk}{定理3}
+ 如果一个行列式中，有两行（列）元素完全对应相同，那么，这个行列式的值必须等于零。   
+ \[\Delta=\begin{vmatrix}
+     a_1&a_2&a_3\\ b_1&b_2&b_3\\a_1&a_2&a_3
+ \end{vmatrix}=0\]
+\end{blk}
+
+\begin{proof}
+只要将行列式中相同的两行（列）对调，则所得行列式仍为$-\Delta$, 但根据定理2又可知，对调后应得$-\Delta$。于是就有，    
+\[\Delta=-\Delta\]
+所以可得：$\Delta=0$。
+\end{proof}
+
+\begin{blk}{定理4}
+如果把一个行列式的某一行（列）的所有元素同乘以任一数$k$, 那么，所得行列式的值就等于原行列式值的$k$倍。
+\[\Delta'=\begin{vmatrix}
+    a_1&b_1&c_1\\ka_2&kb_2&kc_2\\a_3&b_3&c_3
+\end{vmatrix}=k\cdot \begin{vmatrix}
+    a_1&b_1&c_1\\a_2&b_2&c_2\\a_3&b_3&c_3
+\end{vmatrix}=k\Delta\]
+\end{blk}
+
+\begin{proof}
+由对角线法则将它们展开、比较，就可直接证明结论$\Delta'=k\Delta$是正确的。
+\end{proof}
+
+\begin{blk}{定理5}
+    如果在行列式中，某一行（列）各元素有公因子时，则可以把公因子提到行列式的外边。
+\[\begin{vmatrix}
+    ka_1&kb_1&kc_1\\a_2&b_2&c_2\\a_3&b_3&c_3
+\end{vmatrix}=k\cdot \begin{vmatrix}
+    a_1&b_1&c_1\\a_2&b_2&c_2\\a_3&b_3&c_3
+\end{vmatrix}
+    \]
+\end{blk}
+
+这定理的证明可由定理4直接得出，这里不再重述，但要指出，这个定理可以使行列式计算简化，在应用中很重要。例如，运用它可这样计算行列式：
+\[\begin{split}
+\begin{vmatrix}
+    -\tfrac{1}{2}&-\tfrac{2}{3}&-1\\
+    \tfrac{5}{2}&\tfrac{4}{3}&0\\
+    \tfrac{9}{2}&\tfrac{7}{3}&1
+\end{vmatrix}&=(-1)\x\frac{1}{2}\x\frac{1}{3}\x\begin{vmatrix}
+    1&2&1\\5&4&0\\9&7&1
+\end{vmatrix}\\
+&=\left(-\frac{1}{6}\right)\x(-7)=1\frac{1}{6}
+\end{split}\]
+
+\begin{blk}{定理6}
+    如果一个行列式中有一行（列）的元素全为零，则这个行列式的值等于零。
+    \[\begin{vmatrix}
+        0&0&0\\a_2&b_2&c_2\\a_3&b_3&c_3
+    \end{vmatrix}=0\]
+\end{blk}
+
+\begin{proof}
+    由定理5与零的运算特性可得
+\[\begin{vmatrix}
+    0&0&0\\a_2&b_2&c_2\\a_3&b_3&c_3
+\end{vmatrix}=\begin{vmatrix}
+    0\cdot a_1&0\cdot b_1&0\cdot c_1\\a_2&b_2&c_2\\a_3&b_3&c_3
+\end{vmatrix}=0\cdot\begin{vmatrix}
+    a_1&b_1&c_1\\a_2&b_2&c_2\\a_3&b_3&c_3
+\end{vmatrix}=0\]
+\end{proof}
+
+\begin{blk}{定理7}
+    如果一个行列式中有两行（或两列）的对应元素成比例，则这个行列式等于零。
+\[\begin{vmatrix}
+    ka_2&kb_2&kc_2\\a_2&b_2&c_2\\a_3&b_3&c_3
+\end{vmatrix}=0\]
+\end{blk}
+
+\begin{proof}
+    由定理5及定理8可以知道：
+    \[\begin{vmatrix}
+        ka_2&kb_2&kc_2\\a_2&b_2&c_2\\a_3&b_3&c_3
+    \end{vmatrix}=k\cdot\begin{vmatrix}
+        a_2&b_2&c_2\\a_2&b_2&c_2\\a_3&b_3&c_3
+    \end{vmatrix}=k\cdot 0=0\]
+\end{proof}
+
+\begin{blk}{定理8}
+如果行列式某一行（或一列）的元素都是二项式之和的形式，则这个行列式等于两个行列式之和。
+\[\begin{vmatrix}
+    a_1+a'_1&b_1+b'_1&c_1+c'_1\\a_2&b_2&c_2\\a_3&b_3&c_3
+\end{vmatrix}=\begin{vmatrix}
+    a_1&b_1&c_1\\a_2&b_2&c_2\\a_3&b_3&c_3
+\end{vmatrix}+\begin{vmatrix}
+    a'_1&b'_1&c'_1\\a_2&b_2&c_2\\a_3&b_3&c_3
+\end{vmatrix}\]
+\end{blk}
+
+证明要点：用三阶行列式的对角线法则，将左边的行列式展开，再由乘法对加法的分配律、交换律即可证明其结果与右边两个行列式的和展开后的结果是一样的。同学们可以自证。
+
+\begin{blk}{定理9}
+    如果把行列式的某一行（列）所有的元素同乘以同一个数k后，加到另一行（列）的对应元素上，则所得行列式与原行列式是相等的。
+\[\begin{vmatrix}
+    a_1&b_1&c_1\\a_2+a_1k&b_2+b_1k&c_2+c_1k\\a_3&b_3&c_3
+\end{vmatrix}=\begin{vmatrix}
+    a_1&b_1&c_1\\a_2&b_2&c_2\\a_3&b_3&c_3
+\end{vmatrix}\]
+\end{blk}
+
+\begin{proof}
+    由定理8可得：
+\[\begin{vmatrix}
+    a_1&b_1&c_1\\a_2+a_1k&b_2+b_1k&c_2+c_1k\\a_3&b_3&c_3
+\end{vmatrix}=\begin{vmatrix}
+    a_1&b_1&c_1\\a_2&b_2&c_2\\a_3&b_3&c_3
+\end{vmatrix}+\begin{vmatrix}
+    a_1&b_1&c_1\\a_1k&b_1k&c_1k\\a_3&b_3&c_3
+\end{vmatrix}\]
+又由定理7可知：
+\[\begin{vmatrix}
+    a_1&b_1&c_1\\a_1k&b_1k&c_1k\\a_3&b_3&c_3
+\end{vmatrix}=0\]
+所以
+\[\begin{vmatrix}
+    a_1&b_1&c_1\\a_2+a_1k&b_2+b_1k&c_2+c_1k\\a_3&b_3&c_3
+\end{vmatrix}=\begin{vmatrix}
+    a_1&b_1&c_1\\a_2&b_2&c_2\\a_3&b_3&c_3
+\end{vmatrix}\]
+\end{proof}
+
+
+
+有了行列式的这些性质，只要在计算中充分灵活地使用，就会很简捷地得到结果。
+
+\begin{example}
+    计算行列式$\Delta=\begin{vmatrix}
+        234&3&4\\
+        125&2&5\\
+        476&7&6
+    \end{vmatrix}$的值。
+\end{example}
+
+
+
+\begin{solution}
     
-
-
 \end{solution}
 
 \begin{example}
@@ -860,6 +1090,21 @@ $\begin{cases}
 \end{solution}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \begin{example}
     
 \end{example}
@@ -879,21 +1124,6 @@ $\begin{cases}
 \begin{solution}
     
 \end{solution}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -952,6 +1182,321 @@ $\begin{cases}
 
 
 
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+
+
+\begin{solution}
+    
+\end{solution}
 
 
 
