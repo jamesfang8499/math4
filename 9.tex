@@ -16,7 +16,7 @@
 {
     \draw (\x,0)node[below]{$\xtext$}--(\x,.2);
 }
-\node(.5,-.5){$O$};
+\node at (.5,-.5){$O$};
 \end{tikzpicture}
     \caption{}
 \end{figure}
@@ -61,88 +61,231 @@ $x=\arcsin y$ (即$x$是一角或弧，其相应的正弦值为$y$)，
 
 由反正弦函数的定义和前一章的反函数定理可得到
 它的一些性质如下：
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\begin{itemize}
+    \item $\arcsin(\sin y)=y,\qquad -\frac{\pi}{2}\le y\le \frac{\pi}{2}$
+    
+    $\sin(\arcsin x)=x,\qquad -1\le x\le 1$
+
+    \item 函数$f(x)=\arcsin x$在闭区间$[-1,1]$上单调递
+    增，并且连续。
+    \item $y=\arcsin x,\; -1\le x\le 1$的图象与$y=\sin x,\; -\frac{\pi}{2}\le y\le \frac{\pi}{2}$
+    的图象关于直线$y=x$对称（图5.2）。
+\end{itemize}
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=1]
+\draw[->] (-4,0)--(4,0)node[right]{$x$};
+\draw [->] (0,-3)--(0,3)node[right]{$y$};
+
+\draw[domain=-pi:pi, samples=1000, dashed, thick] plot(\x,{sin(\x r)});
+\draw[domain=-1:1, samples=1000, very thick] plot(\x,{asin(\x)*pi/180});
+\draw[dashed] (-3,-3)--(2.5,2.5)node [above]{$y=x$};
+\draw [dashed] (0,.5*pi)node[left]{$\frac{\pi}{2}$}--(1,.5*pi)node[above]{$y=\arcsin x$};
+\draw [dashed] (0,-.5*pi)node[right]{$-\frac{\pi}{2}$}--(-1,-.5*pi);
+\node at (.25,-.25){$O$};
+\node at (pi+.5,0)[above]{$y=\sin x$};
+\foreach \x in {-1,1}
+{
+    \draw (\x,0)node[below]{$\x$}--(\x,.1);
+}
+\draw (0,1)node[left]{$1$}--(.1,1);
+\draw (0,-1)--(-.1,-1)node[right]{$-1$};
+
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+
+
+我们已知正弦函数是奇函数，它的图象关于原点对称，
+现在我们要证明 $f(x)=\arcsin x$是奇函数，即
+$\arcsin(-x)=-\arcsin x$。
+
+\begin{proof}
+    因为$-\frac{\pi}{2}\le \arcsin x\le \frac{\pi}{2}$，
+    角$-\arcsin x$也被限制在由$-\frac{\pi}{2}$到$\frac{\pi}{2}$
+    的区间内：
+    $$-\frac{\pi}{2}\le -\arcsin x\le \frac{\pi}{2}$$
+    又，角$-\arcsin x$的正弦等于$-x$
+\[\sin(-\arcsin x)=-\sin(\arcsin x)=-x\]
+因此：$\arcsin(-x)=-\arcsin x$。
+\end{proof}
+
+\begin{example}
+    求下列各式的值（口答）：
+    \begin{enumerate}
+        \item $\arcsin\frac{1}{2}$
+        \item $\arcsin\left(-\frac{1}{2}\right)$
+        \item $\arcsin 1$
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+\begin{enumerate}
+    \item $\arcsin\frac{1}{2}=\frac{\pi}{6}$，因为$\sin\frac{\pi}{6}=\frac{1}{2}$，且$-\frac{\pi}{2}<\frac{\pi}{6}<\frac{\pi}{2}$
+
+    \item $\arcsin\left(-\frac{1}{2}\right)=-\frac{\pi}{6}$，因为$\sin\left(-\frac{\pi}{6}\right)=-\frac{1}{2}$，且
+    $-\frac{\pi}{2}<-\frac{\pi}{6}<\frac{\pi}{2}$
+    \item $\arcsin 1=\frac{\pi}{2}$，因为$\sin\frac{\pi}{2}=1$，而且$\frac{\pi}{2}$不超出$\left[-\frac{\pi}{2},\frac{\pi}{2}\right]$的界限。
+\end{enumerate}
+\end{solution}
+
+\begin{example}
+    求下列各式的值：
+\[\arcsin\left(-\frac{\sqrt{3}}{2}\right),\qquad \arcsin (-0.2672) \]
+\end{example}
+
+\begin{solution}
+\begin{enumerate}
+    \item $\arcsin\left(-\frac{\sqrt{3}}{2}\right)=-\arcsin\frac{\sqrt{3}}{2}=-\frac{\pi}{3}$
+    \item $\arcsin(-0.2672)=-\arcsin0.2672=-15^{\circ}30'\approx -0.2705$
+\end{enumerate}
+    
+\end{solution}
+
+
+
+\begin{example}
+    求下列各式的值：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\sin\left(\arcsin\frac{1}{3}\right)$
+    \item $\tan\left(\arcsin\frac{\sqrt{2}}{2}\right)$
+    \item $\cos\left(\arcsin\frac{3}{5}\right)$
+    \item $\sin\left[2\arcsin\left(-\frac{3}{5}\right)\right]$
+    \item $\arcsin\left(\sin\frac{7\pi}{6}\right)$
+\end{enumerate}
+\end{multicols}
+\end{example}
+
+\begin{solution}
+\begin{enumerate}
+    \item $\sin\left(\arcsin\frac{1}{3}\right)=\frac{1}{3}$
+    \item $\tan\left(\arcsin\frac{\sqrt{2}}{2}\right)=\tan\frac{\pi}{4}=1$
+    \item 设$\arcsin\frac{3}{5}=\alpha$，其中$-\frac{\pi}{2}\le\alpha\le\frac{\pi}{2}$，那么$\sin\alpha=\frac{3}{5}$。由于$-\frac{\pi}{2}\le\alpha\le\frac{\pi}{2}$，$\sin\alpha>0$，可以知道，$\alpha$是第一象限的角，所以
+    $$\cos\left(\arcsin\frac{3}{5}\right)=\sqrt{1-\left(\frac{3}{5}\right)^2}=\frac{4}{5}$$
+    \item 设$\arcsin\left(-\frac{3}{5}\right)=\alpha$，其中$-\frac{\pi}{2}\le\alpha\le\frac{\pi}{2}$，那么
+    \[\sin\alpha =\sin\left[\arcsin\left(-\frac{3}{5}\right)\right]=-\frac{3}{5}\]
+由于$-\frac{\pi}{2}\le\alpha\le\frac{\pi}{2}$和$\sin\alpha<0$，可以知道$\alpha$是第四象限的角，所以
+\[\cos\alpha=\sqrt{1-\left(-\frac{3}{5}\right)^2}=\frac{4}{5}\]
+即：
+$\sin\left[2\arcsin\left(-\frac{3}{5}\right)\right]=\sin2\alpha=2\sin\alpha\cdot \cos\alpha=2\left(-\frac{3}{5}\right)\cdot\left(\frac{4}{5}\right)=-\frac{24}{25}$
+    \item \[\begin{split}
+\arcsin\left(\sin\frac{7\pi}{6}\right)&=\arcsin\left[\sin\left(\pi+\frac{\pi}{6}\right)\right]\\
+&=\arcsin\left(-\sin\frac{\pi}{6}\right)\\
+&=-\arcsin\left(\sin\frac{\pi}{6}\right)=-\frac{\pi}{6}        
+    \end{split}\]
+\end{enumerate}
+\end{solution}
+
+关于$y=\sin x$, 只要知道了它在闭区间$-\frac{\pi}{2}\le x\le \frac{\pi}{2}$上
+的反函数$x=\arcsin y$, 我们便能求出$y=\sin x$在其它单调区间
+上的反函数。
+
+\begin{blk}{命题}
+\begin{enumerate}
+    \item $y=\sin x$在闭区间$\left[-\frac{\pi}{2}+2k\pi,\frac{\pi}{2}+2k\pi\right]$上，由$-1$上升到1，它们相应的反函数是
+\[x=\arcsin y+2k\pi,\quad k\in\mathbb{Z}\]
+因为
+\[\sin x= \sin(\arcsin y+ 2k\pi) = \sin(\arcsin y) = y\]
+而且
+\[-\frac{\pi}{2}+2k\pi\le \arcsin y+2k\pi \le \frac{\pi}{2}+2k\pi
+,\quad k\in\mathbb{Z}\]
+    
+\item $y=\sin x$在闭区间$\left[\frac{\pi}{2},\frac{3\pi}{2}\right]$上，由1下降到$-1$，
+它的反函数是
+\[x=\pi-\arcsin y\]
+因为
+\[\sin x=\sin(\pi- \arcsin y) = \sin(\arcsin y) = y\]
+而且
+\[\frac{\pi}{2}=\pi-\frac{\pi}{2} \le \pi-\arcsin y \le \pi+\frac{\pi}{2}=\frac{3\pi}{2}\]
+我们也可以在单位圆上作图来说明2，如图9.3所示。
+
+\item $y=\sin x$在闭区间$\left[\frac{\pi}{2}+2k\pi,\frac{3\pi}{2}+2k\pi\right]$上，由
+1下降到$-1$, 相仿地证得它在相应区间上的反函数是
+\[x=(\pi-\arcsin y)+2k\pi,\quad k\in\mathbb{Z} \]
+\end{enumerate}
+\end{blk}
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=.6]
+\begin{scope}
+    \draw[->] (-3,0)--(3,0)node[right]{$x$};
+    \draw[->] (0,-3)--(0,3)node[right]{$y$};
+    \draw (0,0) circle(2);
+    \node at (-.25,-.25){$O$};
+\node at (2.5,0)[below]{$A(1,0)$};
+\draw[very thick] (0,0)--(45:2)node[right]{$\arcsin y$}--(90+45:2)node[left]{$\pi-\arcsin y$}--(0,0);
+
+\draw[<->] (-.8,0)--node[left]{$y$}(-.8,1.414);
+\end{scope}
+
+\begin{scope}[xshift=9cm]
+    \draw[->] (-3,0)--(3,0)node[right]{$x$};
+    \draw[->] (0,-3)--(0,3)node[right]{$y$};
+    \draw (0,0) circle(2);
+    \node at (-.25,.25){$O$};
+\node at (2.5,0)[below]{$A(1,0)$};
+
+\draw[<->] (-.8,0)--node[left]{$y$}(-.8,-1.414);
+\draw[very thick] (0,0)--(-45:2)node[right]{$\arcsin y$}--(-90-45:2)node[left]{$\pi-\arcsin y$}--(0,0);
+\draw[very thick] (0,0)--(45:2)node[right]{$-\arcsin y$};
+\end{scope}
+\end{tikzpicture}
+
+    \caption{}
+\end{figure}
+
+
+\begin{example}
+    讨论函数$y=\arcsin(\sin x)$的图象。
+\end{example}
+
+\begin{solution}
+    由于正弦的周期性，函数$\arcsin(\sin x),\; x\in\mathbb{R}$也以
+$2\pi$为周期，因此，只研究它在长度为$2\pi$的区间内情形即可。
+由于
+\[\sin y=\sin[\arcsin(\sin x)]=\sin x\]
+这里$-\frac{\pi}{2}\le y\le \frac{\pi}{2}$，而$x\in\mathbb{R}$，故
+\begin{itemize}
+    \item 当$x\in\left[-\frac{\pi}{2},\frac{\pi}{2}\right]$时，则$y=x$。
+    \item 当$x\in\left[\frac{\pi}{2},\frac{3\pi}{2}\right]$时，则由上面的命题2知
+    \[x=\pi-y\quad \Rightarrow\quad y=\pi-x\in \left(-\frac{\pi}{2},\frac{\pi}{2}\right)\]
+\end{itemize}
+因之，在此区间内函数的图象与直线$y=\pi-x$一致，总之，
+由上面的命题中的1和3的结果：
+\begin{enumerate}
+    \item 当$x\in \left[-\frac{\pi}{2}+2k\pi,\frac{\pi}{2}+2k\pi\right]$时，则$x=y+2k\pi$，则$y=x-2k\pi$；
+    \item 当$x\in \left[\frac{\pi}{2}+2k\pi,\frac{3\pi}{2}+2k\pi\right]$时，则$x=\pi-y+2k\pi$，则$y=(\pi-x)-2k\pi$。
+\end{enumerate}
+由上面讨论的结果，得到函数$y= \arcsin
+(\sin x)$的图象是折线的形状，如图5.4所示。
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=.5]
+    \draw[->] (-9,0)--(9,0)node[right]{$x$};
+    \draw[->] (0,-3)--(0,3)node[right]{$y$};
+\draw[very thick] (-2.5*pi,-0.5*pi)--(-1.5*pi,.5*pi)--(-.5*pi,-0.5*pi)--(.5*pi,.5*pi)--(1.5*pi,-0.5*pi)--(2.5*pi,.5*pi);
+\foreach \x/\xtext in {-2/-2\pi, -1/-\pi,1/\pi,2/2\pi}
+{
+    \draw (pi*\x,0)node[below]{$\xtext$}--(pi*\x,0.2);
+}
+\foreach \x/\xtext in {.5/\frac{\pi}{2},-1.5/-\frac{3\pi}{2}}
+{
+    \draw (pi*\x,0)node[below]{$\xtext$}--(pi*\x,0.1);
+}
+\foreach \x/\xtext in {1.5/\frac{3\pi}{2},-.5/-\frac{\pi}{2}}
+{
+    \draw (pi*\x,0)--(pi*\x,0.2)node[above]{$\xtext$};
+}
+\node at (.5,-.5){$O$};
+
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+\end{solution}
 
 
 
@@ -202,3 +345,186 @@ $x=\arcsin y$ (即$x$是一角或弧，其相应的正弦值为$y$)，
     \item 讨论函数$y=x \arcsin(\sin x)$的图象，并作草图。
 \item 画出$f(x)=\sin(3\arcsin x)$的图象。
 \end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
