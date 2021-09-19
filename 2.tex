@@ -1398,60 +1398,242 @@ A_{12}&=(-1)^{1+2}\begin{vmatrix}
 \end{split}\]
 \end{blk}
 
-
-
-
-
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-\begin{example}
-    
-\end{example}
-
-\begin{example}
-    
-\end{example}
-
-\begin{solution}
-    
-\end{solution}
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
 \begin{proof}
-    
+我们只证明，$\Delta =a_{11}A_{11}+a_{12} A_{12}+a_{13} A_{13}$，其余证明类同，由对角线法则可知
+\[\begin{split}
+\Delta &=a_{11}a_{22}a_{33}+a_{21}a_{32}a_{13}+a_{31}a_{12}a_{23}-a_{11}a_{32}a_{23}-a_{21}a_{12}a_{33}-a_{31}a_{22}a_{13}\\
+&=a_{11}(a_{22}a_{33}-a_{32}a_{23})-a_{12}(a_{21}a_{33}-a_{31}a_{23})+a_{13}(a_{21}a_{33}-a_{31}a_{22})
+\end{split}\]
+但是
+\[A_{11}=a_{22}a_{33}-a_{32}a_{23},\quad A_{12}=a_{21}a_{33}-a_{31}a_{23},\quad A_{13}=a_{21}a_{33}-a_{31}a_{22}\]
+所以$\Delta =a_{11}A_{11}+a_{12} A_{12}+a_{13} A_{13}$
 \end{proof}
 
+这就启示我们，三阶行列式可以转化为二阶行列式来计算，如果结合前边所学定理9的性质，在实际应用中，将显得更具优越性。
+
+\begin{example}
+    计算行列式
+\[\begin{vmatrix}
+    1&3&5\\2&4&8\\3&0&-1
+\end{vmatrix},\qquad \begin{vmatrix}
+    3&1&-2\\5&-2&7\\3&4&2
+\end{vmatrix}\]
+\end{example}
+
+
+
+\begin{solution}
+\begin{align*}
+    \begin{vmatrix}
+        1&3&5\\2&4&8\\3&0&-1
+    \end{vmatrix}&=\begin{vmatrix}
+        1&3&5\\2+(-2)\cdot 1&4+(-2)\cdot 3&8+(-2)\cdot 5\\
+        3+(-3)\cdot 1&0+(-3)\cdot 3&-1+(-3)\cdot 5
+    \end{vmatrix}\tag{定理5}\\
+    &=\begin{vmatrix}
+        1&3&5\\0&-2&-2\\0&-9&-16
+    \end{vmatrix}\\
+    &=1\cdot\begin{vmatrix}
+        -2&-2\\-9&-16
+    \end{vmatrix}-0\cdot\begin{vmatrix}
+        3&5\\-9&-16
+    \end{vmatrix}+0\cdot \begin{vmatrix}
+        8&5\\-2&-2
+    \end{vmatrix}\tag{定理10}\\
+    &=32-18=14
+\end{align*}
+
+\begin{align*}
+    \begin{vmatrix}
+        3&1&-2\\5&-2&7\\3&4&2
+    \end{vmatrix}&=\begin{vmatrix}
+        3+(-3)\cdot 1&1&-2+2\x1\\
+        5+(-3)\cdot (-2)& -2 &7+2\x (-2)\\
+        3+(-3)\cdot 4& 4 &2+2\x 4
+    \end{vmatrix}\tag{定理9}\\
+&=\begin{vmatrix}
+    0&1&0\\11&-2&3\\-9&4&10
+\end{vmatrix}\\
+&=0\begin{vmatrix}
+    -2&3\\4&10
+\end{vmatrix}-1\cdot \begin{vmatrix}
+    11&3\\-9&10
+\end{vmatrix}+0\cdot \begin{vmatrix}
+    11&-2\\-9&4
+\end{vmatrix} \tag{定理10} \\
+&=-(110+27)=-137
+\end{align*}
+\end{solution}
+
+\begin{blk}{定理11}
+    行列式某一行（列）的所有各元素与 另一行（列）对应元素的代数余子式的乘积的和恒等于零。
+\end{blk}
+
 \begin{proof}
-    
+    我们只证明在三阶行列式中，第一行的各元素与第二行各对应元素的代数余子式的乘积和恒等于零，即
+\[a_{11}A_{21}+a_{12}A_{22}+a_{13}A_{23}=0\]
+由定理10可知，
+\[\begin{split}
+    a_{11}A_{21}+a_{12}A_{22}+a_{13}A_{23}
+&=-a_{11}\begin{vmatrix}
+    a_{12}&a_{13}\\a_{32}&a_{33}
+\end{vmatrix}+a_{12}\begin{vmatrix}
+    a_{11}&a_{13}\\a_{31}&a_{33}
+\end{vmatrix}-a_{13}\begin{vmatrix}
+    a_{11}&a_{12}\\a_{31}&a_{32}
+\end{vmatrix}\\
+&=\begin{vmatrix}
+  a_{11}&  a_{12}&a_{13}\\a_{11}&  a_{12}&a_{13} \\a_{31}&a_{32}&a_{33}
+\end{vmatrix}
+\end{split}\]
+又由定理3可知，$\begin{vmatrix}
+    a_{11}&  a_{12}&a_{13}\\a_{11}&  a_{12}&a_{13} \\a_{31}&a_{32}&a_{33}
+  \end{vmatrix}=0$
+  
+  所以$a_{11}A_{21}+a_{12}A_{22}+a_{13}A_{23}=0$
 \end{proof}
+
+综合定理10、定理11的内容，我们可以得到三阶行列式的一个重要等式，这就是
+\[a_{i1}A_{k1}+a_{i2}A_{k2}+a_{i3}A_{k3}=\begin{cases}
+    \Delta & i=k\\
+    0 & i\ne k
+\end{cases}\]
+以及
+\[a_{1j}A_{1k}+a_{2j}A_{2k}+a_{3j}A_{3k}=\begin{cases}
+    \Delta & j=k\\
+    0 & j\ne k
+\end{cases}\]
+这些重要等式，将在三元线性方程组的求解公式中起重要作用。
+
+\begin{ex}
+\begin{enumerate}
+    \item 试应用定理9、10，计算下列行列式
+\[\begin{vmatrix}
+2 & 1 & 8 \\
+5 & 0 & 7 \\
+4 & -3 & -2
+\end{vmatrix}\qquad  \begin{vmatrix}
+5 & 0 & -5 \\
+3 & 2 & 7 \\
+-4 & 3 & 9
+\end{vmatrix} \]
+\[\begin{vmatrix}
+    -6 & 5 & 2 \\
+    2 & 1 & -2 \\
+    2 & 7 & 4
+    \end{vmatrix}\qquad  \begin{vmatrix}
+        2 & 6 & 7 \\
+        -3 & 8 & 8 \\
+        -5 & 2 & 3
+        \end{vmatrix}\qquad  \begin{vmatrix}
+            1 & x & y \\
+            x & y & 1 \\
+            y & 1 & x
+            \end{vmatrix}\]
+    \item 解下列方程
+\[\begin{vmatrix}2 & x+2 & 6 \\ 1 & x & 3 \\ 1 & 3 & x\end{vmatrix}=0,\qquad \begin{vmatrix}a & a & x \\ 1 & 1 & 1 \\ b & x & b\end{vmatrix}=0\]
+    \item 求证下列等式
+\begin{enumerate}
+    \item $\begin{vmatrix}1 & 1 & 1 \\ a & b & c \\ b c & c a & a b\end{vmatrix}=(a-b)(b-c)(c-a)$
+    \item $\begin{vmatrix}
+    a & b & b \\ b & a & b \\ b & b & a
+\end{vmatrix}=(a+2 b)(a-b)^{2}$
+\item $\begin{vmatrix}1 & p & p^{3} \\ 1 & q & q^{3} \\ 1 & r & r^{3}\end{vmatrix}=(p-q)(q-r)(r-p)(p+q+r)$
+\end{enumerate}
+\end{enumerate}
+\end{ex}
+
+\subsection{三元线性方程组的公式解及讨论}
+
+三元线性方程组的一般形式可以写成
+\begin{numcases}{(\text{II})}
+    a_{11}x_1+a_{12}x_2+a_{13}x_3=b_1\\
+    a_{21}x_1+a_{22}x_2+a_{23}x_3=b_2\\
+    a_{31}x_1+a_{32}x_2+a_{33}x_3=b_3
+\end{numcases}
+这时，我们仍称三阶行列式
+\[\Delta=\begin{vmatrix}
+    a_{11}&a_{12}&a_{13}\\
+    a_{21}&a_{22}&a_{23}\\
+    a_{31}&a_{32}&a_{33}\\
+\end{vmatrix}\]
+为方程组(II)的系数行列式，并把这个行列式中各个元素$a_{ij}$的代数余子式表为$A_{ij}$。
+
+利用关于行列式性质的定理10、定理11，可以导
+出方程组(II)的解：
+
+分别以$A_{11}$、$A_{21}$、$A_{31}$、乘以方程(2.26), (2.27), (2.28), 得
+\[\begin{cases}
+    a_{11}A_{11}x_1+a_{12}A_{11}x_2+a_{13}A_{11}x_3=b_1A_{11}\\
+    a_{21}A_{21}x_1+a_{22}A_{21}x_2+a_{23}A_{21}x_3=b_2A_{21}\\
+    a_{31}A_{31}x_1+a_{32}A_{31}x_2+a_{33}A_{31}x_3=b_3A_{31}
+\end{cases}\]
+再将三式相加，得
+\[\begin{split}
+   & (a_{11}A_{11}+a_{21}A_{21}+a_{31}A_{31})x_{1}+(a_{12}A_{11}+a_{22}A_{21}+a_{31}A_{32})x_{2}\\
+    &\qquad +(a_{13}A_{11}+a_{23}A_{21}+a_{33}A_{31})x_3\\
+    &=b_1A_{11}+b_2A_{21}+b_2A_{31}
+\end{split}\]
+显然，这个等式的右边，正好是一个三阶行列式
+\[\Delta_1=\begin{vmatrix}
+    b_1&a_{12}&a_{13}\\
+    b_2&a_{22}&a_{23}\\
+    b_3&a_{32}&a_{33}\\
+\end{vmatrix}\]
+的展开式，而这个行列式就是在$\Delta$中以方程组右端的常数代替同一方程中$x_1$的系数而得出的。在这个等式的左边，由定理10及11可知：
+\[\begin{split}
+    a_{11}A_{11}+a_{21}A_{21}+a_{31}A_{31}&=\Delta\\
+    a_{12}A_{11}+a_{22}A_{21}+a_{32}A_{31}&=0\\
+    a_{13}A_{11}+a_{23}A_{21}+a_{33}A_{31}&=0
+\end{split}\]
+从而，上面的等式就可写成：$\Delta\cdot x_1=\Delta_1$
+
+同理，用$A_{12}$, $A_{22}$, $A_{32}$分别乘以第一、二、三个方程，然后相加，并设
+\[\Delta_2=\begin{vmatrix}
+    a_{11}&b_1&a_{13}\\
+    a_{21}&b_2&a_{23}\\
+    a_{31}&b_3&a_{33}\\
+\end{vmatrix}\]
+可得：$\Delta\cdot  x_2=\Delta_2$
+
+用$A_{13}$, $A_{23}$, $A_{33}$分别乘以第一、二、三个方程，然后相加，并设
+\[\Delta_3=\begin{vmatrix}
+    a_{11}&a_{12}&b_{1}\\
+    a_{21}&a_{22}&b_{2}\\
+    a_{31}&a_{32}&b_{3}\\
+\end{vmatrix}\]
+可得：$\Delta\cdot  x_3=\Delta_3$
+
+因此，便得到一个新的方程组
+\[\text{(III)}\begin{cases}
+    \Delta\cdot  x_1=\Delta_1\\
+    \Delta\cdot  x_2=\Delta_2\\
+    \Delta\cdot  x_3=\Delta_3
+\end{cases}\]
+
+方程组(III)是由方程组(II)的各方程乘以常数后相加而得到的，所以，(II)的解必能满足(III)。
+
+但方程组(III)的解，是否存在？如果存在是否也能是(II)的解？我们可对(III)分三种情形分别讨论于后：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\input{tmp-tikz.tex}
 
 
 
