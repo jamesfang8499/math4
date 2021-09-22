@@ -1616,357 +1616,713 @@ A_{12}&=(-1)^{1+2}\begin{vmatrix}
 但方程组(III)的解，是否存在？如果存在是否也能是(II)的解？我们可对(III)分三种情形分别讨论于后：
 
 
+一、若$\Delta \ne 0$，则方程组(III)有唯一解
+\begin{equation}
+    \begin{cases}
+        x_1=\Delta_1/\Delta\\
+        x_2=\Delta_2/\Delta\\
+        x_3=\Delta_3/\Delta\\
+    \end{cases}
+\end{equation}
+可以证明，(2.29)也是方程组(II)的解；将(2.29)代入方程组(II)的方程(2.26), 得
+\begin{align*}
+ \text{左边}&=a_{11}\frac{\Delta_1}{\Delta}+a_{12}\frac{\Delta_2}{\Delta}+a_{13}\frac{\Delta_3}{\Delta}\\   
+&=\frac{1}{\Delta}\left(a_{11}\Delta_1+a_{12}\Delta_2+a_{13}\Delta_3\right)\\
+&=\frac{1}{\Delta}\big[a_{11}(b_1A_{11}+b_2A_{21}+b_2A_{31})+a_{12}(b_1A_{12}+b_2A_{22}+b_2A_{32})\\
+&\qquad \qquad +a_{13}(b_1A_{13}+b_2A_{23}+b_3A_{33})\big]\\
+&=\frac{1}{\Delta}\big[b_{1}(a_{11}A_{11}+a_{12}A_{12}+a_{13}A_{13})+b_{2}(a_{11}A_{21}+a_{12}A_{22}+a_{13}A_{23})\\
+&\qquad \qquad +b_{3}(a_{11}A_{31}+a_{12}A_{32}+a_{13}A_{33})\big]\\
+&=\frac{1}{\Delta}\big[b_1\Delta +b_2 0 +b_3 0\big]\tag{定理10, 11}\\
+&=b_1=\text{右边}
+\end{align*}
+
+这就是说，满足方程组(II)的方程(2.26); 同理可以证明(2.29)也是满足方程组(II)的方程(2.27)与(2.28). 因此，(2.29)是方程组(II)的一个解。
+
+综合上述，我们可以得到一个重要结论：如果线性方程组(II)的系数行列式$\Delta\ne 0$, 那么，这个线性方程组有且只有一个解
+\[x_1=\frac{\Delta_1}{\Delta},\qquad x_2=\frac{\Delta_2}{\Delta},\qquad x_3=\frac{\Delta_3}{\Delta}\]
+
+其中$\Delta_1$, $\Delta_2$, $\Delta_3$, 是$\Delta$中把未知数$x_1,x_2,x_3$的系数列分别换成方程组(II)的常数项列所成的行列式。
+这一结论，对二元线性方程组(I)显然也是成立的，
+实际上，这一结论对$n$元线性方程组都是成立的。一般把这一结论称为\textbf{克莱姆法则}。利用这一法则，可以由系数行列式判定方程组是否有唯一解。若有，还可以求出解来。
 
 
+\begin{example}
+    解方程组
+\[\begin{cases}
+    3 x+7 y-5 z=19 \\
+x-3 y+2 z=3 \\
+5 x-11 y-8 z=-13
+\end{cases}\]
+\end{example}
 
+\begin{solution}
+    因为
+    \[\Delta=\begin{vmatrix}
+        3 & 7 & -5 \\
+        1 & -3 & 2 \\
+        5 & -11 & -8
+        \end{vmatrix}=244 \ne 0\]
+        所以方程组有唯一解。由于
+\[\begin{split}
+\Delta_{1}&=\begin{vmatrix}
+    19 & 7 & -5 \\
+3 & -3 & 2 \\
+-13 & -11 & -8
+\end{vmatrix}=1220\\
+\Delta_{2}&=\begin{vmatrix}
+    3 & 19 & -5 \\
+1 & 3 & 2 \\
+5 & -13 & -8
+\end{vmatrix}=488\\
+\Delta_{3}&=\begin{vmatrix}
+    3 & 7 & 19 \\
+1 & -3 & 3 \\
+5 & -11 & -13
+\end{vmatrix}=488
+\end{split}\]
+所以方程组的唯一解是
+$$
+x=\frac{\Delta_{1}}{\Delta}=5, \qquad y=\frac{\Delta_{2}}{\Delta}=2, \qquad z=\frac{\Delta_{3}}{\Delta}=2
+$$
+即原方程组的解集为$\{(x, y, z)\}=\{(5,2,2)\}$
+\end{solution}
 
+二、若$\Delta=0$，且$\Delta_1,\Delta_2,\Delta_3$中至少有一个不为零，则方程组(III)无解，从而方程组(II)也无解。
 
+\begin{example}
+    解方程组
+    \[\begin{cases}
+        3x-y+5z=16\\
+        x+2y+3x=14\\
+        5x+3y+11z=40
+    \end{cases}\]
+\end{example}
 
+\begin{solution}
+因为$\Delta=\begin{vmatrix}
+    3&-1&5\\1&2&3\\5&3&11
+\end{vmatrix}=0$，且$\Delta_1=\begin{vmatrix}
+    16&-1&5\\14&2&3\\40&3&11
+\end{vmatrix}=52\ne 0$
+    
+所以原方程组无解，其解集为$\emptyset$。
+\end{solution}
 
+三、若$\Delta=0$, 且$\Delta_1=\Delta_2=\Delta_3=0$, 这时方程组(III)有无限多个解，但方程组(II)的解的情况却还不能确定，它可能无解，也可能有无限多个解。
 
+我们通过以下三个例题来说明：
+\begin{example}
+    解方程组
+\[\begin{cases}
+    x+y+z=1\\x+y+z=2\\x+y+z=3
+\end{cases}\]
+\end{example}
 
+\begin{solution}
+在这一方程组中，显然有$\Delta=\Delta_1=\Delta_2=\Delta_3=0$（因为这四个行列式中都至少有两列元素相同）；可是，这又是一个矛盾方程组，因而无解。
 
+事实上，由于这个方程组的系数行列式的各个元素的代数余子式$A_{ij}$全等于零，因而，不论原方程组是否有解，用
+代数余子式相乘各方程后再相加的办法消元，得到方程组
+\[\begin{cases}
+    \Delta x=\Delta_1\\
+    \Delta y=\Delta_2\\
+    \Delta z=\Delta_3
+\end{cases}\Rightarrow\quad \begin{cases}
+    0x=0\\0y=0\\0z=0
+\end{cases}\]
+总是有无限多个解的。但对原方程组的解的情况，却无法判定。
+\end{solution}
 
+\begin{example}
+    解方程组
+    \[\begin{cases}
+        3x-y+5z=16\\
+        x+2y+3z=14\\
+        5x+3y+11z=44
+    \end{cases}\]
+\end{example}
 
+\begin{solution}
+    可以算出$\Delta=\Delta_1=\Delta_2=\Delta_3=0$，同时还可看出，方程组中第二个方程两边乘以2后与第一个方程组相加正好是第三个方程。这说明原方程组的三个方程只有两个是独立的。事实上，凡满足第一、二两个方程的解，一定也满足第三个方程。因而，原方程组可以改写成
+    \[\begin{cases}
+        3x-y+5z=16\\x+2y+3z=14
+    \end{cases}\Rightarrow\quad \begin{cases}
+        3x-y=16-5z\\x+2y=14-3z
+    \end{cases}\]
+    把未知数$z$看作参数（可任意取值），令$z=t$, 进一步解二元线性方程组
+    \[\begin{cases}
+        3x-y=16-5t\\x+2y=14-3t
+    \end{cases}\]
+    得出：
+\[x=\frac{1}{7}(46-13t),\qquad y=\frac{1}{7}(26-4t),\qquad z=t\]
 
+    由于$t$的任意性，因而原方程组有无限多个解，其解集可以表为
+\[\left\{(x,y,z)\right\}=\left\{\left(\frac{46-13t}{7},\frac{26-4t}{7},t\right)\Big|\text{$t$为任意值}\right\}\]
+\end{solution}
 
-
-
-
-\input{tmp-tikz.tex}
-
-
+应该指出，这个方程组的解的形式不是唯一的，同样可以将$y$或$x$看作参数，得出另外两种解的表达形式，但实际效果是相同的，即解集是相等的。
 
 
 
 \begin{example}
-    
+    解方程组
+\[\begin{cases}
+    x+y+z=2\\
+    2x+2y+2z=4\\
+    3x+3y+3z=6
+\end{cases}\]
+\end{example}
+
+\begin{solution}
+因为行列式$\Delta$的各元素的代数余子式都等于零，显然有$\Delta=\Delta_1=\Delta_2=\Delta_3=0$, 由于后两个方程都可直接由第一个方程推出，所以，这个方程组只有一个方程是独立的，事实上，凡是满足第一个方程的任一个解，也满足后两个方程。第一方程可写成
+$x=2-y-z$。
+
+令$y=R$, $z=t$, 就有
+\[\begin{cases}
+    x=2-R-t\\ y=R\\ z=t 
+\end{cases}\]
+$t,R$可取任意值，由于$R,t$的任意性，方程组有无限多个解。
+
+这里的“无限多个解”与例2.48的“无限多个解”是有差别的，例2.48的解的表达式只含一个参数$t$, 这里则含有两个参数$R$和$t$。   
+\end{solution}
+
+\begin{ex}
+    判断下列方程组解的情况，若有唯一解，应用克莱姆法则求出来；若有无限多个解，用参数形式表示出来：
+    \begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{cases}
+         x-2 y+ z=0\\ 
+        3 x+ y-2 z=0 \\ 
+        7x+6 y+7z=100
+    \end{cases}$
+    \item $\begin{cases}
+        3 x-2 y+3 z=11 \\ 
+        4 x-3 y+2 z=9 \\ 
+        5 y-4 y+z=7
+    \end{cases}$
+\item $\begin{cases} 2 x+3 y+4 z =2 \\ 3 x+5 y+7 z =-3 \\ x+2 y+3 z =4 \end{cases}$
+\item $\begin{cases}x-3 y+z=6 \\ 2 x+y+2 z=-2 \\ 4 x-5 y+6 z=10\end{cases}$
+\item $\begin{cases}x-y+z=1 \\ 2 x-2 y+2 z=2 \\ \frac{1}{4} x-\frac{1}{4} y+\frac{1}{4}z=\frac{1}{4}\end{cases}$
+\item $\begin{cases}5 x+2 y+3 z-2=0 \\ 3 x-4 y+2 z-1=0 \\ 19 x-7 y+11 z=7\end{cases}$
+\end{enumerate}        
+    \end{multicols}
+\end{ex}
+
+\section*{习题2.3}
+\addcontentsline{toc}{subsection}{习题2.3}
+\begin{enumerate}
+    \item 用对角线法则计算下列行列式：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{vmatrix}3 & -5 & 1 \\ 2 & 3 & -6 \\ -7 & 2 & 4\end{vmatrix}$
+    \item $\begin{vmatrix}1 & 2 & 3 \\ 2 & 1 & 3 \\ 3 & 1 & 2\end{vmatrix}$
+    \item $\begin{vmatrix}a & b & c \\ 0 & d & e \\ 0 & 0 & f\end{vmatrix}$
+    \item $\begin{vmatrix}0 & \cos \alpha & \cos \beta \\ -\cos \alpha & 0 & \cos r \\ -\cos \beta & -\cos r & 0\end{vmatrix}$
+    \item $\begin{vmatrix}a & n & g \\ h & b & f \\ g & f & c\end{vmatrix}$
+    \item $\begin{vmatrix}x & y & x+y \\ y & x+y & x \\ x+y & x & y\end{vmatrix}$
+\end{enumerate}
+\end{multicols}
+    \item 解方程：
+\begin{enumerate}
+    \begin{multicols}{2}
+ \item $\begin{vmatrix}0 & x-1 & 1 \\ x-1 & 0 & x-2 \\ 1 & x-2 & 0\end{vmatrix}=0$
+    \item $\begin{vmatrix} x-1 & 1 & 1 \\ 1 & x-1 & 1 \\ 1 & 1 & x-1\end{vmatrix}=0$
+    \item $\begin{vmatrix}2 & x+4 & 5 \\ 1 & x & 0 \\ -7 x & 3 & 10\end{vmatrix}=0$
+    \item $\begin{vmatrix}1 & 1 & 1 \\ x & a & b \\ x^{2} & a^{2} & b^{2}\end{vmatrix}=0$       
+    \end{multicols}
+    \item $\begin{vmatrix}x & a & b+c \\ x & a+b & c \\ a+b & b-c & a+c\end{vmatrix}=0,\qquad b(a+b)\ne 0$
+\end{enumerate}
+
+
+\item  求证:
+\begin{enumerate}
+    \item $\begin{vmatrix}1 & \sin 3 \theta & \cos 3 \theta \\ 1 & \sin 2 \theta & \cos 2 \theta \\ 2 & \sin  \theta & \cos \theta\end{vmatrix}=2 \sin \theta(1-\cos \theta)$
+    \item $\begin{vmatrix}2 \cos \theta & 1 & 0 \\ 1 & 2 \cos \theta & 1 \\ 0 & 1 & 2 \cos \theta\end{vmatrix}=\frac{\sin 4 \theta}{\sin \theta},\qquad \theta\ne \kappa \pi, k \in \mathbb{Z}$
+    \item $\begin{vmatrix}(q+r)^{2} & p q & p r \\ p q & (r+p)^{2} & q a \\ p r & q r & (p+q)^{2}\end{vmatrix}=2 p q r\left(p+q{r}\right)^{3}$
+\end{enumerate}
+
+\item 利用行列式的性质，计算：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{vmatrix}10 & 8 & -2 \\ 15 & 12 & -3 \\ 25 & 32 & 7\end{vmatrix} $
+    \item $\begin{vmatrix}\frac{1}{2} & \frac{1}{2} & \frac{1}{4} \\ 12 & 24 & 36 \\ -5 & -4 & -3 \end{vmatrix}$
+    \item $\begin{vmatrix}554 & 427 & 327 \\ 586 & 443 & 343 \\ 711 & 504 & 404\end{vmatrix}$
+    \item $\begin{vmatrix}-{a} b & b d & b f \\ {a} c & -c d & c f \\ {a} e & d e & -e f\end{vmatrix}$
+    \item $\begin{vmatrix}
+        a&b&c\\2a&3a+2b&4a+3b+2c\\3a&6a+3b&10a+9b+3c
+    \end{vmatrix}$
+\end{enumerate}
+\end{multicols}
+ 
+\item 利用行列式性质, 求证:
+\begin{enumerate}
+\item $\begin{vmatrix}a & a+3 x & a+6 y \\ a+x & a+4 x & a+7 x \\ a+2 x & a+5 x & a+8 x\end{vmatrix}=0$
+\item $\begin{vmatrix}a_{1} & b_{1} & c_{1} \\ a_{2} & b_{2} & c_{2} \\ a_{3} & b_{3} & c_{3}\end{vmatrix}=\begin{vmatrix}c_{3} & b_{3} & a_{3} \\ c_{2} & b_{2} & a_{2} \\ c_{1} & b_{1} & a_{1}\end{vmatrix}$
+\item $\begin{vmatrix}0 & a m & -a b n \\ -e & 0 & b n \\ e & -m & 0\end{vmatrix}=0$
+\item $\begin{vmatrix}a_{1} & b_{1} & a_{1} x+b_{1} y+c_{1} \\ a_{2} & b_{2} & a_{2} x+b_{2} y+c_{2} \\ a_{3} & b_{3} & a_{3} x+b_{3} y+c_{3}\end{vmatrix}=\begin{vmatrix}a_{1} & b_{1} & c_{1} \\ a_{2} & b_{2} & c_{2} \\ a_{3} & b_{3} & c_{3}\end{vmatrix}$
+\item $\begin{vmatrix}0 & (a-b)^{3} & (a-c)^{3} \\ (b-a)^{3} & 0 & (b-c)^{3} \\ (c-a)^{3} & (c-b)^{3} & 0\end{vmatrix}=0$
+\end{enumerate}
+
+
+\item 求证:
+$$
+\begin{vmatrix}
+\cos \theta & \cos 3 \theta & \sin 3 \theta \\
+\cos \theta & \cos \theta & \sin \theta \\
+\sin \theta & \sin \theta & \cos \theta
+\end{vmatrix}=\sin \theta \sin 4 \theta
+$$
+\item 试指出下列行列式变形中的错误, 并改正过来:
+\begin{enumerate}
+    \item $\begin{vmatrix}
+        a_1&b_1\\a_2&b_2
+    \end{vmatrix}=\begin{vmatrix}
+        a_1+ka_2&b_1+kb_2\\a_2-\ell a_1&b_2-\ell b_1
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        a_{1} & b_{1} & c_{1} \\ a_{2} & b_{2} & c_{2} \\ a_{3} & b_{3} & c_{3}
+    \end{vmatrix}=\begin{vmatrix}
+        a_{1} & b_{1} & ka_1+\ell c_{1} \\ a_{2} & b_{2} & ka_2+\ell c_{2} \\ a_{3} & b_{3} & ka_3+\ell c_{3}
+    \end{vmatrix}$
+\end{enumerate}
+
+\item  证明行列式$\Delta$中，第二列元素与第一列对应元素的代数余子式的乘积的和为零。
+\item 证明三阶行列式的值与按某一行（列）展开时所选择的行（列）无关。
+
+\item 解下列方程组：
+\begin{multicols}{2}
+    \begin{enumerate}
+    \item $\begin{cases}2 x+y+3 z-4=0 \\ 3 x-2 y-5 z=11 \\ 1-5 x+4 y+z=0\end{cases}$
+    \item $\begin{cases}4 x-y-2 z=4 \\ 2 x+y-4=8 \\ x+2 y+z-1=0\end{cases}$
+    \item $\begin{cases} x-y+z =a \\ x+y-z =b \\-x+y+z =c \end{cases}$
+    \item $\begin{cases}b x-a y=-2 a b \\ -2 c y+3 b z=b c \\ c x+a z=0\end{cases} $
+   
+    $(a b c \neq 0)$
+\end{enumerate}
+\end{multicols}
+
+
+\item 
+当参数 $a,b,c$ 取何值时，下列方程组有唯一解
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{cases}x+y+t z=1  \\ y+z  =t \\ x+y+z  =t^{2}\end{cases}$
+    \item $\begin{cases}a y+b z=c \\ c x+a z=b \\ b x+c z=a\end{cases}$
+\end{enumerate}
+\end{multicols}
+
+\item 当(1) $\lambda=1$, (2) $\lambda=-2$, (3) $\lambda \neq 1$ 且 $\lambda\ne -2$ 时, 分别解方程组
+$$
+\begin{cases}
+x+y+\lambda z=\lambda-3 \\
+x+\lambda y+z=-2 \\
+\lambda x+y+z=-2
+\end{cases}
+$$
+
+\item 当a取何值时，下列方程组有唯一解；无解；有无限多个解？
+\[\begin{cases}
+    3ax+ (2a+1) y+ (a+1) z=a\\
+    (2a-1) x+ (2a-1) y+ (a-2) z=a+1\\
+    (4a-1) x+3ay+2az=1.
+\end{cases}\]
+
+\item \begin{enumerate}
+    \item 试试看，请你自行设计一个数字系数的三元线性方程组，使它有无限多个解，并且解的表达式含有两个参数。
+    \item 改动你设计的方程组的一个数字，使这个方程组无解；
+    \item 改动你设计的方程组的另一个数字，使方程组仍有无限多个解，但解的表达式中只含有一个参数。
+\end{enumerate}
+\end{enumerate}
+
+
+\section{四阶行列式与四元线性方程组}
+
+我们已经学了二阶、三阶行列式的概念、性质和应用。
+
+从形式上看，行列式只是由一些数排成正方形，两边画上一条竖线而组成，从其实际意义上看，都有明确的定义：
+
+二阶行列式：$\begin{vmatrix}
+    a_1&b_1\\a_2&b_2
+\end{vmatrix}=a_1b_2-a_2b_1$
+
+三阶行列式：$\begin{vmatrix}
+a_1&b_1&c_1\\a_2&b_2&c_2\\a_3&b_3&c_3\\
+\end{vmatrix}=a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2$
+
+这样看来，对于四阶行列式，甚至更高阶的行列式的定义就会越来越繁，需要另辟新的途径。
+
+\subsection{四阶行列式及其性质}
+
+回顾上一节所学行列式的性
+质定理10, 可以知道，一个三阶行列式可以用三个二阶行列式来表示，如
+\[\begin{split}
+\begin{vmatrix}
+   a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}  
+\end{vmatrix}&=(-1)^{1+1}\cdot a_{11}\begin{vmatrix}
+    a_{22}&a_{23}\\ a_{32}&a_{33} 
+\end{vmatrix}\\
+&\qquad +(-1)^{2+1}a_{21}\begin{vmatrix}
+    a_{12}&a_{13}\\a_{32}&a_{33}  
+\end{vmatrix}
++(-1)^{3+1}\cdot a_{31}\begin{vmatrix}
+    a_{12}&a_{13}\\a_{22}&a_{23}
+\end{vmatrix}
+\end{split}\]
+
+由于二阶行列式已有确定定义，因而三阶行列式也就完全可用上述等式右边的式子来定义，这样定义的结果和曾经有的对角线法则定义是一致的。而这种用低一阶的行列式来定义高一阶行列式的方法更有普遍性。
+
+仿照这样，我们可以用三阶行列式来给出四阶行列式的定义：
+用四个三阶行列式分别与四个数相乘积的代数和，就叫
+做一个四阶行列式。即
+\[\begin{split}
+    \begin{vmatrix}
+       a_{11}&a_{12}&a_{13}&a_{14}\\
+    a_{21}&a_{22}&a_{23}&a_{24}\\
+    a_{31}&a_{32}&a_{33}&a_{34}\\
+    a_{41}&a_{42}&a_{43}&a_{44}\\
+    \end{vmatrix}&=(-1)^{1+1}\cdot a_{11}\begin{vmatrix}
+        a_{22}&a_{23}&a_{24}\\
+        a_{32}&a_{33}&a_{34}\\
+        a_{42}&a_{43}&a_{44}\\
+    \end{vmatrix}+(-1)^{2+1}\cdot a_{21}\begin{vmatrix}
+        a_{12}&a_{13}&a_{14}\\
+        a_{32}&a_{33}&a_{34}\\
+        a_{42}&a_{43}&a_{44}\\
+    \end{vmatrix}\\
+    & +(-1)^{3+1}a_{31}\begin{vmatrix}
+        a_{12}&a_{13}&a_{14}\\
+        a_{22}&a_{23}&a_{24}\\
+        a_{42}&a_{43}&a_{44}\\
+    \end{vmatrix}
+    +(-1)^{4+1}\cdot a_{41}\begin{vmatrix}
+        a_{12}&a_{13}&a_{14}\\
+        a_{22}&a_{23}&a_{24}\\
+        a_{32}&a_{33}&a_{34}\\
+    \end{vmatrix}
+    \end{split}\]
+
+由每个三阶行列式有6项，每一项是三个元素的乘积，可知四阶行列式有24项，每一项是四个元素的乘积。在每一项的四个元素中，各行都有一个元素且只有一个元素出现，各列也都有一个元素且仅有一个元素出现。
+
+类似地，还可以用四阶行列式来定义五阶行列式，……。一般地说，可以用$n$阶行列式来定义$n+1$阶行列式。
+
+必须注意，如果把对二阶行列式与三阶行列式用到的对角线法则用到四阶行列式来，就只能得到8项而不是24项。可见对角线法则不能推广到四阶行列式以及高阶行列式。
+
+\begin{example}
+    计算行列式 $\Delta =\begin{vmatrix}
+        1&2&0&0\\
+        2&-1&3&4\\
+        0&5&1&7\\
+        -1&0&0&3
+    \end{vmatrix}$
 \end{example}
 
 
+\begin{solution}
+按照四阶行列式的定义
+\[\begin{split}
+\Delta&=1\begin{vmatrix}
+    -1&3&4\\
+    5&1&7\\
+    0&0&3
+\end{vmatrix}-2\begin{vmatrix}
+    2&0&0\\ 5&1&7\\
+    0&0&3
+\end{vmatrix}+0-(-1)\begin{vmatrix}
+    2&0&0\\-1&3&4\\5&1&7\\
+\end{vmatrix}\\
+&=-48-12+34=-26
+\end{split}\]
+\end{solution}
+
+对于这样定义的四阶行列式中的各个元素，可以和三阶行列式中的各个元素一样的定义各个元素的余子式及代数余子式，并仍把元素的代数余子式记作
+\[A_{ij}\qquad  (i=1,2,3,4\quad  j=1,2,3,4)\]
+
+可以证明，第三节中关于三阶行列式的性质定理1—11,对
+于四阶行列式（高阶行列式）都是成立的。
+
+这些定理是：
+
+\begin{blk}
+    {定理1}把（四阶）行列式的行改为同号数的列，列改为同号数的行，行列式的值不变。
+\end{blk}
+
+\begin{blk}
+    {定理2}把（四阶）行列式的两行元素（或两列）对调，行列式的绝对值不变，但符号改变。
+\end{blk}
+
+\begin{blk}
+    {定理3}有两行（或两列）元素相同的（四阶）行列式等于零。
+\end{blk}
+
+\begin{blk}
+    {定理4}把一个（四阶）行列式的某一行（某一列）的所有元素同乘以某一个数$k$的结果，等于以数$k$乘这个行列式。
+\end{blk}
+
+\begin{blk}
+    {定理5}一个（四阶）行列式某一行（或某一列）各元素的公因子可以提到行列式外边。
+\end{blk}
+
+\begin{blk}
+    {定理6}如果一个（四阶）行列式中有一行（或一列）各元素全为零，则这个行列式等于零。
+\end{blk}
+
+\begin{blk}
+    {定理7} 如果一个（四阶）行列式中有两行（或两列）的对应元素成比例，则这个行列式等个零。
+\end{blk}
+
+\begin{blk}
+    {定理8}如果（四阶）行列式中某一行（或某一列）都是两个数的和，则这个行列式就等于两个行列式的和，这两个行列式分别以这两个数中的前一个数与后一个数为这一行（这一列）的元素，而除去这一行（这一列）以外，这两个行列式的其它各行（其它各列）与原来行列式的对应各行（对应各列）都是相同的。
+\end{blk}
+
+\begin{blk}
+    {定理9}把（四阶）行列式的某一行（或某一列）所有的元素，乘以同一个数后，再加到另一行（另一列）的对应元素上，行列式的值不变。
+\end{blk}
+
+\begin{blk}
+    {定理10}（四阶）行列式等于它的任意一行（或列）的各个元素与它们的对应代数余子式的乘积的和。
+\end{blk}
+
+\begin{blk}
+    {定理11}（四阶）行列式集一列（或某一行）的各元素与另一列（或另一行）的对应元素的代数余子式的乘积的和恒等于零。
+\end{blk}
+
+定理10与11同样可以结合起来表示为
+\[a_{1i}A_{1k}+a_{2i}A_{2k}+a_{3i}A_{3k}+a_{4i}A_{4k}=\begin{cases}
+    \Delta&i=k \\ 0& i\ne k
+\end{cases}\]
+或者
+\[a_{j1}A_{k1}+a_{j2}A_{k2}+a_{j3}A_{k3}+a_{j4}A_{k4}=\begin{cases}
+    \Delta&j=k \\ 0& j\ne k
+\end{cases}\]
+
+以上这些定理的证明完全与第三节中相应的定理证明类似，
+只要注意：由四阶行列式的定义可首先导出定理10, 验证行列式可以按任一行（或列）的元素展开。再据此来证明其余定理。这里仅举一例，其余同学们可自行练习。
+
+
+
+\begin{example}
+试证明定理4。
+\end{example}
+
+\begin{proof}
+    设四阶行列式$\Delta=|a_{ij}|$ $(i=1, 2, 3, 4;\; 
+j=1, 2, 3, 4)$，
+并设$\Delta$的第1行的所有元素都乘以$k$就得到行列
+式$\Delta'$，我们要证明
+\[\Delta'=k\cdot \Delta\]
+由于
+\[\Delta =\begin{vmatrix}
+|&|&|&|\\
+a_{i1}&a_{i2}&a_{i3}&a_{i4}\\
+|&|&|&|\\ 
+\end{vmatrix},\qquad \Delta' =\begin{vmatrix}
+|&|&|&|\\
+ka_{i1}&ka_{i2}&ka_{i3}&ka_{i4}\\
+|&|&|&|\\ 
+\end{vmatrix}\]
+并且将这两个行列式都按第$i$行展开，根据定理10可得
+\[\begin{split}
+\Delta &= a_{i1}A_{i1}+a_{i2}A_{i2}+ a_{i3}A_{i3}+a_{i4}A_{i4} \\
+\Delta'&= ka_{i1}A_{i1}+ka_{i2}A_{i2}+ ka_{i3}A_{i3}+ka_{i4}A_{i4}\\
+&=k(a_{i1}A_{i1}+a_{i2}A_{i2}+ a_{i3}A_{i3}+a_{i4}A_{i4})\\
+&=k\Delta
+\end{split}\]
+利用行列式的性质，可以有效的简化计算。
+\end{proof}
+
+\begin{example}
+计算行列式
+$\begin{vmatrix}
+    2&3&1&-1\\2&0&0&3\\
+    4&1&0&1\\-1&2&-2&1
+\end{vmatrix}$
+\end{example}
+
+\begin{analyze}
+由于第三列的元素中出现的零较多，且非零元素中有1,所以选择按第三列展开较为简便。
+\end{analyze}
 
 \begin{solution}
-    
+将第一行各元素乘以2, 分别加到第四行对应各元素之上，再按第三列展开可得     
+\[\Delta=\begin{vmatrix}
+    2&3&1&-1\\
+    2&0&0&3\\
+    4&1&0&1\\
+    3&8&0&-1
+\end{vmatrix}=(-1)^{1+3}\cdot 1\cdot \begin{vmatrix}
+    2&0&3\\4&1&1\\3&8&-1
+\end{vmatrix}=69\]
 \end{solution}
 
 \begin{example}
-    
+计算行列式
+$\begin{vmatrix}
+    1&1&1&1\\a&b&c&d\\
+    a^2&b^2&c^2&d^2\\a^3&b^3&c^3&d^3
+\end{vmatrix}$
 \end{example}
 
-
-
-\begin{solution}
-    
+\begin{solution}    
+利用四阶行列式的性质定理1一定理11，所以
+\[\Delta=\begin{vmatrix}
+    1&1&1&1\\a&b&c&d\\
+    a^2&b^2&c^2&d^2\\a^3&b^3&c^3&d^3 
+\end{vmatrix}=\begin{vmatrix}
+    1&0&0&0\\
+    a&b-a&c-a&d-a\\
+    a^2&b^2-a^2&c^2-a^2&d^2-a^2\\
+    a^3&b^3-a^3&c^3-a^3&d^3-a^3
+\end{vmatrix}\]
+由四阶行列式定义，按第一行展开，有
+\[\begin{split}
+\Delta&=\begin{vmatrix}
+    b-a&c-a&d-a\\
+    b^2-a^2&c^2-a^2&d^2-a^2\\
+    b^3-a^3&c^3-a^3&d^3-a^3
+\end{vmatrix}\\
+&=(b-a)(c-a)(d-a)\cdot \begin{vmatrix}
+   1&1&1\\
+   b+a&c+a&d+a\\b^2+ba+a^2&c^2+ca+a^2&d^2+da+a^2 
+\end{vmatrix}   \\
+&= (b-a)(c-a)(d-a)\cdot \begin{vmatrix}
+    1&b+a&b^2+ba+a^2\\
+    0&c-b&c^2+ca-b^2-ba\\
+    0&d-b&d^2+da -b^2-ba
+ \end{vmatrix}   \\
+ &= (b-a)(c-a)(d-a)\cdot \begin{vmatrix}
+    c-b&d-b\\
+    (c-b)(c+b+a)&  (d-b)(d+b+a)
+ \end{vmatrix}   \\
+ &=(b-a)(c-a)(d-a)(c-b)(d-b)(d-c)\\
+&=(a-b)(a-c)(a-d)(b-c)(b-d)(c-d)
+\end{split}\]
 \end{solution}
 
+\begin{ex}
+\begin{enumerate}
+    \item 计算下列行列式
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{vmatrix}
+      0&4&5&8\\1&2&-1&-1\\
+      3&0&0&7\\0&-2&0&0  
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        a&b&0&0\\c&d&0&0\\
+        0&0&a&b\\0&0&c&d
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        1&1&1&1\\1&1&-1&-1\\
+        1&-1&1&-1\\1&-1&-1&1
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        1&1&1&1\\x&1&2&3\\
+        x^2&1&4&6\\x^3&1&8&27
+    \end{vmatrix}$
+\end{enumerate}
+\end{multicols}
+    \item 求证：
+\[\begin{vmatrix}
+    a_3&-1&0&0\\
+    a_2&x&-1&0\\
+    a_1&0&x&-1\\
+    a_0&0&0&x
+\end{vmatrix}=a_3x^3+a_2x^2+a_1x+a_0\]
+\end{enumerate}    
+\end{ex}
+    
+\subsection{四元线性方程组}
+四阶行列式可以用来解四元线性方程组。
 
+对于四元线性方程组
+\[(\text{IV})\begin{cases}
+    a_{11}x_1 +a_{12}x_2 +a_{13}x_3 +a_{14}x_4=b_1\\
+    a_{21}x_1 +a_{22}x_2 +a_{23}x_3 +a_{24}x_4=b_2\\
+    a_{31}x_1 +a_{32}x_2 +a_{33}x_3 +a_{34}x_4=b_3\\
+    a_{41}x_1 +a_{42}x_2 +a_{43}x_3 +a_{44}x_4=b_4\\
+\end{cases}\]
+采用与三元线性方程组一样的办法，同样可以得到克莱姆法则。即当系数行列式$\Delta \ne 0$时，方程组(IV)有且仅有一个解：
+\[x_1=\frac{\Delta_1}{\Delta},\qquad x_2=\frac{\Delta_2}{\Delta}\qquad x_3=\frac{\Delta_3}{\Delta},\qquad x_4=\frac{\Delta_4}{\Delta}\]
+其中，$\Delta_j\; (j=1, 2, 3, 4)$表示在行列式$\Delta$中用方程组的常数项列取代$x_j$的系数列所成的行列式。
+
+\begin{example}
+    用克莱姆法则，解四元线性方程组
+\[\begin{cases}
+    2x_1+x_2-5x_3+x_4=8\\
+    x_1-3x_2-6x_4=9\\
+    2x_2-x_3+2x_4=-5\\
+    x_1+4x_2-7x_3+6x_4=0
+\end{cases}\]
+\end{example}
+
+\begin{solution}
+首先计算系数行列式$\Delta$及$\Delta_j$，得：
+\[\Delta=27,\qquad \Delta_1=81,\qquad \Delta_2=-108,\qquad \Delta_3=-27,\qquad \Delta_4=27\]
+再根据克莱姆法则，可以得出
+\[x_1=3,\qquad x_2=-4,\qquad x_3=-1,\qquad x_4=1\]
+所以原方程组的解集为
+\[\{(x_1,x_2,x_3,x_4)\}=\{(3,-4,-1,1)\}\]
+\end{solution}
+
+在解四元线性方程组时，若系数行列式$\Delta=0$, 同样可以断定方程组无解或有无限多个解，但是情形复杂，我们不去详细论述了。
+
+一般地，对于$n$个方程组成的$n$元线性方程组，同样有
+以下克莱姆法则：
+
+当系数行列式$\Delta\ne 0$时，方程组有且仅有唯一的解：
+\[x_j=\frac{\Delta_j}{\Delta}\qquad  (j=1,2,\ldots,n)\]
+其中，$\Delta_j$是在$\Delta$中用方程组右边的常数项列取代$x_j$的系数列所成的$n$阶行列式。
 
 
 \begin{example}
-    
+    解方程组
+\[\begin{cases}
+    x_1+x_2+x_3+x_4+x_5=3\\
+    x_2+2x_3+x_5=3\\
+    x_1+x_3+x_5=3\\
+    x_1+2x_5=3\\
+    2x_1+x_2+x_5=3
+\end{cases}\]
 \end{example}
 
 
-
 \begin{solution}
-    
+先计算系数行列式$\Delta$及$\Delta_j$： 
+\[\begin{split}
+   \Delta&=\begin{vmatrix}
+  1&1&1&1&1\\
+  0&1&2&0&1\\
+  1&0&1&0&1\\
+  1&0&0&0&2\\
+  2&1&0&0&1     
+   \end{vmatrix}=\begin{vmatrix}
+       0&1&2&1\\
+       1&0&1&1\\
+       1&0&0&2\\
+       2&1&0&1
+   \end{vmatrix}=-\begin{vmatrix}
+    0&1&2&1\\
+    1&0&1&1\\
+    1&0&0&2\\
+    2&0&-2&0   
+   \end{vmatrix}\\
+   &=\begin{vmatrix}
+       1&1&1\\
+       1&0&2\\
+       2&-2&0
+   \end{vmatrix} =\begin{vmatrix}
+       1&1&1\\-1&-2&0\\2&-2&0
+   \end{vmatrix}=\begin{vmatrix}
+      -1&-2\\2&-2 
+   \end{vmatrix}=6
+\end{split}\]
+\[\Delta_1=6,\qquad \Delta_2=0,\qquad \Delta_3=6,\qquad \Delta_4=0,\qquad \Delta_5=6 \]
+所以原方程组的解集为
+\[\{(x_1,x_2,x_3,x_4,x_5)\}=\{(1,0,1,0,1)\}\]
+
 \end{solution}
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-\begin{example}
-    
-\end{example}
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 \begin{ex}
@@ -2063,14 +2419,21 @@ x_4+2x_5=11\\
 \end{enumerate}
 
 \section{特殊的线性方程组}
-除以上学习的一般线性方程组外，在实际应用中常常还会遇到一些特殊的线性方程组，进一步学习这些特殊情形，无论在理论上和应用上都有重要的作用。本节研究三种类型的特殊线性方程组，即
+除以上学习的一般线性方程组外，在实际应用中常常还会遇到一些特殊的线性方程组，进一步学习这些特殊情形，无论在理论上和应用上都有重要的作用。
 
+本节研究三种类型的特殊线性方程组，即：
 方程的个数多于未知数个数的线性方程组；方程的个数少于未知数个数的线性方程组；方程组中，各个方程的常数项都是零的线性方程组——齐次线性方程组。
 
 \subsection{方程个数多于未知数个数的线性方程组}
 
 这种方程组，我们早已在初中学习过了，要求这种方程组的解，其关键是：从中任选取和未知数个数一样多的方程组成部分方程组，求出部分方程组的解以后，再代入其余方程中检验，从而确定原方程组的解集。
 
+
+
+
+
+
+\input{tmp-tikz.tex}
 
 
 
