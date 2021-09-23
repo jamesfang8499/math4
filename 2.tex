@@ -2428,87 +2428,475 @@ x_4+2x_5=11\\
 
 这种方程组，我们早已在初中学习过了，要求这种方程组的解，其关键是：从中任选取和未知数个数一样多的方程组成部分方程组，求出部分方程组的解以后，再代入其余方程中检验，从而确定原方程组的解集。
 
-
-
-
-
-
-\input{tmp-tikz.tex}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\begin{example}
+    解方程组
+\begin{numcases}{}
+    x+y=5\\ x-y=1\\3x+2y=1
+\end{numcases}
+\end{example}
+
+\begin{solution}
+先解由(2.30)、(2.31)组成的方程组，得：
+\[x=3,\qquad y=2\]
+再将$x,y$值代入(2.32), 能满足。
+
+所以方程组的解集是$\{(x,y)\}=\{(3, 2)\}$。
+\end{solution}
+
+\begin{example}
+        解方程组
+\begin{numcases}{}
+   x+y=5\\x-y=1\\3x+2y=14
+\end{numcases}
+\end{example}
+    
+\begin{solution}
+由(2.33), (2.34)仍得$$x=3,y=2$$
+代入(2.35)却不能满足。因此，方程组无解，或者说解集为空集。
+\end{solution}
+
+\begin{example}
+  解方程组  
+  \begin{numcases}{}
+    2x+3y-5z=3\\
+    x-2y+2=0\\
+    7x-7z=6\\
+    3x+y+3z=7
+ \end{numcases}
+\end{example}
+
+\begin{solution}
+先解由(2.36)，(2.37)，(2.38)组成的方程组。由于
+\[\Delta=\begin{vmatrix}
+    2&3&-5\\
+    1&-2&1\\
+    7&0&-7
+\end{vmatrix}=0\]
+再由计算得：$\Delta_1=\Delta_2=\Delta_3=0$。
+
+所以由(2.36)，(2.37)，(2.38)组成的方程组应有无限多个解。我们可以把它的解写出来，就是
+\[(x,y,z)=\left(t,t-\frac{3}{7},t-\frac{6}{7}\right)\]
+这里$t$为参数，可以取任意数。
+
+再将这个解代入(2.39), 可得
+\[3t+t-\frac{3}{7}+3t-\frac{18}{7}=7\quad \Rightarrow\quad t=\frac{10}{7}\]
+因此，方程组的解集为：
+\[\{(x,y,z)\}=\left\{\left(\frac{10}{7},1,\frac{4}{7}\right)\right\}\]
+\end{solution}
+
+\begin{example}
+    解方程组
+\begin{numcases}{}
+2x+3y-5z=3\\
+x-2y+z=0\\
+7x-7z=6\\
+4x-y-3z=3
+\end{numcases}
+\end{example}
+
+\begin{solution}
+    先解由(2.40)，(2.41)，(2.42)组成的方程组，得
+    \[(x,y,z) = \left(x,t-\frac{3}{7},t-\frac{6}{7}\right)\]
+    其中$t$为参数。
+
+    再将$(x,y, z)=\left(t,t-\frac{3}{7},t-\frac{6}{7}\right)$代入(2.43), 得
+\[4t-t+\frac{3}{7}-3t+\frac{18}{7}=3\quad \Rightarrow\quad 0t=0\]
+这就是说，$t$为任意数时，$(x,y,z)$满足(2.43), 因此，原方程组的解集为
+    \[\{(x,y, z)\}=\left\{\left(t,t-\frac{3}{7},t-\frac{6}{7}\right)\big| \text{$t$为任意数}\right\}\]
+\end{solution}
+
+综上所述，$t$对于方程的个数多于未知数个数的线性方程组求解，一般地可以先取与未知数个数相等的几个方程组成“部分方程组”求解，再作以下几种情形的解决：
+\begin{enumerate}
+    \item 当“部分方程组”无解时，原方程组也就无解，
+即集解为空集$\emptyset$；
+\item 当“部分方程组”有唯一解时，就将这一解代入
+其余各个方程中去检验。 
+\begin{enumerate}
+    \item 若每个方程都能被满足，则这唯一解也就是原方程组的唯一解（如例2.28）；
+    \item 若至少有一个方程不能被满足，则原方程组就无解（如例2.29）。
+\end{enumerate}
+
+\item 当“部分方程组”有无限多个解时，就将它的解
+用参数形式表示，并代入其它各方程中去，得到几个关于参数的方程。
+\begin{enumerate}
+    \item 若参数无论取什么值，都无法同时满足其它各方程，则原方程组无解；
+    \item 若参数无论取什么值，都能同时满足其它各方程，则原方程组有无限多个解，“部分方程组”的解就是原方程组的解（如例2.31）；
+    \item 若参数只有取某个特定值，才能同时满足其它各方程，则由参数的这个特定值所确定的“部分方程组”解集中的特定解，才能是原方程组的解（如例2.30）。
+\end{enumerate}
+
+\end{enumerate}
+
+\begin{ex}
+解下列方程组：
+\begin{multicols}{2}
+\begin{enumerate}
+\item  $\begin{cases}
+    3 x+2 y=13 \\ x-3 y=-3 \\ -7 x+10 y=-1 
+\end{cases}$
+\item $\begin{cases}x+y=2 a \\ x-y=2 b \\ 2 x+3 y=5 a-b\end{cases}$
+    \item $\begin{cases}3 x+y+5 z=4 \\ 4 x-y+z=4 \\ x-2 y-3 z=-1 \\ 2 x-y+2 z=0\end{cases}$
+        \item $\begin{cases}2 x+y-z=5 \\ x-3 y+z=7 \\ 4 x-3 y-7 z=1 \\ 5 x-5 y-10 z=-1\end{cases}$
+            \item $\begin{cases}3 x-4 y=7 \\ -x+3 y=1 \\ 2 x-5 y=0 \\ x+2 y=7\end{cases}$
+\end{enumerate}
+\end{multicols}
+\end{ex}
+
+\subsection{方程的个数少于未知数个数的线性方程组}
+这种类型的方程组，我们在前面的讨论中也已经见到，以三元线性方程组为例，这种特殊方程组的一般形式可写成
+\[\begin{cases}
+    a_1x+b_1y+c_1z=d_1\\
+    a_2x+a_2y+c_2z=d_2
+\end{cases}\]
+
+这种特殊方程组的求解，关键是选取和方程个数一样多的未知数后，将其余未知数作为参数都移到方程右边，组成一
+个新方程组求解，进而得到原方程组的解。
+
+\begin{example}
+解方程组
+\[\begin{cases}
+    x+2y+3z=6\\
+    x+7y+4z=7
+\end{cases}\]
+\end{example}
+
+\begin{solution}
+    注意到由未知数$x,y$的系数作成的二阶行列式
+\[\begin{vmatrix}
+    1&2\\1&7
+\end{vmatrix}\ne 0\]
+
+我们就把含$z$的项移到等号右边，把方程组看成是两个未知数$x,y$的二元一次方程组
+\[\begin{cases}
+    x+2y=6-3z\\
+    x+7y=7-4z
+\end{cases}\]
+解得
+\[x=\frac{1}{5}(28-13z),\qquad y=\frac{1}{5}(1-z)\]
+令$z=t$，（$t$为参数）则方程组的解集是
+\[\{(x,y,z)\}=\left\{\left(\frac{27-13t}{5},\frac{1-t}{5},t\right)\big|\text{$t$为任意数} \right\}\]
+由于$t$的任意性，因此方程组有无限多个解。
+\end{solution}   
+ 
+\begin{example}
+解方程组
+\begin{numcases}{}
+    x+2y+5z=8\\
+    2x+4y+10z=16
+\end{numcases}
+\end{example}
+
+
+\begin{solution}
+注意到由$x,y$的系数或由$x,z$的系数或由$x,z$的系数所组成的二阶行列式都等于零，因而，原方程组就无法应用克莱姆法则求解。
+
+事实上，直接可以看出，方程(2.44)乘以2就得到方程(2.45),原方程组实质上就是一个独立的三元方程(2.44).
+由于方程(2.44)的解可以引进两个参数$R,t$, 表示为$(x,y,z)=(8-2R-5t,R,t)$, 因此，原方程组的解集为
+\[\{(x,y,z)\}=\{(8-2R-5t,R,t)|\text{$t,R$均为任意数}\}\]
+\end{solution}
+
+\begin{example}
+解方程组
+\begin{numcases}{}
+x+2y+5z=8\\
+2x+4y+10z=10    
+\end{numcases}
+\end{example}
+
+\begin{solution}    
+与例2.33一样，由于未知数组成的二阶行列式都为零，因而，无法应用克莱姆法则求解。
+
+事实上，可以将(2.45)变形为
+\begin{equation}
+    x+2y+5z=5
+\end{equation}
+比较(2.46)、(2.48)就可知，原方程组是矛盾方程组，其解集为空集。
+\end{solution}
+
+一般地，对于方程组
+\[\begin{cases}
+    a_1x+b_1y+c_1z=d_1\\
+    a_2x+b_2y+c_2z=d_2
+\end{cases}\]
+我们讨论如下：
+
+\begin{enumerate}
+    \item 若三个二阶行列式
+$\begin{vmatrix}
+    a_1&b_1\\a_2&b_2
+\end{vmatrix},\quad \begin{vmatrix}
+    a_1&c_1\\a_2&c_2
+\end{vmatrix},\quad \begin{vmatrix}
+    b_1&c_1\\b_2&c_2
+\end{vmatrix}$中至少有一个不为零时，由于未知数的顺序可以改变，所以不失一般性，可假定
+$\begin{vmatrix}
+    a_1&b_1\\a_2&b_2
+\end{vmatrix}\ne 0$
+把含有$z$的项移到等号右侧，方程组可看成由$x,y$为未知数组成的二元一次方程组，应用克莱姆法则，就可解出$x,y$的关于$z$的表达式
+\[x=x (z) ,\qquad y=y (z) \]
+若引进参数令$x=t$, 则方程组的解集为
+\[\{(x,y,z)\} =\{(x(t),y(t),t)|\text{$t$为任意数}\}\]
+由于$t$的任意性，原方程组就有无穷个解。
+\item  若上述三个二阶行列式都是零时，由于$a_1,b_1,c_1$不能
+同时为零，不妨假定$a_1\ne 0$。则因为
+\[\begin{vmatrix}
+    a_1&b_1\\a_2&b_2
+\end{vmatrix}=0,\quad \text{且}\quad \begin{vmatrix}
+    a_1&c_1\\a_2&c_2
+\end{vmatrix}=0\]
+所以，就有
+\[b_2=\frac{a_2}{a_1}b_1,\qquad c_2=\frac{a_2}{a_1}c_1\]
+
+令$a_2=ka_1$，就有$b_2=kb_1,\quad c_2=kc_1$。由第一个方程解得
+\[x=\frac{1}{a_1}(d_1-b_1y-c_1z)\]
+代入第二个方程
+\[\begin{split}
+    a_2x+b_2y+c_2z&=ka_1x+kb_1y+kc_1z\\
+    &=k(d_1-b_1y-c_1z)+kb_1y+kc_1z\\
+    &=kd_1
+\end{split}\]
+所以，当$d_2=kd_1$时，方程组有无穷多个解，解集为：
+\[\{(x,y,z)\}=\left\{\left(\frac{d_1-b_1L-c_1t}{a_1},\;L,\;t\right)\big|\text{$L,t$为任意数}\right\}\]
+当$d_2\ne kd_1$时，方程组无解，解集为空集。
+\end{enumerate}
+    
+综合前两节所述，方程个数与未知数个数不等的线性方程组求解，总是以方程个数等于未知数个数的方程组作为基础来考虑的：方程多了，先舍去一些方程，解一个部分方程组，解出后，再对其他各方程逐步验证；未知数多了，移一些未知数到等号右边，解出后引进参数，写出解集。由此可见，主要关键仍在求解方程个数等于未知数个数的线性方程组。
+
+\begin{ex}
+解方程组：
+\begin{multicols}{2}
+ \begin{enumerate}
+    \item $\begin{cases}
+        x+2y+5z=10\\3x-4y+7z=2
+    \end{cases}$
+    \item $\begin{cases}
+        a(a-1)x+2y+3z=a\\ 4x+4y+6z=4
+    \end{cases}$
+\end{enumerate}   
+\end{multicols}
+\end{ex}
+
+\subsection{齐次线性方程组}
+常数项都是零的线性方程组，
+叫做齐次线性方程组。反之，若常数项至少有一个不等于零的线性方程组，就叫做非齐次线性方程组。
+
+以下我们主要研究三个方程、三个未知数的齐次线性方程组。即
+\begin{equation}
+    \begin{cases}
+a_{11}x_1+a_{12}x_2+a_{13}x_3=0\\
+a_{21}x_1+a_{22}x_2+a_{23}x_3=0\\
+a_{31}x_1+a_{32}x_2+a_{33}x_3=0
+    \end{cases}
+\end{equation}
+
+容易看到，$(x_1,x_2,x_3)=(0, 0, 0)$满足方程组(2.49), 因而是(2.49)的一个解。这个解称为齐次线性方程组的零解。反之，在一个解中若至少有一个未知数的值不等于零，则这个解叫做齐次线性方程组的非零解。我们主要研究的是一个齐次线性方程组有没有非零解。
+
+令$\Delta$是方程组(2.49)的系数行列式。
+
+\subsubsection{$\Delta\ne 0$的情形}
+在$\Delta\ne 0$的情况下，由克莱姆法则可知：方程
+组(2.49)有且仅有唯一解。但已知$(0, 0, 0)$是它的解，因而方程(2.49)没有非零解。
+\begin{example}
+解方程组 \[\begin{cases}
+    x_1+2x_2+x_3=0\\
+3x_1-x_2+2x_3=0\\
+3x_1-3x_2-x_3=0
+\end{cases}\]
+\end{example}
+
+\begin{solution}
+    由于系数行列式
+\[\Delta=\begin{vmatrix}
+    1&2&1\\3&-1&2\\2&-3&-1
+\end{vmatrix}=14\ne 0\]
+所以方程组只有零解，没有非零解。
+\end{solution}
+
+\subsubsection{$\Delta=0$的情形}
+在$\Delta=0$的情况下，问题比较复杂。我们再分两种情形来进行讨论。
+
+令$A_{11},A_{12},\ldots,A_{33}$分别表示系数行列式$\Delta$的各个元素$a_{11},a_{12},\ldots,a_{33}$的代数余子式。
+
+\begin{enumerate}
+    \item 若$\Delta=0$而$A_{11},A_{12},\ldots,A_{33}$中至少有一个不为零。由于方程的编号可以改变，未知数的编号也可以改变，因此，不失一般性，可以假定$A_{33}\ne 0$。
+    
+    把(2.49)的前两个方程改写成
+\[\begin{cases}
+    a_{11}x_1+a_{12}x_2=-a_{13}x_3\\
+    a_{21}x_1+a_{22}x_2=-a_{23}x_3
+\end{cases}\]
+解得：$x_1=\frac{A_{31}}{A_{33}}x_3,\quad x_2=\frac{A_{32}}{A_{33}}x_3$
+
+代入第二个方程，得：
+\[\begin{split}
+    a_{31}x_1+a_{32}x_2+a_{33}x_3&=\frac{x_3}{A_{33}}(a_{31}A_{31}+a_{32}A_{32}+a_{33}A_{33})\\
+    &=\frac{x_3}{A_{33}}\cdot \Delta =0
+\end{split}\]
+可见这个解满足第三个方程，因而是方程组(2.49)的解。由于$x_3$取值的任意性，可知方程组有无限多个非零解。
+
+\item 若$\Delta=0$，且$\Delta$的所有元素的代数余子式都是零，但
+$\Delta$的元素中至少有一个不为零。不失一般性，可假定$a_{11}\ne 0$。
+
+由(2.49)的第一个方程，可得
+\[x_1=-\frac{a_{12}}{a_{11}}x_2-\frac{a_{13}}{a_{11}}x_3\]
+代入第二、第三个方程，得
+\[\begin{split}
+   &\quad  a_{21}x_1+a_{22}x_2+a_{23}x_3\\
+   &=-\frac{1}{a_{11}}(a_{12}a_{21}-a_{11}a_{22})x_2-\frac{1}{a_{11}}(a_{13}a_{21}-a_{11}a_{23})x_3\\
+   &=\frac{A_{33}}{a_{11}}x_2+\frac{A_{32}}{a_{11}}x_3
+\end{split}\]
+由于所给条件为所有$A_{ij}=0\; (1\le i\le 3,\;  1\le j\le 3)$, 所以，
+\[a_{21}x_1+a_{22}x_2+a_{23}x_3=0\]
+\[\begin{split}
+    &\quad a_{31}x_1+a_{32}x_2+a_{33}x_3\\
+&=-\frac{1}{a_{11}}(a_{12}a_{31}-a_{11}a_{32})x_2-\frac{1}{a_{11}}(a_{13}a_{31}-a_{11}a_{33})x_3\\
+&=\frac{A_{23}}{a_{11}}x_2+\frac{A_{22}}{a_{11}}x_3=0
+\end{split}\]
+可见这个解同时满足三个方程，即不论$x_2,x_3$取什么值，$$\left(-\frac{a_{12}}{a_{11}}x_2-\frac{a_{13}}{a_{11}}x_3,\; x_2,\; x_3\right)$$
+都是方程组(2.49)的解。所以方程组(2.49)有无限多个非零解：
+\[\{(x_1,x_2,x_3)\}=\left\{\left(-\frac{a_{12}}{a_{11}}L-\frac{a_{13}}{a_{11}}t,\; L,\; t\right)\big| \text{$L,t$为任意数}\right\}\]
+\end{enumerate}
+
+\begin{example}
+下列方程组有没有非零解，如果有，求出它的全部非零解。
+\[\begin{cases}
+    x_1+x_2+x_3=0\\ 3x_1-x_2+2x_3=0\\ x_1-3x_2=0
+\end{cases}\]
+\end{example}
+
+\begin{solution}
+    由于系数行列式$\Delta=\begin{vmatrix}
+        1&1&1\\3&-1&2\\1&-3&0
+    \end{vmatrix}=0$，且$A_{33}=\begin{vmatrix}
+        1&1\\3&-1
+    \end{vmatrix}=-4\ne 0$
+
+所以可将第一、第二两方程化成
+\[\begin{cases}
+    x_1+x_2=-x_3\\
+    3x_1-x_2=-2x_3
+\end{cases}\]
+解得$x_1=-\frac{3}{4}x_3,\quad x_2=-\frac{1}{4}x_3$。
+
+令$x_3=-4k$，则方程组的解集为
+\[\{(x_1,x_2,x_3)\}=\{(3k,k,-4k)|\text{$k$为任意数}\}\]
+因此方程组有无限多个非零解。
+\end{solution}
+
+\begin{example}
+解方程组\[\begin{cases}
+    x_1+x_2+x_3=0\\
+    2x_1+2x_2+2x_3=0\\
+    3x_1+3x_2+3x_3=0
+\end{cases}\]
+\end{example}
+
+\begin{solution}
+显然有
+\[\Delta=0,\quad A_{11}=A_{12}=\cdots=A_{33}=0\]
+由第一个方程可得：$x_1=-x_2-x_3$
+
+令$X_2=L,\; x_3=t$，则可得方程组的解集为
+\[\{(x_1,x_2,x_3)\}=\{(-L-t,L,t)|\text{$L,t$为任意数}\}\]
+如果方程组(2.49)中$\Delta=0$, 且所有$A_{ij}=0$, 而且所有元素也为零，则方程组为
+\[\begin{split}
+   0x_1+0x_2+0x_3=0\\
+   0x_1+0x_2+0x_3=0\\
+   0x_1+0x_2+0x_3=0 
+\end{split}\]
+
+显然，这些都是恒等式，无论$x_1,x_2,x_3$取什么值，等式都成立。这样，方程组当然有无限多个非零解。
+\end{solution}
+
+综合上述各种情况，可以得出如下的结论： 
+
+
+
+\begin{blk}{定理}
+齐次线性方程组
+\[\begin{cases}
+    a_{11}x_1+a_{12}x_2+a_{13}x_3=0\\
+a_{21}x_1+a_{22}x_2+a_{23}x_3=0\\
+a_{31}x_1+a_{32}x_2+a_{33}x_3=0
+\end{cases}\]
+有非零解的必要充分条件是这个方程组的系数行列式$\Delta$为零。
+\end{blk}
+
+\begin{example}
+试讨论下列齐次线性方程组有没有非零解？
+\[\begin{cases}
+    ax_1+x_2+x_3=0\\
+    x_1+ax_2+x_3=0\\
+    x_1+x_2+ax_3=0
+\end{cases}
+    \]
+\end{example}
+
+\begin{solution}
+    计算系数行列式
+\[\Delta=\begin{vmatrix}
+    a&1&1\\1&a&1\\1&1&a
+\end{vmatrix}=a^3-3a+2=(a-1)^2 (a+2)\]
+
+\begin{itemize}
+    \item 若$a\ne 1$, $a\ne-2$, 则方程组没有非零解，
+    \item 若$a=1$或$a=-2$, 则方程组有无限多个非零解。
+\end{itemize}
+\end{solution}
+
+\begin{rmk}
+    $a=1$或$a=-2$尽管方程组有无限多个非零解，但程度有所不同。
+\begin{itemize}
+    \item 当$a=-2$时，代数余子式$\begin{vmatrix}
+        -2&1\\1&-2
+    \end{vmatrix}\ne 0$。
+    所以，解的表达式只有一个参数，方程组的解集为$$\{(x_1,x_2,x_3)\}=\{(1,t,t)|\text{$t$为任意数}\}$$
+    
+    \item  当$a=1$时，所有的代数余子式全为零。所以，解的表达式中应有两个参数，方程组的解集为
+    $$\{(x_1,x_2,x_3)\}=\{(-L-t,L,t)|\text{$L,t$为任意数}\}$$
+\end{itemize}
+\end{rmk}
+
+\begin{example}
+    求非齐次线性方程组
+    \[\begin{cases}
+      a_1x+b_1y+c_1=0\\  
+      a_2x+b_2y+c_2=0\\  
+      a_3x+b_3y+c_3=0\\  
+    \end{cases}\]
+    有解的必要条件。
+\end{example}
+
+\begin{solution}
+    如果这个方程组有解，那么至少存在一个有序数
+    组$(x_0,y_0)$, 能够使方程组中每一个方程都被满足，即  
+    \[\begin{cases}
+        a_1x_0+b_1y_0+c_1=0\\  
+        a_2x_0+b_2y_0+c_2=0\\  
+        a_3x_0+b_3y_0+c_3=0\\  
+      \end{cases}\]
+    
+      再加以改写，得
+      \[\begin{cases}
+        a_1x_0+b_1y_0+c_1\cdot 1=0\\  
+        a_2x_0+b_2y_0+c_2\cdot 1=0\\  
+        a_3x_0+b_3y_0+c_3\cdot 1=0\\  
+      \end{cases}\]
+      这就告诉我们，这个三元齐次线性方程组有一个非零解$(x_0,y_0,1)$。
+
+      但由于齐次线性方程组有非零解的必要条件是它的系数行列式等于零，因而可以推出
+      \[\begin{vmatrix}
+          a_1&b_1&c_1\\  a_2&b_2&c_2\\  a_3&b_3&c_3\\
+      \end{vmatrix}=0\]
+      所以原方程组
+      有解的必要条件是$\begin{vmatrix}
+        a_1&b_1&c_1\\  a_2&b_2&c_2\\  a_3&b_3&c_3\\
+    \end{vmatrix}=0$
+\end{solution}
 
 
 \begin{ex}
 \begin{enumerate}
-    \item 想想看，能不能把列12中的必要条件改为充分条件？为什么？
+    \item 想想看，能不能把例2.39中的必要条件改为充分条件？为什么？
     \item 判定下列齐次线性方程组是否有非零解？如果有，求出它们各自的解集来。
     \begin{multicols}{2}
 \begin{enumerate}
@@ -2726,7 +3114,7 @@ ax_1-4x_2+3x_3=0\\
 行列式的性质定理1—11也是简化计算、进行变形的主要依据，在本章中都是以三阶行列式为例来证明的，但它们对任意阶行列式都适用。
 
 五、二元线性方程组
-
+     
 
 
 
