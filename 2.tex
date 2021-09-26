@@ -3114,31 +3114,346 @@ ax_1-4x_2+3x_3=0\\
 行列式的性质定理1—11也是简化计算、进行变形的主要依据，在本章中都是以三阶行列式为例来证明的，但它们对任意阶行列式都适用。
 
 五、二元线性方程组
-     
+\[\begin{cases}
+    a_1+b_1y=c_1\\
+    a_2x+b_2y=c_2
+\end{cases}\qquad (\text{$a_1,a_2; b_1,b_2$不同时为零})\]
+的解可以分如下几种情形讨论：
+\begin{enumerate}
+    \item 当系数行列式$D\ne 0$时，方程组有唯一解
+\[(x,y)=\left(\frac{D_x}{D},\frac{D_y}{D}\right)\]
+\item 当$D=0$, 且$D_x,D_y$不全为零时，方程组无解；
+\item 当$D=0$, 且$D_x=D_y=0$时，方程组有无穷多个解，
+这时可引入参数$t$, 方程组的解就表示为
+\[(x,y)=(t,\varphi(t)),\qquad \text{或}\qquad (x,y)=(f(t),t)\quad \text{($t$为任意数)}\]
+\end{enumerate}
 
 
 
+六、三元线性方程组
+\[\begin{cases}
+    a_{11}x_1+a_{12}x_2+a_{13}x_3=b_1\\
+    a_{21}x_1+a_{22}x_2+a_{23}x_3=b_2\\
+    a_{31}x_1+a_{32}x_2+a_{33}x_3=b_3\\
+\end{cases}\quad \text{($a_{ij}$不全为零)}\]
+的解可以按以下几种情形讨论：
+\begin{enumerate}
+    \item 当系数行列式$\Delta \ne 0$时，方程组有唯一解
+\[(x_1,x_2,x_3)=\left(\frac{\Delta_1}{\Delta},\frac{\Delta_2}{\Delta},\frac{\Delta_3}{\Delta}\right)\]
+\item 当$\Delta =0$,且$\Delta_1 ,\Delta_2 ,\Delta_3$ 不全为零时，方程组无
+解；
+\item 当$\Delta =\Delta_1 =\Delta_2 =\Delta_3 =0$时，方程组有无限多个解，这时可引入一个或两个参数，方程组的解可表为含有一个或2个参数的形式。
+\end{enumerate}
 
+七、$n$个方程$n$个未知数的线性方程组求解的克莱姆法则：
 
+当系数行列式$\Delta \ne 0$时，方程组有唯一解
+\[(x_1,x_2,\ldots,x_n)=\left(\frac{\Delta_1}{\Delta},\frac{\Delta_2}{\Delta},\ldots,\frac{\Delta_n}{\Delta}\right)\]
+其中$\Delta_i,\quad (i=1, 2,\ldots,n)$是将$\Delta$ 中第$i$列换成方程组的常数项列而组成的$n$阶行列式。
 
+八、齐次线性方程组（以三元为例）
+\[\begin{cases}
+    a_{11}x_1+a_{12}x_2+a_{13}x_3=0\\
+    a_{21}x_1+a_{22}x_2+a_{23}x_3=0\\
+    a_{31}x_1+a_{32}x_2+a_{33}x_3=0\\
+\end{cases}\]
+的解可分以下情形讨论：
+\begin{enumerate}
+    \item 当系数行列式$\Delta \ne 0$时，方程组有唯一的零解
+$(x_1, x_2, x_3) = (0, 0, 0)$;
+\item 当$\Delta =0$时，方程组除有零解外，还有无限多个
+非零解。
+\end{enumerate}
 
+若引进参数（一或两个），其解可表为含参数形式。一般地，齐次线性方程组有非零解的充要条件是系数行
+列式$\Delta =0$。
 
-
-
+九、未知数个数与方程个数不等的线性方程组的求解，一般都是转化为方程个数与未知数个数相等的方程组求解。因而，线性方程组的求解与理论，关键还在于后者。
 
 
 
 \section*{复习题二}
+\addcontentsline{toc}{section}{复习题二}
 \begin{enumerate}
     \item 用高斯消元法解下列方程组
 
+    \begin{multicols}{2}
+        \begin{enumerate}
+        \item $\begin{cases}
+            x+2y-3z=3\\3x-5y+7z=19\\5x-8y-11z=-13
+        \end{cases}$
+        \item $\begin{cases}
+            5x_2+x_3-4x_4=17\\3x_2+x_4=12\\
+            4x_1-3x_3+x_4=9\\ x_1+2x_2+3x_4=8
+        \end{cases}$
+        \item $\frac{x+1}{20}=\frac{y+1}{21}=\frac{x+y}{17}$
+    \end{enumerate}
+    \end{multicols}
+    
+    
+    \item 解下列方程组，并画出图象说明。
+    \begin{multicols}{2}
+    \begin{enumerate}
+        \item $\begin{cases}
+            x+y=2\\4x-y=3
+        \end{cases}$
+        \item $\begin{cases}
+            x-y=5\\2x-2y=7
+        \end{cases}$
+        \item $\begin{cases}
+            x+2y=5\\2x+4y=10
+        \end{cases}$
+        \item $\begin{cases}
+            y=3x+2\\y=3x
+        \end{cases}$
+    \end{enumerate}
+    \end{multicols}
+
+\item 解下列关于$x,y$的方程组，并讨论。
+\begin{enumerate}
+    \item $\begin{cases}
+        (a+1)x-(2a-1)y=3a\\(3a+1)x-(4a-1)y=5a+4
+    \end{cases}$
+    \item $\begin{cases}
+        (a-1)x+(a+1)y=2(a^2-1)\\(a^2-1)x+(a^2+1)y=2(a^3-1)
+    \end{cases}$
+    \item $\begin{cases}
+        (a+5)x+(2a+3)y-(3a+2)=0\\(3a+10)x+(5a+6)y-(2a+4)=0
+    \end{cases}$
+\end{enumerate}
+
+\item 已知方程组$\begin{cases}
+    2x+ay=4\\x+4y=8
+\end{cases}$
+只有一个正数解，试求参数$a$的取值范围。
+
+\item 试用三种不同的方法，计算以下行列式的值：
+\[\begin{vmatrix}
+    13&22&17\\14&-11&16\\10&0&18
+\end{vmatrix}\]
+
+\item 已知276, 345, 391都能被23整除，不计算行列式的值求证：以下行列式也能被23整除。
+\[\begin{vmatrix}
+    2&7&6\\3&4&5\\3&9&1
+\end{vmatrix}\]
+
+\item 计算下列行列式：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{vmatrix}
+        a&b&c\\c&a&b\\b&c&a
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        1&\sin\alpha&\cos\alpha\\\sin(\alpha+\beta)&\cos\beta&\sin\beta\\
+        \sin(\alpha-\beta)&\sin\beta&\cos\beta
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+x&y&x+y\\y&x+y&x\\x+y&x&y        
+    \end{vmatrix}$
+    \item $\begin{vmatrix}
+        a&b&0&0\\0&a&b&0\\0&0&a&b\\0&0&0&a
+    \end{vmatrix}$
+\end{enumerate}
+\end{multicols}
+
+\item 不求行列式的值，只利用行列式的定义与性质求$f(x)$中$x^4$及$x^3$的系数：
+\[f(x)=\begin{vmatrix}
+    2x&x&1&2\\1&x&1&-1\\3&2&x&1\\1&1&1&x
+\end{vmatrix}\]
+
+\item 求证：
+\begin{enumerate}
+    \item $\begin{vmatrix}
+        a-b-c&2a&2a\\2b&b-c-a&2b\\2c&2c&c-a-b
+    \end{vmatrix}=(a+b+c)^2$
+    \item $\begin{vmatrix}
+        b_1+c_1&c_1+a_1&a_1+b_1\\
+        b_2+c_2&c_2+a_2&a_2+b_2\\
+        b_3+c_3&c_3+a_3&a_3+b_3\\
+    \end{vmatrix}=2\begin{vmatrix}
+        a_1&b_1&c_1\\a_2&b_2&c_2\\a_3&b_3&c_3\\
+    \end{vmatrix}$
+\end{enumerate}
+
+\item 解下列方程：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{vmatrix}
+        1+x&2&3\\1&2+x&3\\1&2&3+x
+    \end{vmatrix}=0$
+    \item $\begin{vmatrix}
+        \sin x&1&\sin x\\ \cos x&0&\sin x\\ \cos x&1&\cos x
+    \end{vmatrix}=0$
+\end{enumerate}
+\end{multicols}
+
+\item 解不等式
+\[\begin{vmatrix}
+    x-a&b&c\\a&x-b&c\\-a&b&x-c
+\end{vmatrix}>0\]
+
+\item 求证：
+\begin{enumerate}
+    \item $\begin{vmatrix}
+        a&b&c\\c&a&b\\b&c&a
+    \end{vmatrix}=a^3+b^3+c^3-3abc$
+    \item $\begin{vmatrix}
+        a&b&c\\c&a&b\\b&c&a
+    \end{vmatrix}=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)$
+    \item 若$\triangle ABC$三边$a,b,c$满足条件
+    $a^3+b^3+c^3=3abc$，
+    则$\triangle ABC$必为一个等边三角形。
+\end{enumerate}
+
+\item 解下列方程组：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{cases}
+        7x-4\frac{1}{2}y=9\frac{1}{2}\\
+        2x+3y+7\frac{1}{2}z=22\\
+        -\frac{2}{3}x+2\frac{1}{2}z=3\frac{2}{3}
+    \end{cases}$
+    \item $\begin{cases}
+        \frac{2}{x}-\frac{3}{y}+\frac{4}{z}=11\\
+        \frac{3}{x}-\frac{2}{y}-\frac{5}{z}=-20\\
+        \frac{3}{x}+\frac{4}{y}-\frac{8}{z}=6
+    \end{cases}$
+    \item $\begin{cases}
+        ax-aby+bz=b\\
+        x+ay-z=-1\\
+        by+z=1
+    \end{cases}$
+    \item $\begin{cases}
+        \ell a=my=nz\\
+        ax+by+cz=d\\
+        (amn+bn\ell+cm\ell\ne 0)
+    \end{cases}$
+\end{enumerate}
+\end{multicols}
+
+\item 确定参数$\lambda$的值，使下列方程组解出$x$的值与$y$的值相等。
+\[\begin{cases}
+    2\lambda  x+8y=3\lambda  +1 \\
+    3x- (\lambda  -8) y=\lambda  -3
+\end{cases}\]
+
+\item 解下列齐次线性方程组
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{cases}
+        3x_1-2x_2+3x_4=0\\
+        x_1-x_2+x_3=0\\
+        3x_2+3x_3-2x_4=0\\
+        x_1+2x_2+4x_3-2x_4=0
+    \end{cases}$
+    \item $\begin{cases}
+        2x_1-x_2+3x_3-2x_4=0\\
+        x_1+7x_2+x_3-x_4=0\\
+        3x_1+5x_2-5x_3+3x_4=0\\
+        x_1-x_2-2x_3+x_4=0
+    \end{cases}$
+\end{enumerate}
+\end{multicols}
+
+\item $a,b,c$都是非零数，判断下列齐次线性方程组有没有非零解？
+\[\begin{cases}
+    (b-c)x+by-cz=0\\
+    -ax+(c-a)y+cz=0\\
+    ax-by+(a-b)z=0
+\end{cases}\]
+
+\item 参数$\lambda$取什么值时，下列齐次线性方程组有非零解？若有非零解，求出其全部非零解：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{cases}
+        x+y=\lambda  x\\
+        6x+2y=\lambda  y
+    \end{cases}$
+    \item $\begin{cases}
+        11x-6y+2z=\lambda x\\
+-6x+10y-4z=\lambda  y\\
+2x-4y+6z=\lambda z
+    \end{cases}$
+\end{enumerate}
+\end{multicols}
+
+\item 已知$(\alpha_1,\beta_1,\gamma_1)$与$(\alpha_2,\beta_2,\gamma_2)$都是以下齐次线性方程组的解
+\[\begin{cases}
+    a_1x+b_1y+c_1z=0\\
+    a_2x+b_2y+c_2z=0\\
+    a_3x+b_3y+c_3z=0
+\end{cases}\]
+的解。求证：
+\begin{enumerate}
+    \item $k$是任意数，$(k\alpha_1,k\beta_1,k\gamma_1)$也是方程组的解。
+    \item $(\alpha_1+\alpha_2,\beta_1+\beta_2,\gamma_1+\gamma_2)$也是方程组的解。
+\end{enumerate}
+
+\item 下列方程组中，$x,y$是未知数，$a,b$是已知常数，$m,p$是参数。若已知方程组有无限多个解求参数$m,p$。
+\[\begin{cases}
+    (3m-5p+b) x+ (8m-3p-a) y=1\\
+    (2m-3p+b) x+ (4m-p) y=2
+\end{cases}\]
+
+\item 已知下列方程组有解，求参数$\lambda$。
+\[\begin{cases}
+    3x-4x=\lambda   (\lambda^2+12)\\
+    5x-6y=2\lambda   (\lambda  +3)\\
+    7x-8y=12 (4-\lambda  )
+\end{cases}\]
+\item $x,y,z$是未知数，$a,b$是参数，下列方程组在什么条件下有唯一解；无解；有无限多个解。
+\[\begin{cases}
+    ax+y+z=4\\
+    x+by+z=3\\
+    x+2by+z=4
+\end{cases}\]
+
+\item 已知$a^2+b^2+c^2=1$, 下列关于$x,y$的方程组是否有解？
+\[\begin{cases}
+    (b^2+c^2)x+aby=ac\\
+    abx+ (c^2+a^2) y=bc\\
+    cax+bcy=a^2+b^2
+\end{cases}\]
 
 
+\item 求下列关于$x,y,z$的三元线性方程组有唯一解的条件，并求出在这一条件下的解
+\begin{enumerate}
+    \item $\begin{cases}
+        (\lambda+3) x+y+2z=\lambda\\
+        \lambda x+ (\lambda-1) y+2=2\lambda\\
+3 (\lambda+1) +\lambda y+ (\lambda+3) z=3
+    \end{cases}$
+    \item $\begin{cases}
+        x+y+z=0\\
+        ax+by+cz=0\\
+        bcx+cay+abz= (b-c) (c-a)(a-b).
+    \end{cases}$
+\end{enumerate}
 
 
+\item 论证：若行列式主对角线左下方（或右上方）的元素全为零，则行列式的值就等于主对角线上各元素的连乘积。
 
 
+\item 求证$\triangle ABC$为等腰三角形的充要条件是
+\[\begin{vmatrix}
+    \cos^2A& \sin A &1\\
+    \cos^2B& \sin B &1\\
+    \cos^2C& \sin C &1
+\end{vmatrix}=0\]
 
+\item 已知$2x+5y+4z=0$, $3x+y-7z=0$, 求证：
+$x+y-z=0$。
+\item 已知$a,b,c$是互不相同的数，且设
+\[p (x) =\begin{vmatrix}
+    1&x&x^2&x^3\\
+    1&a&a^2&a^3\\
+    1&b&b^2&b^3\\
+    1&c&c^2&c^3\\
+\end{vmatrix}\]
+\begin{enumerate}
+    \item 证明$p(x)$是关于$x$的三次多项式；
+    \item 利用行列式性质，求出$p(x)$的根。
+\end{enumerate}
 
 
 
