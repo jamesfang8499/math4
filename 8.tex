@@ -183,6 +183,1032 @@ $F$和摄氏温标度数$c$，因为不存在低于绝对零度的温度，因
 规律本身就可以确定函数的值域。
 
 
+\begin{example}
+    求下列函数定义域：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $f(x)=\frac{\sqrt{1-x}}{x}$
+    \item $g(x)=\sqrt{x^2-1}$
+\end{enumerate}
+\end{multicols}
+\end{example}
+
+\begin{solution}
+    \begin{enumerate}
+        \item \[\text{函数$f$有意义}\Leftrightarrow \begin{cases}
+    1-x \ge 0\\
+    x\ne 0
+\end{cases}\Rightarrow\quad x\le 1, \quad x\ne 0\]
+$\therefore\quad $函数$f$的定义域为$(-\infty,0)\cup(0,1]$。
+
+\item \[\text{函数$g$有意义}\Leftrightarrow x^2-1\ge 0 \Rightarrow\quad x\le 1, \text{ 或 } x\ge 1\]
+$\therefore\quad $函数$g$的定义域为$(-\infty,-1]\cup[1,+\infty)$。
+    \end{enumerate}
+\end{solution}
+
+\subsection{相等的函数}
+怎样的两个函数是相等的函数？在数学中，有些函数可
+以用不同的方式来定义，例如，函数$f:\mathbb{R}\mapsto \mathbb{R}^+\cup\{0\}$是由
+$f(x)=|x|$规定的，而函数$g:\mathbb{R}\mapsto \mathbb{R}^+\cup\{0\}$是由$g(x)=\sqrt{x^2}$规定的，这里表示$f(x)$与$g(x)$的式子全不同，但是对
+于它们的相同的定义域中的任一$x$值，经过不同规则的计算，
+它们的结果是相同的，即$f(x)=g(x)$, 所以对于这个例子
+来说，尽管函数$f(x),g(x)$的表达式不同，我们说$f(x)$和
+$g(x)$表示相同的函数。此外，解析式子相同，但定义域不同
+的函数是不相同的函数。例如：
+\[\begin{split}
+    f_1(x)&=\frac{1}{x},\qquad x\in (-\infty,0)\cup(0,+\infty)\\
+    f_2(x)&=\frac{1}{x},\qquad x\in (0,+\infty)\\
+    f_3(x)&=\frac{1}{x},\qquad x\in (0,1)
+\end{split}\]
+是不相同的函数，因为对于$x=-2$, $f_1$有意义而$f_2,f_3$都无
+意义；对于$x=2$, $f_1$和$f_2$都有意义而$f_3$无意义。
+
+下面给出相等（同）的两个函数的条件。
+
+\begin{blk}{定义}
+    两个函数$f:A\mapsto B$, $g:C\mapsto D$称为相等的当且仅
+    当$A=C$, $B=D$, 且对于每个$a\in  A$（或$C$），有$f(a)=g(a)$。
+\end{blk}
+
+读者可能会不同意上面$B=D$这个条件，提出下面这个
+例子来反驳：
+
+“由$f(n)=g(n)=n$给出的两个函数$f:\mathbb{N}\mapsto\mathbb{N}$, $g: \mathbb{N}\mapsto \mathbb{Q}$是相等的函数”我们须指出两个函数不同的地方，就
+函数值所在数集上看，$g$可以除以2, 因此，对于$g$我们可
+以构造一个新函数，
+$\frac{1}{2}g:\mathbb{N}\mapsto \mathbb{Q}$, 这里
+\[\left(\frac{1}{2}g\right)(n)=\frac{1}{2}n\]
+但是对于$f$, 不能做这种构造。
+
+\subsection{函数的几个类型——满射、单射和双射}
+现在，我们来讨论函数的三个重要类型，先给出定义，
+然后再举例说明。
+
+\begin{blk}{定义 }
+   如果在函数$f:A\mapsto B$的$B$中的每一个数$b$在函数$f$
+的作用下都是$A$中一个数或某些数的对应数，也就是说：对
+于任意$b\in B$, 存在一个$a\in A$, 使得$b=f(a)$, 这样我们就说
+$f$是由$A$到$B$的\textbf{满射}。
+\end{blk}
+
+显然，如果$f:A\mapsto B$是满射，那么$f(A)=B$。
+
+第二类函数和满射同样地重要，叫做\textbf{单射}，定义如下：
+
+\begin{blk}{定义}
+    如果对于$A$中的任何两个不同的数$a_1$和$a_2$, 就在
+$B$中有两个不同的函数值$f(a_1)$和$f(a_2)$, 即任何$a_1,a_2\in A$,
+$a_1\ne a2\Rightarrow f(a_1)\ne f(a_2)$, 那么我们就说$f:A\mapsto B$是\textbf{单射}（或
+一对一）。
+\end{blk}
+
+ 
+它的逆否命题“如果在$B$中有$f(a_1)=f(a_2)$就在$A$中有
+$a_1=a_2$, 那么函数$f:A\mapsto B$叫做\textbf{单射}（或一对一）。”和上面
+的定义等价，也常用来说明函数是一对一的。
+
+还有一类很重要的函数叫做\textbf{双射}。
+
+\begin{blk}{定义}
+    函数$f:A\mapsto B$, 如果是满射又是单射，就叫做
+    \textbf{双射}。
+\end{blk}
+
+\begin{example}
+    函数$f:\mathbb{R}\mapsto [-1,1]$, 这里$f(x)=\sin x, x\in\mathbb{R}$
+是满射，但不是单射，因为对于
+$\sin x=\frac{1}{2}\in [-1,1]$，
+就有无穷多个$x=\frac{\pi}{6}+2k\pi$或$\frac{5\pi}{6}+2k\pi\;(k\in\mathbb{Z})$的值和它
+对应。
+\end{example}
+
+\begin{example}
+    函数$f:\mathbb{N}\mapsto\mathbb{N}$, 这里$f(n)=2n$是单射，但不是满射。
+\end{example}
+
+\begin{example}
+    设$2\mathbb{N}$代表偶数集，函数$f:\mathbb{N}\mapsto 2 \mathbb{N}$, 这里$f(n)=2n$就是一双射。
+\end{example}
+
+\section{函数的运算与复合函数}
+
+\subsection{函数的四则运算}
+
+设$f(x),g(x)$是两个$x$的函数，它们的定义域分别为$D_f$
+和$D_g$, 我们可以用通常对于“数”
+的四则运算得到它们的
+和函数$(f+g)(x)$, 差函数$(f-g)(x)$, 积函数$(f\cdot g)(x)$与
+商函数$\frac{f}{g}(x),\; g(x)\ne 0$。它们的定义域为$D_f\cap D_g$。
+
+由$f(x),g(x)$的四则运算所得出来的新函数的定义
+如下：
+\begin{itemize}
+    \item $(f+g)(x)=f(x)+g(x)$ （即$(f+g)$在$x$点的值是$f$,
+$g$的值的和）；
+\item $(f-g)(x)=f(x)-g(x)$ （即$(f-g)$在$x$点的值是$f,g$
+的值的差）；
+\item $(f\cdot g)(x)=f(x)\cdot g(x)$ （即$(f\cdot g)$在$x$点的值是$f,g$的
+值的积）；
+\item $(f/g)(x)=f(x)/g(x)$ （即$f/g$在$x$点的值是$f,g$的值
+的商，但只有在$g(x)\ne 0$时才有意义）。
+\end{itemize}
+
+$f+g$, $f-g$和$f\cdot g$的定义域是$f$的定义域和$g$的定义
+域的交集。而$f/g$的定义域要从$f$和$g$的定义域的交集中去
+掉使$g(x)=0$的值。
+
+\begin{example}
+    已知$f(x)=\sqrt{x}$, $g(x)=\sqrt{1-x}$, 求$f+g$,
+$f-g$, $f\cdot g$, $\frac{f}{g}$, $\frac{g}{f}$。
+\end{example}
+
+\begin{solution}
+    $f$和$g$的自然定义域是$D_f=\{x|x\ge 0\}$, $D_g=\{x|x\le 1\}$，$D_f$和$D_g$的交集是$D_f\cap D_g=[0,1]$。
+\begin{itemize}
+    \item 和：$(f+g)(x)=\sqrt{x}+\sqrt{1-x}$
+    \item 差：$(f-g)(x)=\sqrt{x}-\sqrt{1-x}$
+    \item  积：$(f\cdot g)(x)=\sqrt{x(1-x)}$
+    \item 商：$\frac{f}{g}(x)=\sqrt{\frac{x}{1-x}},\qquad \frac{g}{f}(x)=\sqrt{\frac{1-x}{x}}$
+\end{itemize}
+
+$f+g$, $f-g$, $f\cdot g$的定义域是$[0,1]$。因为当$x=1$时，
+$g(x)=0$, 所以$\frac{f}{g}$的定义域是$[0,1)$, 同样得到$\frac{g}{f}$的定义域$(0,1]$。
+\end{solution}
+
+\begin{example}
+设$f(x)=\sin x$, $g(x)=\cos x$，$D_f=(-\infty,+\infty)$，$D_g=(-\infty,+\infty)$，则：
+\[\begin{split}
+    (f+g)(x)=\sin x+\cos x&=\sqrt{2}\left(\frac{1}{\sqrt{2}}\sin x+\frac{1}{\sqrt{2}}\cos x\right)\\
+    &=\sqrt{2}\left(\sin x\cos\frac{\pi}{4}+\cos x\sin\frac{\pi}{4} \right)\\
+    &=\sqrt{2}\sin\left(x+\frac{\pi}{4}\right)\\
+    (f-g)(x)=\sin x-\cos x&=\sqrt{2}\sin\left(x-\frac{\pi}{4}\right)\\
+    (f\cdot g)(x)=\sin x\cdot \cos x&=\frac{1}{2}\sin 2x\\
+    \left(\frac{f}{g}\right)(x)=\frac{\sin x}{\cos x}&=\tan x\\
+\end{split}\]    
+
+这里$f+g$, $f-g$, $f\cdot g$的定义域是$(-\infty,+\infty)$, $\frac{f}{g}$的定义域是$$\left\{x\big|x\in\mathbb{R},\; x\ne \frac{\pi}{2}+k\pi,\; k\in \mathbb{Z}\right\}$$
+\end{example}
+
+\subsection{复合函数}
+上面我们是用四则运算来组合已知函数为一个新函数
+的，但是构成新的函数的方法，还有一个更重要的运算叫做
+组成函数的函数或复合函数法。
+
+我们先从一个简单的例子
+说起，火箭从地面上的$L$点垂
+直向上发射，火箭$R$在$t$秒后
+离开发射点的距离是$h(t)$, 这个函数是已知的。在离发射座
+1公里远的地方有一个观测站$O$，我们要求把火箭与观测站
+的距离$d$确定为时间$t$的函数（图8.7）。
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[thick]
+\draw (0,0)node[below]{$L$}--node[below]{1}(4,0)node[below]{$O$}--node[above]{$d$}(0,2.5)node[above]{$R$}--node[left]{$h$}(0,0);
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+我们已经知道火箭的垂直高度$h$是$t$的函数$h(t)$, 又火
+箭到观测站的距离$d$又是火箭的高度$h$的函数
+\[d=\sqrt{1+h^2}\]
+因此在时刻$t$, $R$到$O$的距离是
+\[d(t)=\sqrt{1+h^2(t)}\]
+
+上面函数$d(t)$是由$h=h(t)$和$d=f(h)=\sqrt{1+h^2}$两个函
+数构成的，把其中一个函数$h(t)$代入另一个函数$f(h)$的运算
+叫做复合运算，得到的函数$d(t)=f\big(h(t)\big)$叫做$t$的复合
+函数。
+
+一般说来，若$z=f(y)$, $y=g(x)$, 且$g(x)$的值域含于
+$f(y)$的定义域中，那么对于$g(x)$定义域内的每一个$x$值经过
+中间变数$y$, 相应地得到唯一确定的一个值$z$, 变数$z$经过
+中间变数$y$而成变数$x$的函数，记为$z=f\big(g(x)\big)$, 这个函
+数称为前两个函数的\textbf{复合函数}。应该指出，函数$y=g(x)$的
+值域不能超出函数$f(y)$的定义域，这是极重要的。
+
+
+\begin{example}
+    设$z=\sqrt{1+y}$, 它的定义域$D_y=[-1,+\infty)$,
+再设$y=x^2-5$, 它的定义域$D_x=(-\infty,+\infty)$, 值域$R=
+[-5,+\infty)$. 
+
+作为复合函数$z=\sqrt{1+(x^2-5)}=\sqrt{x^2-4}$,
+其定义域只能是$(-\infty,-2]$和$[2,+\infty)$, 这时，$y=x^2-
+5$的值域是$[-1,+\infty)$, 它没有超过$D_y=[-1,+\infty)$
+的范围，这就是说复合函数$z=f\big(g(x)\big)$的定义域只能由$y=
+g(x)$的定义域中那些使$g(x)$属于$z=f(y)$的定义域的$x$
+组成。
+\end{example}
+
+\begin{example}
+已知$f(g)=\frac{1}{g+1}$，$g=g(x)=x^2$。
+
+求$f\big(g(x)\big)$和$g\big(f(x)\big)$。    
+\end{example}
+
+\begin{solution}
+\[\begin{split}
+    f\big(g(x)\big)&=\frac{1}{x^2+1}\\
+    g\big(f(x)\big)&=\left(\frac{1}{x+1}\right)^2=\frac{1}{x^2+2x+1}
+\end{split}\]
+显然，$f\big(g(x)\big)\ne g\big(f(x)\big)$, 这表明函数的复合运算是不满足交换律的。
+\end{solution}
+
+\begin{example}
+已知$f\left(\sin\frac{x}{2}\right)=\cos x+1$，
+求$f\left(\cos\frac{x}{2}\right)$。
+\end{example}    
+
+\begin{solution}
+    复合函数
+$f\left(\sin\frac{x}{2}\right)=\cos x+1=2-2\sin^2\frac{x}{2}$
+    是把函
+    数$y=\sin\frac{x}{2}$
+    代入$f(y)=2-2y^2$中复合而成。现在令
+    $y=\cos\frac{x}{2}$代入$f(y)$，得到
+\[f\left(\cos\frac{x}{2}\right)=2-2\cos^2\frac{x}{2}=2-(1+\cos x)=1-\cos x\]
+\end{solution}    
+
+在函数的运算中，我们介绍了函数的加、减、乘、除和
+函数的复合五种运算，从定义来看，我们可以用上述五种运
+算，由某一简单而基本的函数去造出多种多样的新函数来，
+譬如从常数函数$y=c$和恒等函数$y=x$, 用加、减、乘运算就可
+以得出多项式函数。其实我们常常要用到的，并不是把所给的
+函数组合成更复杂的函数；而是要把所给的函数分解成更简
+单的函数的组合，把要解的问题归于比较简单的问题去解决。
+
+
+\begin{example}
+    将函数$y=x\sin\frac{1}{x}$
+分解成比较简单的函数的组
+合（引进新的中间变数符号）。
+\end{example}
+
+\begin{solution}
+    $y=x\sin\frac{1}{x}$
+    可分解为$f(x)=x$与$g(x)=\sin\frac{1}{x}$
+    之积，又$g(x)=\sin\frac{1}{x}$
+    可以看作是$g(h)=\sin h$和$h=h(x)=\frac{1}{x}$
+    的复合函数，于是原来的函数可以看作下面简单函数的
+    组合
+    \[F(x)=f(x)\cdot g\big(h(x)\big)\]
+    这里$f(x)=x$, $g(h)=\sin h$, $h=h(x)=\frac{1}{x}$。    
+\end{solution}
+
+\begin{example}
+求函数$\sqrt{x-\sqrt{x+1}-2}$的定义域。
+\end{example}
+
+\begin{solution}
+设$F(x)=\sqrt{x-\sqrt{x+1}-2}=\sqrt{(x+1)-\sqrt{x+1}-3}$，则$F(x)$可以看作$f(y)=\sqrt{y^2-y-3}$与$y=g(x)=\sqrt{x+1}$
+的复合函数，即$F(x)=f\big(g(x)\big)$且知：
+
+$f(y)$的定义域
+$D_f=\left(-\infty,\frac{1-\sqrt{13}}{2}\right]\bigcup\left[\frac{1+\sqrt{13}}{2},+\infty\right)$
+
+$g(x)$的定义域$D_g=[-1,+\infty)$, 它的值域$R_x=[0,+\infty)$
+
+\[\begin{split}
+&\text{复合函数$F(x)=f\big(g(x)\big)$有意义}\Longleftrightarrow
+\begin{cases}
+    g(x)\text{有意义}\\
+    g(x)\in\left[\frac{1+\sqrt{13}}{2},+\infty\right)
+\end{cases}\\
+&\Longleftrightarrow
+\begin{cases}
+    x+1\ge 0\\
+    \sqrt{x+1}\ge \frac{1+\sqrt{13}}{2}
+\end{cases}\Longleftrightarrow
+\begin{cases}
+    x\ge -1\\
+    x+1\ge \left(\frac{1+\sqrt{13}}{2}\right)^2=\frac{7+\sqrt{13}}{2}
+\end{cases}\\
+&\Longleftrightarrow x\ge \frac{5+\sqrt{13}}{2}
+\end{split}\]
+$\therefore\quad $函数$\sqrt{x-\sqrt{x+1}-2}$的定义域是
+$\left[\frac{5+\sqrt{13}}{2},+\infty\right)$。
+
+如果直接求$F(x)=\sqrt{x-\sqrt{x+1}-2}$的定义域，那
+么只须：
+\[\begin{split}
+   x-\sqrt{x+1}-2\ge 0& \Longleftrightarrow x-2\ge \sqrt{x+1} \Longleftrightarrow \begin{cases}
+    x-2\ge 0\\ x+1\ge 0\\ (x-2)^2\ge (x+1)
+\end{cases}\\
+& \Longleftrightarrow \begin{cases}
+    x\ge 2\\x\ge -1\\ x\ge \frac{5+\sqrt{13}}{2}
+\end{cases} \Longleftrightarrow x\ge \frac{5+\sqrt{13}}{2}
+\end{split}\]
+$\therefore\quad $函数$\sqrt{x-\sqrt{x+1}-2}$的定义域是
+$\left[\frac{5+\sqrt{13}}{2},+\infty\right)$。
+\end{solution}
+
+\section*{习题8.1}
+\addcontentsline{toc}{subsection}{习题8.1}
+
+试确定下面1---5里每一对函数$f$和$g$的自然定义域，并
+求$f+g$, $f-g$, $f\cdot g$, $f/g$和$g/f$的相应的定义域。
+
+\begin{enumerate}
+    \item $f(x)=x,\qquad g(x)=\sqrt{x-1}$
+    \item $f(x)=\frac{1}{x-2},\qquad g(x)=\frac{1}{\sqrt{x-1}}$
+        \item $f(x)=\sqrt{x},\qquad g(x)=\sqrt[4]{x+1}$
+    \item $f(x)=\sin x,\qquad g(x)=\cos x$
+    \item $f(x)=\tan x,\qquad g(x)=\tan x$
+    \item 证明函数$f(x)=\frac{1}{1+x}$在它的定义域上是单射的。又
+    $x$为何值时，下列各式才有意义？
+    \begin{multicols}{2}
+\begin{enumerate}
+    \item $f\big(f(x)\big)$
+    \item $f\left(\frac{1}{x}\right)$
+    \item $f(cx)$
+    \item 对于哪些数$c$,有一数$x$
+    能使$f(cx)=f(x)$
+\end{enumerate}        
+    \end{multicols}
+
+\item 下列函数能否构成复合函数$y=f\big(\varphi(x)\big)$, 如果能够
+构成，则指出复合函数的定义域和值域：
+\begin{enumerate}
+    \item $y=f(u)=2u+1,\qquad u=\varphi(x)=x^2$
+    \item $y=f(u)=\sqrt{u},\qquad u=\varphi(x)=1-x^2$
+    \item $y=f(u)=u^2+u^3, \qquad u=\varphi(x)=\begin{cases}
+        1,& \text{当$x$为有理数}\\
+        2,&\text{当$x$为无理数}\\
+    \end{cases}$
+    \item $y=f(u)=2$, 定义域为$U_1$,\qquad  $u=\varphi(x)$, 定义域为
+    $X$, 值域为$U_2$。
+\end{enumerate}
+
+\item 设$f(x)=ax^2+bx+c$, 证明
+$f(x+3)-3f(x+2)+3f(x+1)-f(x)=0$。
+\item \begin{enumerate}
+\item 设$y=f(x)=a+bx+\frac{c}{x}$, 求$f\left(\frac{2}{x}\right)$。
+\item 设$y=f(x)=\sqrt{1+x+x^2}$, 求$f(x^2)$, $f(-x^2)$。
+\end{enumerate}
+
+\item 若$\varphi(x)=x^3+1$, 求$\varphi(x^2)$, $\big(\varphi(x)\big)^2$, $\varphi\big(\varphi(x)\big)$。
+\item 求下列函数定义域：
+\begin{multicols}{2}
+ \begin{enumerate}
+    \item $y=\sqrt{x}+\sqrt{-x}$
+    \item $y=\sqrt[4]{\frac{(x-2)(x-3)}{x^2}}$
+\end{enumerate}   
+\end{multicols}
+
+\item $a,b,c,d$取什么值，才能使函数$$f(x)=\frac{ax+b}{cx+d}$$对所有$x$满足$f\big(f(x)\big)=x$？
+\end{enumerate}
+
+\section{函数的图象}
+
+从平面上一条曲线（对这条曲线应该要求：与纵轴平行
+的直线与它的交点不能多于一个）可以引出一个函数，反过
+来，给了一个函数$y=f(x)$, 那么通常采用直角坐标系，就
+可以用图形来表示$y$是$x$的函数。
+
+定义在某一变域$D$上的函数的图象就是让$x$取遍$D$中所
+有值，所有点$(x,f(x))$的集合便形成平面上的一个\textbf{图形}，
+这个图形称为函数$y=f(x)$的\textbf{图象}，而这个方程$y=f(x)$称
+为\textbf{图象的方程}。
+
+利用函数图象的几何直观可以更清楚地看出函数的一些
+性质，下面我们把函数的解析性质和它的图象上相应的几何
+性质对照着列出来：
+\begin{center}
+\begin{tabular}{cp{.45\textwidth}p{.45\textwidth}}
+    \hline
+    &  解析性质  &几何性质\\
+    \hline
+    1  &$f$是$x$的增函数，即对于任意的$a\in D$, $b\in D$, 当$a<b$时，恒有$f(a)<
+f(b)$  &$f$的图象随着$x$向右移动而上升\\
+2&$f$是$x$的减函数，即对于任意的$a\in D$, $b\in D$, 当$a<b$时，恒有$f(a)>f(b)$ &$f$的图象随着向右移动而下降\\
+3&$f$是偶函数，即对于任意的$x\in D$, 恒有$f(-x)=f(x)$ &函数$f$的图象关于$y$轴对称\\
+4& $f$是奇函数，即对于任意的$x\in D$, 恒有$f(-x)=-f(x)$ & 函数$f$的图象关于原点对称\\
+5 & $f$是周期函数，即对于任意的$x\in\mathbb{R}$, 恒有$f(x+p)=f(x)$, 这里$p$是一个正的常数& 函数$f$在区间
+$[0,p]$或$\left[-\frac{p}{2},\frac{p}{2}\right]$上的
+图象可以沿$x$轴左、右连续推移，重复出现\\
+\hline
+\end{tabular}
+\end{center}
+
+下面我们给出几个常见的函数的图象。
+
+\subsubsection{常值函数}
+常值函数$f(x)=c$的图象是一条平行$x$轴的直线，它
+至$x$轴的距离为$|c|$, 如图8.8。
+
+\subsubsection{取整函数}
+函数$f(x)=[x]$代表不超过$x$的最大整数，即：
+若$n\le x<n+1,\; n\in\mathbb{Z}$, 则$f(x)=[x]=n$. 它的图象
+如图8.9。
+
+\begin{figure}[htp]\centering
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+\begin{tikzpicture}[>=latex, scale=1]
+\draw[->] (-2.5,0)--(2.5,0)node[right]{$x$};
+\draw[->] (0,-1)--(0,2.5)node[right]{$y$};
+\draw[very thick] (-2,1.5)--(2,1.5)node[above]{$f(x)=c$};
+\draw[<->] (-1,0)--node[right]{$c$}(-1,1.5);
+\node at (-.25,-.25){$O$};
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[>=latex, scale=1]
+        \draw[->] (-2.5,0)--(3.5,0)node[right]{$x$};
+        \draw[->] (0,-2.5)--(0,2.5)node[right]{$y$};
+    \foreach \x in {-2,-1,1,2,3}
+    {
+        \draw (\x,0)node[below]{$\x$}--(\x,.1);
+    }     
+\foreach \x in {1,2}
+{
+    \draw (0,\x)node[left]{$\x$}--(.1,\x);
+}
+\foreach \x in {-1,-2}
+{
+    \draw (0,\x)--(.1,\x)node[right]{$\x$};
+}
+
+\foreach \x in {-2,-1,...,2}
+{
+    \draw [very thick](\x,\x)--(\x+1,\x);
+    \draw (\x+1,\x)[fill=white] circle(1.5pt);
+}
+\node at (-.25,-.25){$O$};
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \end{figure}
+
+\subsubsection{一次函数}
+
+我们已经在第三册中知道，一次函数$f(x)=kx+b\; (k\ne 0)$的图象是不平行于$x$轴和$y$轴的直线。$k$称为直线的斜
+率，$b$称为直线的$y$截距。若知一次函数图象上的两个点，
+我们用直线方程的两点式：
+\[y-y_1=\frac{y_2-y_1}{x_2-x_1}(x-x_1)\]
+就可以写出一次函数的关系式。
+
+下面给出的函数的图象是有间断点的直线：
+
+函数$f(x)=\frac{3}{4}\cdot \frac{x^2-1}{x-1}$, 
+$x\in (-\infty,1)\cup(1,+\infty)$的
+图象是一条有间断点$\left(1,1\frac{1}{2}\right)$的直线，除去点$\left(1,1\frac{1}{2}\right)$外，
+它与直线$y=\frac{3}{4}(x+1)$一致。（见图8.10）
+
+\begin{figure}[htp]
+    \centering
+    \begin{tikzpicture}[>=latex, scale=1]
+        \draw[->] (-2.5,0)--(3,0)node[right]{$x$};
+        \draw[->] (0,-1)--(0,2.5)node[right]{$y$};
+\foreach \x in {-1,1}
+{
+    \draw (\x,0)node[below]{$\x$}--(\x,.1);
+}
+\draw[domain=-2:2, samples=10, very thick]plot(\x, {0.75*(\x+1)});
+
+\draw[dashed] (0,1.5)node[left]{$1\frac{1}{2}$}--(1,1.5)--(1,0);
+\draw (1,1.5) [fill=white] circle(1.5pt)node[right]{$\left(1,1\tfrac{1}{2}\right)$};
+\node at (2,2)[above]{$y=\frac{3}{4}(x+1)$};
+        \node at (.25,-.25){$O$};
+            \end{tikzpicture}    
+    \caption{}
+\end{figure}
+
+\subsubsection{阶梯函数}
+设点列$\{x_i\},\; i=0,1,\ldots,n$是闭区间$[a,b]$中的递增
+点列，使得$x_0=a$, $x_n=b$, 即
+$a=x_0<x_1<x_2<\cdots<x_{n-1}<x_n=b$，且当$x_{i-1}<x<x_i$时，
+$f(x)=k_i,\; i=1,2,\ldots,n$。而$x$在分点，$x_i,\; i=0,1,\ldots,n$的
+值$f(x_i)$可以任意给定，这样一个在$[a,b]$上有定义的，而
+在每个子区间$(x_{i-1},x_i),\; i=1,2,\ldots,n$都是常数的函数叫
+做阶梯函数。
+
+例如，定义在$[0,6]$上的阶梯函数$f$:
+\[\begin{cases}
+   f(0)=2.5,\\
+f(x)=2 ,&0<x\le 1,\\
+f(x)=0,&1<x\le 2,\\
+f(x)=-1,&2<x\le 4,\\
+f(x)=2 ,&4<x\le 6. \\
+\end{cases}\]
+的图象如图4.11所示。
+
+\begin{figure}[htp]\centering
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+\begin{tikzpicture}[>=latex, scale=.73]
+    \draw[->] (-.5,0)--(7,0)node[right]{$x$};
+    \draw[->] (0,-1.5)--(0,3.5)node[right]{$y$};
+\foreach \x in {1,2,...,6}
+{
+\draw (\x,0)node[below]{$\x$}--(\x,.1);
+}
+\node at (-.25,-.25){$O$};
+\foreach \x in {-1,1,2,2.5}
+{
+\draw (0,\x)node[left]{$\x$}--(.1,\x);
+}
+
+\draw[very thick] (0,2)--(1,2);
+\draw[very thick] (1,0)--(2,0);
+\draw[very thick] (2,-1)--(4,-1);
+\draw[very thick] (4,2)--(6,2);
+\foreach \x in {{0,2},{1,0},{2,-1},{4,2}}
+{
+\draw (\x)[fill=white] circle(2.5pt);
+}
+\draw (0,2.5)[fill=black] circle(2.5pt);
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[>=latex, scale=.73]
+        \draw[->] (-.5,0)--(7,0)node[right]{$x$};
+        \draw[->] (0,-5)--(0,2)node[right]{$y$};
+\foreach \x in {1,2,...,6}
+{
+    \draw (\x,0)node[below]{$\x$}--(\x,.1);
+}
+\node at (-.25,-.25){$O$};
+\foreach \x in {1,-1,-2,...,-4}
+{
+    \draw (0,\x)node[left]{$\x$}--(.1,\x);
+}
+
+\draw[very thick] (1,0)node[above]{$A$}--(2,.5)node[above]{$B$}--(3,-1)node[below]{$C$}--(4,0)node[above]{$D$}--(6,-4)node[below]{$E$};
+
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \end{figure}
+
+\subsubsection{折线函数}
+我们定义$g$：
+\[g(x)=\begin{cases}
+    \frac{1}{2}(x-1), & x\in[1,2]\\
+    -\frac{3}{2}(x-2)+\frac{1}{2}(2-1),& x\in [2,3]\\
+    (x-3)-\frac{3}{2}(3-2)+\frac{1}{2}(2-1),& x\in [3,4]\\
+  -2(x-4)+(4-3)-\frac{3}{2}(3-2)+\frac{1}{2}(2-1),& x\in [4,6]\\
+\end{cases}\]
+它的图象是一条折线$ABCDE$, 如图4.12。
+
+
+\subsubsection{幂函数}
+函数$f(x)=x^n$，其中$n$为任意自然数，称为正整指数幂
+函数。
+
+为了了解正整指数幂函数的一般性质，我们在同一个坐
+标系内，绘出几个这样的函数，如图4.13。
+
+显然，当$n$为奇数时，因为$f(-x)=(-x)^n=-x^n=-f(x)$,
+所以函数是奇函数。又所有正整指数幂函数，当$x=0$时，
+$f(0)=0$。故每个奇次幂函数的图象通过原点，位于第一和
+第三象限内且关于原点对称。所有这样的函数都是增函数。
+
+当$n$为偶数时，因为$f(-x)=(-x)^n=x^n=f(x)$，所以
+函数是偶函数，每个图象通过原点，位于第一和第二象限内
+且关于$y$轴对称。
+
+由于当$x=1$时，$f(1)=1^n=1$, 每个正整指数幂函数的
+图象都通过点$(1,1)$。
+
+\begin{figure}[htp]
+    \centering
+    \begin{tikzpicture}[>=latex, scale=3]
+        \draw[->] (-1.3,0)--(1.3,0)node[right]{$x$};
+        \draw[->] (0,-1.3)--(0,1.3)node[right]{$y$};
+\foreach \x in {-1,1}
+{
+    \draw (\x,0)node[below]{$\x$}--(\x,.02);
+}
+\node at (.1,-.1){$O$};
+\draw[dashed](-1,-1)--(-1,1)--(1,1)--(1,0);
+
+\draw (-1.2,-1.2)--(1.2,1.2);
+\draw [domain=-1.15:1.15, samples=100, thick]plot(\x, {\x*\x});
+\draw [domain=-1.1:1.1, samples=100, very thick]plot(\x, {\x*\x*\x});
+\draw [domain=-1.05:1.05, samples=100, ultra thick]plot(\x, {\x*\x*\x*\x});
+\node at (0,1)[right]{1};
+\node at (1,1)[right]{$(1,1)$};
+\node at (-.75,-.75)[right]{$y=x$};
+\node at (-.8,-.512)[left]{$y=x^3$};
+\node at (-.75,.5625)[right]{$y=x^2$};
+\node at (-.8,.41)[left]{$y=x^4$};
+            \end{tikzpicture}    
+    \caption{}
+\end{figure}
+
+现在让指数$n$逐次增大，看看图象的变化，从图8.14,
+8.15可以清楚地看出每个图象的平坦部分和陡峭部分，曲线
+最终以图8.14和8.15中的粗黑线为极限位置。
+
+函数$f(x)=x^{-n}$（$x\ne 0$, $n$为自然数）称为负整指数幂函数。
+在同一坐标系内，绘出$y=x^{-1}$, $y=x^{-2}$, $y=x^{-3}$, $y=x^{-4}$
+的图象如图8.16所示。当$x=0$时，这些函数都无意义，函数
+的图象在此点断开，它的二支以$y$轴为渐近线。
+
+当指数为负奇数时，这些函数是奇函数。图象的二支分
+别位于第一和第三象限内，随$x$向右移动下降，且关于原点
+对称。因此，函数在$(-\infty,0)$或$(0,+\infty)$内是减函数。
+
+当指数是负偶数时，这些函数是偶函数，每个函数的图
+象在原点处断开，分为二支，位于第一和第二象限内，都以
+$y$轴为渐近线，且关于$y$轴对称。从图象明 显地看出，当
+$x<0$时，函数是增函数，当$x>0$时，函数是减函数。
+
+下面我们来说明一些函数的图象如何由另一些函数的已
+知图象经过某些几何变换得到。
+
+若对于任意的$x\in D$, 函数$f$和$g$满足$g(x)=f(x-c)$,
+这里$c$是常数，则若$c>0\; (c<0)$，$y=g(x)$的图象可以由
+$y=f(x)$的图象，平行$x$轴右移（或左移）$|c|$个单位得到。
+
+若函数$f$和$g$满足等式$g(x)=f(kx)$, 这里$k$是常数，则若
+$k>1\; (0<k<1)$, $y=g(x)$的图象可以由$y=f(x)$的图象经
+过把它上面的所有点的横坐标垂直于$y$轴压缩（或拉长）倍
+而纵坐标不变的几何变换得到。
+
+若函数$f$和$g$满足等式，$g(x)=kf(x)$, 这里$k$是常数，
+则若$k>1\; (0<k<1)$, $y=g(x)$的图象可以由$y=f(x)$的图
+象经过把它上面的所有点的纵坐标垂直$x$轴拉长（或压缩）
+$k$倍而使横坐标不变的几何变换得到。
+
+下面我们用例子说明图象的几何变换。
+\begin{figure}[htp]\centering
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+\begin{tikzpicture}[>=latex, scale=2.2]
+    \draw[->] (-1.3,0)--(1.3,0)node[right]{$x$};
+    \draw[->] (0,-.5)--(0,1.6)node[right]{$y$};
+\foreach \x in {-1,1}
+{
+\draw (\x,0)node[below]{$\x$}--(\x,.02);
+}
+\node at (.1,-.1){$O$};
+\draw[ultra thick](-1,1.5)--(-1,0)--(1,0)--(1,1.5);
+\draw [domain=-1.25:1.25, samples=100, thick]plot(\x, {\x*\x});
+\draw [domain=-1.15:1.15, samples=100, dashed]plot(\x, {\x*\x*\x*\x});
+\node at (-.75,.5625)[right]{$y=x^2$};
+\node at (-1.2,1.7)[right]{$y=x^4$};      
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[>=latex, scale=2]
+        \draw[->] (-1.3,0)--(1.3,0)node[right]{$x$};
+        \draw[->] (0,-1.3)--(0,1.3)node[right]{$y$};
+\foreach \x in {-1,1}
+{
+    \draw (\x,0)node[below]{$\x$}--(\x,.02);
+}
+\node at (.1,-.1){$O$};
+\draw[ultra thick](-1,-1.2)--(-1,0)--(1,0)--(1,1.2);
+\draw (-1.2,-1.2)--(1.2,1.2);
+\draw [domain=-1.1:1.1, samples=100, thick]plot(\x, {\x*\x*\x});
+\node at (0,1)[right]{1};
+\node at (.75,.75)[left]{$y=x$};
+\node at (.8,.512)[right]{$y=x^3$};
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \end{figure}
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=1.2]
+    \draw[->] (-4,0)--(4,0)node[right]{$x$};
+    \draw[->] (0,-5)--(0,5)node[right]{$y$};
+\draw [domain=-4:-.22, samples=100]plot(\x, {1/\x});
+\draw [domain=-3.5:-.45, samples=100, thick]plot(\x, {1/(\x*\x)});
+\draw [domain=-3:-.6, samples=100, very thick]plot(\x, {1/(\x*\x*\x)});
+\draw [domain=-3:-.68, samples=100, ultra thick]plot(\x, {1/(\x*\x*\x*\x)});  
+\node at (.2,-.2){$O$};
+\draw [domain=.22:4, samples=100]plot(\x, {1/\x});
+\draw [domain=.45:3.5, samples=100, thick]plot(\x, {1/(\x*\x)});
+\draw [domain=.6:3, samples=100, very thick]plot(\x, {1/(\x*\x*\x)});
+\draw [domain=.68:3, samples=100, ultra thick]plot(\x, {1/(\x*\x*\x*\x)});  
+
+\draw[dashed](1,0)--(1,1)node[right]{$(1,1)$}--(-1,1)node[left]{$(-1,1)$}--(-1,-1)node[left]{$(-1,-1)$}--(0,-1);
+
+\draw (1,-1)--(1.5,-1)node[right]{$y=x^{-1}$};
+\draw[thick] (1,-1.5)--(1.5,-1.5)node[right]{$y=x^{-2}$};
+\draw[very thick]  (1,-2)--(1.5,-2)node[right]{$y=x^{-3}$};
+\draw[ultra thick]  (1,-2.5)--(1.5,-2.5)node[right]{$y=x^{-4}$};
+\draw (.75,-.6) rectangle (3,-2.9);
+
+
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+
+
+\begin{example}
+    说明$y=f(x)=\sin x$和$y=g(x)=\cos x$的图象的
+关系。
+\end{example}
+
+
+\begin{solution}
+ 这两个函数的定义域都是$(-\infty,+\infty)$，根据$f(x)=
+\sin x$和$g(x)=\cos x$是周期等于$2\pi$的函数，因此我们可以先在
+长度等于$2\pi$的区间上来讨论这两个函数。
+
+设$f(x)=\sin x$的定义域$D_y=[0,2\pi]$, 因为余弦函数
+$g(x)=\cos x$可以看作正弦函数$\sin x$ 与$x'=x+\frac{\pi}{2}$
+的复合函数，即$g(x)=\cos x=\sin\left(x+\frac{\pi}{2}\right)$,
+所以复合函数$\sin\left(x+\frac{\pi}{2} \right)$
+有意义，必须且只须$0\le x+\frac{\pi}{2}\le 2\pi$，
+由此得到$-\frac{\pi}{2}\le x\le \frac{3\pi}{2}$。
+
+这就是说$y=g(x)=\cos x$ 的定义域是
+$D_g=\left[-\frac{\pi}{2},\frac{3\pi}{2}\right]$。
+因为区间$D_g$是把区间$D_f$左移了$\frac{\pi}{2}$
+个单位的结果，并且对于$D_g=\left[-\frac{\pi}{2},\frac{3\pi}{2}\right]$中
+的每一个$x$都可以在$D_f=[0,2\pi ]$中找
+到相应的$x+\frac{\pi}{2}$
+使得
+$\cos x=\sin\left(x+\frac{\pi}{2}\right)$,
+所以$y=\sin x$在
+区间$D_f=[0,2\pi]$ 上的一段图象左移
+$\frac{\pi}{2}$个单位就得到$y=\cos x$在区间$D_g=
+\left[-\frac{\pi}{2},\frac{3\pi}{2}\right]$上
+的一段，因此，将$y=\sin x$的整个图象左移$\frac{\pi}{2}$
+个单位就得到整个$y=\cos x$的图象了，如图
+8.17所示。
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=.8]
+    \draw[->] (-5.5,0)--(9,0)node[right]{$x$};
+    \draw[->] (0,-2)--(0,2)node[right]{$y$};
+    \foreach \x/\xtext in {-3/-\tfrac{3\pi}{2},-1/-\tfrac{\pi}{2},1/\tfrac{\pi}{2},3/\tfrac{3\pi}{2},5/\tfrac{5\pi}{2}}
+    {
+        \draw(\x*pi/2, 0)node[below]{$\xtext$}--(\x*pi/2,.2);
+    }
+    \foreach \x/\xtext in {-1/-\pi, 1/\pi, 2/2\pi}
+    {
+        \draw(\x*pi, 0)--(\x*pi,.2)node[above]{$\xtext$};
+    }
+    \draw [domain=-pi:2.5*pi, samples=100, very thick]plot(\x, {cos(\x r)});
+    \draw [domain=-1.5*pi:2.5*pi, samples=100,  thick]plot(\x, {sin(\x r)});
+    \node at (.4,-.4){$O$};
+ \node at (-pi,-1)[below]{$y=\cos x$};
+ \node at (2.5*pi,1)[right]{$y=\sin x$};
+\end{tikzpicture}    
+    \caption{}
+\end{figure}
+
+$\because\quad \sin(-x)=-\sin x,\qquad \therefore\quad y=\sin x$的图象关于原点对称。
+
+$\because\quad \cos(-x)=\cos x,\qquad \therefore\quad y=\cos x$的图象关于$y$轴对称。
+
+\end{solution}
+
+\begin{example}
+    说明函数$y=f(x)=\sqrt{1-x^2}$, $D_f=[-1,1]$和
+    $y=g(x)=\sqrt{1-4x^2}$的图象的关系。
+\end{example}
+
+\begin{solution}
+    我们已经知道$f$的定义域是$D_f=[-1,1]$且$g(x)$可
+以看作$f(x')$与$x'=2x$的复合函数，即
+\[g(x)=f(2x)=\sqrt{1-(2x)^2}\]
+
+复合函数$f(2x)$有意义必须且只须$-1\le 2x\le 1$, 即：
+\[-\frac{1}{2}\le x\le \frac{1}{2}\]
+因此，$g(x)$的定义域是$D_g=\left[-\frac{1}{2},\frac{1}{2}\right]$。
+因为对于$D_g=\left[-\frac{1}{2},\frac{1}{2}\right]$中
+的每一个$x$, 在$D_f$中一定有一个相应的$2x$使
+得$g(x)=f(2x)$成立，这就说明了将$y=f(x)$的图象上所有
+点的横坐标垂直$y$轴压缩一半而使点的纵坐标不变便得
+$g(x)=\sqrt{1-4x^2}$的图象，如图4.18所示。
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=2.5]
+    \draw[->] (-1.5,0)--(1.5,0)node[right]{$x$};
+    \draw[->] (0,-.5)--(0,1.5)node[right]{$y$};
+\draw [very thick](-1,0) arc (180:0:1);
+\draw[domain=-.5:.5, samples=1000, thick] plot(\x, {sqrt(1-4*\x*\x)});
+\foreach \x/\xtext in {-1/-1,-.5/-\frac{1}{2},.5/\frac{1}{2},1/1}
+{
+    \draw (\x,0)node[below]{$\xtext$}--(\x,.1);
+}
+\node at (.1,-.1){$O$};
+
+\draw[thick] (1,1)--(1.25,1)node[right]{$y=g(x)=\sqrt{1-4x^2}$};
+\draw[very thick] (1,1.25)--(1.25,1.25)node[right]{$y=f(x)=\sqrt{1-x^2}$};
+\draw (.9,.8) rectangle (2.7,1.4);
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+\end{solution}
+
+\begin{ex}
+\begin{enumerate}
+    \item 试由函数增减性的定义，说明下面函数的增减性：
+    \begin{multicols}{2}
+\begin{enumerate}
+    \item $y=x^3$
+    \item $y=x^{-2}$
+    \item $f(x)=\sqrt{x}$
+    \item $g(x)=\sqrt[3]{x}$
+    \item $h(x)=\frac{1}{\sqrt{x}}$
+\end{enumerate}        
+    \end{multicols}
+
+    \item 作下列函数的图象：
+    \begin{multicols}{2}
+        \begin{enumerate}   
+\item $y=\sqrt{x}$
+\item $y=x-[x]$
+\item $y=\sqrt{x-[x]}$
+\item $y=[x]+\sqrt{x-[x]}  $
+        \end{enumerate}        
+    \end{multicols}
+    \item 若一折线函数的图象$ABCDE$的顶点坐标是
+\[A\left(-1,-1\frac{1}{2}\right),\quad B(1,1),\quad C(3,-1),\quad D(6,2.5),\quad E(7,2.5)\]    
+写出这个函数的解析式。
+
+\item 作下列函数的图象：
+\begin{multicols}{2}
+    \begin{enumerate}  
+\item $f(x)=|2x|$
+\item $f(x)=\frac{|x|}{x}$
+\item $y=|4-x^2|,\quad -3\le x\le 3$
+\item $y=|x^2-2x-3|$
+\end{enumerate}        
+\end{multicols}
+\item 已知点$P(\alpha,\beta)$和一水平线$L$即$g(x)=\gamma$的图象。证
+明至$P$与$L$等距离的所有点$(x,y)$的集合，是具有$f(x)=
+ax^2+bx+c$形式的函数的图象。
+\end{enumerate}
+\end{ex}
+
+\section{函数的连续性}
+在初中一年级讨论平方根时，我们曾用下面的想法初步
+地肯定$\sqrt{2}$的“存在性”：边长是1米的正方形面积是1平
+方米；边长是2米的正方形面积是4平方米，所以，当一个正
+方形的边长逐渐增加时，它的面积逐渐由1平方米增加到4
+平方米，中间应该会有那么一个2平方米的正方形。
+
+上面这段话只是一个粗略的想法，用数学语言来表达
+如下：
+
+$y=f(x)=x^2$, 这个幂函数的函数值，在$x=1$时，$f(1)=1^2=1$；
+$x=2$时，$f(2)=2^2=4$; 当$x$由1变到2时，$x$的值应
+该由1“连续地”变到4, 所以$x$应该能取一个值$x_0$使
+$f(x_0)=x^2_0=2$。
+
+上面说的“连续地”这个术语究竟是什么意思呢？在这
+一节中，我们就是要把“连续性”的涵意加以分析、确立。
+并且，把上面这个粗略的想法体现成一个明确有用的定
+理——中间值定理。
+
+\subsection{连续函数的概念}
+从几何的直观来看，连续与间断的意思是一目了然的，
+一条曲线是连续的，指这条曲线没有间断点，在上一节考察
+的函数，展示了函数图象有间断点的情形，函数$f$在点$x_0$是
+否连续只依赖于它在$x_0$的一个（任意小的）邻域内的变化情
+况。直观地看来，如果
+\begin{enumerate}
+\item $f$在其定义域的点$x_0$的邻域$(x_0-\delta,x_0+\delta)$内
+有定义；
+\item 当$x$充分接近$x_0$时，函数值$f(x)$同$f(x_0)$相差任
+意小，即自变量$x$的微小变化只能引起函数值的微小变化，
+从而排除了函数值的跳跃，就函数的图象来看，在这一点
+$x_0$的邻近，函数图象是由一条曲线组成的，而没有在这一点
+断开成为两个分支，那么称函数$f$在点$x_0$连续。
+\end{enumerate}
+
+
+“充分接近”和“相差任意小”这两句话是不够明确的，而
+必须用定量的术语给以严格的表述。现在我们可以用数列极
+限的概念把“当$x$充分接近$x_0$时，$f(x)$与$f(x_0)$相差任意小”
+这句话定量地描述如下：
+
+如果在函数定义域$I$中，自变量$x$取任何一个收敛于$x_0\in I$
+（即$\displaystyle\lim_{i\to\infty}x_i=x_0$）的数列$\{x_i\}$的项$x_i\; (i=1,2,\ldots)$, 那么对应
+的函数数列：
+\[f(x_1),\; f(x_2),\; \ldots,\;  f(x_i),\ldots\]
+总有极限值$f(x_0)$, 即
+\[\lim_{i\to\infty} f(x_i)=f(x_0)\]
+
+于是我们得到下述连续性的严格定义：
+
+\begin{blk}{定义}
+     定义在区间$I$上的一个函数$f$在点$a\in I$称做连
+续，如果
+\begin{enumerate}
+\item $f(a)$有一个确定值，
+\item 对于$I$中每一个收敛于$a$的数列$\{x_i\}$, 对应的函数
+数列$\{f(x_i)\}$总以$f(a)$为极限，即有关系式：
+$\displaystyle\lim_{i\to \infty}f(x_i)=f(a)=f\left(\displaystyle\lim_{i\to \infty}x_i\right)$
+成立。
+\end{enumerate}
+\end{blk}
+
+
+这个定义表明对于一个连续函数$f$, 记号lim可以和记号
+$f$互换。
+
+我们举几个例子说明如何用这个定义来验证函数$f$在点
+$a$处连续或间断。
+
+
+\begin{example}
+    函数$f(x)=\frac{3}{4}\cdot\frac{x^2-1}{x-1}$
+在点$x=1$处不连续，因为
+$f(1)$没有意义。
+\end{example}
+
+\begin{example}
+    函数$f(x)=[x]$在整数点$n$处不连续，因为当
+$x=n,\; (n\in\mathbb{Z})$时，函数$f(x)=[x]$有确定值$f(n)=[n]=n$。
+虽然当$x$取的数列$\{x_i\}$的值，从$x=n$的右边趋于$n$时，
+有$\Lim_{i\to\infty}f(x_i)=\Lim_{i\to\infty}[x_i]=n=f(n)$, 但是当$x$取的数列$\{x'_n\}$从$x=n$的左边趋于$n$时，即当$x'_i$满足条件：$n-1\le x'_i <m$, $\Lim_{i\to \infty}x'_i=n$时，那么
+\[\Lim_{i\to \infty}f(x'_i)=\Lim_{i\to \infty}[x'_n]=n-1\ne f(n)=n\]
+这就是说$f(x)=[x]$的图象是在整数点具有跳跃性间断的
+曲线。
+\end{example}
+
+现在我们来考虑另一种间断性的曲线。
+\begin{example}
+    函数$f(x)=\frac{1}{x}$
+    在点$x=0$处不连续，因为$f(0)$不
+    存在，并且任何数列$\{x_i\}$收敛于0时，例如：
+    
+    当$x_i>0$, $x_i\to 0$时，即$x_i$从右边趋近于原点时，有
+$\Lim_{i\to\infty}\frac{1}{x_i}=+\infty$；
+
+    当$x_i<0$, $x_i\to 0$时，即$x_i$从左边趋近于原点时，有
+    $\Lim_{i\to\infty}\frac{1}{x_i}=-\infty$；
+
+    当$\{x_i\}$是任意一个趋于0的数列时，则$\Lim_{i\to\infty}\left|\frac{1}{x_i}\right|=\infty$。
+
+    无论哪种情形，数列$\left\{\frac{1}{x_i}\right\}$
+    趋向无穷大。
+\end{example}
+
+\begin{rmk}
+例8.16和例8.18的分母的零点都是函数的不连续点，
+但是例8.16中的分式：$f(x)=\frac{3}{4}\cdot\frac{x^2-1}{x-1}$，
+当$x=1$时，代数恒等式
+\[\frac{3}{4}\cdot\frac{x^2-1}{x-1}=\frac{3}{4}(x+1)\]
+是成立的。因此任何数列$x_i\; (\ne 1)$趋于1时，由于$x_i\ne 1$，
+\[\begin{split}
+    \Lim_{i\to\infty}f(x_i)&=\Lim_{i\to\infty}\frac{3}{4}\cdot \frac{x^2_i-1}{x_i-1}=\Lim_{i\to\infty}\frac{3}{4}(x_i+1)\\
+    &=\frac{3}{4}(1+1)=\frac{3}{2}
+\end{split}\]
+
+这就是说，对于任何收敛于1的数列$\{x_i\}$, 对应的函数数
+列$\{f(x_i)\}$都以$\frac{3}{2}$为极限。 
+
+如果我们定义一个新函数$F$：
+\[F(x)=\begin{cases}
+    \frac{3}{4}\cdot\frac{x^2-1}{x-1},& x\ne 1\\
+    \frac{3}{2}, & x=1
+\end{cases}\]
+那么$F(x)$在点$x=1$处就连续了。
+\end{rmk}
+
+\begin{blk}{定义}
+     如果对于任何收敛于$a$的数列$\{x_i\}$, $\Lim_{i\to\infty}f(x_i)$存在，并且彼此相等，但不等于$f(a)$, 或者$f(a)$没有定义，则
+称$f$在$a$处有可去间断点。
+\end{blk}
+
+例8.16中的$x=1$就是$f$的可去间断点。
+
+\begin{blk}{定义}
+    如果函数$f$在定义域$I$中每一点都连续，就说$f$
+是$I$上的一个连续函数，或简称为连续函数。
+\end{blk}
+
+\subsection{连续函数的运算}
+由连续函数定义知道，函数$f$在$a\in I$连续当且仅当：若
+$I$里的每个数列$\{x_i\}$收敛于$a$时，数列$\{f(x_i)\}$也收敛于
+$f(a)$。
+
+我们可以把上述条件：
+\[\lim_{i\to \infty}x_i=a \quad \Longrightarrow\quad \lim_{i\to \infty}f(x_i)=f(a)\]
+简写成：
+\[\lim_{x\to a}f(x)=f(a)=f\left(\lim_{x\to a}x\right)\]
+
+由数列极限运算定理直接得出下面定理。
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -200,28 +1226,9 @@ $F$和摄氏温标度数$c$，因为不存在低于绝对零度的温度，因
 \end{solution}
 
 
-
-\begin{solution}
-    
-\end{solution}
-
-
-
-
-
-
-
 \begin{example}
     
 \end{example}
-\begin{solution}
-    
-\end{solution}
-
-\begin{example}
-    
-\end{example}
-
 
 \begin{solution}
     
@@ -230,7 +1237,6 @@ $F$和摄氏温标度数$c$，因为不存在低于绝对零度的温度，因
 \begin{example}
     
 \end{example}
-
 
 \begin{solution}
     
@@ -241,42 +1247,102 @@ $F$和摄氏温标度数$c$，因为不存在低于绝对零度的温度，因
     
 \end{example}
 
-
-
 \begin{solution}
     
 \end{solution}
 
+\section{反函数和它的图象}
+
+在研究一个问题的时候，不只是把两个变量之间的函数
+关系表示成$y$是$x$的函数，有时也需要把$x$表示为 $y$的函
+数，例如，在自由落体运动中，如果想从已知的时间$t$来确
+定路程$s$, 则$s$是$t$的函数
+\begin{equation}
+    s=\frac{1}{2}gt^2
+\end{equation}
+如果反过来，
+想从已知的路程$s$来确定下落的时间$t$, 则应从(8.XX)式将$t$
+解出：
+\begin{equation}
+    t=\sqrt{\frac{2s}{g}}
+\end{equation}
+这时，$t$是$s$的函数。
+
+从这里看出，这两个函数$s=f(t)=\frac{1}{2}gt^2$和$t=g(s)=
+\sqrt{\frac{2s}{g}}$，
+其实是同一种关系的两种表示法，我们把这样的两
+个函数$f$和
+$g$ 叫做互为反函数。
+
+\begin{example}
+    若$x\in\mathbb{R}$, $y\in\mathbb{R}$, 那么，函数
+\[f:\; y=f(x)=2x+3,\qquad g:\; x=g(y)=\frac{y-3}{2}\]
+互为反函数。
+\end{example}
 
 
+\begin{example}
+ 若$x\in X=\{x|0\le x\le 1\}$, $y\in Y=\{y|0\le y\le 1\}$，而$x,y$之间的关系是$x^2+y^2=1$, 则函数
+\[\begin{split}
+  f:\; y&=f(x)=\sqrt{1-x^2}\\
+g:\; x&=g(y)=\sqrt{1-y^2}   
+\end{split}\]
+互为反函数，因为在上述关系$x^2+y^2=1$中，$x,y$是对称的，
+所以$f$和$g$是同一形式的函数。在一般情况下$f$和$g$是不同
+形式的函数。
+\end{example}
+
+必须注意，不能认为从每一个函数$y=f(x)$都能解得一
+个反函数$x=g(y)$. 例如，如果两个变数$x,y$之间的关系是
+$y=x$, 定义域$X=\{x|x\in\mathbb{R}\}$, 值域$Y=\{y|y\ge 0\}$, 那么：
+$f:\; y=x,\; x\in (-\infty,+\infty)$是$X\mapsto Y$的函数。但是，如果
+不对自变数$x$加以限制，这个函数$f$是不可逆的，也就是由它
+不能得到一个新函数$g:\; Y\mapsto X$. 因为，对于每个$y(\ne 0)\in Y$, 
+将有$X$中两个数值$x=\sqrt{y}$和$x=-\sqrt{y}$和$y$对应，
+如下图所示：
+
+\begin{figure}[htp]
+    \centering
+
+    \caption{}
+\end{figure}
 
 
+下面我们来说明具有怎样性质的函数才有反函数。
 
+假如函数$y=f(x)$具有这样的性质：“若$x_1\ne x_2\; \Rightarrow\; f(x_1)\ne f(x_2)$, 也就是说对于定义域$X$中任意不同的$x_1$, $x_2$, 它们在值域$Y=f(X)$中的对应值$f(x_1)$, $f(x_2)$也不相同”。那么
+对于$Y=f(X)$内任何一个$y$, 通过函数$f$, 可以逆对应出一
+个且只有一个$x$, 使得$y$和这个$x$对应，这样一个函数叫做由
+$X$到$Y=f(X)$的一一对应函数，或双射（满射且单射），简
+称这个函数是\textbf{可逆}的。对于一个可逆函数$f:\; x\mapsto f(x)$, 我
+们可以交换自变数与因变数的地位，于是对于$Y=f(X)$的
+每一个$y$就有$X$内唯一一个逆象$x$, 这就是说我们得到了一
+个新函数：
+\[ g:\; Y=f(X)\mapsto X,\qquad \text{使得}\; y\mapsto x=g(y)\]
+假如$y=f(x)$。
 
+新函数和原来函数的这种关系可以用下图来说明：
 
+根据上面的分析，我们得到反函数的一般定义如下：
+ 
+\begin{blk}{定义}
+    设给了一个函数$y=f(x)$, 其定义域为$X$, 值域
+为$Y=f(X)$, 如果对于$Y=f(X)$中每一个$y$值，都可以从关
+系式$y=f(x)$确定唯一的一个$x$值，则得到一个定义在$Y=
+f(X)$上而且把$f(X)=Y$映射到$X$上的以$y$为自变数的新函
+数$x=g(y)$, 这个函数称为函数$y=f(x)$的反函数。
+\end{blk}
 
+不难理解$f$也是$g$的反函数，并且函数$y=f(x)$与它
+的反函数$x=g(y)$组成的复合函数一定是一个恒等函数，即
+\[ g\big(f(x)\big)=x,\qquad f\big(g(y)\big)= y\]
+有时用符号$f^{-1}$表示反函数比较方便，如
+\[f^{-1}\big(f(x)\big)=x,\qquad f\big(f^{-1}(y)\big)=y\]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+按照函数$y=f(x)$的图象容易判断函数$y=f(x)$是否
+有反函数存在，就是在值域$Y=f(X)$内，任意给一个值$y_0$,
+作和$x$轴平行的直线$y=y_0$。如果函数$y=f(x),\; x\in X$的图
+象和直线$y=y_0$的交点多于一个，那么这个函数的反函数就
+不存在。如果只有一个交点，那么这个函数就有反函数。如
+图8.22所示。
 

@@ -24,7 +24,7 @@
 
 每取一数$y=c,\; -1\le c\le 1$, 作直线$y=c$, 可与正弦曲线
 $y=\sin x$交于无穷多个点，这些交点的横坐标是
-\[x=x_0+2k\pi\qquad \text{和}\qquad x=(π-x_0)+2k\pi\quad (k\in\mathbb{Z})\]
+\[x=x_0+2k\pi\qquad \text{和}\qquad x=(\pi -x_0)+2k\pi\quad (k\in\mathbb{Z})\]
 因此有无数多个$x$的值满足方程$\sin x =c$, 而和那个$y=c$对
 应。可见对于变数$x$的一切可能实数值来说，我们不能由函
 数$f:\mathbb{R}\to [-1,1]$, $f(x)=\sin x$得出它的反函数来。把定
@@ -346,34 +346,751 @@ $2\pi$为周期，因此，只研究它在长度为$2\pi$的区间内情形即�
 \item 画出$f(x)=\sin(3\arcsin x)$的图象。
 \end{enumerate}
 
+\section{反余弦函数}
+由余弦函数$y=\cos x$的图象（图9.5）看出，函数$y=\cos x$
+在闭区间$[2k\pi ,(2k+1)\pi ]$上，由1下降到$-1$, 而在闭区间
+$[(2k-1)\pi ,2k\pi]$上，由$-1$上升到1; 因此，对于上述每一
+个单调区间，函数$y=\cos x$都带来一个反函数。
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=.6]
+\draw[->] (-7,0)--(12.5,0)node[right]{$x$};
+\draw[->] (0,-2)--(0,2)node[right]{$y$};
+\foreach \x/\xtext in {-3/-\frac{3\pi}{2},-1/-\frac{\pi}{2},1/\frac{\pi}{2},3/\frac{3\pi}{2},5/\frac{5\pi}{2},7/\frac{7\pi}{2}}
+{
+    \draw(\x*pi/2, 0)node[below]{$\xtext$}--(\x*pi/2,.2);
+}
+\foreach \x/\xtext in {-1/-\pi, 1/\pi, 2/2\pi, 3/3\pi}
+{
+    \draw(\x*pi, 0)--(\x*pi,.2)node[above]{$\xtext$};
+}
+\draw [domain=-2*pi:3.5*pi, samples=100, very thick]plot(\x, {cos(\x r)});
+\node at (-.4,-.4){$O$};
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+\begin{blk}{定义2 }
+    函数$y=\cos x$在闭区间$[0,\pi]$上的反函数叫做\textbf{反
+余弦函数}或\textbf{反余弦}，记作
+\[x=\arccos y\]
+它的定义域是闭区间$[-1,1]$。
+\end{blk}
+
+用几何名词来叙述这个定义，便是（互换字母$x$、$y$的
+位置）：在闭区间$-1\le x\le 1$上，数$x$的反余弦
+$y=\arccos x$
+是在闭区间$[0,\pi]$的一个角或弧，它的余弦值等于$x$, 即
+$\cos y=x$。
+
+\begin{example}
+    求下列各式的值（口答）：
+    \begin{multicols}{2}
+\begin{enumerate}
+    \item $\arccos\frac{1}{2}$
+    \item $\arccos\left(-\frac{1}{2}\right)$
+    \item $\arccos1$
+    \item $\arccos0$
+\end{enumerate}
+    \end{multicols}
+\end{example}
+
+\begin{solution}
+\begin{enumerate}
+    \item $\arccos\frac{1}{2}=\frac{\pi}{3}$，因为$\cos\frac{\pi}{3}=\frac{1}{2}$，而且$0<\frac{\pi}{3}<\pi$。
+    \item $\arccos\left(-\frac{1}{2}\right)=\frac{2\pi}{3}$，因为$\cos\frac{2\pi}{3}=\cos\left(\pi-\frac{\pi}{3}\right)=\frac{1}{2}$，而且$0<\frac{2\pi}{3}<\pi$。
+    \item $\arccos1=0$，因为$\cos 0=1$而且0不出$[0,\pi]$的界限。
+    \item $\arccos0=\frac{\pi}{2}$，因为$\cos\frac{\pi}{2}=1$，而且$0<\frac{\pi}{2}<\pi$。
+\end{enumerate}
+\end{solution}
+
+由反余弦函数的定义和反函数的定理得到反余弦的性质
+如下：
+\begin{enumerate}
+\item $\arccos(\cos y)=y,\; 0\le y\le \pi,\qquad \cos(\arccos x)=x,\; -1\le x\le 1$
+\item 函数$f(x)=\arccos x$在闭区间$[-1,1]$上，由$\pi$下
+降到0, 且连续。
+\item 我们知道互补的两个角$\alpha$和$\pi-\alpha$的余弦是相反
+数，即
+\[\cos(\pi-\alpha)=-\cos\alpha\]
+反之，在区间$[-1,1]$内的相反数的反余弦互为补角，即
+\[\arccos(-x)=\pi-\arccos x,\qquad x\in [-1,1]\]
+
+\item 反余弦函数$y=\arccos x$的图象如图9.6所示。
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=1.8]
+    \draw[->] (-2,0)--(2,0)node[right]{$x$};
+    \draw[->] (0,-.5)--(0,3.5)node[right]{$y$};
+\draw[domain=-1:1, samples=1000, very thick] plot(\x, {acos(\x)*pi/180});
+\node at (.1,-.1){$O$};
+\foreach \x/\xtext in {-1/-1,1/1,-.4/-x,.4/x}
+{
+    \draw (\x,0)node[below]{$\xtext$}--(\x,.1);
+}
+\node at (0,.5*pi) [right]{$\frac{\pi}{2}$};
+\node at (-1,pi) [left]{$y=\arccos x$};
+\draw[dashed](-1,0)--(-1,pi)--(0,pi)node[right]{$\pi$};
+\draw[dashed](-.4,0)--(-.4,1.98)--(0,1.98)node[right]{$\arccos(-x)$};
+\draw[dashed](.4,0)--(.4,1.16)node[right]{$\arccos x$}--(0,1.16);
+
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+\end{enumerate}
+
+\begin{proof}
+    因为$0\le \arccos(-x)\le \pi$, 又$0\le \pi -\arccos x\le x$
+而且
+\[\cos(\pi -\arccos x)=-\cos(\arccos x)=-x\]
+由余弦函数在$[0,\pi]$ 上是单调的，得到
+\[\pi -\arccos x=\arccos (-x)\]
+\end{proof}
+
+\begin{example}
+    求下列各式的值：
+$\arccos\left(-\frac{\sqrt{2}}{2}\right),\qquad \arccos(-0.9695)$
+\end{example}
+
+
+\begin{solution}
+\[\arccos\left(-\frac{\sqrt{2}}{2}\right)=\pi-\arccos\left(\frac{\sqrt{2}}{2}\right)=\pi-\frac{\pi}{4}=\frac{3\pi}{4}\]
+\[\begin{split}
+    \arccos(-0.9695)&=180^{\circ}-\arccos0.9695\\
+    &=180^{\circ}-14^{\circ}11'=165^{\circ}49'\approx 165.82^{\circ}\\
+    &\approx 0.9212\pi\approx 2.894\text{弧度}
+\end{split}\]
+\end{solution}
+
+
+\begin{example}
+求$\tan\left[\arccos\left(-\frac{2\sqrt{2}}{3}\right)\right]$的值。
+\end{example}
+
+\begin{solution}
+设$\arccos\left(-\frac{2\sqrt{2}}{3}\right)=\alpha$，其中$0\le \alpha\le \pi$，那么，$\cos\alpha=-\frac{2\sqrt{2}}{3}$，由于$0\le\alpha\le \pi$和$\cos\alpha<0$。可以知道$\alpha$是第二象限的角，所以
+\[\tan\alpha=-\sqrt{\frac{1}{\cos^2\alpha}-1}=-\sqrt{\frac{9}{8}-1}=-\sqrt{\frac{1}{8}}=-\frac{\sqrt{2}}{4}\]
+\end{solution}
+
+
+\begin{example}
+证明：若$|x|\le 1$，则$\arcsin x+\arccos x=\frac{\pi}{2}$
+
+\end{example}
+
+\begin{proof}
+ $\because\quad    \sin\left(\frac{\pi}{2}-\arccos x\right)=\cos(\arccos x)=x$
+
+    又    $\sin(\arcsin x)=x$, 且
+  \[  0\le \arccos x\le \pi,\qquad -\frac{\pi}{2}\le \frac{\pi}{2}-\arccos x\le \frac{\pi}{2}\]
+
+$\therefore\quad \arcsin x$和$\frac{\pi}{2}-\arccos x$是$\sin x$在单调区间$\left[-\frac{\pi}{2},\frac{\pi}{2}\right]$上的角。
+
+根据$\sin x$在这区间上的单调性，有
+$\arcsin x=\frac{\pi}{2}-\arccos x$
+即：
+\[\arcsin x+\arccos x=\frac{\pi}{2}\]
+\end{proof}
+
+\begin{example}
+证明：$\arcsin\frac{4}{5}+\arccos\frac{12}{13}+\arcsin\frac{16}{65}=\frac{\pi}{2}$
+\end{example}
+
+\begin{proof}
+\[\begin{split}
+    \arcsin\frac{4}{5}+\arccos\frac{12}{13}&=\frac{\pi}{2}-\arcsin\frac{16}{65}\\
+&=\arccos\frac{16}{65}
+\end{split}\]
+    
+令$\alpha=\arcsin\frac{4}{5}$，则$\sin\alpha=\frac{4}{5}$，$0<\alpha<\frac{\pi}{2}$，$\cos\alpha=\frac{3}{5}$。
+
+令$\beta=\arccos\frac{12}{13}$，则$\cos\beta=\frac{12}{13}$，$0<\beta<\frac{\pi}{2}$，$\sin\beta=\frac{5}{13}$。
+
+因此：\[\begin{split}
+    \cos(\alpha+\beta)&=\cos\alpha\cos\beta-\sin\alpha\sin\beta\\
+    &=\frac{3}{5}\cdot \frac{12}{13}-\frac{4}{5}\cdot \frac{5}{13}=\frac{16}{65}
+\end{split}\]
+
+$\because\quad 0<\alpha+\beta<\pi$, $\therefore\quad \alpha+\beta=\arccos\frac{16}{65}$，即：
+\[\arcsin\frac{4}{5}+\arccos\frac{12}{13}=\arccos\frac{16}{65}=\frac{\pi}{2}-\arcsin\frac{16}{65}\]
+
+\[\therefore\quad \arcsin\frac{4}{5}+\arccos\frac{12}{13}+\arcsin\frac{16}{65}=\frac{\pi}{2}\]
+\end{proof}
+
+在余弦函数的其它单调区间内，其反函数可按下列方式
+去找：
+
+\begin{blk}{命题1}
+\begin{enumerate}
+    \item 在闭区间$[2k\pi ,(2k+1)\pi]$ 上，$y=\cos x$由
+    1下降到$-1$, 在这些闭区间上的反函数是
+ \[   x=\arccos y+2k\pi \]
+    事实上，角$x\in [2k\pi ,(2k+1)\pi]$, 而且它的余弦等于$y$。
+    \item 在闭区间$[(2k-1)\pi ,2k\pi]$ 上，$y=\cos x$的反函数
+    是
+\[    x=-\arccos y+2k\pi \]
+    证明相仿。
+\end{enumerate}
+\end{blk}
+
+\begin{example}
+    讨论函数$y=\arccos(\cos x)$的图象。
+\end{example}
+
+\begin{solution}
+因为$\cos x$的周期是$2\pi$, 函数$\arccos(\cos x)$也是周期函
+数，周期是$2\pi$, 且
+\[\cos y=\cos[\arccos(\cos x)]\]
+即：
+$\cos y=\cos x$, 这里$0\le y\le \pi$, $x\in\mathbb{R}$根据上面的命题，
+知道：
+\begin{enumerate}
+    \item 当$x\in[2k\pi ,(2k+1)\pi]$ 时，$x=y+2k\pi$, 即
+$y=x-2k\pi$；
+\item  当$x\in[(2k-1)\pi ,2k\pi]$ 时，$x=-y+2k\pi$, 即
+$y=-x+2k\pi$。
+\end{enumerate}
+函数$y=\arccos(\cos x)$的图象是折线（图5.7）。
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=.34]
+    \draw[->] (-14,0)--(21,0)node[right]{$x$};
+    \draw[->] (0,-1.5)--(0,7.5)node[right]{$y$};
+\foreach \x in {-4,-2,...,4}
+{
+    \draw[very thick] (\x*pi,0)--(\x*pi+pi,pi)--(\x*pi+pi+pi,0);
+}
+\foreach \x in {-4,-3,-2,2,3,4,5,6}
+{
+    \draw (\x*pi,0)node[below]{$\x\pi$}--(\x*pi,.4);
+}
+\foreach \x/\xtext in {-1/-\pi,1/\pi}
+{
+    \draw (\x*pi,0)node[below]{$\xtext $}--(\x*pi,.4);
+}
+\node at (.7,-.7){$O$};
+
+
+\end{tikzpicture}    
+    \caption{}
+\end{figure}
+\end{solution}
+
+
+\section*{习题9.2}
+\addcontentsline{toc}{subsection}{习题9.2}
+
+\begin{enumerate}
+    \item 用反余弦的形式表示下列各式的角（$x\in[0,\pi]$）。
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\cos\pi =1$
+    \item $\cos\frac{5\pi}{3}=-\frac{1}{2}$
+    \item $\cos(-3)=-0.9900$
+    \item $\cos\frac{7\pi}{6}=-\frac{\sqrt{3}}{2}$
+    \item $\cos x=-0.8065$
+    \item $\cos x=-1$
+\end{enumerate}
+\end{multicols}
+
+\item 决定下面差的符号：
+\begin{multicols}{2}
+\begin{enumerate}
+ \item $\arccos0.7-\arccos0.5$
+\item $\arccos\left(-\frac{3}{5}\right)-\arccos\left(-\frac{3}{4}\right)$
+\item $\arccos\left(\sin\frac{\pi}{12}\right)-\arccos\left(\sin\frac{\pi}{13}\right)$
+\end{enumerate}
+\end{multicols}
+\item 不作计算，确定下列各比的符号：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\frac{\arcsin0.85-\arcsin0.8}{\arccos0.85-\arccos0.8}$
+    \item $\frac{\pi -2\arcsin(0.9)}{\pi -2\arccos(0.1)}$
+    \item $\frac{\arcsin(0.4)+\frac{\pi}{6}}{\arcsin(0.6)-\frac{\pi}{3}}$
+\end{enumerate}
+\end{multicols}
+
+\item 在同一个坐标系中，作函数$y=\arccos x$
+和函数$y=\arccos\frac{x}{2}$
+的图象，试根据函数图象说明当$x$为何值时，函数
+的差$\arccos\frac{x}{2}-\arccos x$
+取最大值、最小值、等于零。
+\item 计算下列各式的值：
+\begin{multicols}{2}
+    \begin{enumerate}
+\item $\sin \left(\arccos \frac{1}{2}\right)$
+\item $\sin \left(\arccos \frac{3}{5}\right)$
+\item $\tan \left(\arccos \frac{5}{13}\right)$
+\item $\arcsin (\cos 1)$
+\item $\arccos (\cos 2 \pi)$
+\item $\arccos \left(-\cos \frac{36}{7} \pi\right)$
+\item $\sin \left(\frac{1}{2} \arccos \frac{1}{2}\right)$
+\item $\sin \left[3 \arccos \left(-\frac{\sqrt{3}}{2}\right)\right]$
+\item $\sin \left[2 \arccos \left(-\frac{2 \sqrt{2}}{3}\right)\right]$
+\item $\cos \left(\arcsin \frac{3}{5}-\arccos \frac{5}{13}\right)$    
+\item $\sin\left[2\left(\arcsin\frac{\sqrt{5}}{3}-\arccos\frac{\sqrt{5}}{3}\right)\right]$
+    \item $\tan\left(\arcsin\frac{1}{2}+\arccos\frac{\sqrt{3}}{2}\right)$
+    \end{enumerate}
+\end{multicols}
+
+\item 证明下面的恒等式：
+\begin{enumerate}
+\item 若$0<x<1$, 则：
+$\arcsin x=\arccos\sqrt{1-x^2}$
+\item 若$0<x<1$, 则：
+$\arccos x=\arcsin\sqrt{1-x^2}$
+\item 若$-1\le x\le 0$, 则：
+$\arcsin x=-\arccos\sqrt{1-x^2}$
+\item 若$-1\le x\le 0$, 则：
+$\arccos x=\pi-\arcsin\sqrt{1-x^2}$
+\end{enumerate}
+
+\item 解下面的方程：
+    \begin{enumerate}
+\item $\arccos x=\frac{\pi}{3}$
+\item $\arccos 2x=0.5$
+\item $\arcsin x=\arccos x,\; |x|\le 1$
+\item $\arcsin x+\arcsin (1-x)=\arccos x$
+\item $\arcsin x-\arccos x=\arcsin (3x-2)$
+    \end{enumerate}
+
+\item 当$-\frac{1}{2}\le x\le 0$时，求$f(x)
+=\arccos x+x^2$的最小值。
+\end{enumerate}
+
+\section{反正切函数}
+
+由正切函数$y=\tan x$的图象（图9.8）可以看出，函数$\tan x$
+在每个开区间$\left(-\frac{\pi}{2}+2k\pi, \frac{\pi}{2}+2k\pi\right)$内，由$-\infty$上升到$+\infty$。
+所以在每个这样的开区间里能带来一个反函数。
+
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, xscale=.7]
+    \draw[->] (-5.5,0)--(6.5,0)node[right]{$x$};
+\draw[->] (0,-3)--(0,3.5)node[right]{$y$};
+\foreach \x in {-.5,.5,1.5,-1.5}
+{
+    \draw[dashed] (\x*pi,-3)--(\x*pi,3);
+}
+
+\foreach \y in {-.5,.5,-1.5}
+{
+    \draw [domain=\y*pi+.35:(\y+1)*pi-.35, samples=1000, very thick] plot(\x, {tan(\x r)});
+}
+
+\node at (.25,-.2){$O$};
+\node at (-pi,0)[below]{$-\pi$};
+\node at (pi,0)[above]{$\pi$};
+
+\node at (-.5*pi+.2,0)[below]{$-\frac{\pi}{2}$};
+\node at (.5*pi+.2,0)[below]{$\frac{\pi}{2}$};
+\node at (1.5*pi+.2,0)[below]{$\frac{3\pi}{2}$};
+\node at (-1.5*pi+.2,0)[below]{$-\frac{3\pi}{2}$};
+\end{tikzpicture}
+    \caption{}
+
+\end{figure}
+
+
+
+\begin{blk}{定义3}
+    函数$y=\tan x$在开区间$-\frac{\pi}{2}<x<\frac{\pi}{2}$
+内的反函数叫做反正切函数 或 反正
+切，记作
+\[x=\arctan y\]
+因为任何实数都可以作为正
+切的值，所以反正切定义域是开区间$-\infty<y<+\infty$
+\end{blk}
+
+用几何名词来叙述反正
+切的定义就是：在开区间
+$(-\infty, +\infty)$内，数$y$的反
+正切$x=\arctan y$是在开区间$-\frac{\pi}{2}<x<\frac{\pi}{2}$
+内的一个角或弧，它的正切等于$y$，即：$\tan x=y$。
+
+由定义和反函数定理直接得到反正切的性质如下：
+\begin{enumerate}
+    \item $\arctan (\tan x)=x, \qquad -\frac{\pi}{2}<x<\frac{\pi}{2}$
+    
+    $\tan (\arctan y)=y,\qquad -\infty<x<+\infty$
+    \item $y=\arctan x,\; x\in\mathbb{R}$是单调递增的并且连续；
+    \item $\arctan x$是奇函数，即
+    \[\arctan (-x)=-\arctan x\]
+    证明留给同学们去完成。
+    \item 反正切函数$y=\arctan x,\; -\infty<x<+\infty$的图象如
+    图5.9所示。
+\end{enumerate}
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=.7]
+    \draw[->] (-5.5,0)--(6.5,0)node[right]{$x$};
+    \draw[->] (0,-3)--(0,3)node[right]{$y$};
+\draw[dashed] (-5.5,pi/2)--(6.5,pi/2);
+\draw[dashed] (-5.5,-pi/2)--(6.5,-pi/2);
+
+\draw [domain=-5.5:5.5, samples=100, very thick]plot(\x, {atan(\x)*pi/180});
+\node at (.35,-.35){$O$};
+\node at (0,2)[right]{$\frac{\pi}{2}$};
+\node at (0,-2)[right]{$-\frac{\pi}{2}$};
+\node at (5.5,pi/2-.3)[right]{$y=\arctan x$};
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+
+
+\begin{example}
+    求下列各式的值（口答）：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\arctan 1$
+    \item $\arctan (-1)$
+    \item $\arctan \sqrt{3}$
+    \item $\arctan (-\sqrt{3})$
+\end{enumerate}
+\end{multicols}
+\end{example}
+
+\begin{solution}
+\begin{enumerate}
+    \item $\arctan 1=\frac{\pi}{4}$，因为$\tan\frac{\pi}{4}=1$，而且$-\frac{\pi}{2}<\frac{\pi}{4}<\frac{\pi}{2}$
+    \item $\arctan (-1)=-\frac{\pi}{4}$，因为$\tan\left(-\frac{\pi}{4}\right)=-1$，而且$-\frac{\pi}{2}<-\frac{\pi}{4}<\frac{\pi}{2}$
+    \item $\arctan \sqrt{3}=\frac{\pi}{3}$，因为$\tan\frac{\pi}{3}=\sqrt{3}$，而且$-\frac{\pi}{2}<\frac{\pi}{3}<\frac{\pi}{2}$
+    \item $\arctan (-\sqrt{3})=-\frac{\pi}{3}$，因为$\tan\left(-\frac{\pi}{3}\right)=-\sqrt{3}$，而且$-\frac{\pi}{2}<-\frac{\pi}{3}<\frac{\pi}{2}$
+\end{enumerate}
+\end{solution}
+
+\begin{example}
+    求$\cos\left[\arctan\left(-\frac{3}{4}\right)\right]$
+\end{example}
+
+\begin{solution}
+设$\alpha=\arctan\left(-\frac{3}{4}\right)$，其中$-\frac{\pi}{2}<\alpha<\frac{\pi}{2}$，则$\tan\alpha=-\frac{3}{4}$。
+
+由于$-\frac{\pi}{2}<\alpha<\frac{\pi}{2}$和$\tan\alpha<0$，可以知道$\alpha$是第四象限的角。所以
+\[\begin{split}
+    \sec\alpha&=\sqrt{1+\tan^2\alpha}=\sqrt{1+\frac{9}{16}}=\frac{5}{4}\\
+    \cos\alpha&=\frac{4}{5}
+\end{split}\]
+就是
+\[\cos\left[\arctan\left(-\frac{3}{4}\right)\right]=\cos\alpha=\frac{4}{5}\]
+\end{solution}
+
+关于$y=\tan x$在其它单调区间内的反函数，请看下面命题。
+
+\begin{blk}{命题}
+    在开区间$\left(-\frac{\pi}{2}+k\pi ,\frac{\pi}{2}+k\pi 
+\right)$，$k\in\mathbb{Z}$内$y=\tan x$
+由$-\infty$上升到$+\infty$, 在这些区间上的反函数是
+$x=\arctan y+k\pi$。
+\end{blk}
+
+事实上，$x\in \left(-\frac{\pi}{2}+k\pi ,\frac{\pi}{2}+k\pi 
+\right)$而
+且
+\[\tan x=\tan (\arctan y+k\pi )=\tan (\arctan y)=y\]
 
 
 
 
+\begin{example}
+    求$\arctan 2+\arctan 3$的值。
+\end{example}
+
+\begin{solution}
+    $\because\quad \frac{\pi}{4}=\arctan 1<\arctan 2<\frac{\pi}{2}$，$\frac{\pi}{4}=\arctan 1<\arctan 3<\frac{\pi}{2}$，
+
+    $\therefore\quad \frac{\pi}{2}<\arctan 2+\arctan 3<\pi$。而且
+\[\begin{split}
+    \tan(\arctan 2+\arctan 3)&=\frac{\tan (\arctan 2)+\tan (\arctan  3)}{1-\tan(\arctan 2)\cdot \tan (\arctan 3)}\\
+    &=\frac{2+3}{1-2\x 3}=-1
+\end{split}\]
+由于$\arctan (-1)\in \left(-\frac{\pi}{2},0\right)$，于是
+\[\arctan 2+\arctan 3=\arctan (-1)+\pi=-\frac{\pi}{4}+\pi=\frac{3\pi}{4}\]
+\end{solution}
+
+\begin{example}
+    讨论 $y=\arctan (\tan x)$的图象。
+\end{example}
+
+\begin{solution}
+函数$\arctan (\tan x)$的定义域是除去$x=\frac{\pi}{2}+k\pi,\; k\in\mathbb{Z}$
+的实数集$\mathbb{R}$, 也就是无数个开区间$\left(-\frac{\pi}{2}+k\pi,\frac{\pi}{2}+k\pi\right),\; k\in\mathbb{Z}$
+所组成的一个并集。因此函数$y=\arctan (\tan x)$的图象在
+$x=\frac{\pi}{2}+k\pi,\; k\in\mathbb{Z}$这些点处间断。由于
+\[\tan y=\tan[\arctan(\tan x)]\]
+即：
+$\tan y=\tan x$, 这里$-\frac{\pi}{2}<y<\frac{\pi}{2}$, $x\ne \frac{\pi}{2}+k\pi$。
+
+所以，当$x\in\left(-\frac{\pi}{2}+k\pi,\frac{\pi}{2}+k\pi\right)$时，$x=y+k\pi$, 也就是$y=x-k\pi$。于是：
+\begin{itemize}
+    \item 当$x\in\left(-\frac{\pi}{2},\frac{\pi}{2}\right)$时，$y=x$；
+    \item 当$x\in\left(\frac{\pi}{2},\frac{3\pi}{2}\right)$时，$y=x-\pi$；
+    \item 当$x\in\left(\frac{3\pi}{2},\frac{5\pi}{2}\right)$时，$y=x-2\pi$；
+    \item ………………
+    \item 当$x\in\left(-\frac{3\pi}{2},-\frac{\pi}{2}\right)$时，$y=x+\pi$；
+    \item ………………
+\end{itemize}
+现在考虑间断点的情形：
+
+\end{solution}
 
 
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
 
 
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
 
 
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
 
 
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
 
 
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
 
 
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
 
 
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
 
 
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
 
 
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
 
 
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
 
 
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
 
 
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
 
 
 

@@ -10,7 +10,7 @@
 {\ding{195}}{\ding{196}}{\ding{197}}{\ding{198}}{\ding{199}}{\ding{200}}{\ding{201}}}
 \setfnsymbol{circled}
 
-
+\usepackage{ulem}
 
 \usepackage{amsmath,amsfonts,mathrsfs,amssymb}
 \usepackage{graphicx}
@@ -29,7 +29,7 @@
 \usepackage{bm}
 \usepackage[colorlinks=true, linkcolor=black]{hyperref}
 
-%\usepackage{enumerate}
+\usepackage{enumerate}
 
 
 \theoremstyle{plain}
@@ -40,9 +40,8 @@
 \usepackage[framemethod=tikz]{mdframed}
 
 
-
 \newtheorem{example}{\bf 例}[chapter]
-\newenvironment{solution}{\noindent {\bf 解：}}{}  %{\hfill $\clubsuit$\par}
+\newenvironment{solution}{\noindent {\bf 解：}}{}
 \newenvironment{analyze}{\noindent {\bf 分析：}}{}
 \newenvironment{rmk}{\noindent {\bf 注意：}}{}
 \newenvironment{note}{\noindent {\bf 说明：}}{}
@@ -66,23 +65,7 @@
  \tcbuselibrary{breakable}
  \tcbuselibrary{most}
 
-% \tcolorboxenvironment{tl}{colback = cyan!5!white, colframe = cyan!75!black,
-%     colbacktitle = cyan!85!black, enhanced,  breakable}
 
-% \tcolorboxenvironment{thm}{colback = magenta!5!white, colframe = magenta!75!black, 
-%     colbacktitle = magenta!85!black, enhanced,     breakable}
-
-% \tcolorboxenvironment{yl}{colback = red!5!white, colframe = red!75!black, 
-%     colbacktitle = red!85!black, enhanced,     breakable}
-
-% \tcolorboxenvironment{defn}{colback = blue!5!white, colframe = blue!75!black,
-%     colbacktitle = blue!85!black, enhanced,    breakable
-% }
-
-
-% \tcolorboxenvironment{ex}{colback = cyan!5!white, colframe = cyan!75!black, fonttitle = \bfseries,
-%    colbacktitle = cyan!85!black, enhanced,
-%    attach boxed title to top center={yshift=-2mm}, breakable}
 
 \newtcolorbox{ex}[1][]
   {colback = white, colframe = cyan!75!black, fonttitle = \bfseries,
@@ -118,7 +101,8 @@ subsubsection = {
 }
 
 
-
+\usepackage{polynom}
+\usepackage{polynomial}
 \renewcommand{\contentsname}{目~~录}
 
 \newcommand{\poly}{\polynomial[reciprocal]}
@@ -138,17 +122,16 @@ subsubsection = {
 
 \usepackage{yhmath}
 \usepackage{longdivision}
-\usepackage{polynom}
-\usepackage{polynomial}
-\usepackage{multicol}
+
+\usepackage{cancel}
 
 \renewcommand{\frac}{\dfrac}
 \newcommand{\oc}{$^{\circ}{\rm C}$}
-\usepackage{longtable}
+\newcommand{\Lim}{\displaystyle\lim}
 
+\usepackage{multicol}
 \usepackage{cases}
 \begin{document}
-%\fontsize{10.5}{11}\selectfont
 
 
 
@@ -168,7 +151,7 @@ subsubsection = {
 
 
 \author{中学数学实验教材编写组编}
-\date{1981年6月}
+\date{1982年7月}
 
 \maketitle
 
@@ -177,38 +160,23 @@ subsubsection = {
 
 \frontmatter
 
-%\input{preface.tex}
+\input{preface.tex}
 \tableofcontents
 
 
 \mainmatter
 
- \input{1.tex}
+%  \input{1.tex}
 
-\input{2.tex}
-\input{3.tex}
-\input{4.tex}
-%\input{5.tex}
-%\input{6.tex}
-%\input{7.tex}
-\input{tmp-tikz.tex}
-  
-
-
-
-%\input{app1.tex}
-%\backmatter
-%\input{app2.tex}
-
-
-
-%\begin{appendix}
-%	\input{app3.tex}
-%\end{appendix}
-
-
-
-
+%  \input{2.tex}
+%  \input{3.tex}
+% \input{4.tex}
+%  \input{5.tex}
+  \input{6.tex}
+%   \input{7.tex}
+   \input{8.tex}
+   \input{9.tex}
+%  \input{10.tex}
 
 
 
