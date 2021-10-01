@@ -736,74 +736,501 @@ $a^n>b^n$。
 $x$是一个实数，当$x$是一个非负数时，$x$的绝对
 值$|x|$是它本身；当$x$是一个负数时，$x$的绝对值$|x|$是$x$
 的相反数。
-
-
-
+\begin{equation}
+|x|=\begin{cases}
+    x,&x\ge 0\\
+    -x,&x<0
+\end{cases}
+\end{equation}
 \end{blk}
 
-
-
-
-
-
-
-
+我们也可以说，当$x$不为零时，$|x|$是$x$和$-x$两数之中
+的较大者；当$x$为零时，$|x|$则等于二者之中任何一个。即
+\begin{equation}
+    \begin{split}
+        |x|&=\max\{x,-x\},\qquad (x\ne 0)\\
+        |x|&=x=-x,\qquad (x=0)
+    \end{split}
+\end{equation}
 
 \begin{example}
-    
+\[|5|=\max\{5,-5\}=5,\qquad |-5|=\max\{5,-5\}=5,\qquad |0|=0\]
 \end{example}
 
+\subsubsection{$|x|$的几何意义}
+在$Oxy$平面内，$P(x,0)$和原点$O(0,0)$之间的距离是
+\[d=\sqrt{(x-0)^2+(0-0)^2}=\sqrt{x^2}=|x|\]
+因此我们可以说$|x|$是$P(x,0)$点离开原点有$x$单位的
+\textbf{距离}。
+
+图6.10说明$|x_2|=|P_2O|$, $|x_1|=|OP_1|$, 其中$x_2<0$,
+$x_1>0$。
+\begin{figure}[htp]
+    \centering
+ \begin{tikzpicture}[>=latex]
+\draw(-.5,0)--(8,0)node[right]{$x$};
+\foreach \x/\xtext in {0/x_2,4/0,7/x_1}
+{
+    \draw (\x,0)node[below]{$\xtext$}--(\x,.2);
+}
+\draw[|<->|](0,.35)node[above]{$P_2$}--node[fill=white]{$|x_2|$}(4,.35);
+\draw[|<->|](7,.35)node[above]{$P_1$}--node[fill=white]{$|x_1|$}(4,.35);
+
+ \end{tikzpicture}
+    \caption{}
+\end{figure}
+
+如果我们要在$x$轴上描述距离原点不超过2个单位的点
+集，我们把这个条件可以直接写成
+\begin{equation}
+    |x|\le 2
+\end{equation}
+这个不等式的解集是位于以原点$O$为中心，长度等于4的线
+段上的一切点。下图说明这些点的位置。
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex]
+    \draw[->](-4,0)--(4,0)node[right]{$x$};
+    \foreach \x in {-2,0,2}
+    {
+        \draw(\x,0)node[below]{$\x$}--(\x,.1);
+    }
+    \draw[thick] (-2,0)--(-2,.5)--(4,.5);
+    \draw[thick] (2,0)--(2,.8)--(-4,.8);
+    \foreach \x in {-1,1}
+    {
+        \draw(\x,0)--(\x,.1);
+    }
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+从上面看出这些点的坐标满足不等式
+\begin{equation}
+    -2\le x\le 2
+\end{equation}
+这就是说(6.3)和(6.4)是等价的不等式。
+今后我们将经常遇到的不等式具有下面的形式
+\begin{equation}
+    |x-a|<3
+\end{equation}
+
+$|x-a|=\sqrt{(x-a)^2}$的几何意义是$x$轴上的$P(x,0)$点
+离开$A(a,0)$点的距离。因此已给的不等式是描述在$x$轴上
+距离$A(a,0)$点小于3个单位的点集，根据上面的例题的结
+论，(6.5)等价于$-3<x-a<3$。
+
+不等式的各端加$a$, 得到
+\begin{equation}
+    a-3<x<a+3    
+\end{equation}
+
+因此满足不等式(6.5)的点的坐标是在$a-3$与$a+3$之间（不
+包括$a-3$和$a+3$）。
+
+\begin{example}
+    在$x$轴上哪些点满足不等式$|x-3|\le 5$。
+\end{example}
 
 \begin{solution}
-    
+    $|x-3|\le 5$, 即$-5\le x-3\le 5$, 也即
+$$-5+3\le x\le 5+3$$
+$\therefore\quad -2\le x\le 8$
+
+这些点位于以3为中心，长度等于10个单位的线段上，
+见下图（图6.12）。
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, xscale=1.3]
+    \draw[->](-2,0)--(5,0)node[right]{$x$};
+    \foreach \x in {-2,0,2,...,8}
+    {
+        \draw(\x/2,0)node[below]{$\x$}--(\x/2,.1);
+    }
+    \foreach \x in {-1,1,...,7}
+    {
+        \draw(\x/2,0)--(\x/2,.1);
+    }
+    \draw[thick] (-1,0)--(-1,.8)--(5,.8);
+    \draw[thick] (4,0)--(4,.5)--(-2,.5);
+\end{tikzpicture}
+
+    \caption{}
+\end{figure}
+
+同样地，我们也可以解释$x>3$的几何意义，不等式
+$|x|>3$是描述在$x$轴上距离原点大于3个单位的点集，图6.13
+说明了这些点的位置，图中的圆圈表示去掉$\pm 3$, 因此这些
+点的坐标小于$-3$或大于3, 即
+\[x<-3,\quad \text{或}\quad x>3\]
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex]
+    \draw[->](-4,0)--(4,0)node[right]{$x$};
+    \foreach \x in {-3,0,1,3}
+    {
+        \draw(\x,0)node[below]{$\x$}--(\x,.1);
+    }
+    \foreach \x in {-2,-1,...,2}
+    {
+        \draw(\x,0)--(\x,.1);
+    }
+    \draw[thick] (-3,0)--(-3,.5)--(-4,.5);
+    \draw[thick] (3,0)--(3,.5)--(4,.5);
+    \foreach \x in {-3,3}
+    {
+        \draw (\x,0) [fill=white]circle(1.5pt);
+    }
+\end{tikzpicture}
+
+    \caption{}
+\end{figure}
+
+这就是说，不等式$|x|>a\; (a>0)$等价于不等式$x<-a$或
+$x>a\; (a>0)$。
 \end{solution}
 
+
 \begin{example}
-    
+    求满足不等式$(x+2)^2-16>0$的点集。
 \end{example}
 
 \begin{solution}
-    
+    移项
+\[(x+2)^2>16\]
+    两边开平方，等价于
+    \[|x+2|>4\]
+    即
+    \[\begin{split}
+        x+2<-4\qquad &\text{或}\qquad x+2>4\\  x<-6\qquad &\text{或}\qquad x>2
+    \end{split}\]
+因此，满足不等式的解集是$\{x|x<-6\}\cup\{x|x>2\}$。
+
+利用二次函数$y=(x+2)^2-16$的草图，如图6.14, 就
+更直接地得到$x<-6$或$x>2$。
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=.5]
+    \draw[->](-7,0)--(3,0)node[right]{$x$};
+    \draw[->](0,-17)--(0,1)node[right]{$y$}; 
+\draw[domain=-6.1:2.1, samples=100, thick] plot(\x,{(\x+2)*(\x+2)-16 });
+\foreach \y in {-1,-2,...,-16}
+{
+    \draw (0,\y)--(-.2,\y);
+}
+\foreach \x in {-6,-5,...,2}
+{
+    \draw (\x,0)--(\x,.2);
+}
+\node at (2.5,0)[below]{$2$};
+\node at (-6.5,0)[below]{$-6$};
+\node at (.5,-.5){$O$};
+\node at (0,-16)[right]{$-16$};
+\end{tikzpicture}
+
+    \caption{}
+\end{figure}
 \end{solution}
 
+\subsubsection{和、积、商的绝对值}
+若$a$和$b$是实数，则$a\le |a|$和$b\le |b|$, 相加得到
+\[a+b\le  |a|+|b|\]
+同样
+\[-a\le |a|\qquad \text{和}\qquad -b\le |b|\]
+于是
+\[-a-b\le |a|+|b|\]
+因为$a+b$和$-(a+b)$都不大于$|a|+|b|$, 所以这两个数中最
+大者也不大于$|a|+|b|$, 于是
+\[|a+b|=\max\{a+b,-(a+b)\}\le |a|+|b|\]
+这个结果
+\begin{equation}
+    |a+b|\le |a|+|b|
+\end{equation}
+常叫做\textbf{三角不等式}，因为它类似于三角形中任何一边小于其
+它两边之和这个定理。
+
+有时，我们需要$|a+b|$的下限估值，注意到
+\[|a|=|(a+b)-b\le |a+b| +|-b| =|a+b| +|b|\]
+因此下面不等式成立
+\begin{equation}
+    |a+b|\ge |a|-|b|
+\end{equation}
+
+若$a,b$是任何实数，则
+\[|ab|=\sqrt{(ab)^2}=\sqrt{a^2b^2}=\sqrt{a^2}\cdot \sqrt{b^2}=|a|\cdot |b|\]
+即
+\begin{equation}
+    |ab|=|a|\cdot |b|
+\end{equation}
+\[\left|\frac{a}{b}\right|=\sqrt{\left(\frac{a}{b}\right)^2}=\sqrt{\frac{a^2}{b^2}}=\frac{\sqrt{a^2}}{\sqrt{b^2}}=\frac{|a|}{|b|}\]
+即
+\begin{equation}
+    \left|\frac{a}{b}\right|=\frac{|a|}{|b|}
+\end{equation}
+
+\section*{习题6.2}
+\addcontentsline{toc}{subsection}{习题6.2}
+
+\begin{enumerate}
+    \item 解不等式组：
+\[\begin{cases}
+    \frac{x}{2}-\frac{x}{3}>-1\\
+    2(x-3)-3(x-2)<0
+\end{cases}\]
+
+\item 解不等式：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $|2x-1|<2|1-2x|-3$
+    \item $\left|\frac{3x}{x+1}-3\right|<0.01$
+    \item $|x+1|+|x-5|>3$
+    \item $\frac{3x-1}{x-5}<2$
+\end{enumerate}
+\end{multicols}
+
+\item 图示满足下面不等式组的点$(x,y)$的区域$R$.
+\[\begin{cases}
+    |x-1|+|y-5|<1\\
+y>5+|x-1|
+\end{cases}\]
+\item 试证明若$ax^2+bx+c>0$对于任何$x$都成立的充要条
+件是$a>0$且$b^2-4ac<0$。
+\item 等差数列与等比数列的首项相等且第$2n+1$项也相
+等，问第$n+1$项如何？
+\item 若$x+2y=1$, 求$xy$的最大值。
+\item 平移$y=-\frac{1}{3}x^2$使其顶点在抛物线$y=x^2$上，试求
+这样得到任何一条抛物线都不能经过的范围，并画图表示。
+\item 求证
+\begin{enumerate}
+    \item $|a+b+c|\le |a|+|b|+|c|$
+    \item $|a-b-c|\ge |a|-|b|-|c|$
+    \item $\Big| |a|-|b| \Big|\le |a+b|$
+\end{enumerate}
+
+\item \begin{enumerate}
+    \item 若$|h|<\frac{\varepsilon}{4}$, $|k|<\frac{\varepsilon}{6}$，求证$|2h-3k|<\varepsilon$。
+    \item 若$|a_n-r|<\varepsilon$，$|a_n-a_n'|<\varepsilon$，求证$|a_n'-r|<\varepsilon$。
+    \item 若$|b_n|<\varepsilon$，$|a_n-b_n|<\varepsilon$，求证$|a_n|<2\varepsilon$。
+\end{enumerate}
+
+\item 试用$a$表出从点$(0,a)$到曲线$y=\left|\frac{x^2}{2}-1\right|$上
+的点$(x,y)$的距离的最小值$(a>1)$。
+
+\item 解不等式$\sqrt{2x^2-3x-2}>x-1$。
+\end{enumerate}
+
+\subsection{几个重要的不等式}
+下面我们来推导几个常用的著名不等式。
+
 
 \begin{example}
-    
+    贝努里不等式。若$n\in\mathbb{N}$且$n\ge 2$, $a>-1$且$a\ne 0$
+（即$a>0$或$-1<a<0$），则
+\[(1+a)^n>1+na\]
 \end{example}
+
+
+\begin{proof}
+\begin{enumerate}
+    \item 对于$n=2$, 因为$(1+a)^2=1+2a+a^2$, 又$a^2>0$, 故不等式成立。
+\item 假设不等式对于$n=k$成立，即
+\[(1+a)^k>1+ka\]
+我们来证明不等式对于$n=k+1$也成立，就是说
+\[(1+a)^{k+1}>1+(k+1)a\]
+
+事实上，由假设$1+a>0$, 故不等式
+\[(1+a)^k(1+a)>(1+ka)(1+a)\]
+成立，即
+\[(1+a)^{k+1}>1+(k+1)a+ka^2\]
+将上面不等式右边舍去正项$ka^2$, 就知道
+\[(1+a)^{k+1}>1+(k+1)a\]
+成立，因此命题对于$n\ge 2$的自然数成立。
+\end{enumerate}
+\end{proof}
 
 \begin{example}
-    
+    无论多少个正数的几何平均数不大于其算术平均
+数，即
+\[\frac{a_1+a_2+\cdots+a_n}{n}\ge \sqrt[n]{a_1a_2\cdots a_n}\]
 \end{example}
 
-\begin{solution}
-    
-\end{solution}
-
-\begin{solution}
-    
-\end{solution}
+\begin{proof}
+令$A=\frac{a_1+a_2+\cdots+a_n}{n}$，则题意是说，
+\begin{equation}
+    A^n\ge a_1a_2\cdots a_n
+\end{equation}
+当$a_1=a_2=\cdots= a_n$时，则(6.11)显然成立。如果$a_1,a_2,\ldots,a_n$
+这$n$个数有不相等的，由于
+    \[nA=a_1+a_2+\cdots+a_n\]
+即：
+\[(a_1-A)+(a_2-A)+\cdots+(a_n-A)=0\]
+则必有一大于
+$A$, 也必有一小于$A$, 不妨设$a_1>A>a_2$, 于是，$A-a_1<0$,
+$A-a>0$, 把$a_1,a_2,\ldots,a_n$改换成
+\begin{equation}
+a_1'=A,\; a_2'=a_2+a_1-A,\; a_3'=a_3,\; \ldots, a_n'=a_n
+\end{equation}
+由此可见我们新得之$n$个数，其和不变，即
+\[\begin{split}
+    a'_1+a'_2+\cdots +a'_n&=A+(a_2+a_1-A)+a_3+\cdots +a_n\\
+&= a_1+a_2+\cdots +a_n\\
+&=nA
+\end{split}\]
+但其积增大，因为
+\[\begin{split}
+    A(a_2+a_1-A)-a_1a_2&=Aa_2+Aa_1-A^2-a_1a_2\\
+&=A(a_2-A)+a_1(A-a_2)\\
+&=(A-a_2)(a_1-A)>0
+\end{split}\]
+从而
+\[A(a_2+a_1-A)a_3\cdots a_n>a_1a_2\cdots a_n\]
+若(6.12)中还有不等于$A$的，比如，$a_s>A>a_m$, 我们用同法
+即用$A$取代其中较大的一个$a_c$, 用$a_m+a_s-A$代换$a_m$, 又可另
+得$n$个正数，其和同前，而其积更大。由此以往，不过$n-1$
+次，便可得$n$个相等之正数$\underbrace{A,A,\cdots A}_{\text{$n$个}}$, 此时积最大，故有
+\[A^n\ge a_1a_2\cdots a_n\]
+且当$a_1=a_2=\cdots =a_n$时，等式成立。
+\end{proof}
 
 \begin{example}
-    
+    柯西不等式，若$a_i,b_i,\; i=1,2,\cdots ,n$是实数，则
+\[(a_1b_1+a_2b_2+\cdots +a_nb_n)\le (a_1^2+a_2^2+\cdots +a_n^2)(b_1^2+b_2^2+\cdots+b_n^2)\]
+当且仅当
+$\frac{a_1}{b_1}=\frac{a_2}{b_2}=\cdots=\frac{a_n}{b_n}$
+时，等式成立。
 \end{example}
 
-\begin{example}
-    
-\end{example}
+\begin{proof}
+对于任何实数$t$, 不等式
+\begin{equation}
+    (a_1+tb_1)^2+(a_2+tb_2)^2+\cdots +(a_n+tb_n)^2\ge 0
+\end{equation}
+成立，将(6.13)的左端改写成按$t$的降幂排列，得
+\begin{equation}
+   ( b^2_1+b^2_2+\cdots +b^2_n)t^2+2(a_1b_1+\cdots +a_nb_n)t+(a^2_1+a_2^2+
++\cdots +a_n^2)\ge 0
+\end{equation} 
+设$A=a^2_1+\cdots +a_n^2$, $B=a_1b_1+\cdots +a_nb_n$,
+$C=b^2_1+\cdots +b^2_n$, 
+于是(6.14)写成
+$Ct^2+2Bt+A>0$, 其中$C\ge 0$。
+\begin{itemize}
+    \item 若$C=0$, 于是$b_1=b_2=\cdots =b_n=0$, 显然，柯西不等式
+成立。
+\item 若$C>0$, 因而$$C\left(t+\frac{B}{C}\right)^2+\left(A-\frac{B^2}{C}\right)\ge 0$$
+对于任意实数$t$成立。故令$t=-\frac{B}{C}$代入，得到
+\[A-\frac{B^2}{C}\ge 0,\qquad \text{即}\qquad \frac{AC-B^2}{C}\ge 0\]
+$\because\quad C>0,\qquad \therefore\quad B^2\le AC$, 即
+\[(a_1b_1+\cdots +a_nb_n)^2\le (a^2_1+\cdots +a^2_n)(b^2_1+\cdots +b^2_n)\]
+再由(6.13)推知当且仅当$t=\frac{a_1}{b_1}=\frac{a_2}{b_2}=\cdots=\frac{a_n}{b_n}$时，等式成立。
+\end{itemize}
+\end{proof}
 
 \begin{example}
-    
+    设$a_1,a_2,\ldots,a_n,b_1,b_2,\ldots,b_n$是实数，则
+\[\sqrt{\sum^n_{i=1}(a_i+b_i)^2}\le \sqrt{\sum^n_{i=1}a^2_i}+\sqrt{\sum^n_{i=1}b^2_i}\]
 \end{example}
 
-\begin{example}
-    
-\end{example}
+\begin{proof}
+ \[   \sum^n_{i=1}(a_i+b_i)^2=\sum^n_{i=1}a_i^2+2\sum^n_{i=1}a_ib_i+\sum^n_{i=1}b_i^2\]
+由例6.6柯西不等式知
+\[\sum^n_{i=1}a_ib_i\le\left|\sum^n_{i=1}a_ib_i\right|\le \sqrt{\sum^n_{i=1}a_i^2}\sqrt{\sum^n_{i=1}b_i^2}\]
+因此：
+\[\begin{split}
+    \sum^n_{i=1}(a_i+b_i)^2&\le \sum^n_{i=1}a_i^2+2\sqrt{\sum^n_{i=1}a_i^2}\sqrt{\sum^n_{i=1}b_i^2}+\sum^n_{i=1}b_i^2\\
+    &=\left(\sqrt{\sum^n_{i=1}a^2_i}+\sqrt{\sum^n_{i=1}b^2_i}\right)^2
+\end{split}\]
+两边开平方，取算术根即得所证。
+\end{proof}    
 
-\begin{example}
-    
-\end{example}
+\section*{习题6.3}
+\addcontentsline{toc}{subsection}{习题6.3}
 
-\begin{example}
-    
-\end{example}
+\begin{enumerate}
+   \item  若$a,b,c,d$是不相等正数，求证：
+\begin{enumerate}
+    \item $\frac{b}{a}+\frac{c}{b}+\frac{d}{c}+\frac{a}{d}>4$
+    \item $\frac{b}{\sqrt{a}}+\frac{a}{\sqrt{b}}>\sqrt{a}+\sqrt{b}$
+\end{enumerate}
+   \item  若$a_1,a_2$表示正数，$p,q$表示正整数，求证：
+\begin{enumerate}
+    \item $a_1^{p+q}+a_2^{p+q}\ge a_1^pa_2^q+a_1^qa_2^q$
+    \item $\frac{a_1^{p+q}+a_2^{p+q}}{2}\ge \left(\frac{a_1^p+a_2^p}{2}\right)\left(\frac{a_1^q+a_2^q}{2}\right)$
+\end{enumerate}
+
+\item 用数学归纳法证明：
+若$a_1>0$, $a_2>0$, $n$是正整数，则
+\[\frac{a_1^n+a_2^n}{2}\ge \left(\frac{a_1+a_2}{2}\right)^n\]
+\item 求证，当$n$是1或不小于5的自然数时，总有
+$2^n>n^2$。
+\item 设$0<a<1$, $0<x_0<1$, $x_n=a(1-x_{n-1})+
++(1-a)x_{n-1},\quad (n=1,2,3,\ldots)$,
+\begin{enumerate}
+    \item 用$a$与$x_0$表示$x_n$；
+    \item 证明 $0<x_n<1$。
+\end{enumerate}
+
+\item 设$a>2$, 给定数列$\{x_n\}$, 其中$x_1=a$, $x_{n+1}=\frac{x^2_n}{2(x_n-1)},\quad (n=1,2,3,\ldots)$，
+求证：
+\begin{enumerate}
+    \item $x_n>2$, 且$\frac{x_{n+1}}{x_n}<1$
+\item 如果$a<3$, 那么$x_n\le 2+\frac{1}{2^{n-1}}$
+\end{enumerate}
+
+\item 若长方形的体积是定值，求全面积的最小值。
+\item 求证球内接长方体中，以正方体的体积为最大。
+\item 求证在周长都为$2L$的所有三角形中，面积最大的必
+是等边三角形。
+\item 若$a,b,c$是正数且$abc=8$。
+
+求证：$\sqrt{a^2+b^2}+\sqrt{b^2+c^2}+\sqrt{c^2+a^2}\ge 3\sqrt{2}(abc)^{\tfrac{1}{3}}=6\sqrt{2}$
+
+\item 若$a>0$, $b>0$, 且$a+b=1$, 
+求证：\[\left(a+\frac{1}{a}\right)\left(b+\frac{1}{b}\right)\ge \frac{25}{4}\]
+
+\item 若$a+b+c=1$, 且$a>0$, $b>0$, $c>0$, 求证：
+\begin{enumerate}
+    \item $\left(\frac{1}{a}-1\right)\left(\frac{1}{b}-1\right)\left(\frac{1}{c}-1\right)\ge 8$
+    \item $\frac{1}{a}+\frac{1}{b}+\frac{1}{c}\ge 9$
+\end{enumerate}
+
+\item 若$x,y$是实数，且$x^2+y^2\le 1$,
+求证：$|x^2+2xy-y^2|\le \sqrt{2}$
+
+\item 对于任何实数，求证：
+\[\sqrt{\frac{a_1^2+a_2^2+\cdots+a_n^2}{n}}\ge \frac{a_1+a_2+\cdots+a_n}{n}\]
+当且仅当诸数相等时，等式成立。
+\item $a+b=1$, $a>0$, $b>0$, 求证$\sqrt{2a+1}+\sqrt{2b+1}\le 2sqrt{2}$。
+\item 求证
+$\frac{|x_1+x_2|}{|4+x_1^2| |4+x_2^2|}<\frac{1}{8}$
+\item 对于$n\ge 2$的自然数$n$, 证明不等式
+$$2^n>1+n\sqrt{2^{n-1}}$$
+\item 对于任何正整数$k\le n$, 求证：
+\[1+\frac{k}{n}\le \left(1+\frac{1}{n}\right)^k\le 1+\frac{k}{n}+\frac{k^2}{n^2}\]
+\item 已知$a,b,c,d,e$是实数，满足
+\[a+b+c+d+e=8,\qquad a^2+b^2+c^2+d^2+e^2=16\]
+试确定$e$的最大值。
+\item 半径为1的圆内接三角形面积等于$\frac{1}{4}$,
+设此三角形三边长为$a,b,c$, 求证：
+\begin{enumerate}
+    \item $abc=13$
+    \item $\sqrt{a}+\sqrt{b}+\sqrt{c}<\frac{1}{a}+\frac{1}{b}+\frac{1}{c}$
+\end{enumerate}
+
+\item 直角三角形斜边长等于10, 内切圆半径为$a$。求何
+时内切圆的半径最大，最大值是多少？
+\item 若$n>2$, 求证$(n!)^2>n^n$。
+\item 有$n$个实数$a_1,a_2,\ldots,a_n$且
+$a_1+a_2+\cdots+a_n=n$
+\begin{enumerate}
+    \item 求证：$\sqrt{|a_1|}+\sqrt{|a_2|}+\cdots+\sqrt{|a_n|}\ge \sqrt{n}$
+    \item 又$a^2_1+a_2^2+\cdots+a^2_n=n$, 
+求$a_1,a_2,\ldots,a_n$的值。
+\end{enumerate}
+
+\item 若 $a,b,c$是正实数，
+求证：$\frac{c}{a+b}+\frac{a}{b+c}+\frac{b}{c+a}\ge \frac{3}{2}$
+\end{enumerate}
+
 
