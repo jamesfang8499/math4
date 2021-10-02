@@ -1200,56 +1200,427 @@ $f(a)$。
 
 由数列极限运算定理直接得出下面定理。
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\begin{blk}{定理1}
+    设$f$和$g$在$a$处连续，即
+    \[\lim_{x\to a}f(x)=f(a),\qquad \lim_{x\to a}g(x)=g(a)\]
+    则
+\begin{enumerate}
+    \item $\Lim_{x\to a}[f(x)\pm g(x)]=f(a)\pm g(a)$，（即$f\pm g$在$a$处连续）。
+    \item $\Lim_{x\to a}f(x)\cdot g(x)=f(a)\cdot g(a)$，（即$f\cdot g$在$a$处连续）。
+    \item 若$g(a)\ne 0$，$\Lim_{x\to a}\frac{1}{g(x)}=\frac{1}{g(a)}$，（即$1/g$在$a$处连续）。
+\end{enumerate}
+\end{blk}
 
 \begin{example}
-    
+    函数$f(x)=x^k$ ($k$是一个正整数，$x\in\mathbb{R}$) 到处连
+续，即$\Lim_{x\to a}x^k=a^k,\; (a\in\mathbb{R})$。
 \end{example}
 
-\begin{solution}
+\begin{proof}
+对$k$用数学归纳法来证明，设$a$是$f$的定义域$\mathbb{R}$
+中任何一点。
+
+当$k=1$时，显然，$\Lim_{x\to a}x=a$, 命题成立。
+
+假设当$k=i\; (i\in\mathbb{N})$时，有
+\[\Lim_{x\to a} x^i=a^i\qquad (i\in\mathbb{N})\]
+那么，当$k=i+1$时，有
+\[\Lim_{x\to a}x^{i+1}=\Lim_{x\to a} x^i\cdot x=\Lim_{x\to a} x^i\cdot \Lim_{x\to a} x=a^i\cdot a=a^{i+1}\]    
+于是，对于所有正整数$k$, $f(x)=x$在任何一点$a$连续，也
+即$f(x)=x$到处连续。
+\end{proof}
+
+
+由定理1和$f(x)=x^k\; (k\in\mathbb{N})$, 及常数函数$g(x)=c$ ($c$是常数）的到处连续性，我们可以证明下面的命题
+成立。
+
+\begin{blk}{命题1}
+    任何多项式函数到处连续。
+\end{blk}
+
+进一步推得下面命题：
+
+\begin{blk}{命题2}
+    若$f$和$g$是两个多项式，$g\ne 0$, 那么有理函
+数$r=f/g$，
+除去$g$的零点集合，函数$r$是有定义的而且是
+连续的。
+\end{blk}
+
+\begin{blk}{命题3}
+    $f(x)=\sqrt[n]{x}$在区间$(0,+\infty)$上连续，即 
+\[\lim_{x\to x_0}\sqrt[n]{x}=\sqrt[n]{x_0}\qquad (x\in[0,+\infty))\]
+\end{blk}
+
+\begin{proof}
+    设$x_0$是一个任给正数，数列$\{x_i\}$是在$[0,+\infty)$
+内任何一个收敛到$x_0$的数列，即$\Lim_{i\to \infty} x_i=x_0$。我们要证明，当
+$\Lim_{i\to\infty} x_i=x_0$时，$\Lim_{i\to\infty} (\sqrt[n]{x_i}-\sqrt[n]{x_0})=0$。
+
+在代数恒等式：
+\[(A-B)\left(A^{n-1}+A^{n-2}B+\cdots +AB^{n-2}+B^{n-1}\right)=A^n-B^n\]
+中，以$A=x_i^{\tfrac{1}{n}}$, $B=x_0^{\tfrac{1}{n}}$代入，即得：
+\begin{equation}
+\sqrt[n]{x_i}-\sqrt[n]{x_0}=\frac{x_i-x_0}{x_i^{\tfrac{n-1}{n}}+x^{\tfrac{n-2}{n}}_i\cdot x_0^{\tfrac{1}{n}}+\cdots +x^{\tfrac{1}{n}}_i\cdot x_0^{\tfrac{n-2}{n}} + x_0^{\tfrac{n-1}{n}}} 
+\end{equation}
+由于$\Lim_{i\to\infty}x_i=x_0$, 根据数列极限定义，取
+$\varepsilon=\frac{x_0}{2}$，
+则存在正整数$N$, 使得当$i>N$时，有
+\[x_i>x_0-\frac{x_0}{2}=\frac{x_0}{2}\]
+从而，当$i>N$时，有
+\begin{equation}
+    (x_i)^{\tfrac{1}{n}}=\left(\frac{x_0}{2}\right)^{\tfrac{1}{n}}
+\end{equation}
+此外，显然有
+\begin{equation}
+    (x_0)^{\tfrac{1}{n}}=\left(\frac{x_0}{2}\right)^{\tfrac{1}{n}}
+\end{equation}
+
+由(8.2)---(8.4)立即得
+\[\left|\sqrt[n]{x_i}-\sqrt[n]{x_0}\right|<\frac{|x_i-x_0|}{n\left(\sqrt[n]{\frac{x_0}{2}}\right)^{n-1}}\]
+当$i\to\infty$时，$|x_i-x0|\to 0$, 又因为$n\left(\sqrt[n]{\frac{x_0}{2}}\right)^{n-1}$
+是一个和$i$
+无关的常数，所以
+\[\left|\sqrt[n]{x_i}-\sqrt[n]{x_0}\right|\to 0\]
+即
+\[\lim_{x\to x_0} \sqrt[n]{x}=\sqrt[n]{x_0}\]
+这也就证明了$f(x)=\sqrt[n]{x}$ 在区间$[0,\infty)$上到处连续。
+\end{proof}
+
+我们在这里介绍了函数连续性的严格定义，对于初学者
+只要能够正确理解这一分析定义的涵义就可以了，以后在第
+六册微积分中，我们还要对它进行研究。
+
+\subsection{连续函数的中间值定理}
+平面上一个一目了然的性质是：一条直线把平面分割成
+两半，例如，在$(x,y)$坐标平面上，直线$y=c$就把平
+面分成$y<c$和$y>c$这两半，从上半平面走到下半平面的
+连续通路，必须和分界线$y=c$相交，下述中间值定理也就
+是上述直观现象的代数化：
+
+\subsubsection{中间值定理}
+
+设$y=f(x)$是一个在闭区间$[a,b]$
+上到处连续的函数，设$c$是一个介于$f(a)$和$f(b)$之
+间的常数，则必存在一个介于$a,b$之间的实数$x_0$, 使得
+$f(x_0)=c$。用几何术语来说：$y=f(x)$, $a\le x\le b$的图象
+是一条还结$P(a,f(a))$点和$Q(b,f(b))$点的连
+续曲线，而$P,Q$分居于直线$y=c$的两侧，则曲线$y=
+f(x),\; a\le x\le b$至少和直线$y=c$有一个交点$(x_0,
+f(x_0)=c)$，（图8.19）。
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, yscale=1.3]
+    \draw[->] (-1,0)--(6,0)node[right]{$x$};
+    \draw[->] (0,-1)--(0,2)node[right]{$y$};
+    \draw(-1,1)--(5,1)node[right]{$y=c$};
+    \node at (.25,-.25){$O$};
+    \draw[ thick] plot[smooth] coordinates{(-.5,-.5)(0,.2) (.5,.5) (1.5,.45) (2.4,1.2)(3.3,.7)(4.6,1.2)};
+\node at (-.5,-.5)[below]{$P(a,f(a))$};
+\node at (4.6,1.3)[above]{$Q(b,f(b))$};
+\draw[dashed] (2.8,0)node[below]{$x_0$}--(2.8,1);
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+
+在给出这个定理的证明之前，我们先讨论一个特例，让
+$f(x)=x^3+x-3$, $a=1$, $b=2$. 由于$f(1)=-1$与$f(2)=7$异号，我们将说明在1,
+2之间一定存在$f(x)=x^3+x-3$的根$k$, 使$f(k)=0$。
+
+从$y=x^3+x-3$的图象
+（图8.20）上看，这个命题是一
+目了然的，现在我们要把二分
+逼近法与实数完备性，函数连
+续性配合一起来说明它的根的
+存在和根的求法。
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, yscale=.6]
+\draw[->] (-2,0)--(3,0)node[right]{$x$};
+\draw[->] (0,-9)--(0,8)node[right]{$y$};
+\foreach \x in {-8,-7,...,-1,1,2,...,7}
+{
+    \draw (-.1,\x) node[left]{$\x$} --(0,\x);
+}
+\node at (.4,-.4){$O$};
+\draw[domain=-1.6:2, samples=100, very thick] plot(\x, {\x*\x*\x+\x-3});
+\node at (2,5)[right]{$y=x^3+x-3$};
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+
+首先，我们容易验证这个
+方程没有整数根$\pm 1$和$\pm 3$, 
+因此所求的根一定是一个无理
+数，由于闭区间$[a,b]=
+[1,2]$具有性质$P:f(a)\cdot f(b)<0$, 即$f(a)$与
+$f(b)$异号。当我们把它二
+等分时，至少会有一个分段保
+有这个性质$P$, 照这样，不断地二等分保有性质$P$的分段，
+我们就可以得到保有性质$P$的两串左、右夹逼数列如下：
+
+令$x=\frac{1+2}{2}=\frac{3}{2}$, 
+显然$f\left(\frac{3}{2}\right)\ne 0$, 否则$f(x)$就
+会有有理数根$\frac{3}{2}$，
+无论$f\left(\frac{3}{2}\right)$是正还是负，在$\left[1,\frac{3}{2}\right]$和$\left[\frac{3}{2},2\right]$
+这两个分段中一定有一段具有性质$P$, 算出
+\[f\left(\frac{3}{2}\right)=\frac{3}{8}>0\]
+
+取$a_1=1$, $b_1=\frac{3}{2}$, 
+闭区间$[a_1,b_1]=\left[1,\frac{3}{2}\right]$
+保有性质$P$, 照这样进行有限次后，由于$f(x)$没有有理根，
+所以$f\left(\frac{a_m+b_m}{2}\right)\ne 0$, 这就使我们每次由$[a_m,b_m]$选取保
+有性质$P$的一个分段$[a_{m+1},b_{m+1}]$之后，还可以细分下去，
+因此，这个过程是无终止的。
+\begin{itemize}
+\item 令$x=\frac{a_1+b_1}{2}=\frac{1+\frac{3}{2}}{2}=\frac{5}{4}$,算出$f\left(\frac{5}{4}\right)=\frac{13}{64}>0$，取$[a_2,b_2]=\left[1,\frac{5}{4}\right]$；
+\item 
+令$x=\frac{a_2+b_2}{2}=\frac{1+1.25}{2}=1.125$, 算出$f\left(1.125\right)=-0.4512<0$，取$[a_3,b_3]=\left[1.125,1.25\right]$；
+\item 
+令$x=\frac{a_3+b_3}{2}=\frac{1.125+1.25}{2}=1.1875$, 算出$f\left(1.1875\right)=-0.1379<0$，取$[a_3,b_3]=\left[1.1875,1.25\right]$；
+\item 
+令$x=\frac{1.1875+1.25}{2}=1.2188$, 算出$f\left(1.2188\right)=0.029>0$，取$[a_4,b_4]=\left[1.1875,1.2188\right]$；
+
+\item 
+令$x=\frac{1.1875+1.2188}{2}=1.203$, 算出$f\left(1.203\right)=-0.0552<0$，取$[a_5,b_5]=\left[1.203,1.2188\right]$；
+
+\item 
+令$x=\frac{1.203+1.2188}{2}=1.211$, 算出$f\left(1.211\right)=-0.0132<0$，取$[a_6,b_6]=\left[1.211,1.2188\right]$；
+
+\item 
+令$x=\frac{1.211+1.2188}{2}=1.215$, 算出$f\left(1.215\right)=0.008>0$，取$[a_7,b_7]=\left[1.211,1.215\right]$；
+
+\item 
+令$x=\frac{1.211+1.215}{2}=1.213$, 算出$f\left(1.213\right)=-0.0025<0$，取$[a_8,b_8]=\left[1.213,1.215\right]$；
+
+\end{itemize}
+
+这样继续下去，我们得到无穷个闭区间满足下面的
+条件：
+\begin{enumerate}
+    \item $[a,b]=[1,2]\supseteq [a_1,b_1]=\left[1,\frac{3}{2}\right]\supseteq [a_2,b_2]=\left[1,\frac{5}{4}\right]\supseteq [a_3,b_3]=\left[1.1875,1.25\right]
+    \supseteq [a_4,b_4]=\left[1.1875,1.2188\right]\supseteq [a_5,b_5]=\left[1.203,1.2188\right]\supseteq [a_6,b_6]=\left[1.211,1.2188\right]\supseteq [a_7,b_7]=\left[1.211,1.215\right]\supseteq [a_8,b_8]=\left[1.213,1.215\right]\supseteq   \cdots 
+    \supseteq  
+    [a_n,b_n]=\supseteq\cdots $
+    \item $[a_n,b_n]=\frac{1}{2}[a_{n-1},b_{n-1}]=\frac{1}{2^2}[a_{n-2},b_{n-2}]=\cdots=\frac{1}{2^n}[a,b]$
     
-\end{solution}
+    因此，闭区间$[a_n,b_n]$的长$=\frac{1}{2^n}\to 0$。
+    \item $f(a_n)<0$,\; $f(b_n)>0$恒成立。
+\end{enumerate}
 
-
-\begin{example}
+换言之，得到满足下面性质的夹逼数列$\{a_n\}$, $\{b_n\}$:
+\begin{enumerate}
+    \item $a=1\le a_1=1\le a_2=1\le a_3=1.1875\le a_4=1.1875  \le  a_5=1.203  \le  a_6=1.211  \le  a_7=1.211  \le  a_8=1.213  \le\cdots\le a_n\le\cdots\le b_n\le \cdots \le  b_8=1.215  \le  b_7=1.215  \le  b_6=1.2188  \le  b_5=1.2188   \le  b_4= 1.2188  \le  b_3= 1.25 \le  b_2=1.25  \le  b_1=1.5  \le  b=2$
     
-\end{example}
+    并且$(b_n-a_n)=\frac{1}{2^n}\to 0$。
 
-\begin{solution}
-    
-\end{solution}
+\item $f(a_n)<0$,\; $f(b_n)>0$恒成立。
+\end{enumerate}
 
-\begin{example}
-    
-\end{example}
+由1和实数完备性，就得到唯一实数$k$满足
+\[a_n\to k\leftarrow b_n,\qquad \text{即}\quad \lim_{n\to\infty} a_n=\lim_{n\to\infty}  b_n=k\]
+再由函数$f(x)=x^3+x-3$的到处连续性，即有
+\[\lim_{n\to\infty}  f(a_n)=f(k) \qquad  \lim_{n\to\infty}  f(b_n)=f(k)\]
+\begin{itemize}
+    \item 由$f(a_n)<0$得知$f(k)\le 0$,
+    \item 由$f(b_n)>0$得知$f(k)\ge 0$。
+\end{itemize}
+所以只有$f(k)=0$才能同时满足上述两种条件。
 
-\begin{solution}
-    
-\end{solution}
+仿照上面的推理，我们得到了连续函数中间值定理的
+证明如下：
+
+为了叙述方便，我们不妨设$f(a)<f(b)$。[当
+$f(a)>f(b)$时，我们可以对$-f(x)$和$-c$来作同
+样的讨论]。由图8.19所示，交点可能有好几个，但是我们
+所要证的是至少有一个交点，我们将用二分法去逼近其中一
+个交点的坐标$x_0$。
+
+取$a_1=a$, $b_1=b$, 把闭区间$[a,b]$二等分。
+\begin{itemize}
+    \item 若
+$f\left(\frac{a_1+b_1}{2}\right)=c$, 则
+就是一个所求的$x_0$, 自
+然不必再费任何手脚了；
+\item 若
+$f\left(\frac{a_1+b_1}{2}\right)<c$,
+则取后半段为$[a_2,b_2]$；
+\item 若
+$f\left(\frac{a_1+b_1}{2}\right)>c$,
+则取前半段为$[a_2,b_2]$。
+\end{itemize}
+照这样逐次地由$[a_m,b_m]$去求出它的半段为$[a_{m+1},b_{m+1}]$.
+因为$f(a_m)<c$, $f(b_m)>c$, 取$x_0=\frac{a_m+b_m}{2}$
+\begin{itemize}
+    \item 若$f\left(\frac{a_m+b_m}{2}\right)<c$
+则取后半段为$[a_{m+1},b_{m+1}]$；
+\item 若$f\left(\frac{a_m+b_m}{2}\right)>c$
+则取前半段为$[a_{m+1},b_{m+1}]$；
+\item 若$f\left(\frac{a_m+b_m}{2}\right)=c$
+则$\frac{a_{m}+b_{m}}{2}$也就是所求的$x_0$, 
+而定理得证。
+\end{itemize}
+
+总结上述逐步二等分过程，就只有两种可能：一种可能
+是经过有限次二等分后，有这样的分点$\frac{a_m+b_m}{2}$
+使$f\left(\frac{a_m+b_m}{2}\right)=c$, 于是定理得证，另一种可能是没有这样的
+分点$\frac{a_m+b_m}{2}$
+使$f\left(\frac{a_m+b_m}{2}\right)=c$成立，在这种情形下，继
+续不断二等分，我们得到无限多个退缩闭区间套$[a_n,b_n]$满
+足下列条件：
+
+\begin{enumerate}
+    \item 闭区间的端点形成夹逼数列$\{a_n\}$, $\{b_n\}$, 适合
+    \[a_1\le a_2\le \cdots\le a_n\le \cdots \le b_n\le \cdots\le b_2\le b_1\]
+并且$(b_n-a_n)\to 0$。
+    \item $f(a_n)<c$, $f(b_n)>c$恒成立。
+
+\end{enumerate}
+
+    由条件1和数完备性就得到唯一实数$x_0$
+    \[\lim_{n\to\infty} a_n=\lim_{n\to\infty} b_n=x_0\quad \text{即}\quad a_n\to x\leftarrow b_n\]
+    再由函数$f(x)$在$x_0$连续性即有
+\[    \lim_{n\to\infty} f(a_n) = f(x_0),\qquad \lim_{n\to\infty} f(b_n)=f(x_0)\]
+
+由$f(a_n)<c$, 得知它的极限值$f(x_0)\le c$, 同样地，由
+    $f(b_n)>c$, 得知它的极限值$f(x_0)\ge c$。
+
+所以，只有$f(x_0)=c$才能同时满足上述两个条件，定理得证。
 
 
-\begin{example}
-    
-\end{example}
+\begin{blk}{命题1}
+    当$a>0$时，$f(x)=x^n-a=0$存在唯一的正实
+    数根，叫做$a$的$n$次算术方根，用符号$\sqrt[n]{a}$表示。
+\end{blk}
 
-\begin{solution}
-    
-\end{solution}
+\begin{proof}
+    先证存在性。$f(0)=-a<0$, 而
+\[f(1+a)=(1+a)^n-a>0\]
+所以，由中间值定理$f(x)=x^n-a$在0和$(1+a)$之间至少
+有一个根$x_0$, 使得$f(x_0)=x_0^n-a=0$成立。
+
+再证唯一性。因在$x>0$时，$x$愈大则它的$n$次方幂$x^n$
+也愈大，所以$f(x)$在$x>0$时是严格递增的，当然不可
+能有两个不同的正实数满足$f(x)=0$。
+\end{proof}
+
+上面的命题给常用的“$n$次方根函数$y=\sqrt[n]{x},\; x\ge0$”
+提供了理论基础。为了进一步把中间值定理应用到一般的多
+项式函数上，我们给出下面的命题。
+
+\begin{blk}{命题2 }
+对于实系数的多项式
+$f(x)=a_0x^n+a_1x^{n-1}+\cdots+a_n,\quad (a_0\ne 0)$, 总可以求出
+一个正数$P$, 使得当$x>P$时，$f(x)$的值与$a_0x^n$的值有相同的
+符号。
+\end{blk}
+
+\begin{proof}
+$f(x)=x^n[a_0+\varphi(x)]$, 这里
+$\varphi(x)=\frac{a_1}{x}+\frac{a_2}{x^2}+\cdots+\frac{a_n}{x^n},\; (x\ne 0)$是一个$\frac{1}{x}$的
+实系数多项式。显然，
+\[\lim_{x\to\infty} \varphi(x)=0\]
+这也就是说，对于给定的$\varepsilon=|a_0|$, 存在一个正数$P$, 使得
+当$x>P$时，从而$0<\frac{1}{x}<\frac{1}{P}$时，有
+\[|\varphi(x)|<|a_0|\]
+于是$a_0+\varphi(x)$, $(x>P)$与$a_0$同号，因此$f(x)$与$a_0x^n$
+同号。
+\end{proof}
+
+但是要具体地求出$P$的值，还得用一些技巧。
+令$g=\max(|a_1|,|a_2|,\ldots,|a_n|)$, 并且先设$x>P>
+1$, 于是$0<\frac{1}{x}<\frac{1}{P}<1$, 从而
+\[\begin{split}
+    |\varphi(x)|&=\left|\frac{a_1}{x}+\frac{a_2}{x^2}+\cdots+\frac{a_n}{x^n}\right|\\
+    &\le g\left(\frac{1}{x}+\frac{1}{x^2}+\cdots+\frac{1}{x^n}\right)< g\cdot \frac{\frac{1}{x}}{1-\frac{1}{x}}
+\end{split}\]
+要使
+\[|\varphi(x)|<g\cdot \frac{\frac{1}{x}}{1-\frac{1}{x}}<|a_0|\]
+只须$\frac{1}{x}<\frac{|a_0|}{g+|a_0|}$，即$x>1+\frac{g}{|a_0|}$。
+
+取$P=1+\frac{g}{|a_0|}$，因此，当$x>1+\frac{g}{|a_0|}$时，就可以使$f(x)$与$a_0x^n$有相同符号。
+
+如果令$x=-X\; (X>0)$, 前面的情形说明当$X$是一个
+充分大的正数时，$f(-X)$的值的符号就与$(-1)^na_0X^n$
+的值有相同符号。因此我们得到下面的推论：
+
+\begin{blk}{推论}
+    对于实系数多项式$f(x)=a_0x^n+a_1x^{n-1}+\cdots+a^n\; (a_0\ne 0)$
+\begin{itemize}
+    \item 当$x$充分大时，$f(x)$与$a_0$同号；
+    \item 当$x$取负值而$|x|$充分大时，若$n$是偶数，则$f(x)$与$a_0$同
+号；若$n$是奇数，则$f(x)$与$a_0$异号。
+\end{itemize}
+\end{blk}
+
+由上面的推论直接得到下面的命题：
+\begin{blk}{命题2}
+    若$n$为奇数，则实系数方程$x^n+a_1x^{n-1}+a_2x^{n-2}+\cdots+a_0=0$
+有一个根。 
+\end{blk}
+
+\section*{习题8.3}
+\addcontentsline{toc}{subsection}{习题8.3}
+\begin{enumerate}
+    \item 证明下列各函数是到处连续的函数：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $f(x)=|x|$
+    \item $g(x)=\frac{x^2}{1+x^2}$
+    \item $h(x)=x|x|-\frac{1}{2}$
+    \item $\varphi(x)=\sqrt{x}$
+\end{enumerate}
+\end{multicols}
+
+\item 设函数$f(x)=\frac{x^2+1}{2x-1}$, 
+则$f(0)=-1$, $f(1)=2$
+符号相反，讨论方程式$f(x)=0$在$0\le x\le 1$中是否有解？
+\item 下列函数各在哪些点不连续：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $f(x)=\frac{x+2}{x^2-1}$
+    \item $f(x)=\frac{x-1}{(x^2+1)(2x+3)}$
+    \item $g(x)=\sqrt{\frac{x-2}{x^2-4}}$
+    \item $h(x)=\frac{2}{|x|-1}$
+    \item $\varphi(x)=\frac{|x|-1}{|x-1|-4}$
+    \item $F(x)=\frac{1}{x-[x]}$
+\end{enumerate}
+\end{multicols}
+
+\item 试证下列多项式有唯一的正实根。
+\begin{multicols}{2}
+    \begin{enumerate}
+        \item $x^3+x^2-1=0$;
+        \item $x^3-3x^2+3x-4=0$.
+\end{enumerate}
+\end{multicols}
+\item 证明$8x^3-4x^2-18x+9=0$的一根在0和1之间，一
+根在1和2之间，一根在$-2$和$-1$之间。
+\item 对于下列各多项式函数$f$, 求一整数$n$使在$n$和
+$n+1$之间的某一$x$满足$f(x)=0$:
+\begin{multicols}{2}
+    \begin{enumerate}
+        \item $f(x)=x^3-x+3$;
+        \item  $f(x)=x^5+x+1$.
+\end{enumerate}
+\end{multicols}
+\item 设$f(x),g(x)$是两个连续函数而且$f(a)>
+g(a)$, $f(b)<g(b)$, 求证在$a,b$之间存在一个适当
+$x_0$, 使得$f(x_0)=g(x_0)$。
+
+\item 设$a<b<c$, 证明方程
+$\frac{1}{x-a}+\frac{1}{x-b}+\frac{1}{x-c}=2$
+有三个实根，且一个根在$a,b$之间，另一个根在$b,c$
+之间。
+\item 用二分逼近法求$x^3+2x-7=0$的正根，使得 误差小
+于0.01。
+
+\end{enumerate}
+
 
 \section{反函数和它的图象}
 
@@ -1261,7 +1632,7 @@ $f(a)$。
     s=\frac{1}{2}gt^2
 \end{equation}
 如果反过来，
-想从已知的路程$s$来确定下落的时间$t$, 则应从(8.XX)式将$t$
+想从已知的路程$s$来确定下落的时间$t$, 则应从(8.5)式将$t$
 解出：
 \begin{equation}
     t=\sqrt{\frac{2s}{g}}
@@ -1303,7 +1674,26 @@ $f:\; y=x,\; x\in (-\infty,+\infty)$是$X\mapsto Y$的函数。但是，如果
 
 \begin{figure}[htp]
     \centering
+    \begin{tikzpicture}[>=latex]
+\draw (0,0) ellipse [x radius=1, y radius=1.5];
+\draw (4,0) ellipse [x radius=1 ,y radius=1.5];
 
+\draw(0,1)to [bend left=15] node[above]{$f$} (4,.7);
+\draw (0,.5)to [bend left=-15]node[above]{$f$} (4,.7);
+\draw (0,-1)to [bend left=-15]node[below]{$f$}(4,-.7);
+\draw (0,-.5)to [bend left=15]node[below]{$f$} (4,-.7);
+
+\draw[->](1.75,0)--(2.25,0);
+
+\foreach \x/\xtext in {1/2,.5/-2,-.5/a,-1/-a}
+{
+    \draw (0,\x) [fill=white]circle (1.5pt)node[left]{$\xtext$};
+}
+\foreach \x/\xtext in {.7/4,-.7/2}
+{
+    \draw (4,\x) [fill=white]circle (1.5pt)node[right]{$\xtext$};
+}
+    \end{tikzpicture}
     \caption{}
 \end{figure}
 
@@ -1322,6 +1712,17 @@ $X$到$Y=f(X)$的一一对应函数，或双射（满射且单射），简
 假如$y=f(x)$。
 
 新函数和原来函数的这种关系可以用下图来说明：
+\begin{center}
+    \begin{tikzpicture}
+        \node (A) at (1,0) {$x$};
+       \node[rectangle, draw] (B) at (2,0) {$f$};
+       \node (C) at (4,0) {$y=f(x)$};
+       \node[rectangle, draw] (D) at (6,0) {$g$};
+       \node (E) at (7,0) {$x$};    
+       \draw (A)--(B)--(C)--(D)--(E);
+           \end{tikzpicture}
+\end{center}
+
 
 根据上面的分析，我们得到反函数的一般定义如下：
  
@@ -1345,4 +1746,271 @@ f(X)$上而且把$f(X)=Y$映射到$X$上的以$y$为自变数的新函
 象和直线$y=y_0$的交点多于一个，那么这个函数的反函数就
 不存在。如果只有一个交点，那么这个函数就有反函数。如
 图8.22所示。
+
+\begin{figure}[htp]
+    \centering
+    \begin{tikzpicture}[>=latex]
+\begin{scope}
+    \draw[->] (-2,0)--(4,0)node[right]{$x$};
+        \draw[->] (0,-1)--(0,2)node[right]{$y$};
+        \draw(-2,1)--(3,1)node[right]{$y=y_0$};
+        \node at (-.25,-.25){$O$};
+        \draw[ thick] plot[smooth] coordinates{(-1.7,-.5)(-1.0,.6)(0,1.2) (1.2,-.3)(1.6,-.5)(2,-.3) (2.5,1.2) };
+    \node at (2.5,1.2)[above]{$y=f(x)$是不可逆的};
+\end{scope}
+\begin{scope}[yshift=-3.5cm]
+    \draw[->] (-2,0)--(4,0)node[right]{$x$};
+    \draw[->] (0,-1)--(0,2)node[right]{$y$};
+    \draw(-2,1)--(3,1)node[right]{$y=y_0$};
+    \node at (-.25,-.25){$O$};
+    \draw[ thick] plot[smooth] coordinates{(-1.5,-.5)(-.7,.3) (0,.5) (1.3,.7) (2.5,1.8)};
+    \node at (2.5,1.8)[above]{$y=f(x)$是可逆的};
+\end{scope}        
+    \end{tikzpicture}
+    \caption{}
+\end{figure}
+
+现在我们来研究互为反函数的图象的关系，因为互为反
+函数的两个函数$y=f(x)$和$x=g(y)$事实上就是同一个关系，在
+几何上就是同一条曲线。例如函数$y=2x+3$的图象和它的反
+函数$x=\frac{1}{2}(y-3)$的图象就是通过两个
+点$\left(-\frac{3}{2},0\right)$, $(0,3)$的同一条直线$2x-y+3=0$, 只是就函数$y=f(x)=2x+
+3$的图象去看，横轴是自变量轴，而就反函数$x=g(y)=\frac{1}{2}
+(y-3)$的图象来看，纵轴是自变量轴，但是在同一个坐标系
+内，一般我们总规定用横坐标$x$表示自变数，纵坐标$y$表示
+因变数，所以我们还需要把反函数关系式$x=g(y)$的$x,y$对
+调一下，得到习惯上的反函数$y=g(x)$。我们也称$y=g(x)$
+是$y=f(x)$的反函数，当然反过来$y=f(x)$也是$y=g(x)$的反
+函数，例如函数$y=2x+3$和 $y=\frac{1}{2}(x-3)$互为反函数。
+
+函数$y=f(x)$和它的反函数$y=f^{-1}(x)$的图象之间有如
+下关系：
+
+若点$(a,b)$在曲线$y=f(x)$上，那么点$(b,a)$就在曲线
+$y=f^{-1}(x)$上。
+
+事实上，因为点$(a,b)$在曲线$y=f(x)$上，所以$b=f(a)$
+成立，此等式也可以写成$a=f^{-1}(b)$, 这表示点$(b,a)$在曲
+线$y=f^{-1}(x)$上，于是当点$(a,b)$走遍曲线$y=f(x)$时，点
+$(b,a)$就走遍曲线$y=f^{-1}(x)$. 通过初等几何的方法可以证
+明点$(a,b)$和$(b,a)$关于第一象限角和第三象限角的平分线
+$y=x$对称。因此，为了得到反函数$y=f^{-1}(x)$的图象，我
+们只要把$y=f(x)$的图象关于直线$y=x$反射过来就可以。如
+图8.23所示。
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex]
+    \draw[->] (-2,0)--(4,0)node[right]{$x$};
+    \draw[->] (0,-2)--(0,4)node[right]{$y$};
+    \draw [domain=-1:1.3, samples=100,  very thick]plot(\x, {exp(\x)});
+    \draw [domain=exp(-1):exp(1.3), samples=100,  very thick]plot(\x, {ln(\x)});
+\draw[dashed] (-1.5,-1.5)--(3.5,3.5)node[right]{$y=x$};
+\draw[dashed] (2.46,0)--(2.46,.9)node[right]{$(b,a)$}--(0,.9);
+\draw[dashed] (.9,0)--(.9,2.46)node[right]{$(a,b)$}--(0,2.46);
+\draw[dashed]  (-.7,.5)--(.5,-.7);
+\node at (.25,-.25){$O$};
+\node at (3.67,1.3)[right]{$y=f^{-1}(x)$};
+\node at (1.3,3.67)[above]{$y=f(x)$};
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+
+最后，我们给出一个反函数定理：
+
+\begin{blk}{定理}
+    设$y=f(x)$在闭区间$[a,b]$上严格递增（递减）
+且连续，又$f(a)=\alpha$, $f(b)=\beta$, 则在闭区间$[\alpha,\beta]$  上存在着
+$y=f(x)$的反函数$x=f^{-1}(y)$, 又$x=f^{-1}(y)$在$[\alpha,\beta]$  （或$[\beta,\alpha]$）上也是严格递增（或递减）且连续的。
+\end{blk}
+
+\begin{proof}
+\begin{enumerate}
+\item 先证$y=f(x)$的值域是闭区间$[\alpha,\beta]$, 设$y$
+是$[\alpha,\beta]$中任意一点，如果$y=\alpha$或$\beta$,那么相应的$x=a$或$b$, 即
+有$f(a)=\alpha$或$f(b)=\beta$, 换言之，$\alpha ,\beta$  在$f(x)$的值域中。又如
+果$\alpha=f(a)<y_0<f(b)=\beta  $, 由连续函数中间值定理，在$[a,
+b]$之间必存在一点$x_0$满足$f(x_0)=y_0$, 即$[\alpha ,\beta]$  内任一点都
+属于值域$f([a,b])$, 又如果$y_0\notin [\alpha ,\beta]$, 那么由严格递增
+性得出，它不可能是任一点$x\in [a,b]$的象，这就证明了
+$f(x)$的值域是$[\alpha,\beta]$, 因此，连续递增函数$f:[a,b]\mapsto [\alpha ,\beta]$是满射的。
+
+\item 再证$f$是单射的，因为一个严格递增函数$f$满足
+条件：$$x_1<x_2\quad \Rightarrow\quad f(x_1)<f(x_2)$$ 即自变数的值与函数值是一对
+一的，所以$f$是单射的。
+
+由上可知函数$f$是可逆的，因此存在一个反
+函数$f^{-1}:[\alpha,\beta]\mapsto [a,b]$, 其中$x=f^{-1}(y)$.
+\item 证明$f^{-1}$的递增性。
+
+假设$y_1,y_2$是$[\alpha,\beta]$内的两个数，并且$y_1<y_2$, 又设$x=f^{-1}(y_1)$, $x_2=f^{-1}(y_2)$, 对于这两数$x_1$和$x_2$只有三种可能：
+$x_1<x_2$, $x_1=x_2$, $x_1>x_2$。
+
+如果$x_1\ge x_2$, 由于$f$的递增性质，知道
+\[y_1=f(x_1)\ge f(x_2)=y_2\]
+这与$y_1<y_2$的假设矛盾，因此，$x_1<x_2$, 即
+\[y_1<y_2 \quad \Rightarrow\quad f^{-1}(y_1)=x_1<x_2=f^{-1}(y_2)\]
+这就证明了$x=f^{-1}(y)$是$[\alpha,\beta]$上的递增函数。
+\item 最后还应证明$x=f^{-1}(y)$在$[\alpha,\beta]$上连续，但是
+在高中阶段，我们不深究，同学只要知道结论就可以了。
+\end{enumerate}    
+\end{proof} 
+
+
+一般来说，一个函数可以分成分段单调的几支，对于每
+一支得一反函数。
+
+例如，函数$y=f(x)=x^2,\; x\in\mathbb{R}$在区间$[0,+\infty)$或
+$(-\infty,0]$上连续和严格单调。因为$[0,b]\subset [0,+\infty)$和
+$[-b,0]\subset (-\infty,0]$，这个$b$是任意大的正数，因此$y=x^2,\; x\in\mathbb{R}$的两个分段$y=f_1(x)=x^2,\; x\in [0,b]$和$y=f_2(x)=x^2,\; x\in[-b,0)$根据反函数存在定理，分别有反函数：
+\[\begin{split}
+    x&=f^{-1}_1(y)=\sqrt{y},\qquad y\in [0,b^2]\\    
+    x&=f^{-1}_2(y)=-\sqrt{y},\qquad y\in [0,b^2]\\
+\end{split}\]
+但是当$b\to+\infty$时，$b^2\to+\infty$, 所以，
+\begin{itemize}
+    \item 连续和递增的一段$y=f_1(x)=x^2,\; x\in[0,+\infty)$的反函
+数是$x=f_1^{-1}(y)=\sqrt{y},\; y\in [0,+\infty)$, 它是连续的和严格
+递增的；
+\item 连续和递减的一段$y=f_2(x)=x^2,\; x\in(-\infty,0]$的反函数
+是$x=f_2^{-1}(y)=-\sqrt{y},\; y\in[0,+\infty)$, 它是连续的和严格
+递减的。
+\end{itemize}
+
+将$f_1^{-1}$和$f_2^{-1}$中的$x$和$y$对调后，便得到$f_1$和$f_2$的矫形的
+反函数，（见图8.24）。
+\[\begin{split}
+    y&=f^{-1}_1(x)=\sqrt{x},\qquad y\in [0,+\infty)\\    
+    y&=f^{-1}_2(x)=-\sqrt{x},\qquad y\in [0,+\infty)\\
+\end{split}\]
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=.8]
+    \draw[->] (-3,0)--(5,0)node[right]{$x$};
+    \draw[->] (0,-3)--(0,5)node[right]{$y$};
+\node at (.25,-.25){$O$};
+\draw [domain=-2:2, samples=50, very thick]plot(\x, {\x*\x});
+\draw [domain=0:4, samples=50,ultra thick]plot(\x, {sqrt(\x)});
+\draw [domain=0:4, samples=50,ultra thick]plot(\x, {-sqrt(\x)});
+\draw (-2,-2)--(3.5,3.5)node[right]{$y=x$};
+\node at (-2,4)[above]{$f_2(x)=x^2$};
+\node at (2,4)[above]{$f_1(x)=x^2$};
+\node at (4,-2)[below]{$f_2^{-1}(x)=-\sqrt{x}$};
+\node at (4,2)[above]{$f_1^{-1}(x)=\sqrt{x}$};
+
+\end{tikzpicture}    
+    \caption{}
+\end{figure}
+
+
+一般地，函数$y=f(x)=x^n,\; (n\in\mathbb{N})$在半开区间$[0,+\infty)$上
+连续和严格递增，函数$f$有反函数
+\[x=f^{-1}(y)=\sqrt[n]{y}=y^{\tfrac{1}{n}},\qquad y\in [0,+\infty)\]
+它是连续的和严格递增的。
+
+在图8.25中，我们画出几个幂函数和它们的反函数的
+图象：
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=2]
+    \draw[->] (0,0)--(3.5,0)node[right]{$x$};
+    \draw[->] (0,0)--(0,3.5)node[right]{$y$};
+\draw [domain=0:1.8, samples=100, thick] plot (\x, {\x^2});
+\draw [domain=0:1.5, samples=100, very thick] plot (\x, {\x^3});
+\draw [domain=0:1.35, samples=100, ultra thick] plot (\x, {\x^4});
+\draw [domain=0:3, samples=100, semithick] plot (\x, {\x});
+\draw [domain=0:3.25, samples=100, thick] plot (\x, {\x^(1/2)});
+\draw [domain=0:3.25, samples=100, very thick] plot (\x, {\x^(1/3)});
+\draw [domain=0:3.25, samples=100, ultra thick] plot (\x, {\x^(1/4)});
+\foreach \x in {1,2,3}
+{
+    \draw (\x,0)node[below]{$\x$}--(\x,.05);
+    \draw(0,\x)node[left]{$\x$}--(.05,\x);
+}
+\node at (-.1,-.1){$O$};
+\node at (3,3)[right]{$y=x$};
+\node at (1.2,.9){$(1,1)$};
+\node at (1.8,{1.8^2})[right]{$y=x^2$};
+\node at (1.5,{1.5^3})[above]{$y=x^3$};
+\node at (1.35,{1.35^4})[left]{$y=x^4$};
+\node at (3.25,{3.25^(1/2)})[above]{$y=x^{\tfrac{1}{2}}$};
+\node at (3.25,{3.25^(1/3)})[right]{$y=x^{\tfrac{1}{3}}$};
+\node at (3.25,{3.25^(1/4)})[below]{$y=x^{\tfrac{1}{4}}$};
+
+
+
+
+\end{tikzpicture}    
+    \caption{}
+\end{figure}
+
+
+
+
+
+
+\section*{习题8.4}
+\addcontentsline{toc}{subsection}{习题8.4}
+\begin{enumerate}
+\item 下列函数在哪些范围内是严格单调的？
+\begin{multicols}{2}
+  \begin{enumerate}
+    \item $f(x)=x^3$
+    \item $\varphi(x)=x^4$
+    \item $y=\sqrt{x}$
+    \item $y=\sqrt[3]{x}$
+    \item $f(x)=|x+1|$
+\end{enumerate}  
+\end{multicols}
+
+
+\item 对于下列各函数分别找出它们的最大定义域和值域
+使得它们有反函数，并分别写出它们的变数$x$表出的反
+函数。
+\begin{multicols}{2}
+    \begin{enumerate}
+      \item $y=\sqrt{2x+1}$
+      \item $y=x^{\tfrac{3}{2}}$
+      \item $y=x^2-1$
+      \item $y=\sqrt{1-x^2}$
+      \item $f(x)=\frac{x}{1-x^2},\quad -1<x<1$
+  \end{enumerate}  
+  \end{multicols}
+
+\item 作出下列各函数和它的反函数的图象：
+\begin{multicols}{2}
+    \begin{enumerate}
+      \item $y=x^{\tfrac{1}{2}}\quad (x\ge 0)$
+      \item $y=\frac{x+1}{x}\quad (x\ne 0)$
+      \item $y=\frac{x}{x+1}\quad (x\ne -1)$
+  \end{enumerate}  
+  \end{multicols}
+
+\item 证明，当且仅当$ad-bc\ne 0$时，$f(x)=\frac{ax+b}{cx+d},\; \left(x\ne -\frac{d}{c}\right)$
+是单射的，并求它的反函数。又在什么条件下，
+$f(x)$的反函数等于原来函数。
+\item \begin{enumerate}
+\item 求$f(x)=\frac{2x-5}{x-3}$
+的反函数$f^{-1}(x)$。
+\item 已知函数$f(x)=\frac{2x-5}{x-3}$
+的值域是$\{f(x)|f(x)\le 0,\; f(x)\ge 4\}$, 求$f(x)$的定义域。
+\item 设函数$g(x)=\frac{ax-4}{x+b}$的反函数是$g^{-1}(x)=\frac{3x+c}{-x+2}$，求实数$a,b,c$的值。
+\end{enumerate}
+
+\item $f(x)=\begin{cases}
+    -x,& x\ge 0\\ x^2& x<0
+\end{cases}$
+给出由实数集$\mathbb{R}$到$\mathbb{R}$的一个函
+数$f$。
+\begin{enumerate}
+    \item 设$q(x)$是$f$和$f$的复合函数，用$x$的式子表示$q(x)$.
+    \item 设$q(x)$的反函数是$q^{-1}(x)$, 用$x$的式子表示$q^{-1}(x)$.
+\end{enumerate}
+\end{enumerate}
+
+
+
+
+
 
