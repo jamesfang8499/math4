@@ -1248,3 +1248,158 @@ $h(x)=\poly{1,3,1,5,6}$
 
 \section{插值公式}
 如果$n$次多项式$f(x)$在取$n+1$个不同值时的函数值已给出，应用余式定理推论2就可以求出唯一的多项式函数$f(x)$. 在$f(x)$是一次多项式时，$y=ax+b$的图象是一条直线，推论2对于这个一次函数的论断的几何意义就是“两点确定一直线”。在一般情形下，一个$n$次多项式函数$y=f(x)$的曲线，由其所过的$n+1$个点所唯一确定，反之，仅给$n+1$个横坐标不同的点，总可以唯一确定一个次数不大于$n$的多项式函数$y=f(x)$的曲线。在数学中，这样的唯一性定理常常是计算问题解决问题的基本依据。这一节就讨论这样一些问题。
+
+\subsection{余式定理推论的应用举例}
+\begin{example}
+    已知$f(2)=8$, $f(3)=f(4)=f(5)=0$, 求次数不大于3的多项式$f(x)$。
+\end{example}
+
+\begin{analyze}
+如果设$f(x)=ax^3+bx^2+cx+d$, 用$x=2, 3,
+4, 5$四个数相继代入，然后解四元一次方程组求出$a,b,c,d$. 虽然肯定可以求出来，但计算量太大。现已知中有有利条件：$f(3)=f(4)=f(5)=0$, 我们就可以应用因式定理把问题简化。
+\end{analyze}
+
+\begin{solution}
+    由已知$f(3)=f(4)=f(5)=0$，因而可以
+    设$f(x)=(x-3)(x-4)(x-5)q(x)$。
+    
+    由于$(x-3)(x-4)(x-5)$已是3次，而$f(x)$的次数
+不大于3, 所以$q(x)$应为常数，即
+\[f(x)=a_3(x-3)(x-4)(x-5)\]
+再以$x=2$代入，得$3=-6a_3$，因此：$a_3=-\frac{1}{2}$
+
+\[\therefore\quad f(x)=-\frac{1}{2}(x-3)(x-4)(x-5)\]
+\end{solution}
+
+
+\begin{example}
+已知：$f_1(2)=3$, $f_1(3)=f_1(4)=f_1(5)=0$, $f_2(3)=6$, $f_2(2)=f_2(4)=f_2(5)=0$, $f_3(4)=-3$, $f_3(2)=f_3(3)=f_3(5)=0$, $f_4(5)=12$, $f_4(2)=f_4(3)=f_4(4)=0$
+
+求四个次数不大于3的多项式$f_1(x)$, $f_2(x)$, $f_3(x)$, $f_4(x)$。
+\end{example}
+
+\begin{solution}
+    解法同例3.21，可得
+\[\begin{split}
+    f_1(x)&=-\frac{1}{2}(x-3)(x-4)(x-5)\\
+    f_2(x)&=3(x-2)(x-4)(x-5)\\
+    f_3(x)&=\frac{3}{2}(x-2)(x-3)(x-5)\\
+    f_4(x)&={2}(x-2)(x-3)(x-4)\\
+\end{split}\]
+\end{solution}
+
+以上两例说明在已知函数值有若干个为零时，充分应用因式定理可以减少对待定系数的繁杂的计算量。（若一开始就令$f(x) =a_3a^3+a_2x^2+a_1x+a_0$, 就得解关于待定系数 $a_3,a_2,a_1,a_0$的四元一次方程组）。在已知函数值中没有零，或者很少为零的情况下，我们可以把所求的多项式$f(x)$分解为若干个多项式的和其中每一个多项式的函数值只有一个非零数。
+
+
+\begin{example}
+    已知$f(2)=3$, $f(3)=6$, $f(4)=-3$, $f(5)=12$, 求次数不大于3的多项式$f(x)$。
+\end{example}
+
+\begin{analyze}
+    实际上$f(x)$正是例中四个多项式的和。
+\end{analyze}
+
+\begin{solution}
+  令$f_1(x),f_2(x),f_3(x),f_4(x)$分别如例3.22中的已知条件所述，$F(x)=f_1(x)+f_2(x)+f_3(x)+f_4(x)$, 则
+\[    F (2) =f_1 (2) +f_2 (2) +f_3 (2) +f_4 (2) =3+0+0+0=3\]
+
+    同样可求得$F(3)=6$, $F(4)=-3$, $F(5)=12$, 可见：
+\[\begin{split}
+    f(x)=F(x)&=-\frac{1}{2} (x-3) (x-4)(x-5)+3 (x-2) (x-4)(x-5)\\
+    &\qquad 
+    +\frac{3}{2} (x-2) (x-3)(x-5)
+   +2 (x-2) (x-3)(x-4)   
+\end{split}\]    
+\end{solution}
+
+
+
+\begin{example}
+    已知$\alpha_i\; (i=1, 2, 3, 4)$是四个两两不等的数。$c_i\; (i=1, 2, 3, 4)$是另外四个数。试求次数不大于3的多项式$f(x)$, 使得$f (\alpha_i) =c_i,\; (i=1, 2, 3, 4)$ 
+\end{example}
+
+\begin{solution}
+    与例3.23的处理方法相类似，可假设四个多项式
+$f_1(x),f_2(x),f_3(x),f_4(x)$，$f_i(\alpha_j)=\delta_{ij}c_i$    
+    
+    此处$$\delta_{ij}=\begin{cases}
+        1,& i=j\\
+        0,& i\ne j
+    \end{cases}\quad  (i,j=1, 2, 3, 4)$$
+则显然有$f(x)=f_1(x)+f_2(x)+f_3(x)+f_4(x)$.
+还可以简记为$$f(x)=\sum^4_{i=1}f_i(x)$$
+其中，$f_i(x)=k(x-\alpha_2)(x-\alpha_3)(x-\alpha_4)$
+
+$\because\quad f_1(\alpha_1)=c_1$
+
+$\therefore\quad k_1=\frac{c_1}{(\alpha_1-\alpha_2)(\alpha_1-\alpha_3)(\alpha_1-\alpha_4)}$
+
+\[\therefore\quad f_1(x)=\frac{c_1(x-\alpha_2)(x-\alpha_3)(x-\alpha_4)}{(\alpha_1-\alpha_2)(\alpha_1-\alpha_3)(\alpha_1-\alpha_4)}\]
+同理可求得：
+\[\begin{split}
+    f_2(x)&=\frac{c_2(x-\alpha_1)(x-\alpha_3)(x-\alpha_4)}{(\alpha_2-\alpha_1)(\alpha_2-\alpha_3)(\alpha_2-\alpha_4)}\\
+    f_3(x)&=\frac{c_3(x-\alpha_1)(x-\alpha_2)(x-\alpha_4)}{(\alpha_3-\alpha_1)(\alpha_3-\alpha_2)(\alpha_3-\alpha_4)}\\
+    f_4(x)&=\frac{c_4(x-\alpha_1)(x-\alpha_2)(x-\alpha_3)}{(\alpha_4-\alpha_1)(\alpha_4-\alpha_2)(\alpha_4-\alpha_3)}
+\end{split}\]
+因此：
+\[\begin{split}
+f(x)&=\frac{c_1(x-\alpha_2)(x-\alpha_3)(x-\alpha_4)}{(\alpha_1-\alpha_2)(\alpha_1-\alpha_3)(\alpha_1-\alpha_4)}+\frac{c_2(x-\alpha_1)(x-\alpha_3)(x-\alpha_4)}{(\alpha_2-\alpha_1)(\alpha_2-\alpha_3)(\alpha_2-\alpha_4)}\\
+&\quad +\frac{c_3(x-\alpha_1)(x-\alpha_2)(x-\alpha_4)}{(\alpha_3-\alpha_1)(\alpha_3-\alpha_2)(\alpha_3-\alpha_4)}+\frac{c_4(x-\alpha_1)(x-\alpha_2)(x-\alpha_3)}{(\alpha_4-\alpha_1)(\alpha_4-\alpha_2)(\alpha_4-\alpha_3)}
+\end{split}\]
+还可以简单记为：
+\[f(x)=\sum^4_{i=1} c_i\frac{(x-\alpha_1)(x-\alpha_2)\cdots (x-\alpha_{i-1})(x-\alpha_{i+1})\cdots (x-\alpha_4)}{(\alpha_i-\alpha_1)(\alpha_i-\alpha_2)\cdots (\alpha_i-\alpha_{i-1})(\alpha_i-\alpha_{i+1})\cdots (\alpha_i-\alpha_4)}\]
+\end{solution}
+
+
+\begin{example}
+$\alpha_1,\alpha_2,\alpha_3$表三个两两不等的数，试用$f(\alpha_1)$, $f(\alpha_2)$, $f(\alpha_3)$来表示$(x-\alpha_1)(x-\alpha_2)(x-\alpha_3)$除多项式$f(x)$所得的余式。
+\end{example}
+
+\begin{solution}
+\[f(x)=(x-\alpha_1)(x-\alpha_2)(x-\alpha_3)q(x)+r(x)\]
+并且：${\rm deg}r(x)\le 2$或$r(x)=0$，则
+\[r(\alpha_1)=f(\alpha_1),\qquad r(\alpha_2)=f(\alpha_2),\qquad r(\alpha_3)=f(\alpha_3)\]
+ 仿照上例可得：
+ \[\begin{split}
+     r(x)&=f(\alpha_1)\frac{(x-\alpha_2)(x-\alpha_3)}{(\alpha_1-\alpha_2)(\alpha_1-\alpha_3)} +f(\alpha_2)\frac{(x-\alpha_1)(x-\alpha_3)}{(\alpha_2-\alpha_1)(\alpha_2-\alpha_3)}
+     \\
+&\quad     +f(\alpha_3)\frac{(x-\alpha_1)(x-\alpha_2)}{(\alpha_3-\alpha_1)(\alpha_3-\alpha_2)}
+ \end{split}\]
+\end{solution}
+
+\begin{ex}
+\begin{enumerate}
+    \item 已知$f(1)=f(2)=f(3)=2$, $f(0)=-16$。求三次多项式$f(x)$。
+    \item 已知$f(-3)=42$, $f(-2)=6$, $f(-1)=0$, $f(0)=0$, $f(1)=6$。求四次多项式$f(x)$。
+\end{enumerate} 
+\end{ex}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
