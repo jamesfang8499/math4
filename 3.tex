@@ -1374,11 +1374,195 @@ $\alpha_1,\alpha_2,\alpha_3$表三个两两不等的数，试用$f(\alpha_1)$, $
 \end{enumerate} 
 \end{ex}
 
+\subsection{插值公式}
+
+把上述例题所得的结果予以推广，应有
+下列定理：
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+%%  P209
+\begin{ex}
+    \begin{enumerate}
+    \item 已知$f(0)=0$, $f(1)=1$, $f(2)=2$, $f(3)=3$,
+    $f(4)=4$, 试求一个次数不大于4的多项式$f(x)$。
+    \item 已知$f(0)=0$, $f(1)=1$, $f(2)=2$, $f(3)=3$,
+    $f(4)=4$, 若求一个多项式$f(x)$, 没有说明其次数不大于4, 能否得出$f(x)=x$的结论？为什么？举一个反例。
+    \item 已知$f(x)$是一个二次多项式，$f(1)=3$, $f(2)=6$, $f(8)=13$, 计算$f(1. 5)$。
+    \item 为了计算$\sqrt{26}$, 只记得$\sqrt{2}=1. 414$, $\sqrt{3}=1. 732$, 因而算得$\sqrt{24}=4.898$, $\sqrt{25}=5$, $\sqrt{27}=5. 196$, 试由这三个数据近似地计算出$\sqrt{26}$（精确到0.001）。
+    \end{enumerate} 
+    \end{ex}
+    
+    \section*{习题3.4}
+    \addcontentsline{toc}{subsection}{习题3.4}
+    \begin{enumerate}
+        \item 已知$f(4)=0$, $f(6)=-12$, $f(7)=-20$,
+        $f(8)=-18$, 求次数尽可能小的多项式$f(x)$, 然后计算$f(12)$。
+        \item 当$x=2, 3, 4, 5$时，$f(x)$的值分别为$5, 4,-7,-34$, 求三次多项式$f(x)$。
+        \item 已知$5x^2+19x+18=\frac{a}{2}(x-2)(x-3)-b(x-3)(x-1)+\frac{c}{2}(x-1)(x-2)$, 计算$a,b,c$这三个数
+        对多项式$5x^2+19x+18$ 来说有些什么意义？
+        \item $a,b,c$是两两不等的三个数，已知$f(a)=bc$, $f(b)=
+        ca$, $f(c)=ab$, 求次数不超过2的多项式$f(x)$。
+        \item $a,b,c$是两两不等的三个数，已知$f(a)=b+c$, $f(b)=
+        c+a$, $f(c)=a+b$, 求次数不超过2的多项式$f(x)$。
+    \end{enumerate}
+    
+    \section{多项式的导数与换元展开式}
+    在本节里，我们将引进多项式的导数概念及其简单性质。并学习多项式的换元展开式，进一步把余式定理推广，为今后研究多项式函数在某定点邻近的区域内的局部性质打下一定基础。
+    
+    \subsection{多项式的导数}
+    导数概念是微积分学中的重要概
+    念，这里仅就多项式来讨论，我们规定：
+    
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ %%   P222
+\begin{ex}
+\begin{enumerate}
+    \item 试求$f(x)=x^4+x^3+x+1$除以下列各式所得的余式分别是什么？
+\[x-1;\quad  (x-1)^2;\quad (x-1)^3;\quad (x-1)^4\]
+\item 已知$f(x)$的首项系数为3, ${\rm deg}f(x)=4$, 而且$f(x)$
+分别除以$(x+2)$, $(x+2)^2$, $(x+2)^3$, $(x+2)^4$所得余式的常数项各是$-5,-13,-25,-41$, 试求$f(x)$。
+\item 多项式 $x^4+ax^3-3x^2+bx+3$ 除以$(x-1)^2$所得的
+余式为$x+1$, 试求$a,b$的值。
+\end{enumerate}
+\end{ex}
+
+
+\section*{习题3.5}
+\addcontentsline{toc}{subsection}{习题3.5}
+\begin{enumerate}
+    \item 求下列多项式的一、二、三阶导数：
+\begin{enumerate}
+    \item $f(x)=\poly{7,0,5,0,3,1}$
+    \item $g(x)=x^n+x^{n-1}+x^{n-2}+x^{n-3}-4,\quad (n\ge 3)$
+    \item $h(x)=4!x^4-3!x^3-2!x^2-1!x-0!$
+\end{enumerate}
+\item 已知$f(2)=(x-2)^2+1$, $g(x)=(x^2+\sqrt{2})^3$.
+试求下列各多项式的导数：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $f(x)+g(x)$
+    \item $g (x) -f (x)$
+    \item $f (x) g (x)$
+    \item $g^n(x)$
+\end{enumerate}
+\end{multicols}
+
+\item 已知$f(x)=(x+1)^3(2x-1)$, 试求：
+\begin{multicols}{2}
+    \begin{enumerate}
+        \item $f'(x)$
+        \item $\big(f(x),f'(x)\big)$
+    \end{enumerate}
+    \end{multicols}
+\item 已知$f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_x+a_0$, 
+$g(x)=bx^m,\quad (a,b\ne 0)$。
+
+求证：$[f(x)g(x)]'=f'(x)g(x)+g'(x)f(x)$
+
+\item 试求$f(x)=(x-a)(x-b)(x-c)$的一阶导数。
+\item 将下列多项式展开成指定的一次式的幂的形式：
+\begin{enumerate}
+\item $f(x)=10x^4-12x^3-9x^2-2x-1$, 展成$x-1$
+的幂；
+\item $y(x)=7x^5+1$, 展成$x+2$的幂。
+\end{enumerate}
+
+\item 如果$f(x)$分别除以$x-3$, $(x-3)^2$, $(x-3)^3$所得的
+余式各为$2$, $2x-4$, $x^2-4x+5$, 且$f(x)$的首项系数为$\frac{1}{2}$, 试求f(x)。
+\item 求f(x)：
+\begin{enumerate}
+\item 已知$f'(x)=10x^4-12x^3-9x^2-2x-1$, 
+且$f(1)=2$;
+\item 已知$f'(x)=x^3+x^2+x+1$, 且$f(0)=7$;
+\item 已知$f'(x)=ax^2+bx+c$, 且$f(-1)=\frac{b}{2}-c$。
+\end{enumerate}
+
+\item 试把$f(x)=x^6+5x^4+3x^2-7$ 写成$x^2+2$的幂的展
+开式。
+\begin{multicols}{3}
+    \begin{enumerate}
+        \item 用特定系数法
+        \item 用泰勒公式法
+        \item 用综合除法
+    \end{enumerate}
+\end{multicols}
+\item 试求$f(x)=x^6+5x^4+3x^2-7$ 分别除以$x+3$,
+$(x+3)^2$, $(x+3)^3$, $(x+3)^4$, $(x+3)^5$所得的余式。
+
+\item 若多项式$f(x)=ax^3+bx^2+cx+d$除以$(x-1)^2$, 则得余式$9x-10$; 若$f(x)$除以$(x+1)^2$, 则得余式$-11x-10$，试求$a,b,c,d$。
+
+\item 已知$f(x)=(x+1)^3(x-2)^2(3x+1)$, 试求：
+\begin{enumerate}
+    \item $f' (x)$
+    \item $\big(f(x),f'(x)\big)$
+    \item $\frac{f(x)}{\big(f(x),f'(x)\big)}$
+    \item $\frac{f(x)}{\big[f(x),f'(x)\big]}$除以$(x-2)^2$所得的余式。
+\end{enumerate}
+\end{enumerate}
+
+\section*{本章内容要点}
+
+一、本章的主要内容是一元多项式的基础理论，其中
+包括：
+
+\begin{enumerate}
+    \item 形如$f (x) =a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0,\; (a_n\ne 0)$的式子，叫做一元$n$次多项式（简称多项式）。
+    
+一元$n$次多项式还可以按元的升幂排列，其标准式为$f (x) =a_0 +a_1x+\cdots +a_{n-1}x^{n-1}+a_nx^n,\;  (a_n\ne 0)$。
+
+
+\item 两个多项式当且仅当它们的同次项系数对应相等时，这两个多项式相等。也可以说，当两个多项式在它们的元取任意允许值时，它们的值都对应相等，这两个多项式就恒等（相等）。
+\item 在多项式集合内（系数在同一个数系范围内），加、减、乘（乘方）运算是封闭的，而且满足运算通性（满足运算律、0与1的运算特性及指数运算律）；一元多项式还有独特的带余除法运算，与整数除法类似，对于任意多项式$f(x)$与非零多项式$g(x)\ne 0$, 可以找到唯一的$q(x)$, $r(x)$, 满足
+\[f(x)=q(x)g(x)+r(x) \quad \text{且}\quad  {\rm deg}r(x)<{\rm deg}g(x)\quad \text{或}\quad r (x) =0\]
+其中，$f(x)$叫被除式，$g(x)$叫除式，$q(x)$叫商式，$r(x)$叫余式。
+
+\item 余式定理与因式定理是由带余除法直接推导出来的两个应用广泛的重要内容，它们还有两个重要推论，必须牢固掌握，灵活应用。\item 最高公因式与辗转相除法在理论和实用上都有重要作用，应该理解其原理，掌握其方法。
+\item 多项式$f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$的导数是一种形式定义，即
+\[f' (x) =na_nx^{n-1}+ (n-1) a_{n-1}x^{n-2}+\cdots +a_1\]
+它与微积分学中所定义的导数概念是一致的，但这种形式定义仅对多项式适用。
+\end{enumerate}
+
+二、余式定理、因式定理及它们的推论，从内容上讲，它们沟通了两种观点研究多项式，把多项式含有一次因式$x-a$ 与多项式在$x=a$ 这一点的值为零看作一件事的两
+种说法。这样一来，在多项式的研讨中，以下几种说法就可是互通，等价的了，即
+\[\begin{split}
+    \text{$f(x)$含有$x-a$的因式} &\Longleftrightarrow \text{$f(x)$可被$x-a$整除}\\
+    &\Longleftrightarrow f(a)=0\\
+    &\Longleftrightarrow \text{$a$是$f(x)$的一个根}\\
+\end{split}\]
+
+\input{tmp-tikz.tex}
 
 
 
