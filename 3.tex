@@ -1379,22 +1379,87 @@ $\alpha_1,\alpha_2,\alpha_3$表三个两两不等的数，试用$f(\alpha_1)$, $
 把上述例题所得的结果予以推广，应有
 下列定理：
 
+\begin{blk}{定理}
+    设$f(x)$是一个次数不大于$n$的多项式，$\alpha_i\; (i=1, 2,\ldots,n,n+1)$表示$n+1$个两两不等的数，$b_i\; (i=1, 2,\ldots,n,n+1)$是任意$n+1$个数，而且
+$f (\alpha_i) =b_i,\; (i=1, 2,\ldots,n,n+1)$，则：
+\[\begin{cases}
+   f(x)=\sum^{n+1}_{i=1} f_i(x)\\
+   f_i(x)=b_i\frac{(x-\alpha_1)\cdots(x-\alpha_{i-1})(x-\alpha_{i+1})\cdots (x-\alpha_{n+1})}{(\alpha_i-\alpha_1)\cdots(\alpha_i-\alpha_{i-1})(\alpha_i-\alpha_{i+1})\cdots (\alpha_i-\alpha_{n+1})}
+\end{cases}\]
+\end{blk}
 
+\begin{proof}
+令$f_i(x)$是由下列条件所唯一确定的次数不大于$n$的多项式：
+\[f_i(\alpha_j)=\delta_{ij}b_i,\qquad \delta_{ij}=\begin{cases}
+    1&i=j\\
+    0&i\ne j
+\end{cases}\quad (i,j=1,2,\ldots,n+1)\]
+则由因式定理可知
+\[f_i(x)=c_i(x-\alpha_1)\cdots(x-\alpha_{i-1})(x-\alpha_{i+1})\cdots (x-\alpha_{n+1})\]
+由$f_i(\alpha_i)=b_i$定出$c_i$的值，可得
+\[c_i=\frac{b_1}{(\alpha_i-\alpha_1)\cdots(\alpha_i-\alpha_{i-1})(\alpha_i-\alpha_{i+1})\cdots (\alpha_i-\alpha_{n+1})}\]
+$\therefore\quad f_i(x)=b_i\frac{(x-\alpha_1)\cdots(x-\alpha_{i-1})(x-\alpha_{i+1})\cdots (x-\alpha_{n+1})}{(\alpha_i-\alpha_1)\cdots(\alpha_i-\alpha_{i-1})(\alpha_i-\alpha_{i+1})\cdots (\alpha_i-\alpha_{n+1})}$
 
+显然有 $f(x)=\displaystyle\sum^{n+1}_{i=1} f_i(x)$.
+\end{proof}
 
+上述公式叫做拉格朗日的插值公式。
 
+\begin{example}
+   令$g_n(x)$为一个$n$次多项式，它在$0, 1,\ldots,n-1,n $时的值分别为$0, 0,\ldots,0, 1$, 求$g_n(x)$. 
+\end{example}
 
+\begin{solution}
+    由插值公式直接得出
+    \[\begin{split}
+        g_n(x)&=\frac{x(x-1)(x-2)\cdots(x-n+1)}{1\cdot 2\cdots n}\\
+        &=\frac{x(x-1)\cdots(x-n+1)}{n!}      
+    \end{split}\]
 
+$n!$对非负整数$n$都有定义，读作“$n$阶乘”，当$n>0$时，
+$n!=1\x2\x\cdots \x n$, 并规定$0!=1$.
 
+注意$g_n(x)$是应用插值公式最容易求出的多项式，我们以后将会有意识地引进这样的多项式。
+\end{solution}
 
+\begin{example}
+    已知$f(x)$是一个次数不大于3的多项式，$f(0)=1$, $f(1)=4$, $f(2)=15$, $f(3)=40$, 不求出$f(x)$, 直接计算$f(1.5)$.
+\end{example}
 
+\begin{solution}
+    由插值公式可知
+    \[\begin{split}
+         f (1. 5) &=1\cdot \frac{(1. 5-1) (1.5-2)(1.5-3)}{(0-1) (0-2)(0-3)}+4\cdot \frac{(1.5-0)(1.5-2)(1.5-3)}{(1-0) (1-2)(1-3)}\\
+         &\quad +15\cdot \frac{(1. 5-0) (1.5-1)(1.5-3)}{(2-0) (2-1)(2-3)} +40\cdot \frac{(1. 5-0) (1.5-1)(1.5-2)}{(3-0) (3-1)(3-2)}\\
+         &=8.125
+    \end{split}\]
+\end{solution}
+ 
 
+\begin{example}
+某人身旁没有三角函数表（或带有三角函数的计算器），却需要计算$\sin23^{\circ}$, 他记得一些特殊角的三角函数：
+\[\sin0^{\circ}=0,\qquad \sin15^{\circ}=\frac{1}{4} (\sqrt{6}-\sqrt{2}) =0. 259,\qquad \sin30^{\circ}=0.5\]
+\[\sin45^{\circ}=\frac{\sqrt{2}}{2}=0. 707,\qquad \sin60^{\circ}=\frac{\sqrt{3}}{2}=0.866\]
+他根据这些数据把函数$y=f(x)=\sin x$近似地看成一个次数不大于4的多项式，问如此计算出来的$\sin23^{\circ}$是多少？
+\end{example}
 
+\begin{solution}
+    由已知$f(0)=0$, $f(15)=0. 259$, $f(30)=0. 5$, $f(45)=0. 707$, $f(60)=0. 866$, 求$f(23)$。
 
+方法同例3.26
+\[\begin{split}
+    f(23)&=0. 259\x \frac{23 (23-30) (23-45)(23-60)}{15 (15-30) (15-45)(15-60)}\\
+    &\quad +0. 5\x \frac{23 (23-15) (23-45)(23-60)}{30 (30-15) (30-45)(30-60)}\\
+&\quad +0. 707\x \frac{23 (23-15) (23-30)(23-60)}{45 (45-15) (45-30)(45-60)}\\
+&\quad +0.866\x \frac{23 (23-15) (23-30)(23-45)}{60 (60-15) (60-30)(60-45)}\\
+&\approx \frac{23}{15^4}\x (246+814-244+44) \approx 0. 391
+\end{split}\]
 
+实际上从三角函数表上査出的 $\sin23^{\circ}$如果要求精确到0.001也是0.391.
+\end{solution}
 
+关于一个函数为什么可以近似地用多项式来代替，在什么条件下才可以近似地用多项式来代替，我们到学习微积分时再加以研究。这里只说明插值公式有这样一个“插值”的应用。
 
-%%  P209
 \begin{ex}
     \begin{enumerate}
     \item 已知$f(0)=0$, $f(1)=1$, $f(2)=2$, $f(3)=3$,
@@ -1427,9 +1492,240 @@ $\alpha_1,\alpha_2,\alpha_3$表三个两两不等的数，试用$f(\alpha_1)$, $
     导数概念是微积分学中的重要概
     念，这里仅就多项式来讨论，我们规定：
     
+\begin{blk}{定义1}
+对任意的非负整数$n$, 单项式$ax^n$
+的导数就是单项式$nax^{n-1}$.
+\end{blk}    
+
+     
+\begin{blk}{定义2}
+对任意的非零多项式
+$f (x) =a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$
+的导数就是各项导数的代数和，记作
+\[f' (x) =na_nx^{n-1}+(n-1)a_{n-1}x^{n-2}+\cdots +a_1\]
+
+同样，$f'(x)$的导数，记作
+\[f'' (x) =n (n-1) a_nx^{n-2} + (n-1) (n-2)a_{n-1}x^{n-3}+\cdots+a_2\]
+叫做多项式$f(x)$的二阶导数；
+$f''(x)$的导数，记作$f'''(x)$，叫做$f(x)$的三阶导数，也是$f'(x)$的二阶导数；一般地，$f'(x)$的$k-1$阶导数，就是
+$f(x)$的$k$阶导数，记作$f^{(k)}(x)$，即：
+\[\left[f^{(k-1)} (x)\right]'=f^{(k)}(x)\]
+\end{blk}    
+
+   \begin{example}
+    求 $f(x)=2x^3-8x^2+5x-4$的各阶导数.
+    \end{example}
+
+    \begin{solution}
+\[\begin{split}
+    f' (x) &=6x^2-16x+5\\
+        f'' (x) &=12x-16\\
+        f''' (x) &=12\\
+        f'''' (x) &=f^{(5)}(x)=\cdots =f^{(n)}(x)=0,\qquad (n\ge 4)
+\end{split}\]
+    \end{solution}    
+
+    显然，一元$n$次多项式的$n$阶导数是一个非零常数（零次多项式），从$n+1$阶系数开始，以后各高阶导数都是零；
+    特别地，零次多项式的导数等于零；而零多项式的各阶导数仍是零。
+
+    总之，多项式的导数仍然是多项式。而且对于系数在整数，有理数，实数范围内的各多项式集合，求导数这种运算也是封闭的。
+
+ 
+    \begin{example}
+求多项式$f (x) =a_3x^3+a_2x^2+a_1x+a_0\quad  (a_3\ne 0)$ 的各阶导数，并求出各阶导数在$x=x_0$时的值。          
+    \end{example}           
+         
+    \begin{solution}
+\[\begin{split}
+ f'(x)&=3a_3x^2+2a_2x+a_1\qquad 
+    f' (x_0) =3a_3 x^2_0 +2a_2x_0+a_1\\
+    f'' (x) &=6a_3x+2a_2\qquad \qquad \quad 
+    f'' (x_0) =6a_3x_0+2a_2\\
+    f''' (x) &=6a_3\qquad \qquad \qquad \qquad 
+     f''' (x_0 ) =6a_3\\
+     f^{(4)} (x)&=f^{(5)}(x)=\cdots =f^{(n)}(x)=0\\
+     f^{(4)}  (x_0)&=f^{(5)}(x_0)=\cdots =f^{(n)}(x_0)=0 
+\end{split}\] 
+    \end{solution} 
+
+容易证明，多项式的导数有以下性质：
+
+\begin{blk}{性质1}
+    多项式$f(x)$与常数$k$乘积的导数等于$f(x)$的导数与$k$的乘积，即
+\[[kf (x) ]'=k\cdot f' (x) \]
+\end{blk}   
+
+\begin{proof}
+设$f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$，
+则
+\[kf(x)=ka_nx^n+ka_{n-1}x^{n-1}+\cdots+ka_1x+ka_0\]
+因此：
+\[\begin{split}
+    [kf(x)]'&=kna_nx^{n-1}+k(n - 1)a_{n-1}x^{n-2}+\cdots+ka_1\\
+&=k \left[na_nx^{n-1}+(n - 1)a_{n-1}x^{n-2}+\cdots+a_1\right]\\
+&=kf' (x) 
+\end{split}\]
+\end{proof}
+
+\begin{blk}{性质2}
+    两多项式$f(x),g(x)$和的导数等于这两个多项式的导数和，即
+\[[f (x) +g (x) ]'=f' (x) +g' (x) \]  
+\end{blk}  
+ 
+\begin{proof}
+设$f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$，$g(x)=b_mx^m+b_{m-1}x^{m-1}+\cdots+b_1x+b_0$，不失一般性，不妨设$n>m$，则有
+\[f(x)+g(x)=a_nx^n+\cdots + (a_{m}+b_m)x^{m}+\cdots+(a_1+b_1)x+a_0+b_0\]
+因此：
+\[\begin{split}
+    [f(x)+g(x)]'&=na_nx^{n-1}+\cdots + m(a_{m}+b_m)x^{m-1}+\cdots+a_1+b_1\\
+    &=(na_nx^{n-1}+\cdots+ma_mx^{m-1}+\cdots +a_1)+(mb_mx^{m-1}+\cdots +b_1)\\
+    &=f'(x)+g'(x)
+\end{split}\]
+\end{proof}  
+
+综合性质1, 2, 就可以得出：对任意的两个常数$\mu$, $\lambda$和多项式$f(x),g(x)$, 下述等式是成立的，即
+\[[\mu\cdot f (x) +\lambda\cdot g (x) ]'=\mu f' (x) +\lambda g' (x) \]
+
+\begin{blk}{性质3}
+两个多项式$f(x),g(x)$的乘积的导数等于$f(x)$的导数乘以$g(x)$与$g(x)$的导数乘以$f(x)$的和，即
+\[[f (x) g (x) ]'=f' (x) g (x) +g' (x) f (x) \]
+\end{blk}
+
+\begin{blk}{性质4}
+    一个多项式$f(x)$的$m$次方的导数为
+\[[f^m (x) ] '= mf^{m-1} (x) f' (x) \]
+\end{blk}
+
+性质3, 4的证明亦可以像前两个性质一样通过实际计算进行，但较繁，这里略去不证，同学们可通过练习验证。
+
+\begin{example}
+求下列多项式的导数：
+\begin{enumerate}
+    \item $f(x)=g(x)h(x)$
+    \item $f (x) =g^2 (x) +2g (x) h (x) +h^2 (x) $
+\end{enumerate} 
+这里$g(x)=3x^2-1$, $h (x) =8x^3+2x-1$
+    \end{example}
+
+    \begin{solution}
+\begin{enumerate}
+    \item $f(x)=(3x^2-1)(8x^3+2x-1)$
+\[\begin{split}
+    f' (x) &= (3x^2-1)' (8x^3+2x-1)+(8x^3+2x-1)' (3x^2-1) \\
+    &=6x (8x^3+2x-1) + (24x^2+2) (3x^2-1)\\
+    &=48x^4+12x^2-6x+72x^4-18x^2-2\\
+    &=120x^4-6x^2-6x-2
+\end{split}\]
+    \item $f(x)=g^2 (x) +2g (x) h (x) +h^2 (x) =[g(x)+h(x)]^2=(8x^3+3x^2+2x-2)^2$
+\[\begin{split}
+    f'(x)&=2(8x^3+3x^2+2x-2)(8x^3+3x^2+2x-2)'\\
+    &=2(8x^3+3x^2+2x-2)(24x^2+6x+2)\\
+    &=\poly{384,240,164,-60,-16,-8}
+\end{split}\]
+\end{enumerate}
+ \end{solution}
+           
+\begin{ex}
+\begin{enumerate}
+    \item 求下列各多项式的各阶导数
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $f (x) =3x^2+x-2$
+    \item $f(x) =ax^2+bx+c$
+    \item $f(x)=\frac{4\cdot 3}{2!}a^2x^2$
+\end{enumerate}
+\end{multicols}
+
+    \item 对于$f(x)=a_3x^3+a_2x^2+ax+a_0,\quad g(x)=b_2x^2+b_1x+b_0$
+    
+    验证导数的性质3是成立的。
+
+    \item 求下列各多项式的导数：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $f (x) =\varphi^2 (x) +1$
+    \item $f(x)=\varphi(x)g(x)$
+    \item $f (x) =\varphi^3 (x) g (x)$
+    \item $f(x)=\varphi^2(x)-g^2(x)$
+\end{enumerate}
+\end{multicols}
+这里$\varphi(x)=x-2,\quad g(x)=3x^3+5x-1$.
+    \item 试试看：你能证明“如果$(x-a)^k$能够整除$f(x)$, 那么$(x-a)^{k-1}$一定能够整除$f'(x)$吗”？
+\end{enumerate}
+\end{ex}
+ 
+\subsection{多项式的换元展开式——泰勒公式}
+
+ 在初中代数
+中，我们曾经学习过用综合除法的方法，将任一个非零次多项式$f(x)$展开成$(x-a)$的幂的形式。如果令$x-a=t$则$x=a+t$将它代入$f(x)$后，即可将$f(x)$展开成元$t=(x-a)$的幂的形式，按升幂排列成：
+\[f (x) =f (a+t) =c_0+c_1t+c_2t^2+\cdots+c_nt^n\]
+就叫做多项式$f(x)$在$x=a$点的换元展开式。
+
+这里的待定系数$c_i,\; (i=0, 1, 2,\ldots,n)$ 显然只与$f(x)$
+和所选定的点$a$有关。以下我们就复习用综合除法确定这些系数的方法，并进一步研究这些系数的一般规律，得出一般公式。
+
+    \begin{example}
+        用综合除法，将$f (x) =2x^2-x-2$展开成$x-1$的幂的形式。
+    \end{example}    
+    
+    \begin{solution}
+
+
+
+
+
+
+
+
+
     
 
     
+    \end{solution}
+   
+    \begin{example}
+    
+    \end{example}
+
+    
+    \begin{solution}
+            
+    \end{solution}
+    
+    \begin{example}
+        
+    \end{example}    
+    
+    \begin{solution}
+    
+    \end{solution}
+
+ \begin{example}
+    
+    \end{example}
+
+    
+    \begin{solution}
+            
+    \end{solution}
+    
+    \begin{example}
+        
+    \end{example}    
+    
+    \begin{solution}
+    
+    \end{solution}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1562,28 +1858,98 @@ $(x+3)^2$, $(x+3)^3$, $(x+3)^4$, $(x+3)^5$所得的余式。
     &\Longleftrightarrow \text{$a$是$f(x)$的一个根}\\
 \end{split}\]
 
-\input{tmp-tikz.tex}
+三、由余式定理及因式定理的推论，可以推导出插值
+公式——拉格朗日公式：
+
+若已知$f(\alpha_i)=b_i,\; (i=1,2,\ldots,n,n+1)$, 则$n$次多项式
+$f(x)$的表达式为
+\[\begin{split}
+f(x)&=b_1\frac{(x-\alpha_2)(x-\alpha_{3})\cdots (x-\alpha_{n+1})}{(\alpha_1-\alpha_2)(\alpha_1-\alpha_3)\cdots (\alpha_1-\alpha_{n+1})}\\
+&\quad +b_2\frac{(x-\alpha_1)(x-\alpha_{3})\cdots (x-\alpha_{n+1})}{(\alpha_2-\alpha_1)(\alpha_2-\alpha_3)\cdots (\alpha_2-\alpha_{n+1})}\\
+&\quad +\cdots +b_n\frac{(x-\alpha_1)(x-\alpha_{2})\cdots (x-\alpha_{n-1})(x-\alpha_{n+1})}{(\alpha_n-\alpha_1)(\alpha_n-\alpha_2)\cdots (\alpha_n-\alpha_{n-1})(\alpha_n-\alpha_{n+1})}\\
+&\quad +b_{n+1}\frac{(x-\alpha_1)(x-\alpha_{2})\cdots (x-\alpha_{n})}{(\alpha_{n+1}-\alpha_1)(\alpha_{n+1}-\alpha_2)\cdots (\alpha_{n+1}-\alpha_{n})}
+\end{split}\]
+或简记为：
+\[f(x)=\sum^{n+1}_{i=1} b_i\frac{(x-\alpha_1)\cdots(x-\alpha_{i-1}) (x-\alpha_{i+1})\cdots(x-\alpha_{n+1})}{(\alpha_i-\alpha_1)\cdots(\alpha_i-\alpha_{i-1}) (\alpha_i-\alpha_{i+1})\cdots(\alpha_i-\alpha_{n+1})}\]
+
+有了插值公式，就可以由多项式在$n+1$个点的$n+1$个值，确定$n$次多项式的表达式，进而求出多项式在任何一点的值来。
+
+四、应用多项式的导数概念及求法，结合初中学习过的综合除法，就可以推导出多项式的换元展开式（泰勒公式）
+
+泰勒公式有两种形式：
+\begin{enumerate}
+    \item 多项式$f(x)$在$x_0$点的展开式
+    \[f(x_0+t)=f(x_0)+\frac{f'(x_0)}{1!}t+\frac{f''(x_0)}{2!}t^2+\cdots+\frac{f^{(n)}(x_0)}{n!}t^n\]
+    \item 多项式$f(x)$在$x=a$点的展开式
+    \[f(x)=f(a)+\frac{f'(a)}{1!}(x-a)+\frac{f''(a)}{2!}(x-a)^2+\cdots+\frac{f^{(n)}(a)}{n!}(x-a)^n\]
+\end{enumerate}
+两种形式，本质上是一样的，2应用较多。
+
+五、由泰勒公式2, 可得到余式定理及推广，这就是：
+\begin{enumerate}
+    \item $f(x)$除以$x-a$时，余式为$f(a)$——余式定理；
+    \item $f(x)$除以$(x-a)^2$时，余式为$f(a)+\frac{f'(a)}{1!}(x-a)$;
+    \item $f(x)$除以$(x-a)^k$时，得到的余式为
+    \[r_k (x) =f (x) +\frac{f'(a)}{1!}(x-a)+\frac{f''(a)}{2!}(x-a)^2+\cdots +\frac{f^{(k-1)}(a)}{(k-1)!}(x-a)^{k-1}\]
+\end{enumerate}
+
+
+六、作为多项式的基本内容，还应特别强调待定系数
+法的重要性，它的根据就是多项式相等的定义，它的方法要点就是引进待定系数、列出方程组解出来。
 
 
 
+\section*{复习题三}
+\begin{enumerate}
+\item 证明恒等式：
+\[\begin{split}
+   & \left(x+\frac{5}{2}a\right)^4-10a\left(x+\frac{5}{2}a\right)^3+35a^2\left(x+\frac{5}{2}a\right)^2-50a^3\left(x+\frac{5}{2}a\right)+24a^2\\
+&\qquad = \left(x^2-\frac{1}{4}a^2\right)\left(x^2-\frac{9}{4}a^2\right)
+\end{split}\]
+\item 若
+\[\begin{split}
+    (x-1)(x-2)(x-3)&=p(x-1) (x+2)(x+3)+q(x+1)(x-2)(x+3)\\
+    &\qquad  +r (x+1) (x+2)(x-3)
+\end{split}\]
+试求$p,q,r$的值。
+\item 已知$f(x)=(x+a)(x+b)(x+c)$中$x^2$的系数为0, 
+$g(x)=(x-a)(x+b)(x+c)$中$x$的系数为0, 且$f(x)$中$x$的系数等于$g(x)$中$x^2$的系数。
 
+证明$a$等于0或1.
+\item 已知$s=a+b+c$, 求证：
+\[(as+bc) (bs+ac)(cs+ab)=(b+c)^2(c+a)^2(a+b)^2\]
 
+\item 已知$s=\frac{1}{2}(a+b+c)$, 求证：
+\[(s-a)^3+ (s-b)^3+ (s-c)^3+3abc=s^3\]
+\item 分解因式：$x^3+ (m+n+1) ax^2+ (m+n+mn) a^2x+mna^3$
+\item 若$f_1(x)$除以$g(x)$所得余式为$r_1(x)$，$f_2(x)$除以$g(x)$所得余式为$r_2(x)$
 
+求证：$f_1(x)\cdot f_2(x)$除以$g(x)$与$r_1(x)\cdot r_2(x)$除以$g(x)$所得余式相同。
 
+\item  若$x-a$能整除$x^2+2ax-3b^2$, 求证：$a=\pm b$.
 
+\item  若$f(x)=px^3+qx^2+qx+p$能被$g(x)=x^2-1$整除，
+试求$p,q$的关系。
+\item  已知$f(x)=x^4+3x^3+ax^2+bx+c$除以
+$g(x)=(x^2-1)(x+1)$所得的余式为0, 试求$a,b,c$.
+\item  若$ax^2+bx+c$与$cx^2+bx+a$只有一个一次公因式，
+求证：$a\pm b+c=0$
+\item 已知$f(x)=x^2+(k+b)x+4k+2$与$g(x)=x^2+(k+2)x+2k$的最高公因式是一次式，试求$k$.
+\item  求证：
+$(y-z)^{2n+1}+(z-x)^{2n+1}+(x-y)^{2n+1}$可被$(x-y)(y-z)(z-x)$整除。
+\item  在下面等式中，求满足条件的$a,b,c$。
+\begin{enumerate}
+    \item $a (x-2 (x-8) +b (x-3) (x-1)+c (x-1) (x-2)=5x^2+19x+18$
+    \item $a (x-3) (x-5)+b(x-5)(x-7)+c (x-7) (x-3)=8x-32$
+\end{enumerate}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\item $f(x)$是一个次数不大于3的多项式，$a,b,c,d$是两两不等的数，已知$f(a)=A$, $f(b)=B$, $f(c)=C$, $f(d)=D$, 求$f(x)$.
+\item 已知$(x-1)^2$整除$ax^{n+1}+bx^n+1$, 试求$a$、$b$.
+\item 已知$a_1=1$, $a_2=x+y$, $a_3=x^2+xy+y^2,\; \ldots,\; a_n=x^{n-1}+x^{n-2}y+\cdots +xy^{n-2}+y^{n-1}$, 试求$a_1+a_2+\cdots +a_n\; (x\ne 1,\; y\ne 1,\;x\ne y)$.
+\item 已知$f''(x)=ax^2+bx+c$, 且$f(0)=0$, $f(1)=1$, 求
+$f (x)^n$.
+\item 已知$f(x)=x^2+ax+b$与$g(x)=x^2+cx+d$的最高公
+因式是一个一次多项式，求证：
+\[[f(x),g(x)]=x^3+\frac{ab-cd}{b-d}x^2+\left[ac-\left(\frac{b-d}{a-c}\right)^2\right]x+bd\cdot \frac{a-c}{b-d}\]
+\end{enumerate}
 
