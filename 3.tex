@@ -1,4 +1,3 @@
-
 \chapter{多项式的基础理论}
 在初中我们已经学习过多项式及其四则运算，并着重学习了一元多项式的带余除法、余式定理和多元多项式的乘法公式，因式分解。这都是重要的基础知识，在数学和实际中都有广泛的应用，本章将从理论和应用上对多项式的基础知识作进一步的研究、提高，我们研究的重点仍然是一元多项式。
 
@@ -1669,80 +1668,270 @@ $f(x)$的$k$阶导数，记作$f^{(k)}(x)$，即：
     \end{example}    
     
     \begin{solution}
+  用$x-1$去连续除$f(x)$, 由综合除法得
+\begin{center}
+\begin{tikzpicture}[yscale=1.3]
+    \node at (0,0)[right]{$2-1-2$};
+    \node at (0,-0.5)[right]{$\quad +2+1$};
+    \node at (0,-1)[right]{$2+1\; -1 $……$c_0$};
+    \node at (0,-1.5)[right]{$\quad +2$};
+    \node at (0,-2)[right]{$2\quad 3$……$c_1$};
+    \node at (0,-2.5)[right]{$2$……$c_2$};
+\draw (0,-.75)--(2,-.75)--(2,.25);
+\draw (0,-1.75)--(1,-1.75)--(1,-.75);
+\draw (0,-2.25)--(.5,-2.25)--(.5,-1.75);
+\end{tikzpicture}
+\end{center}
 
-
-
-
-
-
-
-
-
-    
-
-    
-    \end{solution}
+\[\therefore\quad f (x) =-1+3 (x-1) +2 (x-1)^2\]
+或
+\[f (1+t) =-1+3t+2t^2,\qquad (x-1=t)\]
+\end{solution}
    
-    \begin{example}
-    
-    \end{example}
+\begin{example}
+已知$f(x)=a_3x^3+a_2x^2+a_1x+a_0$, 试求：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $f (1+t)$
+    \item $f(x_0+t)$
+\end{enumerate}
+\end{multicols}
+\end{example}
 
+\begin{solution}
+\begin{enumerate}
+    \item 
+这就是要求当$x=1+t$, 即$t=x-1$时$f(x)$的换元展开，可以用综合除法
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+\foreach \x/\xtext in {0/a_3,1/a_2,3/a_1,5/a_0}
+{
+    \node at (\x,0){$\xtext$};
+}
+\foreach \x/\xtext in {0/{},1/a_3,3/a_2+a_3,5/a_1+a_2+a_3}
+{
+    \node at (\x,-0.5){$\xtext$};
+}
+\foreach \x/\xtext in {0/a_3,1/a_2+a_3,3/a_1+a_2+a_3,6/a_0+a_1+a_2+a_3\cdots\cdots c_0}
+{
+    \node at (\x,-1){$\xtext$};
+}
+\draw(-.2,-.75)--(6.5,-.75)--(6.5,.25);
+\foreach \x/\xtext in {1/a_3,3/a_2+2a_3}
+{
+    \node at (\x,-1.5){$\xtext$};
+}
+\draw(-.2,-1.75)--(4,-1.75)--(4,-.75);
+\foreach \x/\xtext in {0/a_3,1/a_2+2a_3,4/a_1+2a_2+3a_3\cdots\cdots c_1}
+{
+    \node at (\x,-2){$\xtext$};
+}
+\node at (1,-2.5){$a_3$};
+\draw(-.2,-2.75)--(2,-2.75)--(2,-1.75);
+\foreach \x/\xtext in {0/a_3,2/a_2+3a_3\cdots\cdots c_2}
+{
+    \node at (\x,-3){$\xtext$};
+}
+\node at (-.2,-3.5)[right]{$a_3\cdots\cdots c_3$};
+\draw(-.2,-3.25)--(.5,-3.25)--(.5,-2.75);
+
+\end{tikzpicture}
+\end{center}
+因此：
+\[\begin{split}
+    f (x) &= (a_0+a_1 +a_2 +a_3) + (a_1 +2a_2+3a_3 ) (x-1)\\
+    &\qquad +(a_2 +3a_3) (x-1)^2+a_3(x-1)^3\\
+f(1+t)&=(a_0+a_1 +a_2 +a_3) +(a_1 +2a_2+3a_3)t \\
+&\qquad + (a_2+3a_3) t^2+a_3t^3
+\end{split}\]
+
+\item 直接换元，令$x=x_0+t$代入$f(x)$, 并展开整理成$t$
+的升幂排列形式
+\[\begin{split}
+    f (x_0+t) &=a_3(x_0+t) +a_2(x_0+t)^2+a_1(x_0+t)+a_0\\
+&=(a_0 +a_1x_0 +a_2x_0^2+a_3x_0^3) + (a_1+2a_2x_0+3a_3 x^2_0)t\\
+&\qquad + (a_2+3a_3x_0) t^2+a_3t^3
+\end{split} \]
+\end{enumerate}
+\end{solution}
+
+为了找出换元展开式中待定系数$c_i\; (i=0, 1,\ldots,n)$的一般规律，我们对例3.33(2)分析并验证如下：
+
+换元展开式中的常数项$a_0+a_1x_0+a_2x_0^2+a_3x_0^3$正好是$x=x_0$时，多项式$f(x)$的值$f(x_0)$. 例3.32及例3.33(1)也是 如此；$c_0=f (x_0)$。
+
+换元展开式中的一次项系数 $a_1+2a_2x_0+3a_3x_0^2$正好是$x=x_0$时多项式$f(x)$的导数$f'(x)=3a_3x^2+2a_2x+a_1$的值$f'(x_0)=a_1+2a_2x_0+3a_3x_0^2$。例3.32及例3.33(1)也是如此；
+$c_1 =f' (x_0)$。
+
+换元展开式中的二次项系数 $a_2+3a_3x_0$正是$x=x_0$时，
+$f(x)$的二阶导数$f'(x)=6a_3x+2a_2$的值的一半：$\frac{1}{2}f''(x_0)=a_2+3a_3x_0$。例3.32及例3.33(1)也是如此；$c_2=\frac{1}{2}f''(x_0)$。
+
+换元展开式中的三次项系数$c_3$, 也容易分析出它正是当$x=x_0$时，$f(x)$的三阶导数$f'''(x)=6a_1$的值的六分之一，$\frac{1}{6}f'''(x_0)=a_3$, 可验证例3.33(1)也是如此；
+$c_3=\frac{1}{6}f''' (x_0)$。
+
+这样一来，利用导数概念，换元展开式就可以写成：
+\[f(x_0+t)=f(x_0)+f'(x_0)t+\frac{1}{2}f''(x_0)t^2+\frac{1}{6}f'''(x_0)t^3\]    
+进而可写成更有规律、便于记忆的形式
+\[f(x_0+t)=f(x_0)+\frac{f'(x_0)}{1!}t+\frac{f''(x_0)}{2!}t^2+\frac{f'''(x_0)}{3!}t^3\]    
+同样，例3.33(1)的换元展开写成
+\[f (1+t) =f (1) +\frac{f'(1)}{1!}t+\frac{f''(1)}{2!}t^2+\frac{f'''(1)}{3!}t^3\]
+例3.32 也可以写成
+\[f (1+t) =f (1) +\frac{f'(1)}{1!}t+\frac{f''(1)}{2!}t^2=-1+3t-2t^2\]
+
+实际上，这正是多项式换元展开式的一般规律，推广到$n$次多项式就得到重要的泰勒定理。
     
-    \begin{solution}
-            
-    \end{solution}
-    
+\begin{blk}{定理（泰勒定理）}
+ 一元$n$次多项式$f(x)$在点$x_0$
+的换元展开式为
+\begin{equation}
+    f(x_0+t)=f(x_0)+\frac{f'(x_0)}{1!}t+\frac{f''(x_0)}{2!}t^2+\cdots+\frac{f'''(x_0)}{n!}t^n
+\end{equation}   
+\end{blk}
+
+定理的一般证明这里略去，但容易验证，这个定理的内容对于零多项式、零次多项式都是适合的；对二、三次多项式我们从例3.32和例3.33也已验证过是适合的，对于其它高次多项式以后再给出确切证明，现在可以应用。
+
     \begin{example}
-        
+已知$f(x)=\poly{1,0,-2,3,5}$，试求$f(x)$在$x=1$点的展开式。    
     \end{example}    
     
     \begin{solution}
-    
+\begin{center}
+\begin{tabular}{lll}
+$f(x)=\poly{1,0,-2,3,5}$  &  $f(1)=7$  \\
+$f'(x)=\poly{4,0,4,3}$  &  $f'(1)=3$  \\
+$f''(x)=\poly{12,0,-4}$  &  $f''(1)=8$& $\frac{8}{2}=4$  \\
+$f'''(x)=24x$  &  $f'''(1)=24$ & $\frac{24}{3!}=4$\\
+$f''''(x)=24$  &  $f''''(1)=24$ & $\frac{24}{4!}=1$\\
+\end{tabular}    
+\end{center}
+
+$\therefore\quad f(1+t)=7+3t+4t^2+4t^3+t^4$。又由于$x=a+(x-a)$，因此：
+\begin{equation}
+    \begin{split}
+    f(x)&=f[a+(x-a)]\\
+    &=f(a)+\frac{f'(a)}{1!}(x-a)+\frac{f''(a)}{2!}(x-a)^2+\cdots+\frac{f^{(n)}(a)}{n!}(x-a)^n
+\end{split}
+\end{equation}
+(3.17)式叫做多项式$f(x)$在点$x=a$的换元展开式。
     \end{solution}
+
+(3.16)与(3.17)本质上是相同的，都叫做泰勒公式，只是(3.16)式中的$t$相当于(3.17)式中的$x-a$罢了，不过在今后应用更多的是(3.17)式。
 
  \begin{example}
-    
+    已知$f(x)=x^5+2x^4-2x^3+7x-5$, 试将$f(x)$展开成$x+1$的升幂多项式。
     \end{example}
 
-    
-    \begin{solution}
-            
+    \begin{solution}    
+\begin{center}
+\begin{tabular}{lll}
+$f(x)=\poly{1,2,-1,0,7,-5}$  &  $f(-1)=-10$  \\
+$f'(x)=\poly{5,8,-3,0,7}$  &  $f'(-1)=1$  \\
+$f''(x)=\poly{20,24,-6,0}$  &  $f''(-1)=10$& $\frac{10}{2!}=5$  \\
+$f'''(x)=\poly{60,48,-6}$  &  $f'''(-1)=6$ & $\frac{6}{3!}=1$\\
+$f^{(4)}(x)=120x+48$  &  $f^{(4)}(-1)=-72$ & $\frac{-72}{4!}=-3$\\
+$f^{(5)}(x)=120$  &  $f^{(5)}(-1)=120$ & $\frac{120}{5!}=1$\\
+\end{tabular}    
+\end{center}
+          
+$\therefore\quad f(x)=-10+(x-1)+5(x-1)^2+(x-1)^3-3(x-1)^4+(x-1)^5$
     \end{solution}
+
+    还可以用连续作综合除法的方法，得出同样的结果。同学们可以验证一下。
+
+\begin{ex}
+\begin{enumerate}
+    \item 试用秦勒公式将下列多项式在给定点展开成升幂形式：
+\begin{enumerate}
+    \item $g(x)=\poly{7,-3,4,-1}$，在$x=2$点；
+    \item $f (x) =9x^5-188$，在$x=-2$点；
+    \item $h(x)=x^4-x^2-1$，在$x=-1$点。
+\end{enumerate}
+
+    \item 试用泰勒公式将下列多项式展开成指定一次式的升幂形式：
+\begin{enumerate}
+    \item $f(x)=2x-2x^2+x^3$, 展成$x-1$的幂；
+    \item $g(x)=2x^3+24x^2+34x+30$, 展成$x+2$的幂；
+    \item $h(x)=28x-27+x^3-9x^2$展成$x-3$的幂。
+\end{enumerate} 
+\end{enumerate}
+\end{ex}
     
+\subsection{余式定理的推广}
+
+泰勒公式，实际上就是通过多
+项式的恒等变形，把一个以$x$为元的多项式变换为一个以
+$x-a$为元的升幂多项式。
+
+有了泰勒公式，我们可以更深刻，更一般地去理解余式定理。
+
+由泰勒公式
+\[f(x)=f(a)+\frac{f'(a)}{1!}(x-a)+\frac{f''(a)}{2!}(x-a)^2+\cdots+\frac{f^{(n)}(a)}{n!}(x-a)^n\]
+可以直观看出：
+\begin{enumerate}
+    \item 若用$x-a$去除$f(x)$, 所得余式为$r_1(x)=f(a)$, 这正是我们在第二节所学的余式定理的内容；
+    \item 若用$(x-a)^2$去除$f(x)$, 所得的余式为
+    \[ r_2(x) =f (a) +\frac{f'(a)}{1!}  (x-a)\]
+    这就要比余式定理的内容进一步了；
+    \item 一般地，若用$(x-a)^k\; (k\le n)$除$f(x)$, 所得的余式为
+    \[r_k(x)=f(a)+\frac{f'(a)}{1!}(x-a)+\cdots+\frac{f^{(k-1)}(a)}{(k-1)!}(x-a)^{k-1}\]
+    这就是余式定理推广的结论。
+\end{enumerate}
+
     \begin{example}
-        
+试求$f(x)=\poly{1,0,-2,8,5}$除以$g(x)=(x-1)^3$所得的余式$r(x)$。
     \end{example}    
     
     \begin{solution}
-    
+\begin{center}
+\begin{tabular}{lll}
+$f(x)=\poly{1,0,-2,8,5}$  &  $f(1)=12$  \\
+$f'(x)=\poly{4,0,-4,8}$  &  $f'(1)=8$  \\
+$f''(x)=\poly{12,0,-4}$  &  $f''(1)=8$& $\frac{8}{2!}=4$  \\
+\end{tabular}    
+\end{center}
+          
+$\therefore\quad f(x)$除以$g(x)$所得的余式为
+\[\begin{split}
+    r(x)&=f(1)+\frac{f'(1)}{1!}(x-1)+\frac{f''(1)}{2!}(x-1)^2\\
+    &=12+8(x-1)+4(x-1)^2\\
+    &=12-8+8x+4x^2-8x+4\\
+    &=4x^2+8
+\end{split}\]
     \end{solution}
 
+    \begin{example}
+已知一个首项系数是2的三次多项式 $g(x)$除以$(x-2)^3$所得的余式为$2x^2+x-1$, 试求这个多项式$g(x)$。
+    \end{example}    
+    
+    \begin{solution}
+设$g(x)=f(2)+\frac{f'(2)}{1!}(x-2)+\frac{f''(2)}{2!}(x-2)^2+\frac{f'''(2)}{3!}(x-2)^3$
+
+由已知，$g(x)$的首项（最高次项）系数为2, 可得
+\[\frac{f'''(2)}{3!}=2\quad \Rightarrow\quad f'''(2)=12\]
+
+又由$g(x)$除以$(x-2)^3$所得余式为$2x^2+x-1$, 可以
+得       
+\[f(2)+\frac{f'(2)}{1!}(x-2)+\frac{f''(2)}{2!}(x-2)^2=2x^2+x-1\]
+即：
+\[\frac{1}{2}f''(2)x^2+[f'(2)-2f''(2)]x+[f(2)-2f'(2)+2f''(2)]=2x^2+x-1\]
+ 
+根据多项式恒等的定义，可得：
+\[\begin{cases}
+    \frac{1}{2}f''(2)=2\\
+    f'(2)-2f''(2)=1\\
+    f(2)-2f'(2)+2f''(2)=-1
+\end{cases}\]
+解出方程组，得：
+\[f''(2)=4,\qquad f'(2)=9,\qquad f(2)=9\]
+
+因此：
+\[\begin{split}
+    g(x)&=9+9(x-2)+\frac{4}{2!}(x-2)^2+\frac{12}{3!}(x-2)^3\\
+    &=9+9(x-2)+2(x-2)^2+2(x-2)^3\\
+    &=2x^3-10x^2+25x-17
+\end{split}\]
+   \end{solution}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- %%   P222
 \begin{ex}
 \begin{enumerate}
     \item 试求$f(x)=x^4+x^3+x+1$除以下列各式所得的余式分别是什么？
@@ -1952,4 +2141,3 @@ $f (x)^n$.
 因式是一个一次多项式，求证：
 \[[f(x),g(x)]=x^3+\frac{ab-cd}{b-d}x^2+\left[ac-\left(\frac{b-d}{a-c}\right)^2\right]x+bd\cdot \frac{a-c}{b-d}\]
 \end{enumerate}
-
