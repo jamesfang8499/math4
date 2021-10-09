@@ -1,0 +1,549 @@
+\chapter{指数函数与对数函数}
+\section{有理指数函数}
+在本教材第三册中，已经把指数幂的定义范围从正整指
+数逐步推广到“负整数”，“正、负分数”，在逐步推广过程
+中，我们始终遵守的指导原则是保有指数法则：
+\[a^m\cdot a^n=a^{m+n},\qquad  (a^m)^n=a^{m\cdot n}\]
+指数在有理数系$\mathbb{Q}$内，我们有下面的指数幂的定义：
+\[\begin{split}
+  a^n=\underbrace{a\cdot a\cdot a\cdots a}_{\text{$n$个$a$}},&\qquad (n\in\mathbb{N})\\  
+a^0=1,&\qquad (a\ne 0)\\  
+a^{-n}=\frac{1}{a^n},&\qquad (a\ne 0)\\ 
+a^{\tfrac{m}{n}}=\sqrt[n]{a^m}=\left(\sqrt[n]{a}\right)^m,&\qquad (a\ge 0,\; m,n\in\mathbb{N})\\ 
+a^{-\tfrac{m}{n}}=\frac{1}{a^{\tfrac{m}{n}}},&\qquad (a> 0)\\ 
+\end{split}\]
+采用上面定义后，我们在第三册中也证明了正实数$a$和$b$的有
+理指数幂依然满足指数运算法则：
+\[a{\alpha}\cdot a^{\beta}=a^{\alpha+\beta},\qquad (a^{\alpha})^{\beta}=a^{\alpha\beta},\qquad (a\cdot b)^{\alpha}=a^{\alpha}\cdot b^{\alpha}\]
+这里$\alpha,\beta \in \mathbb{Q}$。
+
+这样一来，函数$a^x\; (a>0)$对于任意有理数$x$都有定义
+了。我们称它为有理指数函数，这个函数具有上面所说的三
+个性质。下面将进一步研讨这个函数的其它重要性质：
+
+\begin{blk}{性质1}
+\begin{enumerate}
+    \item 若$a>1$, 当有理数$x>0$时，则$a^x>1$, 当有理
+    数$x<0$时，则$a^x<1$。
+    \item 若当$0<a<1$, 有理数$x>0$时，则$a^x<1$, 当有理数$x<0$
+    时，则$a^x>1$。
+\end{enumerate}
+\end{blk}
+
+\begin{proof}
+\begin{enumerate}
+\item 若$a>1$, 
+\begin{enumerate}
+  \item 设$x=\frac{m}{n}>0,\; (m,n\in\mathbb{N})$, 则$a^x=
+a^{\tfrac{m}{n}}=\sqrt[n]{a^m}$, 因为$a>1$, 所以$a^m>1$ （幂函数$f(x)=x^m$在
+$[0,+\infty)$上是严格递增的），又$\sqrt[n]{a^m}>1$ （幂函数$f(x)=x^{\tfrac{1}{n}}$
+在$[0,+\infty)$上是严格递增的），即$a^x>1$.
+\item 设$x<0$, 
+$x=-x_1,\; (x_1>0)$，则$0<a^x=a^{-x_1}=\frac{1}{a^{x_1}}<1$，（$\because\; a^{x_1}>1$）。
+\end{enumerate}
+ 
+\item 若$0<a<1$, 
+\begin{enumerate}
+  \item 设$a=\frac{1}{a_1},\; a_1>1$, 则当$x>0$, $a^x=\left(\frac{1}{a_1}\right)^x=\frac{1}{a^x_1}<1$, ($\because\; a_1^{x}>1$)。
+  \item 设$x<0$, $x=-x_1,\; (x_1>0)$则
+$a^x=a^{-x_1}=\frac{1}{a^{x_1}}>1$, ($\because\; a^{x_1}<1$)。
+\end{enumerate}
+\end{enumerate}
+\end{proof}
+
+性质1的几何意义表明：当$a>1$时，有理指数函数$y=
+a^x$的图象上的点在有单斜线的区域I和II的部分；当$0<a<
+1$时，$y=a^x$的图象上的点在有双斜线的区域III和IV的部分
+（图6.1）。
+
+\begin{figure}[htp]
+  \centering
+\begin{tikzpicture}[>=latex, scale=.7]
+\draw[->] (-3,0)--(4,0)node[right]{$x$};
+\draw[->] (0,-1)--(0,5)node[right]{$y$};
+\node at (-.25,-.25){$O$};
+\draw[very thick](-3,1)--(3.5,1)node[right]{$y=1$};
+\fill[pattern = north east lines] (-3,1)  rectangle (0,0);
+\fill[pattern = north east lines] (3,4.5)  rectangle (0,0);
+\fill[pattern = crosshatch] (-3,4.5)  rectangle (0,1);
+\fill[pattern = crosshatch] (3,1)  rectangle (0,0);
+
+\end{tikzpicture}
+  \caption{}
+\end{figure}
+
+\begin{blk}{性质2}
+\begin{enumerate}
+  \item 若$a>1$, $x_1<x_2$，则$a^{x_1}<a^{x_2}$, 即底数大于1的
+有理指数函数$a^x$是递增的；
+\item 若$0<a<1$, $x_1<x_2$，则$a^{x_1}>a^{x_2}$，即底数小于1的正数的有理指数函数$a^x$是递减的。
+\end{enumerate}
+\end{blk}
+
+\begin{proof}
+  若$a>1$和$x_1<x_2$, 那么
+\[a^{x_2}-a^{x_1}=a^{x_1}\left(\frac{a^{x_2}}{a^{x_1}}-1\right)=a^{x_1}\left(a^{x_2-x_1}-1\right)\]
+  
+因为$x_2-x_1>0$, $a>1$, 所以$a^{x_2-x_1}>1$, 又$a^{x_1}>0$. 因
+此，$a^{x_2-x_1}>0$, 即$f(x)=a^x,\; (a>1)$是递增的。
+
+若$0<a<1$和$x_1<x_2$, 那么
+\[a^{x_2}-a^{x_1}=a^{x_1}\left(a^{x_2-x_1}-1\right)\]
+因为$x_2-x_1>0$, $0<a<1$, 所以$a^{x_2-x_1}<1$, 又$a^{x_1}>0$, 因
+此$a^{x_2-x_1}<0$, 即$f(x)=a^x,\; (0<a<1)$是递减的。
+\end{proof}
+
+我们现在的任务是要把有理指数函数开拓为一个定义在
+实数集上的连续函数。能否做到这一点的关键是如何对全体
+无理点补充定义，使得指数函数在整个实数轴$\mathbb{R}$上处处连
+续。为此，我们先说明有理指数函数的一个极限性质。
+
+
+\begin{blk}{性质3}
+  设$a>0$，则当$n\to +\infty$时，数列$\left\{a^{\tfrac{1}{n}}\right\}$的极限是1，即
+  \[\lim_{n\to\infty}a^{\tfrac{1}{n}}=1\]
+\end{blk}
+
+\begin{proof}
+\begin{enumerate}
+  \item 当$a=1$时，结论自然成立。
+  \item 当$a>1$时，因为
+  $\frac{1}{n}>0$, 所以$a^{\tfrac{1}{n}}>1$ (性质1),
+  设$a^{\tfrac{1}{n}}=1+h$, 其中$h>0$, 两边$n$次方，得到
+ \[ a=(1+h)^n\]
+ 
+ 由贝努力不等式得
+\[  a=(1+h)^n>1+nh\]
+  所以，
+$  0<h<\frac{a-1}{n},\qquad 1<1+h<1+\frac{a-1}{n}$，
+  即：
+\[1<a^{\tfrac{1}{n}}<1+\frac{a-1}{n}\]  
+  再令$n\to +\infty$, 由上式就得到
+\[1\le \lim_{n\to\infty}a^{\tfrac{1}{n}}\le 1 \]
+  因此\[\lim_{n\to\infty}a^{\tfrac{1}{n}}=1\]
+  \item 当$0<a<1$时，令$a=\frac{1}{b}$, 则$b>1$, 由上面的证明
+  得到\[\lim_{n\to\infty}b^{\tfrac{1}{n}}=1\]
+于是
+\[\begin{split}
+  \lim_{n\to\infty}a^{\tfrac{1}{n}}&=\lim_{n\to\infty}\left(\frac{1}{b}\right)^{\tfrac{1}{n}}=\lim_{n\to\infty}\frac{1}{b^{\tfrac{1}{n}}}\\
+  &=\frac{1}{\displaystyle\lim_{n\to\infty}b^{\tfrac{1}{n}}}=\frac{1}{1}=1
+\end{split}\]
+\end{enumerate} 
+\end{proof}
+
+性质3可以进一步推广到下面的推论：
+
+\begin{blk}{推论}
+   若$a>0$且$a\ne 1$, 有理数数列$\{h_i\},\; i=1,2,3,\ldots$,
+以0为极限，即$\Lim_{i\to\infty}h_i=0$, 那么
+\[\lim_{i\to\infty}a^{h_i}=1\]
+\end{blk}
+
+\begin{proof}
+  先设$a>1$, 因为$\Lim_{i\to\infty}h_i=0$, 必定存在这样的
+自然数$N$, 使得当$i\ge N$时，$|h_i|<1$, 从而$\frac{1}{|h_i|}>1$。
+用$m_i$表示$\left[\frac{1}{|h_i|}\right]$,
+即不大于$\frac{1}{|h_i|}$
+的最大整数，于是
+\begin{equation}
+  m_i=\left[\frac{1}{|h_i|}\right]\le \frac{1}{|h_i|}<m_i+1
+\end{equation}
+所以，当$i\ge N$时，有
+\[\frac{1}{m_i+1}<|h_i|\le\frac{1}{m_i}\]
+由$h\to 0$知，$\frac{1}{|h_i|}\to \infty$. 从而由$m_i+1>\frac{1}{|h_i|}$知，$m_i\to\infty$。根据有理指数幂的单调性，得
+\[1<a^{|h_i|}<a^{\tfrac{1}{m_i}},\qquad (a>1)\]
+
+仿照性质3的证明，令$b_i=a^{\tfrac{1}{m_i}}-1>0$, 于是，
+\[\begin{split}
+  a^{\tfrac{1}{m_i}}&=(1+b_i)\\
+  a&=(1+b_i)^{m_i}>1+m_ib_i\\
+  & 0<b_i<\frac{a-1}{m_i}
+\end{split}\]
+当$i\to 0$时，$m_i\to \infty$,
+
+$\therefore\quad b_i\to 0$, 即$a^{h_i}\to 1$， 从而当$i\to \infty$时，$|h_i|\to 0$, $a^{|h_i|}\to 1$, 即$a^{h_i}\to 1$。
+
+若$0<a<1$, 令$b=\frac{1}{a}>1$, 于是
+\[\lim_{i\to \infty} a^{h_i}=\lim_{i\to \infty} \left(\frac{1}{b}\right)^{h_i}=\frac{1}{\Lim_{i\to \infty} b^{h_i}}=\frac{1}{1}=1\]
+\end{proof}
+
+应用这个推论，我们可以说明当有理数$x$的变化够小时，
+有理指数函数$f(x)=a^x$的变化可以任意小。
+
+\begin{blk}{性质4}
+   当指数x的变化够小时，有理指数函数$f(x)=
+a^x$的变化可以任意小。
+\end{blk}
+
+\begin{proof}
+  设指数$x$从有理数$x_1$变化到有理数$x_2=x_1+h_i$，（$h_i$
+是有理数），且当$(x_2-x_1)\to 0$时，数列$\{h_i\}$以0为极限，于
+是
+\[\begin{split}
+  \lim_{x_2\to x_1}\left(a^{x_2}-a^{x_1}\right)&=\lim_{i\to \infty}\left(a^{x_1+h_i}-a^{x_1}\right)\\
+  &=a^{x_1}\cdot \lim_{i\to \infty}\left(a^{x_i}-1\right)=0
+\end{split}\]
+这就是说，只要$|h_i|$够小，那么$|a^{x_2}-a^{x_1}|$
+就小于任意给定的正数$\varepsilon$.
+\end{proof}
+
+
+综合有理指数函数的性质，我们可以想象出$y=a^x\; (a>
+1)$的图象如图10.2所示，但是我们不能用一条连续不断的
+曲线把它画出来，因为指数$x$取无理数时，$a^x$还没有意义，
+因而在有理指数函数的图象上，处处有空隙。下一节将由有理
+指数函数的单调性和性质4, 适当给无理指数幂补充定义使
+得指数函数在$\mathbb{R}$上处处连续。
+
+\begin{figure}[htp]
+  \centering
+\begin{tikzpicture}[>=latex, scale=.7]
+\draw[->] (-2,0)--(5,0)node[right]{$x$};
+\draw[->] (0,-1)--(0,5)node[right]{$y$};
+\node at (-.35,-.35){$O$};
+\draw[dashed] (-2,1)--(4.5,1)node[right]{$y=1$};
+\draw[domain=-2:3.5, samples=30, very thick, dashed]plot(\x, {1.6^(\x)});
+\node at (0,1.3)[left]{$(0,1)$};
+\node at (3,1.6^3)[right]{$y=a^x,\quad (a>1)$};
+\end{tikzpicture}
+  \caption{}
+\end{figure}
+
+\section*{习题10.1}
+\addcontentsline{toc}{subsection}{习题10.1}
+\begin{enumerate}
+  \item 计算下列各式的值：
+\begin{enumerate}
+\item  $25^{3 / 2} \cdot 8^{4 / 3}$ 
+\item $(0.09)^{1 / 2}+64^{2 / 3}+0.125^{2 / 3}-\frac{1}{16^{-3 / 2}}$
+\item  $64^{1.5} \cdot(32)^{0.4} \div\left(\frac{9}{25}\right)^{-3 / 2}$
+\item  $\left(\frac{81}{16}\right)^{-0.25}\left(5^{2}-0.1^{2} \cdot\left(\frac{1}{4}\right)^{-3}\right)^{2}$
+\item  $\left[\frac{3}{9}-\left(\frac{2}{3}\right)^{-1}\right]^{-1}$
+\item $(\sqrt{2})^{1.5}+\left(11+\frac{\sqrt[5]{5}}{5^{-0.8}}\right)^{-1 / 4}$
+\item $\left[\left(\frac{3}{4}\right)^{0}\right]^{-0.5}-7.5(\sqrt{4})^{2}-(-2)^{-4}+81^{0.25}$
+\item  $\left[\frac{1}{4}\left(0.027^{2 / 3}+15 \times 0.0016^{3 / 4}+1\right)\right]^{-1 / 2}$
+\item  $6\left[\sqrt{3}\left(\sqrt{3}+2 \sqrt{2}+\frac{2}{3^{1 / 2}}\right)\right] \times\left(3^{1 / 2}+2^{1 / 2}\right)^{-2} \times\left(3^{-1}+2^{-1}\right)$
+\item 若 $a=(2+\sqrt{3})^{-1},\quad  b=(2-\sqrt{3})^{-1}$, 计算 $(a+1)^{-1}+(b+1)^{-1}$
+\end{enumerate}
+
+\item  化简下列各式:
+\begin{enumerate}
+  \begin{multicols}{2}
+\item  $b^{1 / 2} b^{1 / 3}$
+\item  $b^{1 / 2} b^{-1 / 3}$
+\item  $b^{-2 / 3} b^{3 / 5} ;$
+\item  $b^{-2 / 3} b^{3 / 5} ;$
+\item $\sqrt{a} \cdot \sqrt[3]{a} \cdot \sqrt[5]{a}$
+\item  $\left[1-\left(a^{-1} b^{-1}\right)^{-1}\right]^{-2}$
+\end{multicols}
+\item  $\left[a^{-1 / 2} b^{-1 / 2}+a^{-1 / 6}\left(b^{-5 / 6}-a^{-1 / 3} b^{-1 / 2}\right)\right]^{-3 / 2}$
+\item  $\frac{\left(a^{-1}+b^{-1}\right)(a+b)^{-1}}{\sqrt[6]{a^{4} \sqrt[5]{a^{-2}}}}$
+\item  $\frac{a^{2}+a^{-2}-2}{a^{2}-a^{-2}}$
+\item  $\left(a^{3 / 4}+b^{3 / 4}\right)\left(a^{3 / 4}-b^{3 / 4}\right) /\left(a^{1 / 2}-b^{1 / 2}\right)$
+\item  $\left(e^{3 / 2}+2+e^{-3 / 2}\right)\left(e^{3 / 2}-2+e^{-3 / 2}\right)$
+\item  $\left(a^{1 / 3}+a^{-1 / 3}\right)\left(a^{2 / 3}-1+a^{2 / 3}\right)$
+\item  $\frac{m-n}{m^{1 / 2}-n^{1 / 2}}+\frac{m^{3 / 2}+n^{3/2}}{m^{1 / 2}+n^{1 / 2}}$
+\item  $\frac{x^{2 p(q+1)}-y^{2 q(p-1)}}{x^{p(q+1)}-y^{q(p-1)}}$
+\item  $\left(a^{4 / 3}-2+a^{-4 / 3}\right)\left(a^{2 / 3}-a^{-2 / 3}\right)$
+\item  $\frac{m-n}{m^{1 / 2}-n^{1 / 2}}+\frac{m^{3 / 2}+n^{3/2}}{m^{1 / 2}+n^{1 / 2}}$
+\item  $\left[\frac{4 a-9 a^{-1}}{2 a^{1 / 2}-3 a^{-1 / 2}}+\frac{a-4+3 a^{-1}}{a^{1 / 2}-a^{-1 / 2}}\right]^{2}$
+\end{enumerate}
+
+\item  解下列各方程：
+  \begin{enumerate}
+    \begin{multicols}{2}
+  \item  $\sqrt{2 x-3}=4-x$
+  \item  $\sqrt{2 x+8}+\sqrt{x+5}=7$
+  \item  $x^{-1 / 4}+x^{-1 / 2}-6=0$
+  \item  $x^{1 / 2}+x^{-1 / 2}-\frac{10}{3}=0$
+\end{multicols}
+  \item  $\sqrt[n]{(x+1)^{2}}+\sqrt[n]{(x-1)^{2}}=4 \sqrt[n]{x^{2}-1}$
+\end{enumerate}
+
+\item  设 $h_{i}=\frac{100}{2 i+1},\quad  m_{i}=\left[\frac{1}{h_{i}}\right]=\left[\frac{2 i+1}{100}\right]$
+\begin{enumerate}
+  \item 求证数列$\{h_i\}=\left\{\frac{100}{2 i+1}\right\}$递减，并求使$h_i=\frac{100}{2i+1}<1$的$i$的范围；
+  \item 当$i=10,49,50,100,1000$时，求$m_i$的值；
+  \item 求证当$i\ge 50$时，不等式$1<100^{\tfrac{100}{2i+1}}<100^{\tfrac{1}{m_i}}$成立；
+  \item 求证：$\Lim_{i\to\infty}\left(100^{\tfrac{1}{m_i}}-1\right)=0,\quad \Lim_{i\to\infty}100^{h_i}=1$。
+\end{enumerate}
+\end{enumerate}
+
+\section{无理指数幂的定义}
+要把指数幂的定义由有理数推广到实数，自然又得用逼
+近法。
+
+设$\beta$是一个无理数，我们可以用两个有理数列$\{r_n\}$, $\{s_n\}$
+去左、右夹逼，即$r_n\to \beta\leftarrow s_n$, 从而$\Lim_{n\to\infty}r_n=\Lim_{n\to\infty}s_n=\beta$. 现在
+的问题是数列$\{a^{r_n}\}$，$\{a^{s_n}\}$，（这里$a>0$）的极限是否存
+在？如果存在的话，我们就可以定义
+\[a^{\beta}=\Lim_{n\to\infty}a^{r_n}=\Lim_{n\to\infty}a^{s_n}\]
+
+从而就可以把有理指数函数$a^x$开拓为在$\beta$点连续的函数：
+\[a^x\; (a>0,\; x\in \mathbb{Q}\cup\{\beta\})=\begin{cases}
+  a^x\;  (x\in\mathbb{Q})\\
+  a^{\beta}=\Lim_{n\to\infty}a^{r_n}=\Lim_{n\to\infty}a^{s_n}
+\end{cases}\]
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+
+
+\section*{习题10.4}
+\begin{enumerate}
+  \item 解下列各指数方程：
+\begin{multicols}{2}
+\begin{enumerate}
+\item $3^{2 x-1}=81$
+\item $\sqrt{5^{x}}=\sqrt[3]{25}$
+\item  $\sqrt[4]{7^{x}}=\sqrt[5]{343}$
+\item $\sqrt[4]{a^{x+1}}=\sqrt[3]{a^{x-3}}$
+
+$(a>0,\;  a \neq 1)$
+\item  $\sqrt{2^{x}} \sqrt{3^{x}}=36$
+\item $\left(\frac{3}{4}\right)^x=\left(\frac{4}{3}\right)^5$
+  \item $\left(\frac{4}{9}\right)^{4}=\left(\frac{3}{2}\right)^{x}$
+  \item $\left(\frac{2}{3}\right)^{x}\left(\frac{9}{8}\right)=\frac{27}{64}$
+  \item $ 4^{\sqrt{x+1}}=64 \cdot 2^{\sqrt{x+1}} $
+  \item $(0.25)^{x-2}=\frac{256}{2^{x+3}}$
+  \item  $\left(\frac{4}{9}\right)^{x}\left(\frac{27}{8}\right)^{x-1}=\frac{2}{3}$
+  \item  $2^{x} \cdot 5^{4}=0.1\left(10^{x-1}\right)^{5}$
+\end{enumerate}
+\end{multicols}
+
+
+\item  解下列各指数方程：
+\begin{enumerate}
+  \begin{multicols}{2}
+\item $3^{x+2}+3^{x-1}=28$
+\item  $5^{x+1}-5^{x-1}=24$
+\item  $3^{2 x-1}+3^{2 x-2}-3^{2 x-4}=315$
+\item  $3^{x}+3^{x+1}+3^{x+2}=5^{x+1}+5^{x+2}$
+\item  $4^{x}+2^{x+1}=80$ 
+\item  $ 3^{x+2}+9^{x+1}-810=0$
+\item  $3^{2 x+5}=3^{x+2}+2$
+\item   $3^{4 \sqrt{x}}-4.3^{2 \sqrt{x}}+3=0$
+\item   $4.9^{\sqrt{x}-2}-3.15^{\sqrt{x}-2}=25^{\sqrt{x}-2} $
+\item   $4^{2 x}-2.18^{2 x}=3.81^{28} $
+\end{multicols}
+\item   $\left(\sqrt{5+2 \sqrt{6}}\right)^{x}+\left(\sqrt{5-2 \sqrt{6}}\right)^{x}=\frac{10}{3}$
+\end{enumerate}
+
+
+\item  求最小整数指数 $x$, 使
+\begin{multicols}{2}
+  \begin{enumerate}
+    \item  $\left(\frac{4}{5}\right)^{x}<0.000001$
+  \item  $\left(\frac{3}{5}\right)^{x}<0.0001$
+    \item $\left(\frac{10}{9}\right)^{x}>1000000$
+    \item $\left(\frac{4}{5}\right)^{x}>10000000$
+  \end{enumerate}
+\end{multicols}
+
+\item  解下列各不等式
+\begin{multicols}{2}
+\begin{enumerate}
+ \item  $3^{3-5 x}-\frac{1}{81}>0$
+\item  $(0.3)^{2 x^{2}+5 x+2}<1$
+\item  $8^{x}+16^{\tfrac{3}{4} x+1}<34$
+\item  $\frac{(0.5)^{3 x^{2}+10 x+6}}{100}<0.00125$
+\item  $2^{x+1} \cdot 5^{2 x-3}<\frac{24}{25}$
+\item  $5^{2x}-30.5^{x}+125<0$
+\item  $2^{3 x}-2^{x+1}<2^{3} $
+\item  $\frac{1}{\left(\frac{1}{10}\right)^{y}-1} \leqslant \frac{2}{\left(\frac{1}{100}\right)^{y}-10}$
+\item  $\frac{1}{2^{x}-1} \geqslant \frac{1}{4^{x}-3}$
+\item  $\left(\frac{3}{4}\right)^{x-2}\left(\frac{4}{3}\right)^{\tfrac{1}{x}}>\frac{9}{16}$
+\end{enumerate}
+\end{multicols}
+
+
+\item  解下列各对数方程:
+
+  \begin{enumerate}
+   \item  $\lg x=2-\lg 5$
+   \item $\lg(x+6)-\frac{1}{2}\lg(2x-3)=2-\lg 25$
+ \begin{multicols}{2}
+   \item $\frac{2\lg x}{\lg(5x-4)}=1$
+   \item $\frac{\lg x}{1-\lg x}=2$
+   \item $\log_{x-1}(x^2-5x+10)=2$
+  \item  $2 \lg x=-\lg \left(6-x^{2}\right)$
+  \item  $\frac{1}{5-\lg x}+\frac{1}{1+\lg x}=1$
+  \item  $0.5 \lg (2 x-1)+\lg \sqrt{x-9}=1$
+  \item  $\log _{2} \log _{3} \log _{4} x=0$
+  \item  $\lg 9^{-1}+x \lg \sqrt[3]{3^{5 x-7}}=0$
+  \item  $\lg 10^{\lg\left(x^{2}+21\right)}-1=\lg x$
+  \end{multicols}   
+  \end{enumerate}
+
+
+\item 解下列各对数方程：
+  \begin{enumerate}
+  \item  $2 \log _{4} x+2 \log _{x} 4=5$ 
+  \item  $\log _{2}(x-1)^{2}-\log _{0.5}(x-1)=9$
+  \item  $\log _{8} x+\log _{4} x+\log _{2} x=7$
+  \item  $\log _{x}\left(5 x^{2}\right) \cdot\left(\log _{5} x\right)^{2}=1$
+  \item  $\sqrt{\log _{x} 5 \sqrt{5}+\log _{\sqrt{5}} 5 \sqrt{5}} \cdot \log _{\sqrt{5}} x=-\sqrt{6}$
+  \item  $\sqrt{\log _{x} \sqrt{3 x}} \cdot \log _{3} x=-1$
+  \item  $\log _{3 x}\left(\frac{3}{x}\right)+\log _{3}^{2} x=1$
+  \item $\frac{\lg\left(\sqrt{x+1}+1\right)}{\lg\sqrt[3]{x-40}}=3$
+  \end{enumerate}
+
+  \item 解下列各方程：
+\begin{enumerate}
+  \item $(0.4)^{\lg^2 x+1}=(6.25)^{2-\lg x^3}$
+  \item $x^{\lg x+2}=1000$
+  \item $\sqrt{x^{\lg \sqrt{x}}}=10$
+\item $\lg 2+\lg \left(4^{x-2}+9\right)=1+\lg \left(2^{x-2}+1\right)$
+\item $\log _{2}\left(9^{x-1}+7\right)=2+\log _{2}\left(3^{x-1}+1\right)$
+\item $\lg x+\lg \sqrt[3]{x}+\lg  \sqrt[9]{x}+\cdots=3$
+\item $\log _{9} x+\left(\log _{9} x\right)^{2}+\left(\log _{9} x\right)^{3}+\cdots=1$,
+\item $ 1+\log _{x} \frac{4-x}{x}=(\operatorname{lglg} n-1) \log _{x} 10$
+\end{enumerate}
+
+\item 解下列各方程组：
+\begin{multicols}{2}
+\begin{enumerate}
+  \item  $\begin{cases}2^{\sqrt{{x}}+\sqrt{y}}=512 \\ \lg \sqrt{x y}=1+\lg 2\end{cases}$
+\item  $\begin{cases}\log _{x} \log _{2} \log _{x} y=0 \\ \log _{y} 9=1\end{cases}$
+\item  $\begin{cases}2^{\tfrac{x-y}{2}}-2^{\tfrac{x-y}{4}}=2 \\ 3^{\lg(2 y-x)}=1\end{cases}$
+\item $\begin{cases}x y=40 \\ x^{12 y}=4,\end{cases}$
+\item  $\begin{cases}3.2^{x}-\log _{2} y=2 \\ 2^{x} \cdot \log _{2} y=1\end{cases}$
+\item  $\begin{cases}7^{y} \cdot \log _{5} x=2 \\ 4.7^{y}+\log _{5} x=2\end{cases}$
+\item $\begin{cases}
+\lg^2x+\lg^2y=5\\
+\lg x-\lg y=1
+\end{cases}$
+\item 求$\begin{cases}
+x^{x+y}=y^{12}\\
+y^{x+y}=x^3
+\end{cases}$的整数解
+\end{enumerate}
+\end{multicols}
+
+\item 解下列各不等式：
+\begin{enumerate}
+  \begin{multicols}{2}
+\item $\lg x>3$
+\item $\lg (-x)>3$
+\item $\lg x^2>3$
+\item $\lg^2 x>3$
+\item $\lg x<2\lg x$
+\item $\lg x>2\lg x$
+\item $\log_{\tfrac{1}{2}}(3x-5)<3$
+\item $\lg x+\lg (x-3)>1$
+\item $\lg (4x^2-9)>\lg (2x-3)+2$
+\item $\lg (3-x)-1>\lg (2-x)$    
+  \end{multicols}
+\item $\log_{\sqrt{0.5}}(26x)>\log_{\sqrt{0.5}}(5x^2+5)$
+\item $\log_{\sqrt{2}}(x^2-2x+8)+2\sqrt{\log_2(x^2-2x+8)}\ge 12$
+\item $x^{\log_a x+1}>ax^2,\qquad (a>1)$
+\end{enumerate}
+
+\item 求解
+\begin{enumerate}
+  \item 试求满足不等式$2(\log_{0.5}x)^2+9\log_{0.5}x+9\le 0$的$x$的范围；
+  \item $x$在1中求得的范围内变动时，试求
+$f(x)=\left(\log_2 \frac{x}{3}\right)\left(\log_2 \frac{x}{4}\right)$
+的最大值$M$和最小值$L$.
+\end{enumerate}
+
+\item 解下列方程：
+\begin{multicols}{2}
+  \begin{enumerate}
+  \item $\log_{\sqrt{2}\sin x}(1+\cos x)=2$
+  \item $\log_{\tfrac{1}{8\cos^2 x}}\sin x=\frac{1}{2}$
+  \item $\frac{2}{\lg\left(\frac{1}{2}+\cos^2 x\right)}=\log_{\sin 2x}10$
+  \item $\arcsin(\lg x)=0$
+  \item $\lg(\arcsin x)=0$
+  \item $\arccos(\pi\log_3\tan x)=0$
+\end{enumerate}
+\end{multicols}
+
+\end{enumerate}
