@@ -88,14 +88,297 @@ $2 (a+b) a- (a+b)^2=0$
 $\varphi_2 (x) =ax^2+bx+c$
 的根，也可以系统全面的讨论如下：
 
+\begin{enumerate}
+\item 当$a\ne 0$时，$\varphi_2(x)$为二次多项式，它的根可由
+上述三种不同情形分别讨论；
+\item 当$a=0$, 但$b\ne 0$时，$\varphi_2(x)$为一次多项式，它
+有唯一实根；
+\item 当$a=b=0$, 但$c\ne 0$时，$\varphi_2(x)$为零次多项式，
+它没有根；
+\item 当$a=b=c=0$时，$\varphi_2(x)=0$为零多项式，它有
+无限多个根。
+\end{enumerate}
+
+对于一元二次多项式$f (x) =ax^2+bx+c\quad  (a\ne 0)$
+如果有两个根$\alpha_1,\alpha_2$存在，同样也满足韦达定理。即
+\[\alpha_1+\alpha_2=-\frac{b}{a},\qquad \alpha_1\cdot \alpha_2=\frac{c}{a}\]
+
+\begin{example}
+    若已知二次多项式$f(x)$有两个实根
+  \[  \alpha_1 =\sin (\alpha+\beta) ,\qquad  \alpha_2=\sin (\alpha-\beta) \]
+    试求这个二次多项式$f(x)$.
+\end{example}
+
+\begin{solution}
+    由韦达定理可知
+\[f(x)=x^2-[\sin (\alpha+\beta) +\sin (\alpha-\beta) ]x+\sin (\alpha+\beta) \cdot \sin (\alpha-\beta) \]
+所以
+\[f(x)=x^2-2x\sin\alpha\cdot \cos\beta+\sin^2\alpha-\sin^2\beta\]
+\end{solution}
+
+\begin{ex}
+\begin{enumerate}
+    \item 用配方法求$f(x)=x^2-(a-b)x+ab-2b$的根。
+    \item 若多项式
+$f (x) =x^2- (a+1) x+2a-1$有两个相同的实根，试确定$a$的值，并求出它的根来。
+\item 全面讨论多项式$f(x)=(a+3)x^2-4x+a$的根的情形。
+\end{enumerate}
+\end{ex}
+
+\subsection{一元三次和一元高次多项式的根}
+我们已经知道
+对于一个非零常数$k\ne 0$, 方程$f(x)=0$与$k\cdot f(x)=0$具有完全相同的根，因此，相应地就可以知道多项式$f(x)$与多项式$k\cdot f(x)$也有完全相同的根，这就是说，在求一个多项式$f(x)$的根时，可以用求另一个多项式$kf(x)$的根来代替。
+
+应用这个道理，对于一元三次多项式
+\begin{equation}
+    f (x) =ax^3+bx^2+cx+d\qquad  (a\ne 0)
+\end{equation}
+求根，就可以转化为对于三次多项式
+\[\varphi(x)=x^3+\frac{b}{a}x^2+\frac{c}{a}x+\frac{d}{a}\]
+的求根问题，不妨把$\varphi(x)$简记为
+\begin{equation}
+    \varphi(x)=x^3+rx^2+sx+t
+\end{equation}
+这叫做一元三次多项式的标准形式，其主要特点是首项系数为1.
+
+为了求出一元三次多项式(4.4)的根，我们还可以用换元的方法，进一步把它化简。
+令$x=y-\frac{r}{3}$, 代入(4.4), 经展开整理后得
+\[g(y) =y^3+ \left(s-\frac{r^2}{3}\right) y+ \left(t-\frac{rs}{3}+\frac{2r^3}{27}\right)\]
+我们再把它简记为
+\begin{equation}
+    g(y)=y^3+py+q=0\qquad  (p,q\text{为实数})
+\end{equation}
+并叫做一元三次多项式的简化形式。其主要特点是首项系数为1, 而且不含有二次项。
+
+综上所述，只要求出三次多项式的简化形式$g(y)$的根
+$\alpha$, 就可求得三次多项式的标准形式$\varphi(x)$的根$x=\alpha-\frac{r}{3}$,
+进而求得三次多项式的一般形式$f(x)$的根$x=\alpha-\frac{b}{3a}$. 因此，
+一元三次多项式的求根问题，关键就在于求出简化形式三次
+多项式的根。
+
+\begin{example}
+    试求多项式
+$f_1 (x) =x^3-9x^2+33x-65$相应的简化式。
+\end{example}
 
 
+\begin{solution}
+    令$x=y+3$, 代入$f(x)$表达式，得
+\[\begin{split}
+    g_1 (y) &= (y+3)^3-9 (y+3)^2+33 (y+3) -65\\
+&=y^3+9y^2+27y+27-9y^2-54y-81+33y+99-65\\
+&=y^3 +6y -20
+\end{split}\]
+所以
+$g_1 (y) =y^3+6y-20$。
+\end{solution}
+
+对于简化一元三次多项式$g(y)=y^3+py+q$
+求根，我们可以采用以下方法：
+
+首先，设它的根$y_0=u+v$, 则可分别确定$u,v$, 使得
+\begin{equation}
+     (u+v)^3+p (u+v) +q=0
+\end{equation}
+即
+\[u^3+v^3+q+ (u+v) (3uv+p)=0\]
+这是一个含有两个未知数的方程，为了确定$u$与$v$的值，我们可以选取一个条件，在此条件下将方程(4.6)转化为一个二元方程组求解。
+
+我们选择条件，使$3uv+p=0$, 即$3uv=-p$, 就将方程(4.6)转化为方程组
+\[\begin{cases}
+    u^3+v^3+q=0\\3uv=-p
+\end{cases}\]
+进一步变换方程组为
+\[\begin{cases}
+    (u^3+v^3)^2=q^2\\
+    4u^3\cdot v^3=-4\left(\frac{p}{3}\right)^3
+\end{cases}\]
+两式相减，得$(u^3-v^3)^2=q^2+4\left(\frac{p}{3}\right)^3$，即：
+\[u^3-v^3=\pm\sqrt{q^2+4\left(\frac{p}{3}\right)^3}\]
+
+这样就得出方程组
+\[\begin{cases}
+    u^3+v^3=-q\\
+    u^3-v^3=\pm 2\sqrt{\left(\frac{q}{2}\right)^2+\left(\frac{p}{3}\right)^3}
+\end{cases}\]
+解这个方程组，得
+\[u^3=-\frac{q}{2}\pm \sqrt{\left(\frac{q}{2}\right)^2+\left(\frac{p}{3}\right)^3},\qquad v^3=-\frac{q}{2}\pm \sqrt{\left(\frac{q}{2}\right)^2+\left(\frac{p}{3}\right)^3}\]
+其中，由于$u,v$在方程组中地位等同，所以我们仅取一组符号即可，所以
+\[u=\sqrt[3]{-\frac{q}{2}+ \sqrt{\left(\frac{q}{2}\right)^2+\left(\frac{p}{3}\right)^3}},\qquad v=\sqrt[3]{-\frac{q}{2}- \sqrt{\left(\frac{q}{2}\right)^2+\left(\frac{p}{3}\right)^3}}\]
+
+这样，对于简化三次多项式$g(y)=y^3+py+q$，就得出它的求根公式：
+\[\begin{split}
+    y_0&=u+v\\
+    &=\sqrt[3]{-\frac{q}{2}+ \sqrt{\left(\frac{q}{2}\right)^2+\left(\frac{p}{3}\right)^3}}+\sqrt[3]{-\frac{q}{2}- \sqrt{\left(\frac{q}{2}\right)^2+\left(\frac{p}{3}\right)^3}}
+\end{split}\]
+这就是著名的卡尔丹公式。
+
+运用这个公式，一般可以求出三次多项式的至少一个实根。
 
 
+\begin{example}
+    求$f(x)=x^3-9x^2+33x-65$的实根。
+\end{example}
+
+\begin{solution}
+    由例4.3知，$f(x)$相应的简化形式，可利用代换
+$x=y+3$ 得出
+\[g(y)=y^3+6y-20\]
+代入卡尔丹公式，求得
+\[y=\sqrt[3]{10+6\sqrt{3}}+\sqrt[3]{10-6\sqrt{3}}\]
+$\therefore\quad f(x)$的实根为
+\[x=\sqrt[3]{10+6\sqrt{3}}+\sqrt[3]{10-6\sqrt{3}}+3\]
+\end{solution}
+
+\begin{rmk}
+在卡尔丹公式中，二次根号下的式子，记作
+\[\Delta=\left(\frac{q}{2}\right)^2+\left(\frac{p}{3}\right)^3\]
+叫做三次多项式根的判别式。
+\begin{enumerate}
+    \item 当$\Delta>0$时，三次多项式有且只有一个实根；
+    \item 当$\Delta\le 0$时，三次多项式有三个实根。
+\end{enumerate}
+详细讨论，需要学习复数后进行。
+\end{rmk}
+
+对于四次多项式的求根，也有一般的公式，然而它比三次多项式更要复杂得多，因而实用价值更小，我们这里就略去。
+
+这里不禁要问：是否任何高次多项式的根都可以有一个求根公式呢？回答是否定的。经过许多数学家的多年努力，于十九世纪廿年代证明了：一般五次以及更高次的多项式不存在求根公式（即不能用它的系数，经过加、减、乘（乘方）、除、开方运算把它的根表达出来）。
+
+\begin{ex}
+\begin{enumerate}
+    \item 求出$f(x)=\frac{1}{2}x^3-3x^2+\frac{11}{2}x-3$的标准式，并通过造
+当代换，找出它相应的简化式，求出$f(x)$的实根。
+\item 用换元法求特殊四次多项式$f(x)=4x^4-5x^2+1$的实根。
+\end{enumerate}
+\end{ex}
+
+\section*{习题4.1}
+\addcontentsline{toc}{subsection}{习题4.1}
+\begin{enumerate}
+    \item 如果$f(x)=a^2x^2-2a(a-1)x+a-1$有两个相同的实根，试求$a$和这个实根。
+    \item 试全面讨论多项式$ax^2-2(a+b+c)x+2(b+c)$的根的情形。
+    \item 如果已知下列三个多项式中，至少有有一个实数根，试求出实数$a$的范围：
+\[x^2+2ax-2a;\qquad x^2+4ax-4x+3;\qquad x^2+(a-1)x+a^2\]
+\item 如果二次多项式$x^2-(m-1)x+m$的两个根满足下列各关系，试分别求出$m$的值：
+\begin{multicols}{2}
+    \begin{enumerate}
+        \item 两根之比为2:3
+        \item 两根之差为1
+    \end{enumerate}
+\end{multicols}
+
+\item 如果二次多项式$x^2-ax+a^2-4$有两个正根，试求$a$的取值范围；若只有一个正根时，$a$又在什么范围内取值呢？
+\item 如果两个多项式$f(x)=x^2+ax+b$, $g(x)=x^2+bx+a$只有一个共同的根，试求这个根；并求它们另外的两个非共同根的和。
+\item 用卡尔丹公式求出多项式$x^3-12x+16$的一个实根，再用因式定理求出另外两个实根。
+\item 如果多项式$x^3-3x^2-12x+3ax+16$有一个正根$a$, 试求$a$及另外两个根。
+\item 如果多项式$2x^3-7x^2+(k+5)x-k$有三个实根，其中两个根互为倒数，试求$k$及三个根。
+\end{enumerate}
+
+\section{有理系数多项式的整数根和有理根}
+对于有理系数多项式
+\begin{equation}
+    f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\quad (a_n\ne 0)
+\end{equation}
+我们可以取系数$a_i,\; (i=0, 1, 2,\ldots,n)$的分母的最小公倍数$m$, 遍乘多项式$f(x)$各项，从而得到
+\begin{equation}
+    mf(x)=b_nx^n+b_{n-1}x^{n-1}+\cdots+b_1x+b_0\quad (b_n\ne 0)
+\end{equation}
+
+(4.8)显然就是一个整系数多项式，而且(4.7)与(4.8)具有相同的根，因而，我们只须讨论整系数多项式$mf(x)$。
+
+另一方面，对于整系数多项式$g (x) =b_nx^n+b_{n-1}x^{n-1}+\cdots+b_1x+b_0\quad (b_n\ne 0)$
+我们还可以提取各系数$b_i,\; (i=0, 1, 2,\ldots,n)$的公因式$d\ne 1$, 从而得到，$g(x)=d\cdot h(x)$, 其中
+\begin{equation}
+    h (x) =c_nx^n+c_{n-1}x^{n-1}+\cdots+c_1x+c_0\quad (c_n\ne 0)
+\end{equation}
+
+(4.9)显然仍是一个整系数多项式，但它的各系数是互质
+的，即$$(c_n,c_{n-1},\ldots,c_1,c_0)=1$$ 而且(4.9)与(4.8)的根是相同的。因此，我们只须讨论简化了的整系数多项式$h(x)$.
+
+在本节中，以下提到的整系数多项式，都是指(4.9)式意义下的多项式，不再声明了。
+
+\subsection{整系数多项式的整数根和 有理数根}
+
+设整系数多项式
+\[ h (x) =c_nx^n+c_{n-1}x^{n-1}+\cdots+c_1x+c_0\quad (c_n\ne 0)\]
+其中，$c_i\in\mathbb{Z}, \;(i=0, 1,\ldots,n)$, 且$(c_0,c_1,\ldots,c_n)=1$。
+我们有以下定理：
+
+\begin{blk}{定理1}
+    整数$\alpha$是多项式$h (x) =c_nx^n+c_{n-1}x^{n-1}+\cdots+c_1x+c_0$的根的必要条件是$\alpha$能够整除$c_0$.
+\end{blk}
+
+\begin{proof}
+    由于$\alpha$是$h(x)$的根，所以$h(\alpha)=0$, 即
+\[c_n\alpha^n+c_{n-1}\alpha^{n-1}+\cdots+c_1\alpha+c_0=0\]
+$\therefore\quad c_0=-\alpha\left(c_n\alpha^{n-1}+c_{n-1}\alpha^{n-2}+\cdots+c_1\right)$
+
+上式右边括号内整数的和、差、积与方幂，由整数的运算性质知，它们是整数，所以，整$\alpha$除$c_0$.
+\end{proof}
 
 
+这个定理告诉我们，多项式$h(x)$的整数根$\alpha$要在$c_0$的因数中寻求；但要注意，定理仅是提供了$\alpha$是整数根的必要条件，并不是充分条件。因此，可以应用定理先确定$h(x)$的整
+数根的范围，再运用综合除法或余式定理在这个范围内试除确定它的根。
+
+\begin{example}
+    试求$f(x)=x^3-6x^2+11x-6$的整数根。
+\end{example}
+
+\begin{solution}
+    因为常数项$c_0=-6$, 它的因数有
+$\pm 1, \pm 2, \pm 3, \pm 6$。
+所以$f(x)$的整数根可能是$\pm 1, \pm 2,\pm 3,\pm 6$。
+
+再用综合除法或余式定理逐个试除，得出只有取1, 2, 3时，余式为0, 因而$x=1, 2, 3$都是多项式的根，共余的因数试除余式均不为零，因而都不是多项式的根，所以$f(x)$的整数根为1, 2, 3.
+\end{solution}
+
+\begin{example}
+    试求$f(x)=\poly{1,1,1,2}$的整数根。
+\end{example}
+
+\begin{solution}
+    先判定整根的范围：由于常数项$c_0=2$, 它的因数有$\pm 1,\pm 2$。所以$f(x)$的整根可能是$\pm 1,\pm 2$
+    
+    再逐个试除求余，确定整数根：由直接计算，得
+\[f (1) =5,\qquad f (-1) =1,\qquad f (2) =16,\qquad f (-2) =-4.\]
+所以$\pm 1,\pm 2$都不是$f(x)$的根。
+
+因此，多项式$f(x)$没有整数根。
+\end{solution}
+
+\begin{blk}{定理2}
+    既约分数$\frac{p}{q}$是整系数多项式$h (x) =c_nx^n+c_{n-1}x^{n-1}+\cdots+c_1x+c_0$的根的必要条件是$p$能整除$c_o$, $q$能整除$c_n$.
+\end{blk}
+
+\begin{proof}
+    由于$\frac{p}{q}$是$h(x)$的根，所以$h\left(\frac{p}{q}\right)=0$, 即
+\[c_n\left(\frac{p}{q}\right)^{n}+c_{n-1}\left(\frac{p}{q}\right)^{n-1}+\cdots +c_1\left(\frac{p}{q}\right)+c_0=0\]
+因此，
+\begin{align}
+c_0q^n&= -p\left(c_np^{n-1}+c_{n-1}p^{n-2}q+\cdots+c_1q^{n-1}\right)\\
+c_np^n&= -q\left(c_{n-1}p^{n-1}+\cdots+c_{1}pq^{n-2}+c_0q^{n-1}\right)   
+\end{align}
+
+由(4.10)得：$p|c_0q^n$（表示$p$整除$c_0q^n$），但因为$\frac{p}{q}$为既约
+分数，$(p,q)=1$, 所以$(p,q^n)=1$, 因此就可有：$p|c_0$
+
+再由(4.11)可得$q|c_np^n$, 同样由于$(p,q)=1$, 因而$(p^n,q)=1$. 因此就有：$q|c_n$
+
+这里同样应注意，定理仅给出$\frac{p}{q}$
+是$h(x)$的既约分数（有理数）根的必要条件，并不是充分条件。因而，运用这个定理也只能判定$h(x)$的根的范围，还须要借助综合除法或余式定理才能确定它的根。
+\end{proof}
 
 
+\begin{example}
+    试判断$f(x)=\poly{6,1,-4,1}$可能有哪些有理数根？
+\end{example}
+
+\begin{solution}
+    因为$c_3=6$, 其因数为$\pm 1,\pm 2,\pm 3,\pm 6$; 
+    $c_0=1$, 其因数有$\pm 1$, 所以，$f(x)$可能有的有理数根为$\pm 1$,
+    $\pm\frac{1}{2}$, $\pm \frac{1}{3}$, $\pm \frac{1}{6}$.
+\end{solution}
 
 
 
@@ -110,26 +393,6 @@ $\varphi_2 (x) =ax^2+bx+c$
     
 \end{solution}
 
-\begin{example}
-    
-\end{example}
-
-
-\begin{solution}
-    
-\end{solution}
-
-\begin{solution}
-    
-\end{solution}
-
-\begin{solution}
-    
-\end{solution}
-
-
-
-
 
 \begin{example}
     
@@ -139,10 +402,18 @@ $\varphi_2 (x) =ax^2+bx+c$
     
 \end{solution}
 
+\begin{example}
+    
+\end{example}
+
 \begin{solution}
     
 \end{solution}
 
+\begin{example}
+    
+\end{example}
+
 \begin{solution}
     
 \end{solution}
@@ -151,48 +422,11 @@ $\varphi_2 (x) =ax^2+bx+c$
     
 \end{example}
 
-\begin{example}
+\begin{solution}
     
-\end{example}
+\end{solution}
 
-\begin{example}
-    
-\end{example}
-
-\begin{example}
-    
-\end{example}
-
-\begin{example}
-    
-\end{example}
-
-\begin{example}
-    
-\end{example}
-
-\begin{example}
-    
-\end{example}
-
-\begin{example}
-    
-\end{example}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+%P286
 
 \begin{ex}
 解下列方程组
