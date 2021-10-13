@@ -750,7 +750,24 @@ g (x) =x^3-3x^2-2x+6$
 \begin{figure}[htp]
     \centering
 \begin{tikzpicture}[>=latex]
-    
+\begin{scope}
+    \draw[->] (-1,0)--(3,0)node[right]{$x$};
+    \draw[->] (0,-2)--(0,2)node[right]{$y$};
+\draw [domain=pi/4:.75*pi, samples=100, very thick]plot(\x, {sin(2*\x r)});
+\draw[dashed] (pi/4,0)node[below]{$a$}--(pi/4,1)--(0,1)node[left]{$f(a)$};
+\draw[dashed] (.75*pi,0)node[above]{$b$}--(.75*pi,-1)--(0,-1)node[left]{$f(b)$};
+\node at (-.2,-.2){$O$};
+\node at (.5*pi,0)[below]{$c$};
+\end{scope}
+\begin{scope}[xshift=6cm]
+    \draw[->] (-1,0)--(3,0)node[right]{$x$};
+    \draw[->] (0,-2)--(0,2)node[right]{$y$};
+\draw [domain=pi/4:.75*pi, samples=100, very thick]plot(\x, {-sin(2*\x r)});
+\draw[dashed] (pi/4,0)node[above]{$a$}--(pi/4,-1)--(0,-1)node[left]{$f(a)$};
+\draw[dashed] (.75*pi,0)node[below]{$b$}--(.75*pi,1)--(0,1)node[left]{$f(b)$};
+\node at (-.2,-.2){$O$};
+\node at (.5*pi,0)[below]{$c$};
+\end{scope}
 \end{tikzpicture}
     \caption{}
 \end{figure}
@@ -868,75 +885,1088 @@ $x>3$时，$f(x)>0$。
 个多项式的每一项，从而得到一个首项系数为1的实系数多项式，它的零点（实根）不发生变化。因此，我们就可设
 $f (x) =x^n+a_{n-1}x^{n-1}+\cdots +a_1x +a_0$是一个没有重根的实系数多项式。
 
+\subsubsection{$f(x)$的根界}
+
+可以证明，$f(x)$的每一个根的绝对值都不会大于$f(x)$的各项系数绝对值的和。因此，我们可取
+\[M=1+|a_{n-1}|+|a_{n-2}|+\cdots+|a_1|+|a_0|\]
+作为$f(x)$的根界。即$f(x)$的所有实根都在区间$[-M,M]$中。这里我们不加证明而引用这一结论。
+
 \begin{example}
-    
+    写出多项式$\varphi(x)=x^3-10x+2$ 的根界。
 \end{example}
 
 \begin{solution}
-    
+ $\because\quad    M=1+|-10|+2=13$
+ 
+ $\therefore\quad \varphi(x)$的所有根都在区间$[-13, 13]$之内。
 \end{solution}
+
+\subsubsection{史笃姆函数序列}
+设没有重根的多项式$f(x)$和它的导数$f'(x)$, 则有${\rm deg}f(x)={\rm deg}f'(x)+1$, 把$f'(x)$记为$f_1(x)$, 并作带余除法，得
+\[f (x) =q_1 (x)\cdot f_1(x)+r_1(x)\]
+
+其中$r_1(x)=0$或$r_1(x)\ne 0$，${\rm deg}r_1(x)<{\rm deg}f_1(x)$。
+在这里只有$f(x)$是一次多项式，从而$f_1(x)$是零次多项式时，才能有$r_1(x)=0$, 否则$r_1(x)$不会等于零。记$f_2(x)=-r_1(x)$,（注意，式中的一个负号十分重要）。
+
+又以$f_2(x)$除$f_1(x)$, 得$f_1(x)=q_2(x)f_2(x)+r_2(x)$, 同样，只有$f_2(x)$是零次多项式时，才有$r_2(x)=0$, 否则$r_2(x)\ne 0$, 记$f_3(x)=-r_2(x)$. 如此继续下来，直到可以整除为止。即得
+\[\begin{split}
+    f(x)&=q_1(x)f_1(x)-f_2(x)\\
+    f_1(x)&=q_2(x)f_2(x)-f_3(x)\\
+    f_2(x)&=q_3(x)f_3(x)-f_4(x)\\
+    \cdots &\cdots \cdots \cdots \cdots \\
+    f_{k-1}(x)&=q_k(x)f_k(x)-f_{k+1}(x)\\
+    \cdots &\cdots \cdots \cdots \cdots \\
+    f_{s-1}(x)&=q_s(x)f_s(x)\\
+\end{split}\]
+
+容易看到，这些计算实际上是对两个多项式$f(x)$及$f'(x)$进行辗转相除，只不过每一次的余式改变一个符号而已。由于非零数因子不影响辗转相除的结果，所以最后能整除的除式$f_s(x)$就是$f(x)$与$f'(x)$的最高公因式。但是我们己给出$f(x)$没有重根这样一个条件，所以$f_s(x)$只能是零次多项式，因而可记为$f_s$.
+\[f (x) ,f_1 (x) ,f_2 (x),\ldots,f_k(x),\ldots,f_s\]
+叫做多项式$f(x)$的\textbf{史笃姆函数序列}。
 
 
 \begin{example}
-    
+    试求$f(x)=\poly{1,0,-10,2}$的史笃姆函数序列。
 \end{example}
 
 \begin{solution}
-    
+\[f_1(x)=f'(x)=3x^2-10\]
+用$f_1(x)$除$f(x)$，得：
+\[r_1(x)=-\frac{20}{3}x+2\]
+$\therefore\quad f_2(x)=-r_1(x)=\frac{20}{3}x-2=\frac{20}{3}\left(x-\frac{3}{10}\right)$
+
+用$f_2(x)$除$f_1(x)$，得：$r_2(x)=-\frac{973}{100}$
+
+$\therefore\quad f_3=\frac{973}{100}$    
+
+因此，所求的史笃姆函数序列为：
+\[x^3-10x-2,\quad 3x^2-10,\quad \frac{20}{3}\left(x-\frac{3}{10}\right),\quad \frac{973}{100}\]
 \end{solution}
 
+由于以下讨论史笃姆函数序列时，只考虑$x$取某一数值时，$f_k(x)$为零，为正还是为负，所以在任一个史笃姆函数列中，乘以一个正常数（注意必须是正的）不影响讨论结果。因此对于上述例题所得的史笃姆函数序列，可以写成：
+\[\begin{split}
+    f (x) &=x^3-10x+2\\
+    f_1 (x) &=3x^2-10\\
+    f_2 (x) &=10x-3\\
+    f_3&=1
+\end{split}\]
+对讨论结果不会有影响。
+
+\subsubsection{实数列的变号数}
+
+在史笃姆函数序列中，以实数$a$代$x$, 得到一系列实常数：$$f(a),f_1(a),f_2(a),\ldots,f_k(a),\ldots, f_s$$ 这些数有正、有负，也可能有零。丢开那些具体数字，只考查各项的符号，就成为一系列符号的排列，例如
+\begin{equation}
+    +\quad +\quad +\quad -\quad -\quad +\quad -\quad -\quad +\quad -\quad +\quad -\quad -\quad +
+\end{equation}
+
+如果在这个排列中，两个相邻的符号相反，我们就说这一排列有一个变号。整个排列中变号的总数，就叫做它的变号数。(4.13)的变号数是6。
+
+如果在实数列中含有零，那么，它的变号数就指去掉零以后，剩下的各数组成的数列的变号数。例如
+\begin{equation}
+    +\quad +\quad -\quad 0\quad +\quad +\quad 0\quad +\quad -\quad +\quad -\quad -
+\end{equation}
+的变号数，就是指
+\begin{equation}
+    +\quad +\quad -\quad +\quad +\quad +\quad -\quad +\quad -\quad -
+\end{equation}
+的变号数，显然它们的变号数是5.
+
+给出一个多项式的史笃姆函数序列以后，用实数$a$代入，得实数列
+\[f (a) ,f_1 (a) ,f_2 (a) , \ldots,f_k (a) , \ldots,f_s\] 
+我们把这一数列的变号的个数记为$W(a)$.
+
+\subsubsection{史笃姆定理及其证明}
+
+\begin{blk}{定理2（史笃姆定理）}
+    如果用$-M$, $M$代入没有重根的多项式$f(x)$的史笃姆函数序列，所得实数列的变号数分别为$W(-M)$与$W(M)$, 那么，多项式$f(x)$在$[-M,M]$内就有$W(-M)-W(M)$个实根。
+\end{blk}
+
+\begin{example}
+求多项式
+$f (x) =x^3-10x+2$
+的实根个数及各个根所在的位置。
+\end{example}
+
+\begin{solution}
+    由例4.17知$f(a)$的根都在$[-13, 13]$之内，
+    又由例4.18知$f(x)$的史笃姆函数序列为
+\[f (x) =x^3-10x+2,\quad f_1(x) =3x^2-10,\quad f_2 (x) =10x-8,\quad f_3=1\]
+在根界$[-13,+13]$内，取点计算变号数，变号的情况列表如下：
+\begin{center}
+    \begin{tabular}{cccccc}
+$x$ & $f(x)$ & $f_1(x)$ & $f_2(x)$ & $f_3$ & $W(x)$\\
+$-13$ & $-$ &$+$ & $-$ &$+$&3\\
+$-4$ & $-$ &$+$ & $-$ &$+$&3\\
+$-3$ & $+$ &$+$ & $-$ &$+$&2\\
+$-2$ & $+$ &$+$ & $-$ &$+$&2\\
+$-1$ & $+$ &$-$ & $-$ &$+$&2\\
+$0$ & $+$ &$-$ & $-$ &$+$&2\\
+$1$ & $-$ &$-$ & $+$ &$+$&1\\
+$2$ & $-$ &$+$ & $+$ &$+$&1\\
+$3$ & $-$ &$+$ & $+$ &$+$&1\\
+$4$ & $+$ &$+$ & $+$ &$+$&0\\
+$+13$ & $+$ &$+$ & $+$ &$+$&0\\
+    \end{tabular}
+\end{center}
+从中根据史笃姆定理就可以断定，多项式$f(x)=x^3-10x+2$共有$W(-13)-W(13)=8$个实根；同时还可以进一步得出，这三个实根分别在$(-4,-3)$, $(0, 1)$, $(3, 4)$三个区间之中。
+\end{solution}
+
+以下我们分几个步骤来证明史笃姆定理。（以下供选学）
+
+第一个问题：会不会出现类似以下的排列
+\[+\quad +\quad +\quad 0\quad +\quad +\quad -\]
+即中间有一个零，而其左右同号，如果有这种情况，这个零就不能随便算作正的或负的了。
+我们来证明这种情况不会产生，即：
+\begin{blk}{}
+   史笃姆函数序列中以一个实常数代入，居中间出
+现一个零，则其左右必为一正一负，既不会出现相邻的两个零，也不会在零的左右出现两个同是正号或两个同是负号。 
+\end{blk}
+
+
+\begin{proof}
+若以$a$代入$f_k(x)$, 得$f_k(a)$为零，则$(x-a) |f_k (x)$。
+
+此时如果又有$f_{k+1}(x)=0$, 即 $(x-a) |f_{k+1} (x)$，则$x-a$为$f_k(x)$与$f_{k+1}(x)$的公因式，由此可知$x-a$也是$f(x)$与$f'(x)$的公因式，因而$a$是$f(x)$的重根，这与假设矛盾。所以$f_{k+1}(a)\ne 0$. 同理$f_{k-1}(a)\ne 0$。
+
+又因为$$f_{k-1}(x)=q_k(x)f_k(x)-f_{k+1}(x)$$所以$$f_{k-1}(a)=q_k(a)f_k(a)-f_{k+1}(a)$$
+现在$f_k(a)=0$，所以必然有$$f_{k-1}(a)=-f_{k+1}(x)$$
+如果在运算过程中，$f_{k-1}(x)$, $f_{k+1}(x)$乘过不同的正常数，可能使$f_{k+1}(x)$与$f_{k-1}(a)$的绝对值不等，但符号总是相反的。可见一个零的左右的两个符号必相反。
+\end{proof}
+
+第二个问题：怎么会产生变号个数的变化？当$x$经过某一个$f_k(x)$的根而不是$f(x)$的根时，变号的个数会不会有变化？
+
+变号数的变化来源于各个符号的变化。若$x$由$a$渐增到$b$, 完全没有经过$f(x)$及$f_k(x)$的任一个根（如例4.19中$x$由$-3$增加到$-2$, 或由$-1$增加到0, 或由2增加到3），则所有的符号都没有变，因而变号个数也不会变。
+
+关于$x$通过$f_k(x)$的某一个根，但不是$f(x)$的根的情况，我们来证明：
+\begin{blk}{}
+    若$x$通过$f_k(x)$的某一个根，但不是$f(x)$的根时，史
+笃姆函数序列的值只改变变号的位置，不改变变号的个数。
+\end{blk}
+
+如在例4.19中：$x$从$-2$到$-1$通过$f_1(x)$的根，史笃姆函数序列的值的符号，就从
+\[+\quad +\quad -\quad +\]
+改变为
+\[+\quad -\quad -\quad +\]
+
+变号的位置从第2到第3改变为从第1到第2; 但变号的个数仍是2。
+
+\begin{proof}
+    $f_k(x)$与$f_{k+1}(x)$没有公共的根，设$\alpha$是$f_k(x)$的一
+个根，则$f_{k-1}(\alpha )\ne 0$, $f_{k+1}(\alpha )\ne 0$. 我们考虑$x$从$\alpha -\varepsilon$ 经过$\alpha$ 变到$\alpha +\varepsilon$ 的过程，$\varepsilon$取得如此之小，以至$f_{k-1}(x)$, $f_{k+1}(x)$都没有一个根在$(\alpha -\varepsilon ,\alpha +\varepsilon )$内，由中间值定理这总是可行的。
+
+$f_k(\alpha )=0$, 已证明$f_{k-1}(\alpha )$与$f_{k-2}(\alpha)$异号，因此可能有下列四种情况：
+
+\begin{center}
+\begin{tikzpicture}[xscale=1.5]
+\begin{scope}
+    \foreach \x/\xtext in {1/x,2/f_{k-1}(x),3/f_{k}(x),4/f_{k+1}(x)}
+    {
+        \node at (\x,3){$\xtext$};
+    }
+    \foreach \x/\xtext in {1/\alpha-\varepsilon,2/-,3/-,4/+}
+    {
+        \node at (\x,2.5){$\xtext$};
+    }
+    \foreach \x/\xtext in {1/\alpha,2/-,3/0,4/+}
+    {
+        \node at (\x,2){$\xtext$};
+    }
+    \foreach \x/\xtext in {1/\alpha+\varepsilon,2/-,3/+,4/+}
+    {
+        \node at (\x,1.5){$\xtext$};
+    }
+    \draw (0.5,1) rectangle (4.5,3.5);
+\end{scope}
+
+\begin{scope}[xshift=4.25cm]
+    \foreach \x/\xtext in {1/x,2/f_{k-1}(x),3/f_{k}(x),4/f_{k+1}(x)}
+    {
+        \node at (\x,3){$\xtext$};
+    }
+    \foreach \x/\xtext in {1/\alpha-\varepsilon,2/-,3/+,4/+}
+    {
+        \node at (\x,2.5){$\xtext$};
+    }
+    \foreach \x/\xtext in {1/\alpha,2/-,3/0,4/+}
+    {
+        \node at (\x,2){$\xtext$};
+    }
+    \foreach \x/\xtext in {1/\alpha+\varepsilon,2/-,3/-,4/+}
+    {
+        \node at (\x,1.5){$\xtext$};
+    }
+    \draw (0.5,1) rectangle (4.5,3.5);
+\end{scope}
+
+\begin{scope}[yshift=-3cm]
+    \foreach \x/\xtext in {1/x,2/f_{k-1}(x),3/f_{k}(x),4/f_{k+1}(x)}
+    {
+        \node at (\x,3){$\xtext$};
+    }
+    \foreach \x/\xtext in {1/\alpha-\varepsilon,2/+,3/-,4/-}
+    {
+        \node at (\x,2.5){$\xtext$};
+    }
+    \foreach \x/\xtext in {1/\alpha,2/+,3/0,4/-}
+    {
+        \node at (\x,2){$\xtext$};
+    }
+    \foreach \x/\xtext in {1/\alpha+\varepsilon,2/+,3/+,4/-}
+    {
+        \node at (\x,1.5){$\xtext$};
+    }
+    \draw (0.5,1) rectangle (4.5,3.5);
+\end{scope}
+
+\begin{scope}[xshift=4.25cm, yshift=-3cm]
+    \foreach \x/\xtext in {1/x,2/f_{k-1}(x),3/f_{k}(x),4/f_{k+1}(x)}
+    {
+        \node at (\x,3){$\xtext$};
+    }
+    \foreach \x/\xtext in {1/\alpha-\varepsilon,2/+,3/+,4/-}
+    {
+        \node at (\x,2.5){$\xtext$};
+    }
+    \foreach \x/\xtext in {1/\alpha,2/+,3/0,4/-}
+    {
+        \node at (\x,2){$\xtext$};
+    }
+    \foreach \x/\xtext in {1/\alpha+\varepsilon,2/+,3/-,4/-}
+    {
+        \node at (\x,1.5){$\xtext$};
+    }
+    \draw (0.5,1) rectangle (4.5,3.5);
+\end{scope}
+\end{tikzpicture}
+\end{center}
+
+可以看到，在任何一种情况下，史笃姆函数序列只改变变号的位置，不改变变号的个数。
+\end{proof}
+
+第三个问题：至此产生变号个数起变化的其他可能都已排除，那就只有一个可能会改变变号个数：$x$经过$f(x)$的根。因此我们就问：$x$从小到大渐增地变化，每经过$f(x)$的一个根时，变号的个数如何变化呢？以下就解决并证明这一问题。
+
+\begin{blk}{}
+$x$从小到大渐地增变化，每通过$f(x)$的一个根时，
+史笃姆函数序列的值的变号就减少一个。
+\end{blk}
+
+\begin{proof}
+我们只在$f(x)$的根$\alpha$邻近的一个区域$(\alpha-\varepsilon,\alpha+\varepsilon)$内考虑$f(x)$及$f_1(x)$（即$f'(x)$）的局部性质。因为$f(x)=0$, 
+则$f'(x)\ne 0$. 我们取足够小的$\varepsilon$, 使$f'(x)$在$(\alpha-\varepsilon,\alpha+\varepsilon)$内符号不变：$f'(x)>0$时，$f(x)$递增，这说明$f(x)$由负变正；反之，$f'(x)<0$时，$f(x)$递减，说明$f(x)$由正变负。情况列表如下：
+\begin{center}
+    \begin{tikzpicture}[xscale=1.5]
+    \begin{scope}
+        \foreach \x/\xtext in {1/x,2/f(x),3/f_1(x)}
+        {
+            \node at (\x,3){$\xtext$};
+        }
+        \foreach \x/\xtext in {1/\alpha-\varepsilon,2/-,3/+}
+        {
+            \node at (\x,2.5){$\xtext$};
+        }
+        \foreach \x/\xtext in {1/\alpha,2/0,3/+}
+        {
+            \node at (\x,2){$\xtext$};
+        }
+        \foreach \x/\xtext in {1/\alpha+\varepsilon,2/+,3/+}
+        {
+            \node at (\x,1.5){$\xtext$};
+        }
+        \draw (0.5,1) rectangle (3.5,3.5);
+    \end{scope}
+    
+    \begin{scope}[xshift=3.5cm]
+        \foreach \x/\xtext in {1/x,2/f(x),3/f_1(x)}
+        {
+            \node at (\x,3){$\xtext$};
+        }
+        \foreach \x/\xtext in {1/\alpha-\varepsilon,2/+,3/-}
+        {
+            \node at (\x,2.5){$\xtext$};
+        }
+        \foreach \x/\xtext in {1/\alpha,2/0,3/-}
+        {
+            \node at (\x,2){$\xtext$};
+        }
+        \foreach \x/\xtext in {1/\alpha+\varepsilon,2/-,3/-}
+        {
+            \node at (\x,1.5){$\xtext$};
+        }
+        \draw (0.5,1) rectangle (3.5,3.5);
+    \end{scope}
+    \end{tikzpicture}
+    \end{center}
+
+可见在任何情况下，x从小做大每经过$f(x)$的一个根，史笃姆函数序列的值总是减少一个变号。
+\end{proof}
+
+综合以上三条，史笃姆定理即获证。
+
+我们在叙述求实多项式实根位置的史笃姆方法及证明史笃姆定理时都强调这样一个假设：实多项式$f(x)$没有重根。对于这个条件的限制在应用上和理论上都会使我们感到不满足。从应用上说，是否在使用史笃姆方法以前要验证$f(x)$有没有重根？从理论上说，如果$f(x)$有重根，史笃姆定理会受到些什么损害？
+
+我们来回答这两个问题。
+
+第一，从应用上说，这个条件完全不会增加我们的计算量。因为求史笃姆函数序列的过程实际是用辗转相除法求$f(x)$及$f'(x)$的最高公因式过程。如果$f(x)$有重根，在上述运算中必然会看出。发现重根以后，我们把有关因式除掉（这些因式为零时的值就是$f(x)$的重根），再研究其没有重根部分的因式。这时，多项式的次数至少降低二次，对运算更有利。
+
+第二，从理论上讲，如果有重根，史笃姆定理的结论同样正确，不过这时$f_s(x)$是一个次数不小于1的多项式，不可以写成$f_s'$而计算根的个数的时候，重根$\alpha$不论是多少重根，只作为1个根计数。即史笃姆函数序列的值在$x$由小到大经过$f(x)$的$m$重根$\alpha$时，变号数不是减少$m$个，而是只减少1个。我们不另作详细证明，只举以下一例说明。
+
+\begin{example}
+求多项式
+\[f(x)=\poly{1,-1,-2,2,1,-1}=(x-1)^3(x+1)^2\]
+的史笃姆函数序列中变号的变化情况。
+\end{example}
+
+\begin{solution}
+先求$f(x)$的史笃姆序列及根界
+\[\begin{split}
+    f_1(x)&=\poly{5,-4,-6,4,1}=(x-1)^2(x+1)(5x+1)\\
+    f_2(x)&=\poly{1,-1,-1,1}=(x-1)^2(x+1)\\
+    f_3(x)&=0
+\end{split}
+    \]
+根界：$M=8$，$\qquad \therefore\quad f(x)$的根在$[-8,+8]$中。变号情况列表如下：
+\begin{center}
+    \begin{tabular}{ccccc}
+$x$ & $f(x)$ & $f_1(x)$ & $f_2(x)$ &  $W(x)$\\
+$-8$ & $-$ & $+$ &$-$&2\\
+$-2$ &$-$ & $+$ &$-$&2\\
+$0$ & $-$ & $+$ &$+$&1\\
+$2$ &  $+$ & $+$ &$+$&0\\
+$+8$ &  $+$ & $+$ &$+$&0\\
+    \end{tabular}
+\end{center}
+
+可知$f(x)$在$(-2, 0)$有一个根。（实际是二重根$-1$）；在$(0, 2)$有一个根，（实际是三重根1）。
+\end{solution}
+
+综上所述，我们可以看到史笃姆定理可以彻底地解决实系数多项式的实根的个数、定位等问题。因而，史笃姆定理也被称为实数范围内的代数基本定理。
+
+\begin{ex}
+\begin{enumerate}
+    \item 试求多项式 $f(x)=x^3+3x^2-4x+1$ 的实根界、实根个数及各个实根的位置。
+    \item 用史笃姆定理证明：$n$次多项式$f(x)$的实根个数不大于$n$.
+\end{enumerate}
+\end{ex}
+
+\subsection{实系数多项式实根的计算}
+
+在前面我们已经根据中间值定理，运用逼近方法求过的实根的近似值，但太繁，计算量也很大，以下我们将利用两种换元变形，改进计算过程，从而得到多项式实根近似计算的秦九韶方法。
+
+\subsubsection{多项式的两种换元变形}
+
+第一种变形：令$y=x-k$, 则$x=y+k$, 于是
+\[\begin{split}
+    f(x)&=f(k)+\frac{f'(k)}{1!}(x-k)+\frac{f''(k)}{2!}(x-k)^2+\cdots +\frac{f^{(n)}(k)}{n!}(x-k)^n\\
+    &=f(k)+\frac{f'(k)}{1!}y+\frac{f''(k)}{2!}y^2+\cdots +\frac{f^{(n)}(k)}{n!}y^n\\
+    &=g(y)=g(x-k)
+\end{split}\]
+
+若$g(y)$的一个根是$\alpha$, 即$y=\alpha$时，$g(y)=0$. 也就是：$x-k=\alpha$时，$g(x-k)=0$. 但$g(x-k)=f(x)$, 所以$x=k+\alpha$时，$f(x)=0$。这说明在求出$g(y)$的一个根后，加上$k$就是$f(x)$的根。由于$k$可以自由选择，常可以使$\alpha$比之$k+\alpha$更易于计算。
+
+利用这种变形，就可以把“求$f(a)$在$(a,b)$内的一个实根”问题，转化为“求$g(y)$在$(a-k,b-k)$内的一个实根”问题。适当选择$k$, 可以简化计算。
+
+例如，求多项式$f (x) =x^3-3x+1$的位于$(1, 2)$的根时，可令$y=x-1$, 得
+\[g (y) =-1+3y^2+y^3\]
+只须先求$g(y)$在$(0, 1)$的根。这时，只须计算$g(0.5)$, $g(0.6)$等，比之计算$f(1. 5)$, $f(1. 6)$等要简单一些。
+
+为了把$f(x)$改写成$g(x-k)$, 可以应用泰勒公式；也可应用余式定理及其推论，采用综合除法；还可以用直接代入
+法。
+
+第二种变形：令$y=kx,\; (k\ne 0)$, 则$x=\frac{y}{k}$, 于是
+\[\begin{split}
+    f(x)&=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\\
+    &=a_n\left(\frac{y}{k}\right)^n+a_{n-1}\left(\frac{y}{k}\right)^{n-1}+\cdots a_1\left(\frac{y}{k}\right)+a_0\\
+    &=\frac{1}{k^n}\left(a_ny^n+a_{n-1}ky^{n-1}+\cdots +a_1k^{n-1}y+a_0 k^n\right)\\
+    &=g_1(y)=\frac{1}{k^n}\cdot g(y)=\frac{1}{k^n}g(kx)
+\end{split} \]
+显然$g_1(y)$与$g(y)$有相同的根。
+
+若$g(y)$的一个根是$\alpha$, 则$y=\alpha$时，$g(y)=0$。也就是$kx=\alpha$时，$g_1(kx)=0$, 但$g_1(kx)=f(x)$, 所以$x=\frac{\alpha}{k}$时，$f(x)=0$, 这
+说明在求出$g(y)$的一个根以后，除以$k$就是$f(x)$的根。由于$k$可
+以自由选择，就可以使$\alpha$比之$\frac{\alpha}{k}$更易于计算。
+
+例如，已知$f(x)=x^3+3x^2-1$
+一根在$(0,1)$, 令$y=10x$, 则
+$x=\frac{y}{10}$, 于是
+\[g(y)=y^3+30y^2-1000\]
+对应的一根在$(0,10)$. 为了求这个根，可以计算$g(5),
+g(6),\ldots$等，求出$g(y)$的误差不大于1的根的近似值后，除
+以10即得$f(x)$的误差不大于0.1的近似根。这比之计算
+$f(0.5),f(0.6),\ldots$等，可以避免小数的出现。
+
+利用这种变形，就可以把“求$f(x)$在$(a,b)$内的一个实
+根”，转化为“求$g(y)$在$(ka,kb)$内的一个实根”。适当选
+择$k$, 同样可以简化计算。
+
+\subsubsection{秦九韶法}
+
+把以上两种变形交替使用，主要依靠中间值定理，我们
+就得到多项式实根近似计算的秦九韶方法。
+
+\begin{example}
+    求多项式
+$f(x)=x^3-3x+1$
+在$(1,2)$的实根近似值，要求误差不大于$10^{-8}$.
+\end{example}
+
+\begin{solution}
+第一步：令$y=x-1$, 并令$z=10y$, 得$z$的多项式
+$z^3+30z^2-1000$.
+
+由于后面还要变形，文字变化太多很不方便，我们仍用
+$x$作为变数，只要是注意要求的是$f_1(x)$在$(1,2)$的根的小
+数点后第一位数字。
+
+记$f_1(x)=x^3+30x-1000$, 计算得出
+$f_1(0)<0$, $f_1(5)=-125<0$, $f_1(6)=+296>0$, $f_1(10)>0$.
+所以$f_1(x)$的根在$(5,6)$中，即$f(x)$根在$(1.5,1.6)$中。
+
+第二步：在$f_1(x)$中，使$y=x-5$, $z=10y$, 写成$z$的多
+项式后，仍以$x$为变数，得
+\[f_2(x)=x^3+450x^2+37500x-125000\]
+$f_2(x)$的根在$(0,10)$中，因而$x_3$的绝对值比之其他各项要小
+得多，$x^2$项也比较小，对$f(x)$为正或为负主要决定于后两
+项，因而估计$x$在$(3,4)$中，计算结果确有$f_2(3)<0$, 
+$f_2(4)>0$. 所以$f_2(x)$的根$(3,4)$中，即$f(x)$的根在
+$(1.53,1.54)$中。
+
+第三步：在$f_2(x)$中使$y=x-3$, $z=10y$ 仍写成$x$的多项
+式，得
+\[f_3(x)=x^3+4590x^2+4022700x-8423000\]
+由最后两项估计，根在$(2,3)$中，试算结果确有$f_3(2)<0$, 
+$f_3(3)>0$, 所以$f_3(x)$的根在$(2,3)$中，即$f(x)$的根一定在
+$(1.532,1.533)$中。
+
+第四步：在$f(x)$中使，$y=x-2$, $z=10y$, 仍写成$x$的多
+项式，得
+\[f_4(x)=x^3+45960x^2+404103200x-359236000\]
+
+现在，前两项起的作用更小了，我们可以一次算出$x$应
+取值的三位数字，然后再加以验算，不必象前面那样一位数
+一位数地计算了，把后两项系数相除，得$x=0.889$, 由此应
+得$f(x)$的根在$(1.532888,1.532889)$中，验证得$x\approx 1.532889$,
+误差小于$10^{-8}$.
+\end{solution}
+
+\begin{rmk}
+    上述方法对多项式的正根与负根显然同样适用，
+但是计算负根时，出错的可能性比计算正根要大些，为此，
+我们可以利用第二种变形，令$k=-1$, 就把计算负根改变为
+计算正根了。例如为求$f(x)=x^3-3x+1$在$(-2,-1)$的
+根，可改为求$g(y)=y^3-3y-1$在$(1,2)$的根，求出后改
+变符号即得$f(x)$在$(-2,-1)$的根。
+
+在常数项的绝对值比其他各系数的绝对值大许多倍时，
+可以先把中间两项略去，估计根有几位整数，然后从$n\x10$,
+$n\x100$, 或开始试除。若特大的系数不是出现在常数项，而是
+出现在中间某一项，也可把除第一项与最大系数的那项以外
+的所有项先略去，估计根有几位数，按照上述方法试除。
+\end{rmk}
+
+\begin{example}
+    估计多项式$f(x)=x^3+x^2-10^7$的正根有几位整
+数。
+\end{example}
+
+\begin{solution}
+由方程$x^3-10^7=0$ 可看到其正根是以百位数字为
+第一位数字。因此用$x=100,\; x=200,\; x=300,\ldots$来试算，得
+$f(200)=-1960000$, $f(300)=+17090000$. 因而有一个根在
+$(200,300)$中，即正根有3位整数。
+
+若需要求这个根的近似值，用前述方法，先减去200, 但
+不必乘10, 得$f_1(x)$的根在$(0,100)$中，然后以$n\x10$试算。
+以后再减去这个$n\x10$, 得$f_2(x)$, 它的根在$(0,10)$中，这样
+就与例4.21相类似了。
+\end{solution}
+
+\begin{ex}
+\begin{enumerate}
+    \item 验证$f(x)=x^3-5x^2+9x-11$在$(3,4)$中有一个实根，
+    并求一多项式$g(y)$, 使$g(y)$的每一个根都等于$f(x)$的根
+    减去3.
+    \item 用秦九韶法求下列多项式在指定区间内的实根的近似
+    值：
+    \begin{enumerate}
+    \item $f(x)=x^3+4x^2+6x-2$, 在$(0,1)$内；（要求精确
+    到0.1）；
+    \item $f(x)=x^3-5x^2+9x-11$, 在$(3,4)$内；（精确到
+    0.0001）；
+    \item $f(x)=x^3+5x^2+6x+9$, 在$(-5,-4)$内；（精
+    确到0.01）。        
+    \end{enumerate}
+\end{enumerate}
+\end{ex}
+
+\section*{习题4.4}
+
+\addcontentsline{toc}{subsection}{习题4.4}
+
+\begin{enumerate}
+    \item 用逼近法求多项式$f(x)=2x^3-x^2-9x+1$在区间$(-2,
+    -1)$中的实根的近似值（精确到0.01）。
+    \item 求下列多项式的实根的界和位置：
+    \begin{enumerate}
+        \item  $f(x)=x^3-6x^2+5x+13$
+        \item  $f(x)=x^4-4x^3-5x^2+18x+20$
+    \end{enumerate}
+
+    \item 求下列多项式实根的界和个数：
+    \begin{enumerate}
+        \item   $f(x)=4x^3-2x-5$
+        \item  $f(x)=x^n+1$
+    \end{enumerate}
+  
+    \item  用秦九韶方法，求下列多项式在指定区间的实根的近似
+    值（精确到0.001）
+    \begin{enumerate}
+      \item $f(x)=x^3+2x-20$, 在$(2,3)$中；
+    \item $f(x)=x^3+x^2-2500$, 在正数范围内。
+    \end{enumerate}
+    \item  用秦九韶方法，求$\sqrt[3]{17}$的近似值（精确到$10^{-4}$）。
+\end{enumerate}
+
+\section{二元二次方程组}
+前面几节，我们较系统地学习了多项式的求根问题，实
+际上，也是系统地学习一元方程的求解问题。我们还系统地
+学习了线性方程组的求解。归纳起来，在学习过的方程、方
+程组求解过程中，基本思想和方法就是：消元和降次。
+
+在本节，我们将继续遵循这个基本思想，专门研究二元
+二次方程组及其解法。
+
+\subsection{二元二次方程与二元二次方程组}
+
+由二元二次多项
+式组成的方程，就叫做二元二次方程，其一般形式是
+\begin{equation}
+    ax^2+2bxy+cy^2+2dx+2ey+f=0
+\end{equation}
+其中$a,b,c$不全为零；$d,e,f$为任意实数；$x,y$为二元。
+
+凡满足方程(4.16)的有序数对$(x,y)$, 都叫做方程(4.16)的
+一个解。
+
+二元二次方程的实数解，可有三种情况存在，即有唯一
+解，无解和无限多解，例如：
+\begin{itemize}
+    \item 方程 $2x^2+y^2=0$, 只有一个解$(0,0)$;
+    \item 方程$x^2+2y^2+1=0$, 就没有实数解；
+    \item 方程$x^2+2y^2-4=0$, 就有无限多个解。
+\end{itemize}
+
+由一个二元一次方程和一个二元二次方程组成的方程组
+以及两个二元二次方程组成的方程组，都称为二元二次方
+程组。因此，二元二次方程组的一般形式有两种类型：
+\[(\text{I})\quad \begin{cases}
+    ax^2+2bxy+cy^2+2dx+2ey+f=0\\
+mx+ny+\ell=0
+\end{cases}\]
+\[(\text{II})\quad \begin{cases}
+    a_1x^2+2b_1xy+c_1y^2+2d_1x+2e_1y+f_1=0\\
+    a_2x^2+2b_2xy+c_2y^2+2d_2x+2e_2y+f_2=0
+\end{cases}\]
+组成一个方程组的两个方程的公共解，就叫做这个方程
+组的解。
+
+例如，方程组$\begin{cases}
+ 3x^2-11xy+6y^2=0\\
+5x^2+y^2=0   
+\end{cases}$
+的解是$(x,y)=(0,0)$。
+    
+求出方程组的所有解或判定方程组无解的过程，叫做解
+方程组。
+
+解二元二次方程组的基本思想方法，仍然是消元和降
+次。
+
+我们已经学习过的消元方法有：加减消元法，代入消元
+法，公式消元法等，其中最根本的是加减消元法。
+
+已经学习过的降次方法有：开平方法，配方法，因式分
+解法，公式法，换元法等，其中最根本的是因式分解和换元
+法。
+
+\begin{ex}
+    试用先消元，后降次和先降次，后消元两种办法，解方
+程组$$\begin{cases}
+  x^2-y^2=a\\
+x+y=b  
+\end{cases}$$
+并讨论解的情况。
+\end{ex}
+
+\subsection{二元二次方程组类型(I)的解法}
+第(I)类型的二元二次方程组，指的是由一个二元
+一次方程和一个二元二次方程所组成的方程组，这种类型
+的方程组一般都可以用代入法来解。但根据方程组的特点还
+可以灵活应用其它解法。
 
 
 \begin{example}
-    
+    解方程组
+\begin{numcases}{}
+5x-2y=7\\x^2+y^2=25    
+\end{numcases}
 \end{example}
 
 \begin{solution}
-    
+    由(4.17)得
+\begin{equation}
+    y=\frac{1}{2}(5x-7)
+\end{equation}
+代入(4.18), 整理后得：$29x^2-70x-15=0$, 解出
+\[x_1=3,\qquad x_2=-\frac{17}{29}\]
+代入(4.19)得
+\[y_1=4,\qquad y_2=-\frac{144}{29}\]
+所以方程组的解集为
+\[\left\{(x,y)\right\}=\left\{(3,4),\left(-\frac{17}{29},-\frac{144}{29}\right)\right\}\]
 \end{solution}
+
+通过例4.23, 我们可以得到以下一般情况：
+
+对于方程组
+\begin{numcases}{}
+  ax^2+2bxy+cy^2+2dx+2ey+f=0\\
+mx+ny+\ell=0  
+\end{numcases}
+可以这样解，若$n\ne 0$，由(4.21)解出
+\begin{equation}
+    y=\frac{1}{n}(-mx-\ell)
+\end{equation}
+代入(4.20)就可以消去$y$而得到$x$的一元二次方程，求出$x$后，
+再代入(4.22)，从而求出相应的$y$。
+
+若$m\ne 0$, 由(4.21)解出
+\begin{equation}
+    x=\frac{1}{m}(-\ell-ny)
+\end{equation}
+代入(4.20)也可以消去$x$而得到$y$的一元二次方程，求出$y$后，再代入
+(4.23)，从而求出相应的$x$。
+
+这种解法就是代入消元法，它是解这种类型方程组的基
+本方法。
 
 
 \begin{example}
-    
+    解方程组
+    \begin{numcases}{}
+        (3x-2y-5)(x-y+1)=0\\
+        x+y=7
+    \end{numcases}
 \end{example}
 
-\begin{solution}
-    
-\end{solution}
+\begin{analyze}
+    这个方程组可以像例4.23一样用代入法求解，但由
+    于其中的方程(4.24)具有特点：方程左边的式子是两个一次
+    因式的乘积，方程右边等于0. 因此，原方程组可以改写成
+    以下两个二元一次方程组
+\begin{multicols}{2}
+\begin{numcases}{}
+    3x-2y-5=0\\
+    x+y-7=0
+\end{numcases}
+~~
+\begin{numcases}{}
+    x-y+1=0\\
+    x+y-7=0
+\end{numcases}
+\end{multicols}
 
+    显然由(4.26), (4.27)组成的方程组的解及由(4.28), (4.29)组
+    成的方程组的解都能满足由(4.24), (4.25)组成的方程组；反之，
+    (4.24), (4.25)的解至少能满足(4.26), (4.27)及(4.28), (4.29)中的一
+    个方程组，所以，只要分别出方程组(4.26), (4.27)与(4.28), (4.29)就可以了。
+\end{analyze}
+
+\begin{solution}
+    将原方程组改写成为以下两个方程组
+\[\begin{cases}
+    3x-2y-5=0\\
+    x+y-7=0
+\end{cases}\text{及}\quad \begin{cases}
+    x-y+1=0\\
+    x+y-7=0
+\end{cases}\]
+解得：
+\[\begin{cases}
+    x=\frac{19}{5}\\ y=\frac{16}{5}
+\end{cases}\qquad \begin{cases}
+    x=3\\ y=4
+\end{cases}\]
+所以，原方程组的解集为
+\[\left\{(x,y)\right\}=\left\{\left(\frac{19}{5},-\frac{16}{5}\right), (3,4)\right\}\]
+\end{solution}
+ 
+一般地，方程组
+\[\begin{cases}
+(a_1x+b_1y+c_1)(a_2x+b_2y+c_2)=0\\
+mx+ny+\ell=0
+\end{cases}\]
+可以转化为两个二元一次方程组
+\[\begin{cases}
+a_1x+b_1y+c_1=0\\
+mx+ny+\ell=0
+\end{cases}\text{与}\quad \begin{cases}
+a_2x+b_2y+c_2=0\\
+mx+ny+\ell=0
+\end{cases}\]
+求解。
 
 \begin{example}
-    
+解方程组$\begin{cases}
+x+y=15\\xy=56
+\end{cases}$
 \end{example}
 
+\begin{analyze}
+这个方程组除可以用代入法求解外，还可以应用韦达定理，以$x,y$为两根，先做一个一元二次方程，再来求解。
+\end{analyze}
+
 \begin{solution}
-    
+由已知方程可知，若设$x,y$为某一个一元二次方程的两个根，则由韦达定理可得出这一元二次方程为
+\[z^2-15z+56=0\]
+解出这个方程，得：$z_1=7,\quad z_2=8$，所以原方程组的解集为：
+\[\{(x,y)\}=\{(7,8),\; (8,7)\}\]
 \end{solution}
 
+一般地，方程组$\begin{cases}
+x+y=a\\ xy=b
+\end{cases}$的解，可以建立一个一元二次方程
+\[z^2-az+b=0\]
+解出两根$z_1=\alpha,\; z_2=\beta$，从而得出方程组的解集：
+\[\{(x,y)\}=\{(\alpha,\beta ),\; (\beta ,\alpha)\}\]
 
+综合例4.23---4.25的一般结论，我们还可以给出这种类型方程
+组解的几何意义如下：
+
+一次方程表示直线，二次方程表示二次曲线，因此，这
+种类型方程组的一个解，就表示直线与二次曲线的一个交点。
+
+显然，直线与二次曲线最多有两个交点，也可能有两个重合的交点，也可能没有交点。相应地说明这种类型的二元二次方程组最多有两个解，也可能有两个相同的解，也可能
+没有解。
+
+\begin{ex}
+解下列方程组
+\begin{multicols}{2}
+\begin{enumerate}
+\item $\begin{cases}
+y^2=4x+4\\3x-y=1
+\end{cases}$
+\item $\begin{cases}
+(x+y+1)(x+y-3)=\beta\\
+x-y=-1
+\end{cases}$
+\item $\begin{cases}
+\frac{1}{x}+\frac{1}{y}=0\\
+xy=-5
+\end{cases}$
+\item $\begin{cases}
+2x+3y=1\\ 6xy=1
+\end{cases}$
+\end{enumerate}
+\end{multicols}
+\end{ex}
+
+\subsection{二元二次方程组类型(II)的解法}
+
+第(II)类型的二元二次方程组指的是由两个二元二次方程组成的方程组，这种类型的方程组求解是比较复杂的，若用代入法，都要解四次方程，这里我们只讲一些特殊的方程组的解法，其要领仍是降次、消元。
+
+\subsubsection{可转化为第(II)类型的方程组}
 
 \begin{example}
-    
+解方程组
+\begin{numcases}{}
+x^2+y^2=20\\
+x^2-5xy+6y^2=0 \label{eq2}
+\end{numcases}
 \end{example}
 
+\begin{analyze}
+这个方程组的特点是：其中有一个方程(\ref{eq2})的左
+边可以分解为两个一次因式的乘积，右边等于0.因此，方程(\ref{eq2})可化为两个二元一次方程，从而原方程组就可以化为两个第(I)类型的二元二次方程组。
+\end{analyze}
+
 \begin{solution}
-    
+由(\ref{eq2})得：$(x-2y)(x-3y)=0$，所以
+\[x-2y=0\quad \text{或}\quad x-3y=0 \]
+因此，原方程组可化为以下两个方程组：
+\[\begin{cases}
+x^2+y^2=20\\x-2y=0
+\end{cases}\qquad \begin{cases}
+x^2+y^2=20\\ x-3y=0
+\end{cases}\]
+解这两个方程组，即得到原方程组的解集为：
+\[\{(x,y)\}=\left\{(4,2),\; (-4,-2),\; \left(3\sqrt{2},\sqrt{2}\right),\; \left(-3\sqrt{2},-\sqrt{2}\right)\right\}\]
+\end{solution}
+
+\begin{example}
+解方程组$\begin{cases}
+x^2-y^2+2y-1=0\\
+2x^2-3xy-2y^2+2x+6y-4=0
+\end{cases}$
+\end{example}
+
+\begin{analyze}
+这个方程组的特点是：两个方程的左边都可以分解为一次式的乘积，右边都等于0. 因此，原方程组就可以化为四个二元一次方程组来解。
+\end{analyze}
+
+
+\begin{solution}
+用待定系数法分别将两个方程左边进行因式分解，可得
+\begin{numcases}{}
+(x+y-1)(x-y+1)=0\\
+(2x+y-2)(x-2y+2)=0
+\end{numcases}
+原方程组可化为以下四个线性方程组：
+\[\begin{cases}
+x+y-1=0\\2x+y-2=0
+\end{cases}\qquad \begin{cases}
+x+y-1=0\\x-2y+2=0
+\end{cases}\]
+\[\begin{cases}
+x-y+1=0\\2x+y-2=0
+\end{cases}\qquad \begin{cases}
+x-y+1=0\\x-2y+2=0
+\end{cases}\]
+解出这几个方程组，即可得原方程组的解集为：
+\[\{(x,y)\}=\left\{(1,0),\; (0,1),\; \left(\frac{1}{3},\frac{4}{3}\right),\; (0,1)\right\}\]
+\end{solution}
+
+\begin{example}
+解方程组
+\begin{numcases}{}
+x^2+5xy-2x+3y+1=0\\
+3x^2+15xy-7x+8y+4=0
+\end{numcases}
+\end{example}
+
+\begin{analyze}
+这个方程组的特点是：两个方程中对应二次项系数成比例，这样，我们可以运用方程的变换，消去二次项得到一个二元一次方程，将原方程组转化为第(I)类型方程组求解。
+\end{analyze}
+
+\begin{solution}
+由$(4.35)-(4.34)\x3$, 得
+\begin{equation}
+    -x-y+1=0
+\end{equation}
+将原方程组化为(4.34), (4.36)组成的（或(4.35), (4.36)）第(I)类
+型方程组
+\[\begin{cases}
+   x^2+5xy-2x+3y+1=0 \\
+   -x-y+1=0
+\end{cases}\]
+用代入法可以解出
+\[\begin{cases}
+    x_1=1\\ y_1=0
+\end{cases}\qquad \begin{cases}
+    x_2=-1\\ y_2=2
+\end{cases}\]
+所以，原方程组的解集为
+\[\{(x,y)\}=\{(1,0),(-1,2)\}\]
+\end{solution}
+
+\begin{rmk}
+  解由(4.35), (4.36)组成的方程组，可得同样结
+果，但相比之下，计算要繁一些。  
+\end{rmk}
+
+\begin{example}
+    解方程组：
+\begin{numcases}{}
+    2x^2+xy+x-3y+3=0\\
+3xy+y^2-2x+6y-6=0
+\end{numcases} 
+\end{example}
+
+\begin{analyze}
+    这一方程组的特点是：两方程的左边虽不能分解
+因式，但这两个方程的非二次项系数是成比例的，因而，我们
+可以通过方程的变换，消去非二次项得到一个二元二次齐次
+式的方程，而这一方程的左边一般是可以分解因式的。从而
+可以将方程组化为第(I)类型求解。
+\end{analyze}    
+
+\begin{solution}
+    由$(4.37)\x2+(4.38)$, 得$4x^2+5xy+y^2=0$,  即：
+\begin{equation}
+    (4x+y)(x+y)=0
+\end{equation}
+
+这样，原方程组可转化为(4.37), (4.39)所组成的方程组，（或
+者(4.38), (4.39)所组成的方程组）再由例4.24的分析即可化为以
+下两个方程组求解：
+\[\begin{cases}
+    2x^2+xy+x-3y+3=0\\
+4x+y=0
+\end{cases}\qquad \begin{cases}
+    2x^2+xy+x-3y+3=0\\
+x+y=0
+\end{cases}\]
+分别解出，得
+\[\begin{cases}
+    x_1=\frac{13+\sqrt{193}}{4} \\ y_1=-13-\sqrt{193}
+\end{cases}\qquad \begin{cases}
+    x_2=\frac{13-\sqrt{193}}{4} \\ y_2=-13+\sqrt{193}
+\end{cases}\]
+\[\begin{cases}
+    x_3=-1\\y_3=1
+\end{cases}\qquad \begin{cases}
+    x_4=-3\\ y_4=3
+\end{cases}\]
+所以，原方程组的解集为
+\[\begin{split}
+    \{(x,y)\}&=\Bigg\{\left(\frac{13+\sqrt{193}}{4}, -13-\sqrt{193}\right),\; \left(\frac{13-\sqrt{193}}{4}, -13+\sqrt{193}\right),\\
+    &\qquad  (-1,1),\; (-3,3)\Bigg\}
+\end{split}
+\]
+
+\end{solution}
+
+综合例4.26---4.29的分析可以得出：对一些具有一定特点（如
+其中一或两个方程的一边可分解因式，另一边为0; 两个方
+程相应的二次项系数成比例；两方程相应的非二次项系数戌
+比例）的第(II)类型二元二次方程组，我们可以利用分解因
+式或方程的变换等方法，降低方程的次数，转化为第(I)类
+型方程组求解。
+
+\begin{ex}
+解方程组：
+\begin{enumerate}
+\item $\begin{cases}
+x^2+2xy+y^2+2x+2y-3=0\\
+2x^2-y^2+x-y+1=0
+\end{cases}$
+\item $\begin{cases}
+(x-2y)^2-1=0\\
+(3x-2y+1)(2x+y-3)=0
+\end{cases}$
+\item $\begin{cases}
+x^2+y^2+7x+2y-11=0\\
+x^2+y^2+3x+4y-9=0
+\end{cases}$
+\item $\begin{cases}
+xy-3y+1=0\\ 2y-\frac{1}{3}x^2-\frac{2}{3}=0
+\end{cases}$
+\item $\begin{cases}
+xy+2xy+y^2=25\\
+9x^2-12xy+4y^2=9
+\end{cases}$
+\end{enumerate}
+\end{ex}
+
+\subsubsection{可转化为含一元方程的方程组}
+\begin{example}
+解方程组
+\begin{numcases}{}
+2x^2-xy+y^2-3y+2=0\\
+6x^2-3xy-y^2-y+6=0
+\end{numcases}
+\end{example}
+
+\begin{analyze}
+这一方程组的特点是：两方程的左边不能分解因式，二次项或非二次项系数都无法消去，但其中含有同一个元$x$或$y$的相应各项系数是成比例的。本题中含$a$的项有：$\frac{2}{6}=\frac{-1}{-3}$。因而，我们可以利用方程的变换首先消去一元，得到一个一元方程，从而原方程组即可化为含有此一元方程的方程组求解。
+\end{analyze}
+
+\begin{solution}
+    由$(4.41)-(4.40)\x3$, 得$-4y^2+8y=0$, 即：
+\begin{equation}
+    4y(y-2)=0
+\end{equation}
+这样，原方程组就可转化为由(4.40), (4.42)组成或由(4.41),
+(4.42)组成的方程组求解。再由象例4.26的分析，原方程组就化
+为
+\[\begin{cases}
+  2x^2-xy+y^2-3y+2=0\\
+y=0  
+\end{cases}\qquad \begin{cases}
+    2x^2-xy+y^2-3y+2=0\\
+y-2=0
+\end{cases} \]
+直接用代入法即可解出：
+\[\begin{cases}
+    x_1=0\\y_1=2
+\end{cases}\qquad \begin{cases}
+    x_2=1\\y_2=2
+\end{cases}\]
+所以原方程组的解集为：$$\{(x,y)\}=\{(0,2),\; (1,2)\}$$
 \end{solution}
 
 
+\begin{ex}
+解方程组
+\begin{enumerate}
+\item $\begin{cases}
+-2xy+y^2+x+y+3=0\\
+4xy-6y^2-2x+y+4=0
+\end{cases}$
+\item $\begin{cases}
+2x^2+3xy+y^2+3x+4y-1=0\\
+x^2+6xy+2y^2+2x+8y-3=0
+\end{cases}$
+\end{enumerate}
+\end{ex}
 
+\subsubsection{可用换元法解的方程组}
+\begin{example}
+解方程组
+\begin{numcases}{}
+x^2-2xy+y^2+3x+3y-2=0\\
+2x^2-2xy+2y^2-2x-2y+15=0
+\end{numcases}
+\end{example}
 
+\begin{analyze}
+这个方程组的特点是：在两个方程中若$x$，$y$将位置互换，方程式不变，这种方程我们叫做轮换对称方程，这种方程组一般可用换元的办法，设$x+y=s$, $x\cdot y=t$, 将方程组转化为关于$s,t$的方程组，解出$s,t$再进而解出$x,y$。
+\end{analyze}
 
+\begin{solution}
+    设 \begin{equation}
+        \begin{cases}
+            x+y=s\\  xy=t
+          \end{cases}
+    \end{equation}
+代入原方程组，得
+\begin{numcases}{}
+    s^2-4t+3s-2=0\\2s^2-6t-2f+15=0
+\end{numcases}
+象例4.30一样，在(4.46), (4.47)中消去$t$, 由$(4.46)\x3-(4.47)\x2$
+得：$-s^2+13s-36=0$，即：
+\[(s-4)(s-9)=0\]
+因此就有：
+\[\begin{cases}
+    s^2-4t+3s-2=0\\s-4=0
+\end{cases}\qquad \begin{cases}
+    s^2-4t+3s-2=0\\s-9=0
+\end{cases}\]
+解得
+\[\begin{cases}
+    s=4\\ \frac{13}{2}
+\end{cases}\qquad 
+\begin{cases}
+    s=9\\ t=\frac{53}{2}
+\end{cases}\]
+将上述两解代回(4.45)中，得
+\[\begin{cases}
+    x+y=4\\xy=\frac{13}{2}
+\end{cases}\qquad \begin{cases}
+    x+y=9\\xy=\frac{53}{2}
+\end{cases}
+\]
+这两方程组都无实数解。
 
+所以，原方程组无实数解。
+\end{solution}
 
+综合以上的解法讨论，我们同样可以给
+出这种类型方程组解的几何意义如下：
 
+第(II)类型的二元二次方程组的解，就是它们两个方程
+所代表的两条二次曲线的交点。
 
-
-
-
-
-
-%P286
+两条二次曲线的交点最多有四个，也可能有两个，还可
+能没有交点。相应地，第(II)类型的二元二次方程组最多
+四个解，也可能有两个解，还可能没有解。
 
 \begin{ex}
 解下列方程组
@@ -1085,7 +2115,8 @@ $\begin{cases}
         x^2+y^2+3xy-4x-4y+3=0\\
         xy+2x+2y-5=0
     \end{cases}$
-    \item $\begin{cases}
+    \begin{multicols}{2}
+        \item $\begin{cases}
         xy=3\\yz=6\\xz=2
     \end{cases}$
     \item $\begin{cases}
@@ -1096,6 +2127,8 @@ $\begin{cases}
         5x^2-6xy+5y^2=29\\
         7x^2-8xy+7y^2=43
     \end{cases}$
+    \end{multicols}
+    
 \end{enumerate}
 
 
