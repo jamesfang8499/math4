@@ -822,7 +822,23 @@ $\begin{cases}
 三阶行列式共有九个元素，它的值也可以按下图所示
 的对角线法则计算出来：
 \begin{center}
-\includegraphics[scale=.6]{fig.png}
+\begin{tikzpicture}[scale=1.3,inner sep=1pt]
+    \draw(-1,1)node[shape=circle, draw](a1){$a_1$} (0,1)node[shape=circle, draw](b1){$b_1$} (1,1)node[shape=circle, draw](c1){$c_1$}
+    (-1,0)node[shape=circle, draw](a2){$a_2$} (0,0)node[shape=circle, draw](b2){$b_2$} (1,0)node[shape=circle, draw](c2){$c_2$}
+    (-1,-1)node[shape=circle, draw](a3){$a_3$} (0,-1)node[shape=circle, draw](b3){$b_3$} (1,-1)node[shape=circle, draw](c3){$c_3$};
+\node at (-1.5,-1.8){$-$};
+\node at (1.5,-1.8){$+$};
+    \begin{scope}
+    \draw(a1)--(b2)--(c3);
+    \draw(b1)--(c2)--([turn]0:0.3)arc(45:-135:1.06)--(a3);
+    \draw(a2)--(b3)--([turn]0:0.35)arc(-135:45:1.06)--(c1);
+\end{scope}
+    \begin{scope}[densely dashed]
+        \draw(a3)--(b2)--(c1);
+        \draw(c2)--(b3)--([turn]0:0.4)arc(-45:-225:1.06)--(a1);
+        \draw(b1)--(a2)--([turn]0:0.35)arc(-225:-45:1.06)--(c3);
+    \end{scope}
+\end{tikzpicture}
 \end{center}
 
 
